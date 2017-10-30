@@ -1,0 +1,37 @@
+{
+  "name": "ci301",
+  "version": "1.0.0",
+  "description": "final year project - a visual analysis of number 1 songs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rushlet/ci301_data-vis"
+  },
+  "author": "rushlet",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rushlet/ci301_data-vis/issues"
+  },
+  "homepage": "https://github.com/rushlet/ci301_data-vis#readme",
+  "devDependencies": {
+    "babel-core": "^6.24.1",
+    "babel-loader": "^6.0.0",
+    "babel-preset-env": "^1.4.0",
+    "babel-preset-es2015": "^6.24.1",
+    "gulp": "^3.9.1",
+    "gulp-babel": "^6.1.2",
+    "gulp-cli": "^1.3.0",
+    "gulp-sass": "^3.1.0",
+    "gulp-webpack": "^1.5.0",
+    "webpack": "^2.4.1"
+  },
+  "dependencies": {
+    "d3-request": "^1.0.5",
+    "d3-selection-multi": "^1.0.1",
+    "d3-fetch": "^0.0.2",
+    "d3": "^4.11.0"
+  }
+}
