@@ -67,3 +67,8 @@ print(averages_by_year)
 d = subset(averages_by_year, Group.1 < 1960)
 danceability_by_year <- ggplot(averages_by_year, aes(x = Group.1, y = danceability)) + geom_point(aes()) + geom_smooth(method='lm',formula=y~x)
 danceability_by_year
+
+danceability_by_year_1 <- ggplot(averages_by_year, aes(x = Group.1, y = danceability)) +
+                              geom_line(aes(group = 1)) + 
+                              scale_x_discrete(breaks=seq(1950, 2200, 5))
+danceability_by_year_1
