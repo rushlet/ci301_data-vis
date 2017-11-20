@@ -1,8 +1,10 @@
 setwd('~/Sites/uni/top_100/')
 install.packages("dplyr")
 install.packages("ggplot2") # for drawing graphs
+install.packages("reshape2") # for drawing graphs
 library("dplyr")
 library("ggplot2")
+library("reshape2")
 
 #loads in csv and gives it variable name
 all_tracks <- read.csv('fixed_data_for_analysis.csv')
@@ -12,11 +14,16 @@ all_tracks <- read.csv('fixed_data_for_analysis.csv')
 most_common_artists <- group_by(all_tracks, artist) %>% summarise(count = n()) %>% arrange(desc(count)) %>% filter (count >= 3) 
 View(most_common_artists)
 
+most_common_artists___decade <- group_by(all_tracks, artist, decade) %>% summarise(count = n()) %>% arrange(desc(count)) %>% filter (count >= 3) 
+View(most_common_artists___decade)
+
 most_common_artist_data <- merge(most_common_artists, all_tracks, by=("artist"))
 View(most_common_artist_data)
 
 most_common_artists_by_decade <- group_by(most_common_artist_data, decade) %>% summarise(count = n()) %>% arrange(desc(count)) %>% filter (count >= 8) 
 print(most_common_artists_by_decade)
+
+
 
 most_common_artists_by_weeks_at_1 <- group_by(most_common_artist_data, weeks_at_1) %>% summarise(count = n()) %>% arrange(desc(count)) %>% filter (count >= 8) 
 print(most_common_artists_by_weeks_at_1)
@@ -72,3 +79,18 @@ danceability_by_year_1 <- ggplot(averages_by_year, aes(x = Group.1, y = danceabi
                               geom_line(aes(group = 1)) + 
                               scale_x_discrete(breaks=seq(1950, 2200, 5))
 danceability_by_year_1
+
+attributes_out_of_1 <- c("Group.1", "danceability", "energy", "speechiness", "acousticness", "liveness", "valence", "instrumentalness")
+averages_by_year__subset <- averages_by_year[attributes_out_of_1]
+
+#https://stackoverflow.com/questions/3777174/plotting-two-variables-as-lines-using-ggplot2-on-the-same-graph
+mdata <- melt(averages_by_year__subset, id=c("Group.1"))
+attributes_by_year <- ggplot(averages_by_year__subset, aes(x = Group.1)) +
+                          geom_line(aes(y = danceability, group = 1, colour = "danceability")) + 
+                          geom_line(aes(y = valence, group = 1, colour = "valence")) +
+                          geom_line(aes(y = energy, group = 1, colour = "energy")) + 
+                          geom_line(aes(y = acousticness, group = 1, colour = "acousticness")) +
+                          scale_x_discrete(breaks=seq(1950, 2200, 5)) +
+                          labs(title="atrributes over years", y="scale", x="year")
+attributes_by_year
+
