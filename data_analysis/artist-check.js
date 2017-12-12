@@ -1,7 +1,7 @@
 var writeJson = require('write-json');
 var uniqueArtists = require('./uniqueArtists.json');
 var all_tracks = require('./fixed_data_for_analysis.json');
-var outputFile = './unique_artists_with_tracks.json';
+var outputFile = './unique_artists_track_count.json';
 let output = {};
 
 uniqueArtists.forEach((artist) => {
@@ -10,12 +10,13 @@ uniqueArtists.forEach((artist) => {
     currentArtist = String(currentArtist);
   }
   let count = 0;
+  output[currentArtist] = {};
   all_tracks.forEach((track) => {
     var trackArtist = track.artist;
     if (typeof trackArtist !== "string") {
       trackArtist = String(trackArtist);
     }
-    if (trackArtist.includes(currentArtist)) {
+    if (trackArtist.search(`\\b${currentArtist}\\b`) != -1) {
       count++;
       output[currentArtist] = count;
     }
