@@ -1,939 +1,4668 @@
 {
-  "112": 1,
-  "911": 1,
-  "10CC": 3,
-  "2 CHAINZ": 1,
-  "2PAC": 1,
-  "2 UNLIMITED": 1,
-  "3 OF A KIND": 1,
-  "5 SECONDS OF SUMMER": 1,
-  "A1": 2,
-  "AALIYAH": 1,
-  "ABBA": 9,
-  "ACE OF BASE": 1,
-  "ADAM & THE ANTS": 2,
-  "ADAM ANT": 1,
-  "ADAM FAITH": 2,
-  "ADAMSKI": 1,
-  "ADELE": 2,
-  "AFROJACK": 1,
-  "AFROMAN": 1,
-  "A-HA": 1,
-  "AKON": 3,
-  "AKON EMINEM": 1,
-  "ALESSO": 1,
-  "ALEXANDRA BURKE": 3,
-  "ALICE COOPER": 1,
-  "ALL SAINTS": 5,
-  "ALMA COGAN": 1,
-  "AL MARTINO": 1,
-  "ALOE BLACC": 1,
-  "ALTHEA AND DONNA": 1,
-  "ALVIN STARDUST": 1,
-  "AME": 1,
-  "AMELLE BERRABAH": 1,
-  "AMEN CORNER": 1,
-  "ANDY WILLIAMS": 1,
-  "ANEKA": 1,
-  "ANIMALS": 1,
-  "ANITA WARD": 1,
-  "ANNE SHELTON": 1,
-  "ANOTHER LEVEL": 1,
-  "ANTHONY NEWLEY": 2,
-  "AQUA": 3,
-  "ARCHIES": 1,
-  "ARCTIC MONKEYS": 2,
-  "ARETHA FRANKLIN": 1,
-  "ARIANA GRANDE": 1,
-  "ARMAND VAN HELDEN": 2,
-  "ART GARFUNKEL": 2,
-  "ARTISTS FOR GRENFELL": 1,
-  "ASHANTI": 1,
-  "ASWAD": 1,
-  "ATB": 1,
-  "ATOMIC KITTEN": 3,
-  "AVERY STORM": 1,
-  "AVICII": 2,
-  "B.O.B": 1,
-  "B*WITCHED": 4,
-  "BABY D": 1,
-  "BABYLON ZOO": 1,
-  "BACCARA": 1,
-  "BACHELORS": 1,
-  "BACKSTREET BOYS": 1,
-  "BADDIEL & SKINNER": 2,
-  "BAND AID": 4,
-  "BAND AID 20": 1,
-  "BAND AID 30": 1,
-  "BAND AID II": 1,
-  "BANGLES": 1,
-  "BARBARA DICKSON": 1,
-  "BARBARA GASKIN": 1,
-  "BARBRA STREISAND": 1,
-  "BARRY WHITE": 1,
-  "BASSHUNTER": 1,
-  "BAY CITY ROLLERS": 2,
-  "BAZ LUHRMANN": 1,
-  "B BUMBLE & THE STINGERS": 1,
-  "BEACH BOYS": 2,
-  "BEATLES": 17,
-  "BEATS INTERNATIONAL": 1,
-  "BEAUTIFUL SOUTH": 1,
-  "BEBE WINANS": 1,
-  "BECKY HILL": 1,
-  "BEE GEES": 5,
-  "BELINDA CARLISLE": 1,
-  "BEN E. KING": 1,
-  "BEN HAENOW": 1,
-  "BENNY HILL": 1,
-  "BERLIN": 1,
-  "BEYONCE": 5,
-  "BILL HALEY & HIS COMETS": 1,
-  "BILLIE": 3,
-  "BILLIE PIPER": 1,
-  "BILLY J. KRAMER & THE DAKOTAS": 2,
-  "BILLY JOEL": 1,
-  "BILLY OCEAN": 1,
-  "BINGO PLAYERS": 1,
-  "BLACK BOX": 1,
-  "BLACK EYED PEAS": 5,
-  "BLACK LEGEND": 1,
-  "BLAZIN' SQUAD": 1,
-  "BLONDIE": 6,
-  "BLU CANTRELL": 1,
-  "BLUE": 6,
-  "BLUEBELLS": 1,
-  "BLUR": 2,
-  "BOBBY DARIN": 2,
-  "BOBBY GENTRY": 1,
-  "BOB THE BUILDER": 2,
-  "BOMBALURINA": 1,
-  "BONEY M": 2,
-  "BONNIE TYLER": 1,
-  "BOOMTOWN RATS": 2,
-  "BORIS GARDINER": 1,
-  "BOY GEORGE": 1,
-  "BOYZ II MEN": 1,
-  "BOYZONE": 6,
-  "BRIAN & MICHAEL": 1,
-  "BRIAN McFADDEN": 1,
-  "BRIAN POOLE & THE TREMELOES": 1,
-  "BRIAN POTTER & ANDY PIPKIN": 1,
-  "BRITNEY SPEARS": 6,
-  "BROS": 1,
-  "BROTHERHOOD OF MAN": 3,
-  "BRUNO MARS": 5,
-  "BRYAN ADAMS": 2,
-  "BUBBLE RANX": {},
-  "BUCKS FIZZ": 3,
-  "BUDDY HOLLY": 1,
-  "BUGGLES": 1,
-  "BUSTA RHYMES": 1,
-  "BUSTED": 4,
-  "BYRDS": 1,
-  "CALVIN HARRIS": 7,
-  "CAPTAIN SENSIBLE": 1,
-  "CARL DOUGLAS": 1,
-  "CARLY RAE JEPSEN": 1,
-  "CARON WHEELER": 1,
-  "CASCADA": 1,
-  "CASSANDRA": 1,
-  "CEE LO GREEN": 1,
-  "CELINE DION": 2,
-  "CHAKA DEMUS & PLIERS": {},
-  "CHAKA KHAN": 1,
-  "CHANCE THE RAPPER": 1,
-  "CHARLENE": 1,
-  "CHARLES & EDDIE": 1,
-  "CHARLES AZNAVOUR": 1,
-  "CHARLIE PUTH": 2,
-  "CHARLI XCX": 1,
-  "CHEF": 1,
-  "CHEMICAL BROTHERS": 2,
-  "CHER": 5,
-  "CHER LLOYD": 1,
-  "CHERYL": 5,
-  "CHERYL COLE": 3,
-  "CHESNEY HAWKES": 1,
-  "CHICAGO": 1,
-  "CHICANE": 1,
-  "CHICO": 1,
-  "CHICORY TIP": 1,
-  "CHIPMUNK": 1,
-  "CHRIS BROWN": 1,
-  "CHRIS DE BURGH": 1,
-  "CHRIS FARLOWE": 1,
-  "CHRISSIE HYNDE": 2,
-  "CHRISTIE": 2,
-  "CHRISTINA AGUILERA": 4,
-  "CHRIS WILLIS": 1,
-  "CHROME": 2,
-  "CHUCK BERRY": 1,
-  "CIARA": 1,
-  "CILLA BLACK": 2,
-  "CLASH": 1,
-  "CLEAN BANDIT": 3,
-  "CLIFF RICHARD": 14,
-  "CLIFF RICHARD & THE SHADOWS": 7,
-  "CLIVE DUNN": 1,
-  "COCKNEY REBEL": 1,
-  "CODY WISE": 1,
-  "COLDPLAY": 2,
-  "COLOR ME BADD": 1,
-  "COMIC RELIEF": 1,
-  "COMMODORES": 1,
-  "COMMONWEALTH BAND": 1,
-  "COMMUNARDS": 1,
-  "CONNIE FRANCIS": 2,
-  "CONWAY TWITTY": 1,
-  "COOLIO LV": 1,
-  "CORNERSHOP": 1,
-  "CORRS": 1,
-  "COVER DRIVE": 1,
-  "CRAIG DAVID": 2,
-  "CRAIG DOUGLAS": 1,
-  "CRAZY FROG": 1,
-  "CRAZY WORLD OF ARTHUR BROWN": 1,
-  "CREEDENCE CLEARWATER REVIVAL": 1,
-  "CRICKETS": 1,
-  "CROWD": 1,
-  "CULTURE BEAT": 1,
-  "CULTURE CLUB": 2,
-  "D:REAM": 1,
-  "DADDY YANKEE": 1,
-  "DAFT PUNK": 1,
-  "DANA": 1,
-  "DANIEL BEDINGFIELD": 3,
-  "DANNY WILLIAMS": 1,
-  "DAPPY": 1,
-  "DARIUS": 1,
-  "DAVE ANSEL COLLINS": 1,
-  "DAVE CLARK FIVE": 1,
-  "DAVE DEE, DOZY, BEAKY, MICK & TICH": 1,
-  "DAVE EDMUNDS": 1,
-  "DAVE STEWART": 1,
-  "DAVID BOWIE": 5,
-  "DAVID CASSIDY": 2,
-  "DAVID ESSEX": 2,
-  "DAVID GUETTA": 6,
-  "DAVID GUETTA CHRIS WILLIS": 1,
-  "DAVID SNEDDON": 1,
-  "DAVID SOUL": 2,
-  "DAVID WHITFIELD": 2,
-  "DAVID WHITFIELD MANTOVANI AND HIS ORCHESTRA": 1,
-  "DAVID ZOWIE": 1,
-  "DAWN": 2,
-  "D CUP": 1,
-  "DEAD OR ALIVE": 1,
-  "DEAN MARTIN": 1,
-  "DEEP BLUE SOMETHING": 1,
-  "DEL SHANNON": 1,
-  "DEMIS ROUSSOS": 1,
-  "DENIECE WILLIAMS": 1,
-  "DESMOND DEKKER": 1,
-  "DES O'CONNOR": 1,
-  "DESTINY'S CHILD": 2,
-  "DEV": 1,
-  "DEXY'S MIDNIGHT RUNNERS": 2,
-  "DIANA ROSS": 2,
-  "DIANA VICKERS": 1,
-  "DICKIE VALENTINE": 2,
-  "DICKIE VALENTINE WITH THE STARGAZERS": 1,
-  "DIDDY": 2,
-  "DIZZEE RASCAL": 4,
-  "DJ CASPER": 1,
-  "DJ FRESH": 2,
-  "DJ KHALED": 1,
-  "DJ MENTAL THEO'S BAZZHEADZ": {},
-  "DJ OTZI": 1,
-  "DJ PIED PIPER & THE MASTERS OF CEREMONIES": 1,
-  "DJ SAMMY": 1,
-  "DOCTOR & THE MEDICS": 1,
-  "DOE": 1,
-  "DON CORNELL": 1,
-  "DON MCLEAN": 2,
-  "DONNA SUMMER": 1,
-  "DONNY OSMOND": 3,
-  "DOOP": 1,
-  "DORIS DAY": 2,
-  "DRAKE": 2,
-  "DREAM WEAVERS": 1,
-  "DR HOOK": 1,
-  "DUANE HARDEN": 1,
-  "DUFFY": 1,
-  "DUKE DUMONT": 2,
-  "DURAN DURAN": 2,
-  "DUSTY SPRINGFIELD": 1,
-  "DVBBS & BORGEOUS": 1,
-  "EAMON": 1,
-  "EAST 17": 1,
-  "EDDIE CALVERT": 2,
-  "EDDIE COCHRAN": 1,
-  "EDDIE FISHER": 2,
-  "EDDY GRANT": 1,
-  "EDEN KANE": 1,
-  "EDISON LIGHTHOUSE": 1,
-  "ED SHEERAN": 3,
-  "EIFFEL 65": 1,
-  "ELAINE PAIGE": 1,
-  "ELLA EYRE": 1,
-  "ELLA HENDERSON": 1,
-  "ELLIE GOULDING": 2,
-  "ELTON JOHN": 7,
-  "ELVIS": 18,
-  "ELVIS PRESLEY": 17,
-  "EMELI SANDE": 2,
-  "EMILE FORD & THE CHECKMATES": 1,
-  "EMINEM": 8,
-  "EMMA BUNTON": 1,
-  "ENGELBERT HUMPERDINCK": 2,
-  "ENGLAND WORLD CUP SQUAD": 1,
-  "ENIGMA": 1,
-  "ENRIQUE IGLESIAS": 1,
-  "ENYA": 2,
-  "EQUALS": 1,
-  "ERASURE": 1,
-  "ERIC CLAPTON": 1,
-  "ERIC PRYDZ": 1,
-  "ESTELLE": 2,
-  "ESTHER & ABI OFARIM": 1,
-  "ETERNAL": 1,
-  "EUROPE": 1,
-  "EURYTHMICS": 1,
-  "EVA CASSIDY": 1,
-  "EVANESCENCE": 1,
-  "EVAN SIMONS": {},
-  "EVERLY BROTHERS": 4,
-  "EXAMPLE": 2,
-  "FAIRGROUND ATTRACTION": 1,
-  "FAITH EVANS": 1,
-  "FALCO": 1,
-  "FAR EAST MOVEMENT": {},
-  "FATBOY SLIM": 1,
-  "FATMAN SCOOP THE CROOKLYN CLAN": 1,
-  "FEARGAL SHARKEY": 1,
-  "FEDDE LE GRAND": 1,
-  "FERN KINNEY": 1,
-  "FERRY AID": 1,
-  "FIVE": 4,
-  "FLEETWOOD MAC": 1,
-  "FLOATERS": 1,
-  "FLORENCE & THE MACHINE": 1,
-  "FLORENCE WELCH": 1,
-  "FLO RIDA": 5,
-  "FLOYD CRAMER": 1,
-  "FLYING PICKETS": 1,
-  "FOREIGNER": 1,
-  "FOUNDATIONS": 1,
-  "FOUR PENNIES": 1,
-  "FOUR SEASONS": 1,
-  "FOUR TOPS": 1,
-  "FRAGMA": 1,
-  "FRANKEE": 1,
-  "FRANKIE GOES TO HOLLYWOOD": 3,
-  "FRANKIE LAINE": 4,
-  "FRANKIE LYMON": 1,
-  "FRANKIE VAUGHAN": 2,
-  "FRANK IFIELD": 4,
-  "FRANK SINATRA": 3,
-  "FREDA PAYNE": 1,
-  "FREDDIE MERCURY": 1,
-  "FUGEES": 2,
-  "FUN.": 1,
-  "GABRIELLE": 3,
-  "GABRIELLE APLIN": 1,
-  "GARETH GATES": 4,
-  "GARETH MALONE": 2,
-  "GARETH MALONE'S ALL STAR CHOIR": 1,
-  "GARY BARLOW": 3,
-  "GARY GLITTER": 3,
-  "GARY JULES": 1,
-  "GARY NUMAN": 1,
-  "GARY PUCKETT": 1,
-  "GENE PITNEY": 1,
-  "GEORGE HARRISON": 1,
-  "GEORGE MCCRAE": 1,
-  "GEORGE MICHAEL": 7,
-  "GEORGIE FAME": 3,
-  "GEORGIE FAME & THE BLUE FLAMES": 2,
-  "GERI HALLIWELL": 4,
-  "GERRY & THE PACEMAKERS": 3,
-  "GILBERT O'SULLIVAN": 2,
-  "GINA G": 1,
-  "GIRLS ALOUD": 4,
-  "GLENN MEDEIROS": 1,
-  "GLORIA GAYNOR": 1,
-  "GNARLS BARKLEY": 1,
-  "GOOMBAY DANCE BAND": 1,
-  "GOONROCK": 1,
-  "GORILLAZ": 1,
-  "GOTYE": 1,
-  "GRANDE": 2,
-  "GUY MITCHELL": 4,
-  "HALE & PACE & THE STONKERS": 1,
-  "HALSEY": 1,
-  "HANK MARVIN": 1,
-  "HANSON": 1,
-  "HARRY BELAFONTE": 1,
-  "HARRY STYLES": 1,
-  "HAYLEY WILLIAMS": 1,
-  "HEAR'SAY": 2,
-  "HELEN SHAPIRO": 2,
-  "HELPING HAITI": 1,
-  "HERMAN'S HERMITS": 1,
-  "HIGHWAYMEN": 1,
-  "HOLLIES": 2,
-  "HOLLY VALANCE": 1,
-  "HONEYCOMBS": 1,
-  "HOT CHOCOLATE": 1,
-  "HOUSEMARTINS": 1,
-  "HUGO MONTENEGRO & HIS ORCHESTRA & CHORUS": 1,
-  "HUMAN LEAGUE": 1,
-  "HURTS": 1,
-  "IAN DURY & THE BLOCKHEADS": 1,
-  "ICONA POP": 1,
-  "IGGY AZALEA": 1,
-  "IRENE CARA": 1,
-  "IRON MAIDEN": 1,
-  "IYAZ": 1,
-  "J.J. BARRIE": 1,
-  "JACKIE TRENT": 1,
-  "JACKIE WILSON": 1,
-  "JACK RADICS & TAXI GANG": {},
-  "JACKSONS": 1,
-  "JAGGED EDGE": 1,
-  "JAM": 4,
-  "JAMES ARTHUR": 2,
-  "JAMES BLUNT": 1,
-  "JAMES CORDEN": 1,
-  "JAMIROQUAI": 1,
-  "JANE BIRKIN": 1,
-  "JANELLE MONAE": 1,
-  "JANE MORGAN": 1,
-  "JA RULE": 1,
-  "JASON DERULO": 4,
-  "JASON DONOVAN": 4,
-  "JASON NEVINS": 1,
-  "JAX JONES": 1,
-  "JAY-Z": 3,
-  "JAZZY JEFF & THE FRESH PRINCE": 1,
-  "JENNIFER LOPEZ": 3,
-  "JENNIFER RUSH": 1,
-  "JERRY KELLER": 1,
-  "JERRY LEE LEWIS": 1,
-  "JESS GLYNNE": 5,
-  "JESSIE J": 3,
-  "JESSIE J BOB": {},
-  "JET HARRIS": 1,
-  "JIM DIAMOND": 1,
-  "JIMI HENDRIX EXPERIENCE": 1,
-  "JIMMY JONES": 1,
-  "JIMMY NAIL": 1,
-  "JIMMY YOUNG": 2,
-  "JIM REEVES": 1,
-  "JIVE BUNNY & THE MASTERMIXERS": 3,
-  "JLS": 5,
-  "JOE COCKER": 1,
-  "JOE DOLCE MUSIC THEATRE": 1,
-  "JOE McELDERRY": 1,
-  "JOHN DENVER": 1,
-  "JOHN LEGEND": 1,
-  "JOHN LENNON": 3,
-  "JOHN LEYTON": 1,
-  "JOHN MARTIN": {},
-  "JOHN NEWMAN": 3,
-  "JOHNNIE RAY": 3,
-  "JOHNNY KIDD & THE PIRATES": 1,
-  "JOHNNY LOGAN": 1,
-  "JOHNNY MATHIS": 1,
-  "JOHNNY NASH": 1,
-  "JOHNNY PRESTON": 1,
-  "JOHNNY TILLOTSON": 1,
-  "JOHNSTON BROTHERS": 1,
-  "JOHN TRAVOLTA": 2,
-  "JOSH KUMRA": 1,
-  "JO STAFFORD": 1,
-  "JULIE COVINGTON": 1,
-  "JULIO IGLESIAS": 1,
-  "JUSTICE COLLECTIVE": 1,
-  "JUSTIN BIEBER": 6,
-  "JUSTIN TIMBERLAKE": 4,
-  "JXL": 1,
-  "KAISER CHIEFS": 1,
-  "KAJAGOOGOO": 1,
-  "KALIN TWINS": 1,
-  "KANYE WEST": 3,
-  "KATE BUSH": 1,
-  "KATIE MELUA": 1,
-  "KATY B": 1,
-  "KATY PERRY": 4,
-  "KAY STARR": 2,
-  "K C & THE SUNSHINE BAND": 1,
-  "KDA": 1,
-  "KELLY CLARKSON": 1,
-  "KELLY MARIE": 1,
-  "KELLY ROWLAND": 2,
-  "KEN BOOTHE": 1,
-  "KENNY ROGERS": 2,
-  "KERI HILSON": 1,
-  "KESHA": 2,
-  "KID ROCK": 1,
-  "KIESZA": 1,
-  "KIKI DEE": 1,
-  "KIMBRA": 1,
-  "KINGS OF LEON": 1,
-  "KINKS": 3,
-  "KITTY KALLEN": 1,
-  "KLF": 1,
-  "KRAFTWERK": 1,
-  "KWS": 1,
-  "KYLA": 1,
-  "KYLIE MINOGUE": 7,
-  "LABRINTH": 1,
-  "LADY GAGA": 4,
-  "LA ROUX": 1,
-  "LAS KETCHUP": 1,
-  "LAUREN BENNETT": 1,
-  "LAZA MORGAN": 1,
-  "LEANN RIMES": 1,
-  "LEE MARVIN": 1,
-  "LENA MARTELL": 1,
-  "LENNY KRAVITZ": 1,
-  "LEONA LEWIS": 3,
-  "LEON JACKSON": 1,
-  "LEO SAYER": 2,
-  "LIBERTY X": 1,
-  "LIEUTENANT PIGEON": 1,
-  "LIGHTNING SEEDS": 2,
-  "LIL' JOHN": {},
-  "LIL KIM": {},
-  "LILLY WOOD": 1,
-  "LIL WAYNE": 1,
-  "LILY ALLEN": 3,
-  "LIMP BIZKIT": 1,
-  "LINDY LAYTON": 1,
-  "LIONEL RICHIE": 1,
-  "LISA 'LEFT EYE' LOPES": 1,
-  "LISA STANSFIELD": 1,
-  "LITA ROZA": 1,
-  "LITTLE JIMMY OSMOND": 1,
-  "LITTLE MIX": 4,
-  "LIVIN' JOY": 1,
-  "LL COOL J": 1,
-  "LMC": 1,
-  "LMFAO": 1,
-  "LONG JOHN BALDRY": 1,
-  "LONNIE DONEGAN": 3,
-  "LORDE": 1,
-  "LORD ROCKINGHAM'S XI": 1,
-  "LOS LOBOS": 1,
-  "LOST FREQUENCIES": 1,
-  "LOU BEGA": 1,
-  "LOUIS ARMSTRONG": 1,
-  "LOVE AFFAIR": 1,
-  "LUDACRIS": 1,
-  "LUIS FONSI": 1,
-  "LUKAS GRAHAM": 1,
-  "LULU": 1,
-  "M/A/R/R/S": 1,
-  "MACKLEMORE": 1,
-  "MADISON AVENUE": 1,
-  "MADNESS": 1,
-  "MADONNA": 13,
-  "MAGIC": 1,
-  "MANCHESTER UNITED FOOTBALL CLUB": 1,
-  "MANFRED MANN": 3,
-  "MANHATTAN TRANSFER": 1,
-  "MANIC STREET PREACHERS": 2,
-  "MANTOVANI": 2,
-  "MARC ALMOND": 1,
-  "MARCELS": 1,
-  "MARIAH CAREY": 2,
-  "MARIA MCKEE": 1,
-  "MARIO WINANS": 1,
-  "MARK MORRISON": 1,
-  "MARK RONSON": 1,
-  "MARMALADE": 1,
-  "MAROON 5": 1,
-  "MARTINE MCCUTCHEON": 1,
-  "MARTIN GARRIX": 1,
-  "MARVIN GAYE": 1,
-  "MARVIN RAINWATER": 1,
-  "MARY HOPKIN": 1,
-  "MASH": 1,
-  "MATT CARDLE": 1,
-  "MATTHEW'S SOUTHERN COMFORT": 1,
-  "MAYA": 1,
-  "McFLY": 7,
-  "MEAT LOAF": 1,
-  "MECK": 1,
-  "MEGHAN TRAINOR": 2,
-  "MEL & KIM": 1,
-  "MELANIE B": 1,
-  "MELANIE C": 2,
-  "MEN AT WORK": 1,
-  "MICHAEL ANDREWS": 1,
-  "MICHAEL HOLLIDAY": 2,
-  "MICHAEL JACKSON": 7,
-  "MICHELLE": 1,
-  "MICK JAGGER": 1,
-  "MIDDLE OF THE ROAD": 1,
-  "MIDGE URE": 1,
-  "MIKA": 1,
-  "MIKE POSNER": 1,
-  "MIKE SARNE": 1,
-  "MILEY CYRUS": 2,
-  "MILITARY WIVES": 1,
-  "MINT ROYALE": 1,
-  "MIS D": {},
-  "MISSY ELLIOTT": {},
-  "MODJO": 1,
-  "MONKEES": 1,
-  "MOODY BLUES": 1,
-  "MOVE": 1,
-  "MR BLOBBY": 1,
-  "MR OIZO": 1,
-  "MR PROBZ": 1,
-  "MUD": 3,
-  "MUNGO JERRY": 2,
-  "MUSICAL YOUTH": 1,
-  "MYA": 1,
-  "MY CHEMICAL ROMANCE": 1,
-  "M��": {},
-  "NANCY SINATRA": 2,
-  "NATASHA BEDINGFIELD": 1,
-  "NAUGHTY BOY": 1,
-  "NAYER": 1,
-  "N-DUBZ": 1,
-  "NELLY": 6,
-  "NELLY FURTADO": 2,
-  "NENA": 1,
-  "NENEH CHERRY": 1,
-  "NERO": 1,
-  "NEW EDITION": 1,
-  "NEW KIDS ON THE BLOCK": 2,
-  "NEW ORDER": 1,
-  "NEW SEEKERS": 2,
-  "NE-YO": 5,
-  "NICK BERRY": 1,
-  "NICKI MINAJ": {},
-  "NICKY ROMERO": 1,
-  "NICO & VINZ": 1,
-  "NICOLE": 3,
-  "NICOLE KIDMAN": 1,
-  "NICOLE SCHERZINGER": 1,
-  "NILSSON": 1,
-  "NIZLOPI": 1,
-  "NO DOUBT": 1,
-  "NORMAN GREENBAUM": 1,
-  "NOTORIOUS BIG": 1,
-  "OASIS": 8,
-  "ODYSSEY": 1,
-  "OFFSPRING": 1,
-  "OLIVE": 1,
-  "OLIVER HELDENS": 1,
-  "OLIVIA NEWTON-JOHN": 3,
-  "OLLY MURS": 4,
-  "OLLY MURS FLO RIDA": 1,
-  "OLVIER CHEATHAM": {},
-  "OMI": 1,
-  "ONE DIRECTION": 4,
-  "ONEREPUBLIC": 1,
-  "ORSON": 1,
-  "OSMONDS": 1,
-  "OUTHERE BROTHERS": 2,
-  "OVERLANDERS": 1,
-  "OWL CITY": 1,
-  "OXIDE & NEUTRINO": 1,
-  "OZZY & KELLY OSBOURNE": 1,
-  "PALOMA FAITH": 1,
-  "PAPER LACE": 1,
-  "PARTNERS IN KRYME": 1,
-  "PAT BOONE": 1,
-  "PATO BANTON": 1,
-  "PAUL ANKA": 1,
-  "PAUL HARDCASTLE": 1,
-  "PAUL MCCARTNEY": 1,
-  "PAUL YOUNG": 1,
-  "PEREZ PRADO & HIS ORCHESTRA": 1,
-  "PERRY COMO": 2,
-  "PETER & GORDON": 1,
-  "PETER ANDRE": 3,
-  "PETER KAY": 2,
-  "PETER KAY'S ANIMATED ALL STAR": 1,
-  "PETERS & LEE": 1,
-  "PETER SARSTEDT": 1,
-  "PETEY PABLO": 1,
-  "PET SHOP BOYS": 4,
-  "PETULA CLARK": 2,
-  "PHARRELL WILLIAMS": 2,
-  "PHIL COLLINS": 3,
-  "PHILIP BAILEY": 1,
-  "PHYLLIS NELSON": 1,
-  "PILOT": 1,
-  "PINK": 4,
-  "PINK FLOYD": 1,
-  "PITBULL": 3,
-  "PIXIE LOTT": 3,
-  "PJ & DUNCAN": 1,
-  "PLATTERS": 1,
-  "POLICE": 5,
-  "PRETENDERS": 1,
-  "PRINCE": 2,
-  "PROCOL HARUM": 1,
-  "PRODIGY": 2,
-  "PROFESSOR GREEN": 1,
-  "PSY": 1,
-  "PUFF DADDY": 1,
-  "PUSSYCAT": 3,
-  "PUSSYCAT DOLLS": 2,
-  "QUAVO": 1,
-  "QUEEN": 7,
-  "RACHEL PLATTEN": 1,
-  "RAGE AGAINST THE MACHINE": 1,
-  "RAY CHARLES": 1,
-  "RAY STEVENS": 1,
-  "RAYVON": 1,
-  "RAZORLIGHT": 1,
-  "REAL THING": 1,
-  "REDMAN": 1,
-  "REDNEX": 1,
-  "RENEE & RENATO": 1,
-  "RICK ASTLEY": 1,
-  "RICKY MARTIN": 1,
-  "RICKY VALANCE": 1,
-  "RIGHTEOUS BROTHERS": 2,
-  "RIGHT SAID FRED": 1,
-  "RIHANNA": 8,
-  "RITA ORA": 4,
-  "RIXTON": 1,
-  "RIZZLE KICKS": 1,
-  "R KELLY": 2,
-  "ROBBIE WILLIAMS": 7,
-  "ROBIN BECK": 1,
-  "ROBIN SCHULZ": 1,
-  "ROBIN THICKE": 1,
-  "ROBSON JEROME": 3,
-  "ROBYN KLEERUP": 1,
-  "ROD STEWART": 6,
-  "ROGER MILLER": 1,
-  "ROGER SANCHEZ": 1,
-  "ROLF HARRIS": 1,
-  "ROLL DEEP": 2,
-  "ROLLING STONES": 8,
-  "RONAN KEATING": 3,
-  "RONNIE HILTON": 1,
-  "ROOM 5": 1,
-  "ROSEMARY CLOONEY": 2,
-  "ROUTE 94": 1,
-  "ROXY MUSIC": 1,
-  "ROY ORBISON": 3,
-  "RUBETTES": 1,
-  "RUBY MURRAY": 1,
-  "RUDIMENTAL": 2,
-  "RUI DA SILVA": 1,
-  "RUN DMC": 1,
-  "RUSS CONWAY": 2,
-  "RYAN LEWIS": 1,
-  "SAK NOEL": 1,
-  "SALLY SWEETLAND": 1,
-  "SAM & MARK": 1,
-  "SAM & THE WOMP": 1,
-  "SAM BAILEY": 1,
-  "SAM MARTIN": 1,
-  "SAM SMITH": 5,
-  "SANDIE SHAW": 3,
-  "SANDI THOM": 1,
-  "SARAH-JANE MORRIS": 1,
-  "SATURDAYS": 1,
-  "SCAFFOLD": 1,
-  "SCISSOR SISTERS": 1,
-  "S CLUB 7": 4,
-  "SCOTT MCKENZIE": 1,
-  "SCOUTING FOR GIRLS": 1,
-  "SCRIPT": 1,
-  "SEAN KINGSTON": 1,
-  "SEAN PAUL": 2,
-  "SEARCHERS": 3,
-  "SEBASTIAN": {},
-  "SECONDCITY": 1,
-  "SEEKERS": 4,
-  "SERGE GAINSBOURG": 1,
-  "S-EXPRESS": 1,
-  "SHADOWS": 12,
-  "SHAGGY": 4,
-  "SHAKESPEAR'S SISTER": 1,
-  "SHAKIN' STEVENS": 4,
-  "SHAKIRA": 2,
-  "SHAMEN": 1,
-  "SHANKS & BIGFOOT": 1,
-  "SHAPESHIFTERS": 1,
-  "SHAWN MENDES": 1,
-  "SHAYNE WARD": 1,
-  "SHIRLEY BASSEY": 2,
-  "SHOWADDYWADDY": 1,
-  "SIA": 1,
-  "SIAN EVANS": 1,
-  "SIGALA": 1,
-  "SIGMA": 2,
-  "SIMON & GARFUNKEL": 1,
-  "SIMON PARK ORCHESTRA": 1,
-  "SIMPLE MINDS": 1,
-  "SIMPLY RED": 1,
-  "SIMPSONS": 1,
-  "SINEAD O'CONNOR": 1,
-  "SISTER SLEDGE": 1,
-  "SLADE": 6,
-  "SLIK": 1,
-  "SLIM WHITMAN": 1,
-  "SMALL FACES": 1,
-  "SMOKEY ROBINSON": 2,
-  "SNAP": 2,
-  "SNOOP DOGG": 1,
-  "SOFT CELL": 1,
-  "SONIA": 1,
-  "SONIQUE": 1,
-  "SONNY": 1,
-  "SO SOLID CREW": 1,
-  "SOUL II SOUL": 1,
-  "SPACEDUST": 1,
-  "SPANDAU BALLET": 1,
-  "SPECIALS": 1,
-  "SPENCER DAVIS GROUP": 2,
-  "SPICE GIRLS": 9,
-  "SPILLER": 1,
-  "SPINNERS": 1,
-  "SPITTING IMAGE": 1,
-  "STARGAZERS": 3,
-  "STARSHIP": 1,
-  "STATUS QUO": 1,
-  "STEPS": 2,
-  "STEREOPHONICS": 1,
-  "STEVE 'SILK' HURLEY": 1,
-  "STEVE BROOKSTEIN": 1,
-  "STEVE HARLEY": 1,
-  "STEVE MILLER BAND": 1,
-  "STEVIE WONDER": 2,
-  "STILTSKIN": 1,
-  "STORM QUEEN": 1,
-  "STREETS": 1,
-  "ST WINIFRED'S SCHOOL CHOIR": 1,
-  "STYLISTICS": 1,
-  "SUGABABES": 6,
-  "SUPREMES": 1,
-  "SURVIVOR": 1,
-  "SUZI QUATRO": 2,
-  "SWEDISH HOUSE MAFIA": 1,
-  "SWEET": 2,
-  "SWEET SENSATION": 1,
-  "t.A.T.u.": {},
-  "T'PAU": 1,
-  "TAB HUNTER": 1,
-  "TAIO CRUZ": 2,
-  "TAKE THAT": 12,
-  "TAMMY WYNETTE": 1,
-  "TAMPERER": 1,
-  "TAMS": 1,
-  "TASMIN ARCHER": 1,
-  "TEENAGERS": 1,
-  "TELETUBBIES": 1,
-  "TELLY SAVALAS": 1,
-  "TEMPERANCE SEVEN": 1,
-  "TENNESSEE ERNIE FORD": 2,
-  "TERRY JACKS": 1,
-  "THE ACES": 1,
-  "THE CHAINSMOKERS": 1,
-  "THE FIRM": 1,
-  "THE KUMARS": 1,
-  "THE LEWISHAM & GREENWICH NHS CHOIR": 1,
-  "THE MELLOMEN": 1,
-  "THE MIRACLES": 1,
-  "THE PIPES & DRUMS & MILITARY BAND OF THE ROYAL SCOTS DRAGOON GUARDS": 1,
-  "THE PLASTIC POPULATION": 1,
-  "THE PROCLAIMERS": 1,
-  "THE SHADOWS": 7,
-  "THE SHONDELLS": 1,
-  "THE SPECIAL AKA": 1,
-  "THE WONDER STUFF": 1,
-  "THREE DEGREES": 1,
-  "THUNDERCLAP NEWMAN": 1,
-  "TI": 1,
-  "TIFFANY": 1,
-  "TIGHT FIT": 1,
-  "TIMBALAND": 2,
-  "TIMELORDS": 1,
-  "TIM MCGRAW": 1,
-  "TINA CHARLES": 1,
-  "TINCHY STRYDER": 2,
-  "TING TINGS": 1,
-  "TINIE TEMPAH": 7,
-  "TOMCRAFT": 1,
-  "TOM JONES": 2,
-  "TOMMY EDWARDS": 1,
-  "TOMMY JAMES": 1,
-  "TOMMY ROE": 1,
-  "TOMMY STEELE & THE STEELMEN": 1,
-  "TONY BENNETT": 1,
-  "TONY CHRISTIE": 1,
-  "TONY DI BART": 1,
-  "TONY MEEHAN": 1,
-  "TONY ORLANDO": 1,
-  "TORI AMOS": 1,
-  "TORNADOS": 1,
-  "TREMELOES": 2,
-  "T REX": 4,
-  "TROGGS": 1,
-  "TUBEWAY ARMY": 1,
-  "TULISA": 1,
-  "TYMES": 1,
-  "TYPICALLY TROPICAL": 1,
-  "U2": 7,
-  "UB40": 3,
-  "UNION GAP": 1,
-  "UNIT FOUR PLUS TWO": 1,
-  "USA FOR AFRICA": 1,
-  "USHER": 4,
-  "VANILLA ICE": 1,
-  "VARIOUS ARTISTS": 1,
-  "VENGABOYS": 2,
-  "VERA LYNN": 1,
-  "VERVE": 1,
-  "VIC DAMONE": 1,
-  "VIC REEVES": 1,
-  "VILLAGE PEOPLE": 1,
-  "WALKER BROTHERS": 2,
-  "WAMDUE PROJECT": 1,
-  "WANTED": 2,
-  "WANZ": 1,
-  "WENDY RICHARD": 1,
-  "WESTLIFE": 14,
-  "WET WET WET": 3,
-  "WHAM!": {},
-  "WHIGFIELD": 1,
-  "WHITE TOWN": 1,
-  "WHITNEY HOUSTON": 4,
-  "WILEY": 1,
-  "WILL I AM": 5,
-  "WILL SMITH": 1,
-  "WILL YOUNG": 4,
-  "WINDSOR DAVIES & DON ESTELLE": 1,
-  "WINGS": 1,
-  "WINIFRED ATWELL": 2,
-  "WIZ KHALIFA": 2,
-  "WIZKID": 1,
-  "WIZZARD": 2,
-  "WRETCH 32": 1,
-  "WURZELS": 1,
-  "WYCLEF JEAN": 1,
-  "X FACTOR": 4,
-  "X FACTOR FINALISTS": 3,
-  "X FACTOR FINALISTS 2010": 1,
-  "X FACTOR FINALISTS 2011": 1,
-  "YANOU & DO": {},
-  "YAZZ": 1,
-  "YEARS & YEARS": 1,
-  "YOLANDA BE COOL": 1,
-  "YOUNG ONES": 1,
-  "ZAGER & EVANS": 1,
-  "ZAYN": 1
+  "0": {
+    "artist": "10CC",
+    "total_weeks": 4,
+    "count": 3
+  },
+  "1": {
+    "artist": "112",
+    "total_weeks": 6,
+    "count": 1
+  },
+  "2": {
+    "artist": "2 CHAINZ",
+    "total_weeks": 2,
+    "count": 1
+  },
+  "3": {
+    "artist": "2PAC",
+    "total_weeks": 3,
+    "count": 1
+  },
+  "4": {
+    "artist": "2 UNLIMITED",
+    "total_weeks": 5,
+    "count": 1
+  },
+  "5": {
+    "artist": "3 OF A KIND",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "6": {
+    "artist": "5 SECONDS OF SUMMER",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "7": {
+    "artist": "911",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "8": {
+    "artist": "A1",
+    "total_weeks": 2,
+    "count": 2
+  },
+  "9": {
+    "artist": "AALIYAH",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "10": {
+    "artist": "ABBA",
+    "total_weeks": 31,
+    "count": 9
+  },
+  "11": {
+    "artist": "ACE OF BASE",
+    "total_weeks": 3,
+    "count": 1
+  },
+  "12": {
+    "artist": "ADAM & THE ANTS",
+    "total_weeks": 9,
+    "count": 2
+  },
+  "13": {
+    "artist": "ADAM ANT",
+    "total_weeks": 2,
+    "count": 1
+  },
+  "14": {
+    "artist": "ADAM FAITH",
+    "total_weeks": 4,
+    "count": 2
+  },
+  "15": {
+    "artist": "ADAMSKI",
+    "total_weeks": 4,
+    "count": 1
+  },
+  "16": {
+    "artist": "ADELE",
+    "total_weeks": 8,
+    "count": 2
+  },
+  "17": {
+    "artist": "AFROJACK",
+    "total_weeks": 3,
+    "count": 1
+  },
+  "18": {
+    "artist": "AFROMAN",
+    "total_weeks": 3,
+    "count": 1
+  },
+  "19": {
+    "artist": "A-HA",
+    "total_weeks": 2,
+    "count": 1
+  },
+  "20": {
+    "artist": "AKON",
+    "total_weeks": 4,
+    "count": 3
+  },
+  "21": {
+    "artist": "AKON EMINEM",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "22": {
+    "artist": "ALESSO",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "23": {
+    "artist": "ALEXANDRA BURKE",
+    "total_weeks": 6,
+    "count": 3
+  },
+  "24": {
+    "artist": "ALICE COOPER",
+    "total_weeks": 3,
+    "count": 1
+  },
+  "25": {
+    "artist": "ALL SAINTS",
+    "total_weeks": 7,
+    "count": 5
+  },
+  "26": {
+    "artist": "ALMA COGAN",
+    "total_weeks": 2,
+    "count": 1
+  },
+  "27": {
+    "artist": "AL MARTINO",
+    "total_weeks": 9,
+    "count": 1
+  },
+  "28": {
+    "artist": "ALOE BLACC",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "29": {
+    "artist": "ALTHEA AND DONNA",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "30": {
+    "artist": "ALVIN STARDUST",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "31": {
+    "artist": "AME",
+    "total_weeks": 2,
+    "count": 1
+  },
+  "32": {
+    "artist": "AMELLE BERRABAH",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "33": {
+    "artist": "AMEN CORNER",
+    "total_weeks": 2,
+    "count": 1
+  },
+  "34": {
+    "artist": "ANDY WILLIAMS",
+    "total_weeks": 2,
+    "count": 1
+  },
+  "35": {
+    "artist": "ANEKA",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "36": {
+    "artist": "ANIMALS",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "37": {
+    "artist": "ANITA WARD",
+    "total_weeks": 2,
+    "count": 1
+  },
+  "38": {
+    "artist": "ANNE SHELTON",
+    "total_weeks": 4,
+    "count": 1
+  },
+  "39": {
+    "artist": "ANOTHER LEVEL",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "40": {
+    "artist": "ANTHONY NEWLEY",
+    "total_weeks": 5,
+    "count": 2
+  },
+  "41": {
+    "artist": "AQUA",
+    "total_weeks": 7,
+    "count": 3
+  },
+  "42": {
+    "artist": "ARCHIES",
+    "total_weeks": 8,
+    "count": 1
+  },
+  "43": {
+    "artist": "ARCTIC MONKEYS",
+    "total_weeks": 2,
+    "count": 2
+  },
+  "44": {
+    "artist": "ARETHA FRANKLIN",
+    "total_weeks": 2,
+    "count": 1
+  },
+  "45": {
+    "artist": "ARIANA GRANDE",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "46": {
+    "artist": "ARMAND VAN HELDEN",
+    "total_weeks": 3,
+    "count": 2
+  },
+  "47": {
+    "artist": "ART GARFUNKEL",
+    "total_weeks": 8,
+    "count": 2
+  },
+  "48": {
+    "artist": "ARTISTS FOR GRENFELL",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "49": {
+    "artist": "ASHANTI",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "50": {
+    "artist": "ASWAD",
+    "total_weeks": 2,
+    "count": 1
+  },
+  "51": {
+    "artist": "ATB",
+    "total_weeks": 2,
+    "count": 1
+  },
+  "52": {
+    "artist": "ATOMIC KITTEN",
+    "total_weeks": 9,
+    "count": 3
+  },
+  "53": {
+    "artist": "AVERY STORM",
+    "total_weeks": 2,
+    "count": 1
+  },
+  "54": {
+    "artist": "AVICII",
+    "total_weeks": 4,
+    "count": 2
+  },
+  "55": {
+    "artist": "B.O.B",
+    "total_weeks": 2,
+    "count": 1
+  },
+  "56": {
+    "artist": "B*WITCHED",
+    "total_weeks": 6,
+    "count": 4
+  },
+  "57": {
+    "artist": "BABY D",
+    "total_weeks": 2,
+    "count": 1
+  },
+  "58": {
+    "artist": "BABYLON ZOO",
+    "total_weeks": 5,
+    "count": 1
+  },
+  "59": {
+    "artist": "BACCARA",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "60": {
+    "artist": "BACHELORS",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "61": {
+    "artist": "BACKSTREET BOYS",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "62": {
+    "artist": "BADDIEL & SKINNER",
+    "total_weeks": 5,
+    "count": 2
+  },
+  "63": {
+    "artist": "BAND AID",
+    "total_weeks": 13,
+    "count": 4
+  },
+  "64": {
+    "artist": "BAND AID 20",
+    "total_weeks": 4,
+    "count": 1
+  },
+  "65": {
+    "artist": "BAND AID 30",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "66": {
+    "artist": "BAND AID II",
+    "total_weeks": 3,
+    "count": 1
+  },
+  "67": {
+    "artist": "BANGLES",
+    "total_weeks": 4,
+    "count": 1
+  },
+  "68": {
+    "artist": "BARBARA DICKSON",
+    "total_weeks": 4,
+    "count": 1
+  },
+  "69": {
+    "artist": "BARBARA GASKIN",
+    "total_weeks": 4,
+    "count": 1
+  },
+  "70": {
+    "artist": "BARBRA STREISAND",
+    "total_weeks": 3,
+    "count": 1
+  },
+  "71": {
+    "artist": "BARRY WHITE",
+    "total_weeks": 2,
+    "count": 1
+  },
+  "72": {
+    "artist": "BASSHUNTER",
+    "total_weeks": 5,
+    "count": 1
+  },
+  "73": {
+    "artist": "BAY CITY ROLLERS",
+    "total_weeks": 9,
+    "count": 2
+  },
+  "74": {
+    "artist": "BAZ LUHRMANN",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "75": {
+    "artist": "B BUMBLE & THE STINGERS",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "76": {
+    "artist": "BEACH BOYS",
+    "total_weeks": 3,
+    "count": 2
+  },
+  "77": {
+    "artist": "BEATLES",
+    "total_weeks": 69,
+    "count": 17
+  },
+  "78": {
+    "artist": "BEATS INTERNATIONAL",
+    "total_weeks": 4,
+    "count": 1
+  },
+  "79": {
+    "artist": "BEAUTIFUL SOUTH",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "80": {
+    "artist": "BEBE WINANS",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "81": {
+    "artist": "BECKY HILL",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "82": {
+    "artist": "BEE GEES",
+    "total_weeks": 13,
+    "count": 5
+  },
+  "83": {
+    "artist": "BELINDA CARLISLE",
+    "total_weeks": 2,
+    "count": 1
+  },
+  "84": {
+    "artist": "BEN E. KING",
+    "total_weeks": 3,
+    "count": 1
+  },
+  "85": {
+    "artist": "BEN HAENOW",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "86": {
+    "artist": "BENNY HILL",
+    "total_weeks": 4,
+    "count": 1
+  },
+  "87": {
+    "artist": "BERLIN",
+    "total_weeks": 4,
+    "count": 1
+  },
+  "88": {
+    "artist": "BEYONCE",
+    "total_weeks": 10,
+    "count": 5
+  },
+  "89": {
+    "artist": "BILL HALEY & HIS COMETS",
+    "total_weeks": 6,
+    "count": 1
+  },
+  "90": {
+    "artist": "BILLIE",
+    "total_weeks": 3,
+    "count": 3
+  },
+  "91": {
+    "artist": "BILLIE PIPER",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "92": {
+    "artist": "BILLY J. KRAMER & THE DAKOTAS",
+    "total_weeks": 5,
+    "count": 2
+  },
+  "93": {
+    "artist": "BILLY JOEL",
+    "total_weeks": 5,
+    "count": 1
+  },
+  "94": {
+    "artist": "BILLY OCEAN",
+    "total_weeks": 4,
+    "count": 1
+  },
+  "95": {
+    "artist": "BINGO PLAYERS",
+    "total_weeks": 2,
+    "count": 1
+  },
+  "96": {
+    "artist": "BLACK BOX",
+    "total_weeks": 6,
+    "count": 1
+  },
+  "97": {
+    "artist": "BLACK EYED PEAS",
+    "total_weeks": 12,
+    "count": 5
+  },
+  "98": {
+    "artist": "BLACK LEGEND",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "99": {
+    "artist": "BLAZIN' SQUAD",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "100": {
+    "artist": "BLONDIE",
+    "total_weeks": 13,
+    "count": 6
+  },
+  "101": {
+    "artist": "BLU CANTRELL",
+    "total_weeks": 4,
+    "count": 1
+  },
+  "102": {
+    "artist": "BLUE",
+    "total_weeks": 7,
+    "count": 6
+  },
+  "103": {
+    "artist": "BLUEBELLS",
+    "total_weeks": 4,
+    "count": 1
+  },
+  "104": {
+    "artist": "BLUR",
+    "total_weeks": 3,
+    "count": 2
+  },
+  "105": {
+    "artist": "BOBBY DARIN",
+    "total_weeks": 6,
+    "count": 2
+  },
+  "106": {
+    "artist": "BOBBY GENTRY",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "107": {
+    "artist": "BOB THE BUILDER",
+    "total_weeks": 4,
+    "count": 2
+  },
+  "108": {
+    "artist": "BOMBALURINA",
+    "total_weeks": 3,
+    "count": 1
+  },
+  "109": {
+    "artist": "BONEY M",
+    "total_weeks": 9,
+    "count": 2
+  },
+  "110": {
+    "artist": "BONNIE TYLER",
+    "total_weeks": 2,
+    "count": 1
+  },
+  "111": {
+    "artist": "BOOMTOWN RATS",
+    "total_weeks": 6,
+    "count": 2
+  },
+  "112": {
+    "artist": "BORIS GARDINER",
+    "total_weeks": 3,
+    "count": 1
+  },
+  "113": {
+    "artist": "BOY GEORGE",
+    "total_weeks": 2,
+    "count": 1
+  },
+  "114": {
+    "artist": "BOYZ II MEN",
+    "total_weeks": 3,
+    "count": 1
+  },
+  "115": {
+    "artist": "BOYZONE",
+    "total_weeks": 9,
+    "count": 6
+  },
+  "116": {
+    "artist": "BRIAN & MICHAEL",
+    "total_weeks": 3,
+    "count": 1
+  },
+  "117": {
+    "artist": "BRIAN McFADDEN",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "118": {
+    "artist": "BRIAN POOLE & THE TREMELOES",
+    "total_weeks": 3,
+    "count": 1
+  },
+  "119": {
+    "artist": "BRIAN POTTER & ANDY PIPKIN",
+    "total_weeks": 3,
+    "count": 1
+  },
+  "120": {
+    "artist": "BRITNEY SPEARS",
+    "total_weeks": 8,
+    "count": 6
+  },
+  "121": {
+    "artist": "BROS",
+    "total_weeks": 2,
+    "count": 1
+  },
+  "122": {
+    "artist": "BROTHERHOOD OF MAN",
+    "total_weeks": 8,
+    "count": 3
+  },
+  "123": {
+    "artist": "BRUNO MARS",
+    "total_weeks": 13,
+    "count": 5
+  },
+  "124": {
+    "artist": "BRYAN ADAMS",
+    "total_weeks": 17,
+    "count": 2
+  },
+  "125": {
+    "artist": "BUBBLE RANX",
+    "total_weeks": 0
+  },
+  "126": {
+    "artist": "BUCKS FIZZ",
+    "total_weeks": 6,
+    "count": 3
+  },
+  "127": {
+    "artist": "BUDDY HOLLY",
+    "total_weeks": 3,
+    "count": 1
+  },
+  "128": {
+    "artist": "BUGGLES",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "129": {
+    "artist": "BUSTA RHYMES",
+    "total_weeks": 3,
+    "count": 1
+  },
+  "130": {
+    "artist": "BUSTED",
+    "total_weeks": 5,
+    "count": 4
+  },
+  "131": {
+    "artist": "BYRDS",
+    "total_weeks": 2,
+    "count": 1
+  },
+  "132": {
+    "artist": "CALVIN HARRIS",
+    "total_weeks": 16,
+    "count": 7
+  },
+  "133": {
+    "artist": "CAPTAIN SENSIBLE",
+    "total_weeks": 2,
+    "count": 1
+  },
+  "134": {
+    "artist": "CARL DOUGLAS",
+    "total_weeks": 3,
+    "count": 1
+  },
+  "135": {
+    "artist": "CARLY RAE JEPSEN",
+    "total_weeks": 4,
+    "count": 1
+  },
+  "136": {
+    "artist": "CARON WHEELER",
+    "total_weeks": 4,
+    "count": 1
+  },
+  "137": {
+    "artist": "CASCADA",
+    "total_weeks": 2,
+    "count": 1
+  },
+  "138": {
+    "artist": "CASSANDRA",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "139": {
+    "artist": "CEE LO GREEN",
+    "total_weeks": 2,
+    "count": 1
+  },
+  "140": {
+    "artist": "CELINE DION",
+    "total_weeks": 9,
+    "count": 2
+  },
+  "141": {
+    "artist": "CHAKA DEMUS & PLIERS",
+    "total_weeks": 0
+  },
+  "142": {
+    "artist": "CHAKA KHAN",
+    "total_weeks": 3,
+    "count": 1
+  },
+  "143": {
+    "artist": "CHANCE THE RAPPER",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "144": {
+    "artist": "CHARLENE",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "145": {
+    "artist": "CHARLES & EDDIE",
+    "total_weeks": 2,
+    "count": 1
+  },
+  "146": {
+    "artist": "CHARLES AZNAVOUR",
+    "total_weeks": 4,
+    "count": 1
+  },
+  "147": {
+    "artist": "CHARLIE PUTH",
+    "total_weeks": 3,
+    "count": 2
+  },
+  "148": {
+    "artist": "CHARLI XCX",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "149": {
+    "artist": "CHEF",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "150": {
+    "artist": "CHEMICAL BROTHERS",
+    "total_weeks": 2,
+    "count": 2
+  },
+  "151": {
+    "artist": "CHER",
+    "total_weeks": 16,
+    "count": 5
+  },
+  "152": {
+    "artist": "CHER LLOYD",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "153": {
+    "artist": "CHERYL",
+    "total_weeks": 6,
+    "count": 5
+  },
+  "154": {
+    "artist": "CHERYL COLE",
+    "total_weeks": 4,
+    "count": 3
+  },
+  "155": {
+    "artist": "CHESNEY HAWKES",
+    "total_weeks": 5,
+    "count": 1
+  },
+  "156": {
+    "artist": "CHICAGO",
+    "total_weeks": 3,
+    "count": 1
+  },
+  "157": {
+    "artist": "CHICANE",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "158": {
+    "artist": "CHICO",
+    "total_weeks": 2,
+    "count": 1
+  },
+  "159": {
+    "artist": "CHICORY TIP",
+    "total_weeks": 3,
+    "count": 1
+  },
+  "160": {
+    "artist": "CHIPMUNK",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "161": {
+    "artist": "CHRIS BROWN",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "162": {
+    "artist": "CHRIS DE BURGH",
+    "total_weeks": 3,
+    "count": 1
+  },
+  "163": {
+    "artist": "CHRIS FARLOWE",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "164": {
+    "artist": "CHRISSIE HYNDE",
+    "total_weeks": 2,
+    "count": 2
+  },
+  "165": {
+    "artist": "CHRISTIE",
+    "total_weeks": 8,
+    "count": 2
+  },
+  "166": {
+    "artist": "CHRISTINA AGUILERA",
+    "total_weeks": 7,
+    "count": 4
+  },
+  "167": {
+    "artist": "CHRIS WILLIS",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "168": {
+    "artist": "CHROME",
+    "total_weeks": 5,
+    "count": 2
+  },
+  "169": {
+    "artist": "CHUCK BERRY",
+    "total_weeks": 4,
+    "count": 1
+  },
+  "170": {
+    "artist": "CIARA",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "171": {
+    "artist": "CILLA BLACK",
+    "total_weeks": 7,
+    "count": 2
+  },
+  "172": {
+    "artist": "CLASH",
+    "total_weeks": 2,
+    "count": 1
+  },
+  "173": {
+    "artist": "CLEAN BANDIT",
+    "total_weeks": 14,
+    "count": 3
+  },
+  "174": {
+    "artist": "CLIFF RICHARD",
+    "total_weeks": 46,
+    "count": 14
+  },
+  "175": {
+    "artist": "CLIFF RICHARD & THE SHADOWS",
+    "total_weeks": 28,
+    "count": 7
+  },
+  "176": {
+    "artist": "CLIVE DUNN",
+    "total_weeks": 3,
+    "count": 1
+  },
+  "177": {
+    "artist": "COCKNEY REBEL",
+    "total_weeks": 2,
+    "count": 1
+  },
+  "178": {
+    "artist": "CODY WISE",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "179": {
+    "artist": "COLDPLAY",
+    "total_weeks": 2,
+    "count": 2
+  },
+  "180": {
+    "artist": "COLOR ME BADD",
+    "total_weeks": 3,
+    "count": 1
+  },
+  "181": {
+    "artist": "COMIC RELIEF",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "182": {
+    "artist": "COMMODORES",
+    "total_weeks": 5,
+    "count": 1
+  },
+  "183": {
+    "artist": "COMMONWEALTH BAND",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "184": {
+    "artist": "COMMUNARDS",
+    "total_weeks": 4,
+    "count": 1
+  },
+  "185": {
+    "artist": "CONNIE FRANCIS",
+    "total_weeks": 12,
+    "count": 2
+  },
+  "186": {
+    "artist": "CONWAY TWITTY",
+    "total_weeks": 5,
+    "count": 1
+  },
+  "187": {
+    "artist": "COOLIO LV",
+    "total_weeks": 2,
+    "count": 1
+  },
+  "188": {
+    "artist": "CORNERSHOP",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "189": {
+    "artist": "CORRS",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "190": {
+    "artist": "COVER DRIVE",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "191": {
+    "artist": "CRAIG DAVID",
+    "total_weeks": 2,
+    "count": 2
+  },
+  "192": {
+    "artist": "CRAIG DOUGLAS",
+    "total_weeks": 4,
+    "count": 1
+  },
+  "193": {
+    "artist": "CRAZY FROG",
+    "total_weeks": 4,
+    "count": 1
+  },
+  "194": {
+    "artist": "CRAZY WORLD OF ARTHUR BROWN",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "195": {
+    "artist": "CREEDENCE CLEARWATER REVIVAL",
+    "total_weeks": 3,
+    "count": 1
+  },
+  "196": {
+    "artist": "CRICKETS",
+    "total_weeks": 3,
+    "count": 1
+  },
+  "197": {
+    "artist": "CROWD",
+    "total_weeks": 2,
+    "count": 1
+  },
+  "198": {
+    "artist": "CULTURE BEAT",
+    "total_weeks": 4,
+    "count": 1
+  },
+  "199": {
+    "artist": "CULTURE CLUB",
+    "total_weeks": 9,
+    "count": 2
+  },
+  "200": {
+    "artist": "D:REAM",
+    "total_weeks": 4,
+    "count": 1
+  },
+  "201": {
+    "artist": "DADDY YANKEE",
+    "total_weeks": 7,
+    "count": 1
+  },
+  "202": {
+    "artist": "DAFT PUNK",
+    "total_weeks": 4,
+    "count": 1
+  },
+  "203": {
+    "artist": "DANA",
+    "total_weeks": 2,
+    "count": 1
+  },
+  "204": {
+    "artist": "DANIEL BEDINGFIELD",
+    "total_weeks": 5,
+    "count": 3
+  },
+  "205": {
+    "artist": "DANNY WILLIAMS",
+    "total_weeks": 2,
+    "count": 1
+  },
+  "206": {
+    "artist": "DAPPY",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "207": {
+    "artist": "DARIUS",
+    "total_weeks": 2,
+    "count": 1
+  },
+  "208": {
+    "artist": "DAVE ANSEL COLLINS",
+    "total_weeks": 2,
+    "count": 1
+  },
+  "209": {
+    "artist": "DAVE CLARK FIVE",
+    "total_weeks": 2,
+    "count": 1
+  },
+  "210": {
+    "artist": "DAVE DEE, DOZY, BEAKY, MICK & TICH",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "211": {
+    "artist": "DAVE EDMUNDS",
+    "total_weeks": 6,
+    "count": 1
+  },
+  "212": {
+    "artist": "DAVE STEWART",
+    "total_weeks": 4,
+    "count": 1
+  },
+  "213": {
+    "artist": "DAVID BOWIE",
+    "total_weeks": 13,
+    "count": 5
+  },
+  "214": {
+    "artist": "DAVID CASSIDY",
+    "total_weeks": 5,
+    "count": 2
+  },
+  "215": {
+    "artist": "DAVID ESSEX",
+    "total_weeks": 6,
+    "count": 2
+  },
+  "216": {
+    "artist": "DAVID GUETTA",
+    "total_weeks": 6,
+    "count": 6
+  },
+  "217": {
+    "artist": "DAVID GUETTA CHRIS WILLIS",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "218": {
+    "artist": "DAVID SNEDDON",
+    "total_weeks": 2,
+    "count": 1
+  },
+  "219": {
+    "artist": "DAVID SOUL",
+    "total_weeks": 7,
+    "count": 2
+  },
+  "220": {
+    "artist": "DAVID WHITFIELD",
+    "total_weeks": 12,
+    "count": 2
+  },
+  "221": {
+    "artist": "DAVID WHITFIELD MANTOVANI AND HIS ORCHESTRA",
+    "total_weeks": 10,
+    "count": 1
+  },
+  "222": {
+    "artist": "DAVID ZOWIE",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "223": {
+    "artist": "DAWN",
+    "total_weeks": 9,
+    "count": 2
+  },
+  "224": {
+    "artist": "D CUP",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "225": {
+    "artist": "DEAD OR ALIVE",
+    "total_weeks": 2,
+    "count": 1
+  },
+  "226": {
+    "artist": "DEAN MARTIN",
+    "total_weeks": 4,
+    "count": 1
+  },
+  "227": {
+    "artist": "DEEP BLUE SOMETHING",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "228": {
+    "artist": "DEL SHANNON",
+    "total_weeks": 3,
+    "count": 1
+  },
+  "229": {
+    "artist": "DEMIS ROUSSOS",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "230": {
+    "artist": "DENIECE WILLIAMS",
+    "total_weeks": 2,
+    "count": 1
+  },
+  "231": {
+    "artist": "DESMOND DEKKER",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "232": {
+    "artist": "DES O'CONNOR",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "233": {
+    "artist": "DESTINY'S CHILD",
+    "total_weeks": 2,
+    "count": 2
+  },
+  "234": {
+    "artist": "DEV",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "235": {
+    "artist": "DEXY'S MIDNIGHT RUNNERS",
+    "total_weeks": 6,
+    "count": 2
+  },
+  "236": {
+    "artist": "DIANA ROSS",
+    "total_weeks": 7,
+    "count": 2
+  },
+  "237": {
+    "artist": "DIANA VICKERS",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "238": {
+    "artist": "DICKIE VALENTINE",
+    "total_weeks": 6,
+    "count": 2
+  },
+  "239": {
+    "artist": "DICKIE VALENTINE WITH THE STARGAZERS",
+    "total_weeks": 3,
+    "count": 1
+  },
+  "240": {
+    "artist": "DIDDY",
+    "total_weeks": 4,
+    "count": 2
+  },
+  "241": {
+    "artist": "DIZZEE RASCAL",
+    "total_weeks": 8,
+    "count": 4
+  },
+  "242": {
+    "artist": "DJ CASPER",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "243": {
+    "artist": "DJ FRESH",
+    "total_weeks": 2,
+    "count": 2
+  },
+  "244": {
+    "artist": "DJ KHALED",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "245": {
+    "artist": "DJ MENTAL THEO'S BAZZHEADZ",
+    "total_weeks": 0
+  },
+  "246": {
+    "artist": "DJ OTZI",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "247": {
+    "artist": "DJ PIED PIPER & THE MASTERS OF CEREMONIES",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "248": {
+    "artist": "DJ SAMMY",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "249": {
+    "artist": "DOCTOR & THE MEDICS",
+    "total_weeks": 3,
+    "count": 1
+  },
+  "250": {
+    "artist": "DOE",
+    "total_weeks": 2,
+    "count": 1
+  },
+  "251": {
+    "artist": "DON CORNELL",
+    "total_weeks": 5,
+    "count": 1
+  },
+  "252": {
+    "artist": "DON MCLEAN",
+    "total_weeks": 5,
+    "count": 2
+  },
+  "253": {
+    "artist": "DONNA SUMMER",
+    "total_weeks": 4,
+    "count": 1
+  },
+  "254": {
+    "artist": "DONNY OSMOND",
+    "total_weeks": 10,
+    "count": 3
+  },
+  "255": {
+    "artist": "DOOP",
+    "total_weeks": 3,
+    "count": 1
+  },
+  "256": {
+    "artist": "DORIS DAY",
+    "total_weeks": 15,
+    "count": 2
+  },
+  "257": {
+    "artist": "DRAKE",
+    "total_weeks": 16,
+    "count": 2
+  },
+  "258": {
+    "artist": "DREAM WEAVERS",
+    "total_weeks": 3,
+    "count": 1
+  },
+  "259": {
+    "artist": "DR HOOK",
+    "total_weeks": 3,
+    "count": 1
+  },
+  "260": {
+    "artist": "DUANE HARDEN",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "261": {
+    "artist": "DUFFY",
+    "total_weeks": 5,
+    "count": 1
+  },
+  "262": {
+    "artist": "DUKE DUMONT",
+    "total_weeks": 3,
+    "count": 2
+  },
+  "263": {
+    "artist": "DURAN DURAN",
+    "total_weeks": 6,
+    "count": 2
+  },
+  "264": {
+    "artist": "DUSTY SPRINGFIELD",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "265": {
+    "artist": "DVBBS & BORGEOUS",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "266": {
+    "artist": "EAMON",
+    "total_weeks": 4,
+    "count": 1
+  },
+  "267": {
+    "artist": "EAST 17",
+    "total_weeks": 5,
+    "count": 1
+  },
+  "268": {
+    "artist": "EDDIE CALVERT",
+    "total_weeks": 13,
+    "count": 2
+  },
+  "269": {
+    "artist": "EDDIE COCHRAN",
+    "total_weeks": 2,
+    "count": 1
+  },
+  "270": {
+    "artist": "EDDIE FISHER",
+    "total_weeks": 2,
+    "count": 2
+  },
+  "271": {
+    "artist": "EDDY GRANT",
+    "total_weeks": 3,
+    "count": 1
+  },
+  "272": {
+    "artist": "EDEN KANE",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "273": {
+    "artist": "EDISON LIGHTHOUSE",
+    "total_weeks": 5,
+    "count": 1
+  },
+  "274": {
+    "artist": "ED SHEERAN",
+    "total_weeks": 17,
+    "count": 3
+  },
+  "275": {
+    "artist": "EIFFEL 65",
+    "total_weeks": 3,
+    "count": 1
+  },
+  "276": {
+    "artist": "ELAINE PAIGE",
+    "total_weeks": 4,
+    "count": 1
+  },
+  "277": {
+    "artist": "ELLA EYRE",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "278": {
+    "artist": "ELLA HENDERSON",
+    "total_weeks": 2,
+    "count": 1
+  },
+  "279": {
+    "artist": "ELLIE GOULDING",
+    "total_weeks": 7,
+    "count": 2
+  },
+  "280": {
+    "artist": "ELTON JOHN",
+    "total_weeks": 23,
+    "count": 7
+  },
+  "281": {
+    "artist": "ELVIS",
+    "total_weeks": 79,
+    "count": 18
+  },
+  "282": {
+    "artist": "ELVIS PRESLEY",
+    "total_weeks": 75,
+    "count": 17
+  },
+  "283": {
+    "artist": "EMELI SANDE",
+    "total_weeks": 3,
+    "count": 2
+  },
+  "284": {
+    "artist": "EMILE FORD & THE CHECKMATES",
+    "total_weeks": 6,
+    "count": 1
+  },
+  "285": {
+    "artist": "EMINEM",
+    "total_weeks": 8,
+    "count": 8
+  },
+  "286": {
+    "artist": "EMMA BUNTON",
+    "total_weeks": 2,
+    "count": 1
+  },
+  "287": {
+    "artist": "ENGELBERT HUMPERDINCK",
+    "total_weeks": 11,
+    "count": 2
+  },
+  "288": {
+    "artist": "ENGLAND WORLD CUP SQUAD",
+    "total_weeks": 3,
+    "count": 1
+  },
+  "289": {
+    "artist": "ENIGMA",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "290": {
+    "artist": "ENRIQUE IGLESIAS",
+    "total_weeks": 4,
+    "count": 1
+  },
+  "291": {
+    "artist": "ENYA",
+    "total_weeks": 5,
+    "count": 2
+  },
+  "292": {
+    "artist": "EQUALS",
+    "total_weeks": 3,
+    "count": 1
+  },
+  "293": {
+    "artist": "ERASURE",
+    "total_weeks": 5,
+    "count": 1
+  },
+  "294": {
+    "artist": "ERIC CLAPTON",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "295": {
+    "artist": "ERIC PRYDZ",
+    "total_weeks": 5,
+    "count": 1
+  },
+  "296": {
+    "artist": "ESTELLE",
+    "total_weeks": 7,
+    "count": 2
+  },
+  "297": {
+    "artist": "ESTHER & ABI OFARIM",
+    "total_weeks": 3,
+    "count": 1
+  },
+  "298": {
+    "artist": "ETERNAL",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "299": {
+    "artist": "EUROPE",
+    "total_weeks": 2,
+    "count": 1
+  },
+  "300": {
+    "artist": "EURYTHMICS",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "301": {
+    "artist": "EVA CASSIDY",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "302": {
+    "artist": "EVANESCENCE",
+    "total_weeks": 4,
+    "count": 1
+  },
+  "303": {
+    "artist": "EVAN SIMONS",
+    "total_weeks": 0
+  },
+  "304": {
+    "artist": "EVERLY BROTHERS",
+    "total_weeks": 19,
+    "count": 4
+  },
+  "305": {
+    "artist": "EXAMPLE",
+    "total_weeks": 3,
+    "count": 2
+  },
+  "306": {
+    "artist": "FAIRGROUND ATTRACTION",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "307": {
+    "artist": "FAITH EVANS",
+    "total_weeks": 6,
+    "count": 1
+  },
+  "308": {
+    "artist": "FALCO",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "309": {
+    "artist": "FAR EAST MOVEMENT",
+    "total_weeks": 0
+  },
+  "310": {
+    "artist": "FATBOY SLIM",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "311": {
+    "artist": "FATMAN SCOOP THE CROOKLYN CLAN",
+    "total_weeks": 2,
+    "count": 1
+  },
+  "312": {
+    "artist": "FEARGAL SHARKEY",
+    "total_weeks": 2,
+    "count": 1
+  },
+  "313": {
+    "artist": "FEDDE LE GRAND",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "314": {
+    "artist": "FERN KINNEY",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "315": {
+    "artist": "FERRY AID",
+    "total_weeks": 3,
+    "count": 1
+  },
+  "316": {
+    "artist": "FIVE",
+    "total_weeks": 6,
+    "count": 4
+  },
+  "317": {
+    "artist": "FLEETWOOD MAC",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "318": {
+    "artist": "FLOATERS",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "319": {
+    "artist": "FLORENCE & THE MACHINE",
+    "total_weeks": 3,
+    "count": 1
+  },
+  "320": {
+    "artist": "FLORENCE WELCH",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "321": {
+    "artist": "FLO RIDA",
+    "total_weeks": 6,
+    "count": 5
+  },
+  "322": {
+    "artist": "FLOYD CRAMER",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "323": {
+    "artist": "FLYING PICKETS",
+    "total_weeks": 5,
+    "count": 1
+  },
+  "324": {
+    "artist": "FOREIGNER",
+    "total_weeks": 3,
+    "count": 1
+  },
+  "325": {
+    "artist": "FOUNDATIONS",
+    "total_weeks": 2,
+    "count": 1
+  },
+  "326": {
+    "artist": "FOUR PENNIES",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "327": {
+    "artist": "FOUR SEASONS",
+    "total_weeks": 2,
+    "count": 1
+  },
+  "328": {
+    "artist": "FOUR TOPS",
+    "total_weeks": 3,
+    "count": 1
+  },
+  "329": {
+    "artist": "FRAGMA",
+    "total_weeks": 2,
+    "count": 1
+  },
+  "330": {
+    "artist": "FRANKEE",
+    "total_weeks": 3,
+    "count": 1
+  },
+  "331": {
+    "artist": "FRANKIE GOES TO HOLLYWOOD",
+    "total_weeks": 15,
+    "count": 3
+  },
+  "332": {
+    "artist": "FRANKIE LAINE",
+    "total_weeks": 32,
+    "count": 4
+  },
+  "333": {
+    "artist": "FRANKIE LYMON",
+    "total_weeks": 3,
+    "count": 1
+  },
+  "334": {
+    "artist": "FRANKIE VAUGHAN",
+    "total_weeks": 7,
+    "count": 2
+  },
+  "335": {
+    "artist": "FRANK IFIELD",
+    "total_weeks": 17,
+    "count": 4
+  },
+  "336": {
+    "artist": "FRANK SINATRA",
+    "total_weeks": 8,
+    "count": 3
+  },
+  "337": {
+    "artist": "FREDA PAYNE",
+    "total_weeks": 6,
+    "count": 1
+  },
+  "338": {
+    "artist": "FREDDIE MERCURY",
+    "total_weeks": 2,
+    "count": 1
+  },
+  "339": {
+    "artist": "FUGEES",
+    "total_weeks": 7,
+    "count": 2
+  },
+  "340": {
+    "artist": "FUN.",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "341": {
+    "artist": "GABRIELLE",
+    "total_weeks": 6,
+    "count": 3
+  },
+  "342": {
+    "artist": "GABRIELLE APLIN",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "343": {
+    "artist": "GARETH GATES",
+    "total_weeks": 11,
+    "count": 4
+  },
+  "344": {
+    "artist": "GARETH MALONE",
+    "total_weeks": 2,
+    "count": 2
+  },
+  "345": {
+    "artist": "GARETH MALONE'S ALL STAR CHOIR",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "346": {
+    "artist": "GARY BARLOW",
+    "total_weeks": 3,
+    "count": 3
+  },
+  "347": {
+    "artist": "GARY GLITTER",
+    "total_weeks": 9,
+    "count": 3
+  },
+  "348": {
+    "artist": "GARY JULES",
+    "total_weeks": 3,
+    "count": 1
+  },
+  "349": {
+    "artist": "GARY NUMAN",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "350": {
+    "artist": "GARY PUCKETT",
+    "total_weeks": 4,
+    "count": 1
+  },
+  "351": {
+    "artist": "GENE PITNEY",
+    "total_weeks": 4,
+    "count": 1
+  },
+  "352": {
+    "artist": "GEORGE HARRISON",
+    "total_weeks": 6,
+    "count": 1
+  },
+  "353": {
+    "artist": "GEORGE MCCRAE",
+    "total_weeks": 3,
+    "count": 1
+  },
+  "354": {
+    "artist": "GEORGE MICHAEL",
+    "total_weeks": 17,
+    "count": 7
+  },
+  "355": {
+    "artist": "GEORGIE FAME",
+    "total_weeks": 4,
+    "count": 3
+  },
+  "356": {
+    "artist": "GEORGIE FAME & THE BLUE FLAMES",
+    "total_weeks": 3,
+    "count": 2
+  },
+  "357": {
+    "artist": "GERI HALLIWELL",
+    "total_weeks": 5,
+    "count": 4
+  },
+  "358": {
+    "artist": "GERRY & THE PACEMAKERS",
+    "total_weeks": 11,
+    "count": 3
+  },
+  "359": {
+    "artist": "GILBERT O'SULLIVAN",
+    "total_weeks": 4,
+    "count": 2
+  },
+  "360": {
+    "artist": "GINA G",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "361": {
+    "artist": "GIRLS ALOUD",
+    "total_weeks": 8,
+    "count": 4
+  },
+  "362": {
+    "artist": "GLENN MEDEIROS",
+    "total_weeks": 4,
+    "count": 1
+  },
+  "363": {
+    "artist": "GLORIA GAYNOR",
+    "total_weeks": 4,
+    "count": 1
+  },
+  "364": {
+    "artist": "GNARLS BARKLEY",
+    "total_weeks": 9,
+    "count": 1
+  },
+  "365": {
+    "artist": "GOOMBAY DANCE BAND",
+    "total_weeks": 3,
+    "count": 1
+  },
+  "366": {
+    "artist": "GOONROCK",
+    "total_weeks": 4,
+    "count": 1
+  },
+  "367": {
+    "artist": "GORILLAZ",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "368": {
+    "artist": "GOTYE",
+    "total_weeks": 5,
+    "count": 1
+  },
+  "369": {
+    "artist": "GRANDE",
+    "total_weeks": 2,
+    "count": 2
+  },
+  "370": {
+    "artist": "GUY MITCHELL",
+    "total_weeks": 14,
+    "count": 4
+  },
+  "371": {
+    "artist": "HALE & PACE & THE STONKERS",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "372": {
+    "artist": "HALSEY",
+    "total_weeks": 4,
+    "count": 1
+  },
+  "373": {
+    "artist": "HANK MARVIN",
+    "total_weeks": 3,
+    "count": 1
+  },
+  "374": {
+    "artist": "HANSON",
+    "total_weeks": 3,
+    "count": 1
+  },
+  "375": {
+    "artist": "HARRY BELAFONTE",
+    "total_weeks": 7,
+    "count": 1
+  },
+  "376": {
+    "artist": "HARRY STYLES",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "377": {
+    "artist": "HAYLEY WILLIAMS",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "378": {
+    "artist": "HEAR'SAY",
+    "total_weeks": 4,
+    "count": 2
+  },
+  "379": {
+    "artist": "HELEN SHAPIRO",
+    "total_weeks": 6,
+    "count": 2
+  },
+  "380": {
+    "artist": "HELPING HAITI",
+    "total_weeks": 2,
+    "count": 1
+  },
+  "381": {
+    "artist": "HERMAN'S HERMITS",
+    "total_weeks": 2,
+    "count": 1
+  },
+  "382": {
+    "artist": "HIGHWAYMEN",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "383": {
+    "artist": "HOLLIES",
+    "total_weeks": 5,
+    "count": 2
+  },
+  "384": {
+    "artist": "HOLLY VALANCE",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "385": {
+    "artist": "HONEYCOMBS",
+    "total_weeks": 2,
+    "count": 1
+  },
+  "386": {
+    "artist": "HOT CHOCOLATE",
+    "total_weeks": 3,
+    "count": 1
+  },
+  "387": {
+    "artist": "HOUSEMARTINS",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "388": {
+    "artist": "HUGO MONTENEGRO & HIS ORCHESTRA & CHORUS",
+    "total_weeks": 4,
+    "count": 1
+  },
+  "389": {
+    "artist": "HUMAN LEAGUE",
+    "total_weeks": 5,
+    "count": 1
+  },
+  "390": {
+    "artist": "HURTS",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "391": {
+    "artist": "IAN DURY & THE BLOCKHEADS",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "392": {
+    "artist": "ICONA POP",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "393": {
+    "artist": "IGGY AZALEA",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "394": {
+    "artist": "IRENE CARA",
+    "total_weeks": 3,
+    "count": 1
+  },
+  "395": {
+    "artist": "IRON MAIDEN",
+    "total_weeks": 2,
+    "count": 1
+  },
+  "396": {
+    "artist": "IYAZ",
+    "total_weeks": 2,
+    "count": 1
+  },
+  "397": {
+    "artist": "J.J. BARRIE",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "398": {
+    "artist": "JACKIE TRENT",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "399": {
+    "artist": "JACKIE WILSON",
+    "total_weeks": 4,
+    "count": 1
+  },
+  "400": {
+    "artist": "JACK RADICS & TAXI GANG",
+    "total_weeks": 0
+  },
+  "401": {
+    "artist": "JACKSONS",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "402": {
+    "artist": "JAGGED EDGE",
+    "total_weeks": 2,
+    "count": 1
+  },
+  "403": {
+    "artist": "JAM",
+    "total_weeks": 9,
+    "count": 4
+  },
+  "404": {
+    "artist": "JAMES ARTHUR",
+    "total_weeks": 7,
+    "count": 2
+  },
+  "405": {
+    "artist": "JAMES BLUNT",
+    "total_weeks": 5,
+    "count": 1
+  },
+  "406": {
+    "artist": "JAMES CORDEN",
+    "total_weeks": 2,
+    "count": 1
+  },
+  "407": {
+    "artist": "JAMIROQUAI",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "408": {
+    "artist": "JANE BIRKIN",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "409": {
+    "artist": "JANELLE MONAE",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "410": {
+    "artist": "JANE MORGAN",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "411": {
+    "artist": "JA RULE",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "412": {
+    "artist": "JASON DERULO",
+    "total_weeks": 9,
+    "count": 4
+  },
+  "413": {
+    "artist": "JASON DONOVAN",
+    "total_weeks": 9,
+    "count": 4
+  },
+  "414": {
+    "artist": "JASON NEVINS",
+    "total_weeks": 6,
+    "count": 1
+  },
+  "415": {
+    "artist": "JAX JONES",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "416": {
+    "artist": "JAY-Z",
+    "total_weeks": 12,
+    "count": 3
+  },
+  "417": {
+    "artist": "JAZZY JEFF & THE FRESH PRINCE",
+    "total_weeks": 2,
+    "count": 1
+  },
+  "418": {
+    "artist": "JENNIFER LOPEZ",
+    "total_weeks": 4,
+    "count": 3
+  },
+  "419": {
+    "artist": "JENNIFER RUSH",
+    "total_weeks": 5,
+    "count": 1
+  },
+  "420": {
+    "artist": "JERRY KELLER",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "421": {
+    "artist": "JERRY LEE LEWIS",
+    "total_weeks": 2,
+    "count": 1
+  },
+  "422": {
+    "artist": "JESS GLYNNE",
+    "total_weeks": 10,
+    "count": 5
+  },
+  "423": {
+    "artist": "JESSIE J",
+    "total_weeks": 5,
+    "count": 3
+  },
+  "424": {
+    "artist": "JESSIE J BOB",
+    "total_weeks": 0
+  },
+  "425": {
+    "artist": "JET HARRIS",
+    "total_weeks": 3,
+    "count": 1
+  },
+  "426": {
+    "artist": "JIM DIAMOND",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "427": {
+    "artist": "JIMI HENDRIX EXPERIENCE",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "428": {
+    "artist": "JIMMY JONES",
+    "total_weeks": 3,
+    "count": 1
+  },
+  "429": {
+    "artist": "JIMMY NAIL",
+    "total_weeks": 3,
+    "count": 1
+  },
+  "430": {
+    "artist": "JIMMY YOUNG",
+    "total_weeks": 7,
+    "count": 2
+  },
+  "431": {
+    "artist": "JIM REEVES",
+    "total_weeks": 5,
+    "count": 1
+  },
+  "432": {
+    "artist": "JIVE BUNNY & THE MASTERMIXERS",
+    "total_weeks": 9,
+    "count": 3
+  },
+  "433": {
+    "artist": "JLS",
+    "total_weeks": 6,
+    "count": 5
+  },
+  "434": {
+    "artist": "JOE COCKER",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "435": {
+    "artist": "JOE DOLCE MUSIC THEATRE",
+    "total_weeks": 3,
+    "count": 1
+  },
+  "436": {
+    "artist": "JOE McELDERRY",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "437": {
+    "artist": "JOHN DENVER",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "438": {
+    "artist": "JOHN LEGEND",
+    "total_weeks": 2,
+    "count": 1
+  },
+  "439": {
+    "artist": "JOHN LENNON",
+    "total_weeks": 7,
+    "count": 3
+  },
+  "440": {
+    "artist": "JOHN LEYTON",
+    "total_weeks": 4,
+    "count": 1
+  },
+  "441": {
+    "artist": "JOHN MARTIN",
+    "total_weeks": 0
+  },
+  "442": {
+    "artist": "JOHN NEWMAN",
+    "total_weeks": 3,
+    "count": 3
+  },
+  "443": {
+    "artist": "JOHNNIE RAY",
+    "total_weeks": 11,
+    "count": 3
+  },
+  "444": {
+    "artist": "JOHNNY KIDD & THE PIRATES",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "445": {
+    "artist": "JOHNNY LOGAN",
+    "total_weeks": 2,
+    "count": 1
+  },
+  "446": {
+    "artist": "JOHNNY MATHIS",
+    "total_weeks": 3,
+    "count": 1
+  },
+  "447": {
+    "artist": "JOHNNY NASH",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "448": {
+    "artist": "JOHNNY PRESTON",
+    "total_weeks": 2,
+    "count": 1
+  },
+  "449": {
+    "artist": "JOHNNY TILLOTSON",
+    "total_weeks": 2,
+    "count": 1
+  },
+  "450": {
+    "artist": "JOHNSTON BROTHERS",
+    "total_weeks": 2,
+    "count": 1
+  },
+  "451": {
+    "artist": "JOHN TRAVOLTA",
+    "total_weeks": 16,
+    "count": 2
+  },
+  "452": {
+    "artist": "JOSH KUMRA",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "453": {
+    "artist": "JO STAFFORD",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "454": {
+    "artist": "JULIE COVINGTON",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "455": {
+    "artist": "JULIO IGLESIAS",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "456": {
+    "artist": "JUSTICE COLLECTIVE",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "457": {
+    "artist": "JUSTIN BIEBER",
+    "total_weeks": 24,
+    "count": 6
+  },
+  "458": {
+    "artist": "JUSTIN TIMBERLAKE",
+    "total_weeks": 9,
+    "count": 4
+  },
+  "459": {
+    "artist": "JXL",
+    "total_weeks": 4,
+    "count": 1
+  },
+  "460": {
+    "artist": "KAISER CHIEFS",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "461": {
+    "artist": "KAJAGOOGOO",
+    "total_weeks": 2,
+    "count": 1
+  },
+  "462": {
+    "artist": "KALIN TWINS",
+    "total_weeks": 5,
+    "count": 1
+  },
+  "463": {
+    "artist": "KANYE WEST",
+    "total_weeks": 7,
+    "count": 3
+  },
+  "464": {
+    "artist": "KATE BUSH",
+    "total_weeks": 4,
+    "count": 1
+  },
+  "465": {
+    "artist": "KATIE MELUA",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "466": {
+    "artist": "KATY B",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "467": {
+    "artist": "KATY PERRY",
+    "total_weeks": 10,
+    "count": 4
+  },
+  "468": {
+    "artist": "KAY STARR",
+    "total_weeks": 3,
+    "count": 2
+  },
+  "469": {
+    "artist": "K C & THE SUNSHINE BAND",
+    "total_weeks": 3,
+    "count": 1
+  },
+  "470": {
+    "artist": "KDA",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "471": {
+    "artist": "KELLY CLARKSON",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "472": {
+    "artist": "KELLY MARIE",
+    "total_weeks": 2,
+    "count": 1
+  },
+  "473": {
+    "artist": "KELLY ROWLAND",
+    "total_weeks": 3,
+    "count": 2
+  },
+  "474": {
+    "artist": "KEN BOOTHE",
+    "total_weeks": 3,
+    "count": 1
+  },
+  "475": {
+    "artist": "KENNY ROGERS",
+    "total_weeks": 3,
+    "count": 2
+  },
+  "476": {
+    "artist": "KERI HILSON",
+    "total_weeks": 2,
+    "count": 1
+  },
+  "477": {
+    "artist": "KESHA",
+    "total_weeks": 2,
+    "count": 2
+  },
+  "478": {
+    "artist": "KID ROCK",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "479": {
+    "artist": "KIESZA",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "480": {
+    "artist": "KIKI DEE",
+    "total_weeks": 6,
+    "count": 1
+  },
+  "481": {
+    "artist": "KIMBRA",
+    "total_weeks": 5,
+    "count": 1
+  },
+  "482": {
+    "artist": "KINGS OF LEON",
+    "total_weeks": 3,
+    "count": 1
+  },
+  "483": {
+    "artist": "KINKS",
+    "total_weeks": 5,
+    "count": 3
+  },
+  "484": {
+    "artist": "KITTY KALLEN",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "485": {
+    "artist": "KLF",
+    "total_weeks": 2,
+    "count": 1
+  },
+  "486": {
+    "artist": "KRAFTWERK",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "487": {
+    "artist": "KWS",
+    "total_weeks": 5,
+    "count": 1
+  },
+  "488": {
+    "artist": "KYLA",
+    "total_weeks": 15,
+    "count": 1
+  },
+  "489": {
+    "artist": "KYLIE MINOGUE",
+    "total_weeks": 16,
+    "count": 7
+  },
+  "490": {
+    "artist": "LABRINTH",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "491": {
+    "artist": "LADY GAGA",
+    "total_weeks": 10,
+    "count": 4
+  },
+  "492": {
+    "artist": "LA ROUX",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "493": {
+    "artist": "LAS KETCHUP",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "494": {
+    "artist": "LAUREN BENNETT",
+    "total_weeks": 4,
+    "count": 1
+  },
+  "495": {
+    "artist": "LAZA MORGAN",
+    "total_weeks": 2,
+    "count": 1
+  },
+  "496": {
+    "artist": "LEANN RIMES",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "497": {
+    "artist": "LEE MARVIN",
+    "total_weeks": 3,
+    "count": 1
+  },
+  "498": {
+    "artist": "LENA MARTELL",
+    "total_weeks": 3,
+    "count": 1
+  },
+  "499": {
+    "artist": "LENNY KRAVITZ",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "500": {
+    "artist": "LEONA LEWIS",
+    "total_weeks": 13,
+    "count": 3
+  },
+  "501": {
+    "artist": "LEON JACKSON",
+    "total_weeks": 3,
+    "count": 1
+  },
+  "502": {
+    "artist": "LEO SAYER",
+    "total_weeks": 5,
+    "count": 2
+  },
+  "503": {
+    "artist": "LIBERTY X",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "504": {
+    "artist": "LIEUTENANT PIGEON",
+    "total_weeks": 4,
+    "count": 1
+  },
+  "505": {
+    "artist": "LIGHTNING SEEDS",
+    "total_weeks": 5,
+    "count": 2
+  },
+  "506": {
+    "artist": "LIL' JOHN",
+    "total_weeks": 0
+  },
+  "507": {
+    "artist": "LIL KIM",
+    "total_weeks": 0
+  },
+  "508": {
+    "artist": "LILLY WOOD",
+    "total_weeks": 2,
+    "count": 1
+  },
+  "509": {
+    "artist": "LIL WAYNE",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "510": {
+    "artist": "LILY ALLEN",
+    "total_weeks": 9,
+    "count": 3
+  },
+  "511": {
+    "artist": "LIMP BIZKIT",
+    "total_weeks": 2,
+    "count": 1
+  },
+  "512": {
+    "artist": "LINDY LAYTON",
+    "total_weeks": 4,
+    "count": 1
+  },
+  "513": {
+    "artist": "LIONEL RICHIE",
+    "total_weeks": 6,
+    "count": 1
+  },
+  "514": {
+    "artist": "LISA 'LEFT EYE' LOPES",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "515": {
+    "artist": "LISA STANSFIELD",
+    "total_weeks": 2,
+    "count": 1
+  },
+  "516": {
+    "artist": "LITA ROZA",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "517": {
+    "artist": "LITTLE JIMMY OSMOND",
+    "total_weeks": 5,
+    "count": 1
+  },
+  "518": {
+    "artist": "LITTLE MIX",
+    "total_weeks": 8,
+    "count": 4
+  },
+  "519": {
+    "artist": "LIVIN' JOY",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "520": {
+    "artist": "LL COOL J",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "521": {
+    "artist": "LMC",
+    "total_weeks": 2,
+    "count": 1
+  },
+  "522": {
+    "artist": "LMFAO",
+    "total_weeks": 4,
+    "count": 1
+  },
+  "523": {
+    "artist": "LONG JOHN BALDRY",
+    "total_weeks": 2,
+    "count": 1
+  },
+  "524": {
+    "artist": "LONNIE DONEGAN",
+    "total_weeks": 11,
+    "count": 3
+  },
+  "525": {
+    "artist": "LORDE",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "526": {
+    "artist": "LORD ROCKINGHAM'S XI",
+    "total_weeks": 3,
+    "count": 1
+  },
+  "527": {
+    "artist": "LOS LOBOS",
+    "total_weeks": 2,
+    "count": 1
+  },
+  "528": {
+    "artist": "LOST FREQUENCIES",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "529": {
+    "artist": "LOU BEGA",
+    "total_weeks": 2,
+    "count": 1
+  },
+  "530": {
+    "artist": "LOUIS ARMSTRONG",
+    "total_weeks": 4,
+    "count": 1
+  },
+  "531": {
+    "artist": "LOVE AFFAIR",
+    "total_weeks": 2,
+    "count": 1
+  },
+  "532": {
+    "artist": "LUDACRIS",
+    "total_weeks": 2,
+    "count": 1
+  },
+  "533": {
+    "artist": "LUIS FONSI",
+    "total_weeks": 7,
+    "count": 1
+  },
+  "534": {
+    "artist": "LUKAS GRAHAM",
+    "total_weeks": 5,
+    "count": 1
+  },
+  "535": {
+    "artist": "LULU",
+    "total_weeks": 2,
+    "count": 1
+  },
+  "536": {
+    "artist": "M/A/R/R/S",
+    "total_weeks": 2,
+    "count": 1
+  },
+  "537": {
+    "artist": "MACKLEMORE",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "538": {
+    "artist": "MADISON AVENUE",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "539": {
+    "artist": "MADNESS",
+    "total_weeks": 2,
+    "count": 1
+  },
+  "540": {
+    "artist": "MADONNA",
+    "total_weeks": 29,
+    "count": 13
+  },
+  "541": {
+    "artist": "MAGIC",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "542": {
+    "artist": "MANCHESTER UNITED FOOTBALL CLUB",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "543": {
+    "artist": "MANFRED MANN",
+    "total_weeks": 7,
+    "count": 3
+  },
+  "544": {
+    "artist": "MANHATTAN TRANSFER",
+    "total_weeks": 3,
+    "count": 1
+  },
+  "545": {
+    "artist": "MANIC STREET PREACHERS",
+    "total_weeks": 2,
+    "count": 2
+  },
+  "546": {
+    "artist": "MANTOVANI",
+    "total_weeks": 11,
+    "count": 2
+  },
+  "547": {
+    "artist": "MARC ALMOND",
+    "total_weeks": 4,
+    "count": 1
+  },
+  "548": {
+    "artist": "MARCELS",
+    "total_weeks": 2,
+    "count": 1
+  },
+  "549": {
+    "artist": "MARIAH CAREY",
+    "total_weeks": 6,
+    "count": 2
+  },
+  "550": {
+    "artist": "MARIA MCKEE",
+    "total_weeks": 4,
+    "count": 1
+  },
+  "551": {
+    "artist": "MARIO WINANS",
+    "total_weeks": 2,
+    "count": 1
+  },
+  "552": {
+    "artist": "MARK MORRISON",
+    "total_weeks": 2,
+    "count": 1
+  },
+  "553": {
+    "artist": "MARK RONSON",
+    "total_weeks": 7,
+    "count": 1
+  },
+  "554": {
+    "artist": "MARMALADE",
+    "total_weeks": 3,
+    "count": 1
+  },
+  "555": {
+    "artist": "MAROON 5",
+    "total_weeks": 3,
+    "count": 1
+  },
+  "556": {
+    "artist": "MARTINE MCCUTCHEON",
+    "total_weeks": 2,
+    "count": 1
+  },
+  "557": {
+    "artist": "MARTIN GARRIX",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "558": {
+    "artist": "MARVIN GAYE",
+    "total_weeks": 3,
+    "count": 1
+  },
+  "559": {
+    "artist": "MARVIN RAINWATER",
+    "total_weeks": 3,
+    "count": 1
+  },
+  "560": {
+    "artist": "MARY HOPKIN",
+    "total_weeks": 6,
+    "count": 1
+  },
+  "561": {
+    "artist": "MASH",
+    "total_weeks": 3,
+    "count": 1
+  },
+  "562": {
+    "artist": "MATT CARDLE",
+    "total_weeks": 3,
+    "count": 1
+  },
+  "563": {
+    "artist": "MATTHEW'S SOUTHERN COMFORT",
+    "total_weeks": 3,
+    "count": 1
+  },
+  "564": {
+    "artist": "MAYA",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "565": {
+    "artist": "McFLY",
+    "total_weeks": 8,
+    "count": 7
+  },
+  "566": {
+    "artist": "MEAT LOAF",
+    "total_weeks": 7,
+    "count": 1
+  },
+  "567": {
+    "artist": "MECK",
+    "total_weeks": 2,
+    "count": 1
+  },
+  "568": {
+    "artist": "MEGHAN TRAINOR",
+    "total_weeks": 5,
+    "count": 2
+  },
+  "569": {
+    "artist": "MEL & KIM",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "570": {
+    "artist": "MELANIE B",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "571": {
+    "artist": "MELANIE C",
+    "total_weeks": 2,
+    "count": 2
+  },
+  "572": {
+    "artist": "MEN AT WORK",
+    "total_weeks": 3,
+    "count": 1
+  },
+  "573": {
+    "artist": "MICHAEL ANDREWS",
+    "total_weeks": 3,
+    "count": 1
+  },
+  "574": {
+    "artist": "MICHAEL HOLLIDAY",
+    "total_weeks": 3,
+    "count": 2
+  },
+  "575": {
+    "artist": "MICHAEL JACKSON",
+    "total_weeks": 16,
+    "count": 7
+  },
+  "576": {
+    "artist": "MICHELLE",
+    "total_weeks": 3,
+    "count": 1
+  },
+  "577": {
+    "artist": "MICK JAGGER",
+    "total_weeks": 4,
+    "count": 1
+  },
+  "578": {
+    "artist": "MIDDLE OF THE ROAD",
+    "total_weeks": 5,
+    "count": 1
+  },
+  "579": {
+    "artist": "MIDGE URE",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "580": {
+    "artist": "MIKA",
+    "total_weeks": 5,
+    "count": 1
+  },
+  "581": {
+    "artist": "MIKE POSNER",
+    "total_weeks": 4,
+    "count": 1
+  },
+  "582": {
+    "artist": "MIKE SARNE",
+    "total_weeks": 2,
+    "count": 1
+  },
+  "583": {
+    "artist": "MILEY CYRUS",
+    "total_weeks": 2,
+    "count": 2
+  },
+  "584": {
+    "artist": "MILITARY WIVES",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "585": {
+    "artist": "MINT ROYALE",
+    "total_weeks": 2,
+    "count": 1
+  },
+  "586": {
+    "artist": "MIS D",
+    "total_weeks": 0
+  },
+  "587": {
+    "artist": "MISSY ELLIOTT",
+    "total_weeks": 0
+  },
+  "588": {
+    "artist": "MODJO",
+    "total_weeks": 2,
+    "count": 1
+  },
+  "589": {
+    "artist": "MONKEES",
+    "total_weeks": 4,
+    "count": 1
+  },
+  "590": {
+    "artist": "MOODY BLUES",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "591": {
+    "artist": "MOVE",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "592": {
+    "artist": "MR BLOBBY",
+    "total_weeks": 3,
+    "count": 1
+  },
+  "593": {
+    "artist": "MR OIZO",
+    "total_weeks": 2,
+    "count": 1
+  },
+  "594": {
+    "artist": "MR PROBZ",
+    "total_weeks": 2,
+    "count": 1
+  },
+  "595": {
+    "artist": "MUD",
+    "total_weeks": 10,
+    "count": 3
+  },
+  "596": {
+    "artist": "MUNGO JERRY",
+    "total_weeks": 9,
+    "count": 2
+  },
+  "597": {
+    "artist": "MUSICAL YOUTH",
+    "total_weeks": 3,
+    "count": 1
+  },
+  "598": {
+    "artist": "MYA",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "599": {
+    "artist": "MY CHEMICAL ROMANCE",
+    "total_weeks": 2,
+    "count": 1
+  },
+  "600": {
+    "artist": "M��",
+    "total_weeks": 0
+  },
+  "601": {
+    "artist": "NANCY SINATRA",
+    "total_weeks": 6,
+    "count": 2
+  },
+  "602": {
+    "artist": "NATASHA BEDINGFIELD",
+    "total_weeks": 2,
+    "count": 1
+  },
+  "603": {
+    "artist": "NAUGHTY BOY",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "604": {
+    "artist": "NAYER",
+    "total_weeks": 3,
+    "count": 1
+  },
+  "605": {
+    "artist": "N-DUBZ",
+    "total_weeks": 3,
+    "count": 1
+  },
+  "606": {
+    "artist": "NELLY",
+    "total_weeks": 10,
+    "count": 6
+  },
+  "607": {
+    "artist": "NELLY FURTADO",
+    "total_weeks": 4,
+    "count": 2
+  },
+  "608": {
+    "artist": "NENA",
+    "total_weeks": 3,
+    "count": 1
+  },
+  "609": {
+    "artist": "NENEH CHERRY",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "610": {
+    "artist": "NERO",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "611": {
+    "artist": "NEW EDITION",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "612": {
+    "artist": "NEW KIDS ON THE BLOCK",
+    "total_weeks": 5,
+    "count": 2
+  },
+  "613": {
+    "artist": "NEW ORDER",
+    "total_weeks": 2,
+    "count": 1
+  },
+  "614": {
+    "artist": "NEW SEEKERS",
+    "total_weeks": 5,
+    "count": 2
+  },
+  "615": {
+    "artist": "NE-YO",
+    "total_weeks": 7,
+    "count": 5
+  },
+  "616": {
+    "artist": "NICK BERRY",
+    "total_weeks": 3,
+    "count": 1
+  },
+  "617": {
+    "artist": "NICKI MINAJ",
+    "total_weeks": 0
+  },
+  "618": {
+    "artist": "NICKY ROMERO",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "619": {
+    "artist": "NICO & VINZ",
+    "total_weeks": 2,
+    "count": 1
+  },
+  "620": {
+    "artist": "NICOLE",
+    "total_weeks": 6,
+    "count": 3
+  },
+  "621": {
+    "artist": "NICOLE KIDMAN",
+    "total_weeks": 3,
+    "count": 1
+  },
+  "622": {
+    "artist": "NICOLE SCHERZINGER",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "623": {
+    "artist": "NILSSON",
+    "total_weeks": 5,
+    "count": 1
+  },
+  "624": {
+    "artist": "NIZLOPI",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "625": {
+    "artist": "NO DOUBT",
+    "total_weeks": 3,
+    "count": 1
+  },
+  "626": {
+    "artist": "NORMAN GREENBAUM",
+    "total_weeks": 2,
+    "count": 1
+  },
+  "627": {
+    "artist": "NOTORIOUS BIG",
+    "total_weeks": 2,
+    "count": 1
+  },
+  "628": {
+    "artist": "OASIS",
+    "total_weeks": 8,
+    "count": 8
+  },
+  "629": {
+    "artist": "ODYSSEY",
+    "total_weeks": 2,
+    "count": 1
+  },
+  "630": {
+    "artist": "OFFSPRING",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "631": {
+    "artist": "OLIVE",
+    "total_weeks": 2,
+    "count": 1
+  },
+  "632": {
+    "artist": "OLIVER HELDENS",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "633": {
+    "artist": "OLIVIA NEWTON-JOHN",
+    "total_weeks": 18,
+    "count": 3
+  },
+  "634": {
+    "artist": "OLLY MURS",
+    "total_weeks": 5,
+    "count": 4
+  },
+  "635": {
+    "artist": "OLLY MURS FLO RIDA",
+    "total_weeks": 2,
+    "count": 1
+  },
+  "636": {
+    "artist": "OLVIER CHEATHAM",
+    "total_weeks": 0
+  },
+  "637": {
+    "artist": "OMI",
+    "total_weeks": 4,
+    "count": 1
+  },
+  "638": {
+    "artist": "ONE DIRECTION",
+    "total_weeks": 4,
+    "count": 4
+  },
+  "639": {
+    "artist": "ONEREPUBLIC",
+    "total_weeks": 2,
+    "count": 1
+  },
+  "640": {
+    "artist": "ORSON",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "641": {
+    "artist": "OSMONDS",
+    "total_weeks": 3,
+    "count": 1
+  },
+  "642": {
+    "artist": "OUTHERE BROTHERS",
+    "total_weeks": 5,
+    "count": 2
+  },
+  "643": {
+    "artist": "OVERLANDERS",
+    "total_weeks": 3,
+    "count": 1
+  },
+  "644": {
+    "artist": "OWL CITY",
+    "total_weeks": 3,
+    "count": 1
+  },
+  "645": {
+    "artist": "OXIDE & NEUTRINO",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "646": {
+    "artist": "OZZY & KELLY OSBOURNE",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "647": {
+    "artist": "PALOMA FAITH",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "648": {
+    "artist": "PAPER LACE",
+    "total_weeks": 3,
+    "count": 1
+  },
+  "649": {
+    "artist": "PARTNERS IN KRYME",
+    "total_weeks": 4,
+    "count": 1
+  },
+  "650": {
+    "artist": "PAT BOONE",
+    "total_weeks": 5,
+    "count": 1
+  },
+  "651": {
+    "artist": "PATO BANTON",
+    "total_weeks": 4,
+    "count": 1
+  },
+  "652": {
+    "artist": "PAUL ANKA",
+    "total_weeks": 9,
+    "count": 1
+  },
+  "653": {
+    "artist": "PAUL HARDCASTLE",
+    "total_weeks": 5,
+    "count": 1
+  },
+  "654": {
+    "artist": "PAUL MCCARTNEY",
+    "total_weeks": 2,
+    "count": 1
+  },
+  "655": {
+    "artist": "PAUL YOUNG",
+    "total_weeks": 3,
+    "count": 1
+  },
+  "656": {
+    "artist": "PEREZ PRADO & HIS ORCHESTRA",
+    "total_weeks": 2,
+    "count": 1
+  },
+  "657": {
+    "artist": "PERRY COMO",
+    "total_weeks": 13,
+    "count": 2
+  },
+  "658": {
+    "artist": "PETER & GORDON",
+    "total_weeks": 2,
+    "count": 1
+  },
+  "659": {
+    "artist": "PETER ANDRE",
+    "total_weeks": 3,
+    "count": 3
+  },
+  "660": {
+    "artist": "PETER KAY",
+    "total_weeks": 9,
+    "count": 2
+  },
+  "661": {
+    "artist": "PETER KAY'S ANIMATED ALL STAR",
+    "total_weeks": 2,
+    "count": 1
+  },
+  "662": {
+    "artist": "PETERS & LEE",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "663": {
+    "artist": "PETER SARSTEDT",
+    "total_weeks": 4,
+    "count": 1
+  },
+  "664": {
+    "artist": "PETEY PABLO",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "665": {
+    "artist": "PET SHOP BOYS",
+    "total_weeks": 12,
+    "count": 4
+  },
+  "666": {
+    "artist": "PETULA CLARK",
+    "total_weeks": 3,
+    "count": 2
+  },
+  "667": {
+    "artist": "PHARRELL WILLIAMS",
+    "total_weeks": 8,
+    "count": 2
+  },
+  "668": {
+    "artist": "PHIL COLLINS",
+    "total_weeks": 8,
+    "count": 3
+  },
+  "669": {
+    "artist": "PHILIP BAILEY",
+    "total_weeks": 4,
+    "count": 1
+  },
+  "670": {
+    "artist": "PHYLLIS NELSON",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "671": {
+    "artist": "PILOT",
+    "total_weeks": 3,
+    "count": 1
+  },
+  "672": {
+    "artist": "PINK",
+    "total_weeks": 10,
+    "count": 4
+  },
+  "673": {
+    "artist": "PINK FLOYD",
+    "total_weeks": 5,
+    "count": 1
+  },
+  "674": {
+    "artist": "PITBULL",
+    "total_weeks": 6,
+    "count": 3
+  },
+  "675": {
+    "artist": "PIXIE LOTT",
+    "total_weeks": 3,
+    "count": 3
+  },
+  "676": {
+    "artist": "PJ & DUNCAN",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "677": {
+    "artist": "PLATTERS",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "678": {
+    "artist": "POLICE",
+    "total_weeks": 13,
+    "count": 5
+  },
+  "679": {
+    "artist": "PRETENDERS",
+    "total_weeks": 2,
+    "count": 1
+  },
+  "680": {
+    "artist": "PRINCE",
+    "total_weeks": 4,
+    "count": 2
+  },
+  "681": {
+    "artist": "PROCOL HARUM",
+    "total_weeks": 6,
+    "count": 1
+  },
+  "682": {
+    "artist": "PRODIGY",
+    "total_weeks": 5,
+    "count": 2
+  },
+  "683": {
+    "artist": "PROFESSOR GREEN",
+    "total_weeks": 2,
+    "count": 1
+  },
+  "684": {
+    "artist": "PSY",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "685": {
+    "artist": "PUFF DADDY",
+    "total_weeks": 6,
+    "count": 1
+  },
+  "686": {
+    "artist": "PUSSYCAT",
+    "total_weeks": 9,
+    "count": 3
+  },
+  "687": {
+    "artist": "PUSSYCAT DOLLS",
+    "total_weeks": 5,
+    "count": 2
+  },
+  "688": {
+    "artist": "QUAVO",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "689": {
+    "artist": "QUEEN",
+    "total_weeks": 22,
+    "count": 7
+  },
+  "690": {
+    "artist": "RACHEL PLATTEN",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "691": {
+    "artist": "RAGE AGAINST THE MACHINE",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "692": {
+    "artist": "RAY CHARLES",
+    "total_weeks": 2,
+    "count": 1
+  },
+  "693": {
+    "artist": "RAY STEVENS",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "694": {
+    "artist": "RAYVON",
+    "total_weeks": 3,
+    "count": 1
+  },
+  "695": {
+    "artist": "RAZORLIGHT",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "696": {
+    "artist": "REAL THING",
+    "total_weeks": 3,
+    "count": 1
+  },
+  "697": {
+    "artist": "REDMAN",
+    "total_weeks": 2,
+    "count": 1
+  },
+  "698": {
+    "artist": "REDNEX",
+    "total_weeks": 3,
+    "count": 1
+  },
+  "699": {
+    "artist": "RENEE & RENATO",
+    "total_weeks": 4,
+    "count": 1
+  },
+  "700": {
+    "artist": "RICK ASTLEY",
+    "total_weeks": 5,
+    "count": 1
+  },
+  "701": {
+    "artist": "RICKY MARTIN",
+    "total_weeks": 3,
+    "count": 1
+  },
+  "702": {
+    "artist": "RICKY VALANCE",
+    "total_weeks": 3,
+    "count": 1
+  },
+  "703": {
+    "artist": "RIGHTEOUS BROTHERS",
+    "total_weeks": 6,
+    "count": 2
+  },
+  "704": {
+    "artist": "RIGHT SAID FRED",
+    "total_weeks": 3,
+    "count": 1
+  },
+  "705": {
+    "artist": "RIHANNA",
+    "total_weeks": 24,
+    "count": 8
+  },
+  "706": {
+    "artist": "RITA ORA",
+    "total_weeks": 5,
+    "count": 4
+  },
+  "707": {
+    "artist": "RIXTON",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "708": {
+    "artist": "RIZZLE KICKS",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "709": {
+    "artist": "R KELLY",
+    "total_weeks": 7,
+    "count": 2
+  },
+  "710": {
+    "artist": "ROBBIE WILLIAMS",
+    "total_weeks": 11,
+    "count": 7
+  },
+  "711": {
+    "artist": "ROBIN BECK",
+    "total_weeks": 3,
+    "count": 1
+  },
+  "712": {
+    "artist": "ROBIN SCHULZ",
+    "total_weeks": 2,
+    "count": 1
+  },
+  "713": {
+    "artist": "ROBIN THICKE",
+    "total_weeks": 5,
+    "count": 1
+  },
+  "714": {
+    "artist": "ROBSON JEROME",
+    "total_weeks": 13,
+    "count": 3
+  },
+  "715": {
+    "artist": "ROBYN KLEERUP",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "716": {
+    "artist": "ROD STEWART",
+    "total_weeks": 18,
+    "count": 6
+  },
+  "717": {
+    "artist": "ROGER MILLER",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "718": {
+    "artist": "ROGER SANCHEZ",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "719": {
+    "artist": "ROLF HARRIS",
+    "total_weeks": 6,
+    "count": 1
+  },
+  "720": {
+    "artist": "ROLL DEEP",
+    "total_weeks": 4,
+    "count": 2
+  },
+  "721": {
+    "artist": "ROLLING STONES",
+    "total_weeks": 18,
+    "count": 8
+  },
+  "722": {
+    "artist": "RONAN KEATING",
+    "total_weeks": 4,
+    "count": 3
+  },
+  "723": {
+    "artist": "RONNIE HILTON",
+    "total_weeks": 6,
+    "count": 1
+  },
+  "724": {
+    "artist": "ROOM 5",
+    "total_weeks": 4,
+    "count": 1
+  },
+  "725": {
+    "artist": "ROSEMARY CLOONEY",
+    "total_weeks": 4,
+    "count": 2
+  },
+  "726": {
+    "artist": "ROUTE 94",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "727": {
+    "artist": "ROXY MUSIC",
+    "total_weeks": 2,
+    "count": 1
+  },
+  "728": {
+    "artist": "ROY ORBISON",
+    "total_weeks": 7,
+    "count": 3
+  },
+  "729": {
+    "artist": "RUBETTES",
+    "total_weeks": 4,
+    "count": 1
+  },
+  "730": {
+    "artist": "RUBY MURRAY",
+    "total_weeks": 3,
+    "count": 1
+  },
+  "731": {
+    "artist": "RUDIMENTAL",
+    "total_weeks": 2,
+    "count": 2
+  },
+  "732": {
+    "artist": "RUI DA SILVA",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "733": {
+    "artist": "RUN DMC",
+    "total_weeks": 6,
+    "count": 1
+  },
+  "734": {
+    "artist": "RUSS CONWAY",
+    "total_weeks": 6,
+    "count": 2
+  },
+  "735": {
+    "artist": "RYAN LEWIS",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "736": {
+    "artist": "SAK NOEL",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "737": {
+    "artist": "SALLY SWEETLAND",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "738": {
+    "artist": "SAM & MARK",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "739": {
+    "artist": "SAM & THE WOMP",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "740": {
+    "artist": "SAM BAILEY",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "741": {
+    "artist": "SAM MARTIN",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "742": {
+    "artist": "SAM SMITH",
+    "total_weeks": 6,
+    "count": 5
+  },
+  "743": {
+    "artist": "SANDIE SHAW",
+    "total_weeks": 9,
+    "count": 3
+  },
+  "744": {
+    "artist": "SANDI THOM",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "745": {
+    "artist": "SARAH-JANE MORRIS",
+    "total_weeks": 4,
+    "count": 1
+  },
+  "746": {
+    "artist": "SATURDAYS",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "747": {
+    "artist": "SCAFFOLD",
+    "total_weeks": 4,
+    "count": 1
+  },
+  "748": {
+    "artist": "SCISSOR SISTERS",
+    "total_weeks": 4,
+    "count": 1
+  },
+  "749": {
+    "artist": "S CLUB 7",
+    "total_weeks": 5,
+    "count": 4
+  },
+  "750": {
+    "artist": "SCOTT MCKENZIE",
+    "total_weeks": 4,
+    "count": 1
+  },
+  "751": {
+    "artist": "SCOUTING FOR GIRLS",
+    "total_weeks": 2,
+    "count": 1
+  },
+  "752": {
+    "artist": "SCRIPT",
+    "total_weeks": 2,
+    "count": 1
+  },
+  "753": {
+    "artist": "SEAN KINGSTON",
+    "total_weeks": 4,
+    "count": 1
+  },
+  "754": {
+    "artist": "SEAN PAUL",
+    "total_weeks": 5,
+    "count": 2
+  },
+  "755": {
+    "artist": "SEARCHERS",
+    "total_weeks": 7,
+    "count": 3
+  },
+  "756": {
+    "artist": "SEBASTIAN",
+    "total_weeks": 0
+  },
+  "757": {
+    "artist": "SECONDCITY",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "758": {
+    "artist": "SEEKERS",
+    "total_weeks": 10,
+    "count": 4
+  },
+  "759": {
+    "artist": "SERGE GAINSBOURG",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "760": {
+    "artist": "S-EXPRESS",
+    "total_weeks": 2,
+    "count": 1
+  },
+  "761": {
+    "artist": "SHADOWS",
+    "total_weeks": 44,
+    "count": 12
+  },
+  "762": {
+    "artist": "SHAGGY",
+    "total_weeks": 7,
+    "count": 4
+  },
+  "763": {
+    "artist": "SHAKESPEAR'S SISTER",
+    "total_weeks": 8,
+    "count": 1
+  },
+  "764": {
+    "artist": "SHAKIN' STEVENS",
+    "total_weeks": 10,
+    "count": 4
+  },
+  "765": {
+    "artist": "SHAKIRA",
+    "total_weeks": 8,
+    "count": 2
+  },
+  "766": {
+    "artist": "SHAMEN",
+    "total_weeks": 4,
+    "count": 1
+  },
+  "767": {
+    "artist": "SHANKS & BIGFOOT",
+    "total_weeks": 2,
+    "count": 1
+  },
+  "768": {
+    "artist": "SHAPESHIFTERS",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "769": {
+    "artist": "SHAWN MENDES",
+    "total_weeks": 2,
+    "count": 1
+  },
+  "770": {
+    "artist": "SHAYNE WARD",
+    "total_weeks": 4,
+    "count": 1
+  },
+  "771": {
+    "artist": "SHIRLEY BASSEY",
+    "total_weeks": 5,
+    "count": 2
+  },
+  "772": {
+    "artist": "SHOWADDYWADDY",
+    "total_weeks": 3,
+    "count": 1
+  },
+  "773": {
+    "artist": "SIA",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "774": {
+    "artist": "SIAN EVANS",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "775": {
+    "artist": "SIGALA",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "776": {
+    "artist": "SIGMA",
+    "total_weeks": 2,
+    "count": 2
+  },
+  "777": {
+    "artist": "SIMON & GARFUNKEL",
+    "total_weeks": 3,
+    "count": 1
+  },
+  "778": {
+    "artist": "SIMON PARK ORCHESTRA",
+    "total_weeks": 4,
+    "count": 1
+  },
+  "779": {
+    "artist": "SIMPLE MINDS",
+    "total_weeks": 2,
+    "count": 1
+  },
+  "780": {
+    "artist": "SIMPLY RED",
+    "total_weeks": 4,
+    "count": 1
+  },
+  "781": {
+    "artist": "SIMPSONS",
+    "total_weeks": 3,
+    "count": 1
+  },
+  "782": {
+    "artist": "SINEAD O'CONNOR",
+    "total_weeks": 4,
+    "count": 1
+  },
+  "783": {
+    "artist": "SISTER SLEDGE",
+    "total_weeks": 4,
+    "count": 1
+  },
+  "784": {
+    "artist": "SLADE",
+    "total_weeks": 20,
+    "count": 6
+  },
+  "785": {
+    "artist": "SLIK",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "786": {
+    "artist": "SLIM WHITMAN",
+    "total_weeks": 11,
+    "count": 1
+  },
+  "787": {
+    "artist": "SMALL FACES",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "788": {
+    "artist": "SMOKEY ROBINSON",
+    "total_weeks": 3,
+    "count": 2
+  },
+  "789": {
+    "artist": "SNAP",
+    "total_weeks": 8,
+    "count": 2
+  },
+  "790": {
+    "artist": "SNOOP DOGG",
+    "total_weeks": 2,
+    "count": 1
+  },
+  "791": {
+    "artist": "SOFT CELL",
+    "total_weeks": 2,
+    "count": 1
+  },
+  "792": {
+    "artist": "SONIA",
+    "total_weeks": 2,
+    "count": 1
+  },
+  "793": {
+    "artist": "SONIQUE",
+    "total_weeks": 3,
+    "count": 1
+  },
+  "794": {
+    "artist": "SONNY",
+    "total_weeks": 2,
+    "count": 1
+  },
+  "795": {
+    "artist": "SO SOLID CREW",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "796": {
+    "artist": "SOUL II SOUL",
+    "total_weeks": 4,
+    "count": 1
+  },
+  "797": {
+    "artist": "SPACEDUST",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "798": {
+    "artist": "SPANDAU BALLET",
+    "total_weeks": 4,
+    "count": 1
+  },
+  "799": {
+    "artist": "SPECIALS",
+    "total_weeks": 3,
+    "count": 1
+  },
+  "800": {
+    "artist": "SPENCER DAVIS GROUP",
+    "total_weeks": 3,
+    "count": 2
+  },
+  "801": {
+    "artist": "SPICE GIRLS",
+    "total_weeks": 22,
+    "count": 9
+  },
+  "802": {
+    "artist": "SPILLER",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "803": {
+    "artist": "SPINNERS",
+    "total_weeks": 2,
+    "count": 1
+  },
+  "804": {
+    "artist": "SPITTING IMAGE",
+    "total_weeks": 3,
+    "count": 1
+  },
+  "805": {
+    "artist": "STARGAZERS",
+    "total_weeks": 10,
+    "count": 3
+  },
+  "806": {
+    "artist": "STARSHIP",
+    "total_weeks": 4,
+    "count": 1
+  },
+  "807": {
+    "artist": "STATUS QUO",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "808": {
+    "artist": "STEPS",
+    "total_weeks": 2,
+    "count": 2
+  },
+  "809": {
+    "artist": "STEREOPHONICS",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "810": {
+    "artist": "STEVE 'SILK' HURLEY",
+    "total_weeks": 2,
+    "count": 1
+  },
+  "811": {
+    "artist": "STEVE BROOKSTEIN",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "812": {
+    "artist": "STEVE HARLEY",
+    "total_weeks": 2,
+    "count": 1
+  },
+  "813": {
+    "artist": "STEVE MILLER BAND",
+    "total_weeks": 2,
+    "count": 1
+  },
+  "814": {
+    "artist": "STEVIE WONDER",
+    "total_weeks": 9,
+    "count": 2
+  },
+  "815": {
+    "artist": "STILTSKIN",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "816": {
+    "artist": "STORM QUEEN",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "817": {
+    "artist": "STREETS",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "818": {
+    "artist": "ST WINIFRED'S SCHOOL CHOIR",
+    "total_weeks": 2,
+    "count": 1
+  },
+  "819": {
+    "artist": "STYLISTICS",
+    "total_weeks": 3,
+    "count": 1
+  },
+  "820": {
+    "artist": "SUGABABES",
+    "total_weeks": 11,
+    "count": 6
+  },
+  "821": {
+    "artist": "SUPREMES",
+    "total_weeks": 2,
+    "count": 1
+  },
+  "822": {
+    "artist": "SURVIVOR",
+    "total_weeks": 4,
+    "count": 1
+  },
+  "823": {
+    "artist": "SUZI QUATRO",
+    "total_weeks": 3,
+    "count": 2
+  },
+  "824": {
+    "artist": "SWEDISH HOUSE MAFIA",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "825": {
+    "artist": "SWEET",
+    "total_weeks": 6,
+    "count": 2
+  },
+  "826": {
+    "artist": "SWEET SENSATION",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "827": {
+    "artist": "t.A.T.u.",
+    "total_weeks": 0
+  },
+  "828": {
+    "artist": "T'PAU",
+    "total_weeks": 5,
+    "count": 1
+  },
+  "829": {
+    "artist": "TAB HUNTER",
+    "total_weeks": 7,
+    "count": 1
+  },
+  "830": {
+    "artist": "TAIO CRUZ",
+    "total_weeks": 4,
+    "count": 2
+  },
+  "831": {
+    "artist": "TAKE THAT",
+    "total_weeks": 29,
+    "count": 12
+  },
+  "832": {
+    "artist": "TAMMY WYNETTE",
+    "total_weeks": 3,
+    "count": 1
+  },
+  "833": {
+    "artist": "TAMPERER",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "834": {
+    "artist": "TAMS",
+    "total_weeks": 3,
+    "count": 1
+  },
+  "835": {
+    "artist": "TASMIN ARCHER",
+    "total_weeks": 2,
+    "count": 1
+  },
+  "836": {
+    "artist": "TEENAGERS",
+    "total_weeks": 3,
+    "count": 1
+  },
+  "837": {
+    "artist": "TELETUBBIES",
+    "total_weeks": 2,
+    "count": 1
+  },
+  "838": {
+    "artist": "TELLY SAVALAS",
+    "total_weeks": 2,
+    "count": 1
+  },
+  "839": {
+    "artist": "TEMPERANCE SEVEN",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "840": {
+    "artist": "TENNESSEE ERNIE FORD",
+    "total_weeks": 9,
+    "count": 2
+  },
+  "841": {
+    "artist": "TERRY JACKS",
+    "total_weeks": 4,
+    "count": 1
+  },
+  "842": {
+    "artist": "THE ACES",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "843": {
+    "artist": "THE CHAINSMOKERS",
+    "total_weeks": 4,
+    "count": 1
+  },
+  "844": {
+    "artist": "THE FIRM",
+    "total_weeks": 2,
+    "count": 1
+  },
+  "845": {
+    "artist": "THE KUMARS",
+    "total_weeks": 2,
+    "count": 1
+  },
+  "846": {
+    "artist": "THE LEWISHAM & GREENWICH NHS CHOIR",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "847": {
+    "artist": "THE MELLOMEN",
+    "total_weeks": 3,
+    "count": 1
+  },
+  "848": {
+    "artist": "THE MIRACLES",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "849": {
+    "artist": "THE PIPES & DRUMS & MILITARY BAND OF THE ROYAL SCOTS DRAGOON GUARDS",
+    "total_weeks": 5,
+    "count": 1
+  },
+  "850": {
+    "artist": "THE PLASTIC POPULATION",
+    "total_weeks": 5,
+    "count": 1
+  },
+  "851": {
+    "artist": "THE PROCLAIMERS",
+    "total_weeks": 3,
+    "count": 1
+  },
+  "852": {
+    "artist": "THE SHADOWS",
+    "total_weeks": 28,
+    "count": 7
+  },
+  "853": {
+    "artist": "THE SHONDELLS",
+    "total_weeks": 3,
+    "count": 1
+  },
+  "854": {
+    "artist": "THE SPECIAL AKA",
+    "total_weeks": 2,
+    "count": 1
+  },
+  "855": {
+    "artist": "THE WONDER STUFF",
+    "total_weeks": 2,
+    "count": 1
+  },
+  "856": {
+    "artist": "THREE DEGREES",
+    "total_weeks": 2,
+    "count": 1
+  },
+  "857": {
+    "artist": "THUNDERCLAP NEWMAN",
+    "total_weeks": 3,
+    "count": 1
+  },
+  "858": {
+    "artist": "TI",
+    "total_weeks": 5,
+    "count": 1
+  },
+  "859": {
+    "artist": "TIFFANY",
+    "total_weeks": 3,
+    "count": 1
+  },
+  "860": {
+    "artist": "TIGHT FIT",
+    "total_weeks": 3,
+    "count": 1
+  },
+  "861": {
+    "artist": "TIMBALAND",
+    "total_weeks": 3,
+    "count": 2
+  },
+  "862": {
+    "artist": "TIMELORDS",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "863": {
+    "artist": "TIM MCGRAW",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "864": {
+    "artist": "TINA CHARLES",
+    "total_weeks": 3,
+    "count": 1
+  },
+  "865": {
+    "artist": "TINCHY STRYDER",
+    "total_weeks": 4,
+    "count": 2
+  },
+  "866": {
+    "artist": "TING TINGS",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "867": {
+    "artist": "TINIE TEMPAH",
+    "total_weeks": 9,
+    "count": 7
+  },
+  "868": {
+    "artist": "TOMCRAFT",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "869": {
+    "artist": "TOM JONES",
+    "total_weeks": 8,
+    "count": 2
+  },
+  "870": {
+    "artist": "TOMMY EDWARDS",
+    "total_weeks": 3,
+    "count": 1
+  },
+  "871": {
+    "artist": "TOMMY JAMES",
+    "total_weeks": 3,
+    "count": 1
+  },
+  "872": {
+    "artist": "TOMMY ROE",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "873": {
+    "artist": "TOMMY STEELE & THE STEELMEN",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "874": {
+    "artist": "TONY BENNETT",
+    "total_weeks": 2,
+    "count": 1
+  },
+  "875": {
+    "artist": "TONY CHRISTIE",
+    "total_weeks": 7,
+    "count": 1
+  },
+  "876": {
+    "artist": "TONY DI BART",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "877": {
+    "artist": "TONY MEEHAN",
+    "total_weeks": 3,
+    "count": 1
+  },
+  "878": {
+    "artist": "TONY ORLANDO",
+    "total_weeks": 4,
+    "count": 1
+  },
+  "879": {
+    "artist": "TORI AMOS",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "880": {
+    "artist": "TORNADOS",
+    "total_weeks": 5,
+    "count": 1
+  },
+  "881": {
+    "artist": "TREMELOES",
+    "total_weeks": 6,
+    "count": 2
+  },
+  "882": {
+    "artist": "T REX",
+    "total_weeks": 16,
+    "count": 4
+  },
+  "883": {
+    "artist": "TROGGS",
+    "total_weeks": 2,
+    "count": 1
+  },
+  "884": {
+    "artist": "TUBEWAY ARMY",
+    "total_weeks": 4,
+    "count": 1
+  },
+  "885": {
+    "artist": "TULISA",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "886": {
+    "artist": "TYMES",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "887": {
+    "artist": "TYPICALLY TROPICAL",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "888": {
+    "artist": "U2",
+    "total_weeks": 8,
+    "count": 7
+  },
+  "889": {
+    "artist": "UB40",
+    "total_weeks": 6,
+    "count": 3
+  },
+  "890": {
+    "artist": "UNION GAP",
+    "total_weeks": 4,
+    "count": 1
+  },
+  "891": {
+    "artist": "UNIT FOUR PLUS TWO",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "892": {
+    "artist": "USA FOR AFRICA",
+    "total_weeks": 2,
+    "count": 1
+  },
+  "893": {
+    "artist": "USHER",
+    "total_weeks": 6,
+    "count": 4
+  },
+  "894": {
+    "artist": "VANILLA ICE",
+    "total_weeks": 4,
+    "count": 1
+  },
+  "895": {
+    "artist": "VARIOUS ARTISTS",
+    "total_weeks": 3,
+    "count": 1
+  },
+  "896": {
+    "artist": "VENGABOYS",
+    "total_weeks": 2,
+    "count": 2
+  },
+  "897": {
+    "artist": "VERA LYNN",
+    "total_weeks": 2,
+    "count": 1
+  },
+  "898": {
+    "artist": "VERVE",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "899": {
+    "artist": "VIC DAMONE",
+    "total_weeks": 2,
+    "count": 1
+  },
+  "900": {
+    "artist": "VIC REEVES",
+    "total_weeks": 2,
+    "count": 1
+  },
+  "901": {
+    "artist": "VILLAGE PEOPLE",
+    "total_weeks": 3,
+    "count": 1
+  },
+  "902": {
+    "artist": "WALKER BROTHERS",
+    "total_weeks": 5,
+    "count": 2
+  },
+  "903": {
+    "artist": "WAMDUE PROJECT",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "904": {
+    "artist": "WANTED",
+    "total_weeks": 3,
+    "count": 2
+  },
+  "905": {
+    "artist": "WANZ",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "906": {
+    "artist": "WENDY RICHARD",
+    "total_weeks": 2,
+    "count": 1
+  },
+  "907": {
+    "artist": "WESTLIFE",
+    "total_weeks": 20,
+    "count": 14
+  },
+  "908": {
+    "artist": "WET WET WET",
+    "total_weeks": 23,
+    "count": 3
+  },
+  "909": {
+    "artist": "WHAM!",
+    "total_weeks": 0
+  },
+  "910": {
+    "artist": "WHIGFIELD",
+    "total_weeks": 4,
+    "count": 1
+  },
+  "911": {
+    "artist": "WHITE TOWN",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "912": {
+    "artist": "WHITNEY HOUSTON",
+    "total_weeks": 16,
+    "count": 4
+  },
+  "913": {
+    "artist": "WILEY",
+    "total_weeks": 2,
+    "count": 1
+  },
+  "914": {
+    "artist": "WILL I AM",
+    "total_weeks": 7,
+    "count": 5
+  },
+  "915": {
+    "artist": "WILL SMITH",
+    "total_weeks": 4,
+    "count": 1
+  },
+  "916": {
+    "artist": "WILL YOUNG",
+    "total_weeks": 9,
+    "count": 4
+  },
+  "917": {
+    "artist": "WINDSOR DAVIES & DON ESTELLE",
+    "total_weeks": 3,
+    "count": 1
+  },
+  "918": {
+    "artist": "WINGS",
+    "total_weeks": 9,
+    "count": 1
+  },
+  "919": {
+    "artist": "WINIFRED ATWELL",
+    "total_weeks": 8,
+    "count": 2
+  },
+  "920": {
+    "artist": "WIZ KHALIFA",
+    "total_weeks": 5,
+    "count": 2
+  },
+  "921": {
+    "artist": "WIZKID",
+    "total_weeks": 15,
+    "count": 1
+  },
+  "922": {
+    "artist": "WIZZARD",
+    "total_weeks": 5,
+    "count": 2
+  },
+  "923": {
+    "artist": "WRETCH 32",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "924": {
+    "artist": "WURZELS",
+    "total_weeks": 2,
+    "count": 1
+  },
+  "925": {
+    "artist": "WYCLEF JEAN",
+    "total_weeks": 5,
+    "count": 1
+  },
+  "926": {
+    "artist": "X FACTOR",
+    "total_weeks": 7,
+    "count": 4
+  },
+  "927": {
+    "artist": "X FACTOR FINALISTS",
+    "total_weeks": 6,
+    "count": 3
+  },
+  "928": {
+    "artist": "X FACTOR FINALISTS 2010",
+    "total_weeks": 2,
+    "count": 1
+  },
+  "929": {
+    "artist": "X FACTOR FINALISTS 2011",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "930": {
+    "artist": "YANOU & DO",
+    "total_weeks": 0
+  },
+  "931": {
+    "artist": "YAZZ",
+    "total_weeks": 5,
+    "count": 1
+  },
+  "932": {
+    "artist": "YEARS & YEARS",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "933": {
+    "artist": "YOLANDA BE COOL",
+    "total_weeks": 1,
+    "count": 1
+  },
+  "934": {
+    "artist": "YOUNG ONES",
+    "total_weeks": 3,
+    "count": 1
+  },
+  "935": {
+    "artist": "ZAGER & EVANS",
+    "total_weeks": 3,
+    "count": 1
+  },
+  "936": {
+    "artist": "ZAYN",
+    "total_weeks": 1,
+    "count": 1
+  }
 }
