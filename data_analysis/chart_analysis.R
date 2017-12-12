@@ -1,5 +1,5 @@
 #sets working directory for your current R session
-setwd('~/Sites/uni/top_100/')
+setwd('~/Sites/uni/ci301_data-vis/data_analysis')
 #installs and loads in necessary packages needed for this analysis
 install.packages("ggplot2") # for drawing graphs
 install.packages("lubridate") # for formatting dates
