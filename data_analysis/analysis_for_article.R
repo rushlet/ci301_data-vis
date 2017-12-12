@@ -136,43 +136,12 @@ View(most_acoustic__2015)
 
 
 
-
-
 #check to see if artists collaborated and find total number of songs for that artist including collab
 #https://stackoverflow.com/questions/12409334/r-identifing-text-string-within-column-of-dataframe
-all_artists <- all_tracks[3]
-
-
-checkForCollab <- function(x) {
-  #find all instances of an artist (including when an entry is not just their name ie 'eminem akon' will be returned for 'eminem)
-  # checkArtist <- subset(all_tracks, grepl(x, all_tracks$artist))
-  #if there is 1 result that is just the 1 song they exact match for - this will already come up so can be ignored
-  #if (nrow(unique_artists) > 1) {
-    # try and create a dataset of some sort with all the tracks for each unique artist name for further analysis (and probs manual check)
-    # left_join(all_tracks_again, checkArtist, by = "artist")  #hmmmm
-  # }
-  #print(x)
-  # https://stackoverflow.com/questions/13774773/check-whether-value-exist-in-one-data-frame-or-not
-  #artistCheck <- all_tracks[x %in% all_tracks$artist]
-  #if (nrow(artistCheck) > 1) {
-   #try and create a dataset of some sort with all the tracks for each unique artist name for further analysis (and probs manual check)
-  #}
-}
-
-fuzzy <- all_artists %>% fuzzy_inner_join(unique_artists, by = c("artist" = "Artist"), match_fun = str_detect)
-fuzzy
-
-fuzzyReg <- all_artists %>% regex_inner_join(unique_artists, by = c("artist" = "Artist"))
-fuzzyReg
-
-
-typeof(unique_artists)
-typeof(all_tracks)
-
-testCheck <- left_join(unique_artists, all_tracks, by = c("Artist" = "artist"))  #this does exact match rather than contains or close match - close!
-testCheck
-View(testCheck)
-
-
-apply(unique_artists, 1, checkForCollab)
-View(all_tracks)
+unique_artists <- read.csv('unique_artists_count.csv')
+View(unique_artists)
+ordered_unique_artists <- unique_artists[with(unique_artists, order(-count)), ]
+ordered_unique_artists <- ordered_unique_artists[-c(3), ] #drop elvis presley entry in favour of elvis (other data cleaning & checking will be needed) 
+View(ordered_unique_artists)
+ordered_unique_artists_time_at_one <- ordered_unique_artists[with(ordered_unique_artists, order(-total_weeks)), ]
+View(ordered_unique_artists_time_at_one)
