@@ -81,8 +81,18 @@ danceability_by_date
 averages_by_year <- aggregate(all_tracks_attributes, by=list(strftime(all_tracks$date, "%Y")), FUN=mean, na.rm=TRUE) #mean for each year
 print(averages_by_year)
 d = subset(averages_by_year, Group.1 < 1960)
+
+loudness_by_year <- ggplot(averages_by_year, aes(x = Group.1, y = loudness)) + geom_line(aes(), group = 1) + geom_smooth(method='lm',formula=y~x) + scale_x_discrete(breaks=seq(1950, 2200, 5))
+loudness_by_year
+
+valence_by_year <- ggplot(averages_by_year, aes(x = Group.1, y = valence)) + geom_line(aes(), group = 1) + geom_smooth(method='lm',formula=y~x) + scale_x_discrete(breaks=seq(1950, 2200, 5))
+valence_by_year
+
 danceability_by_year <- ggplot(averages_by_year, aes(x = Group.1, y = danceability)) + geom_line(aes(), group = 1) + geom_smooth(method='lm',formula=y~x) + scale_x_discrete(breaks=seq(1950, 2200, 5))
 danceability_by_year
+
+my.model <- lm(Group.1 ~ danceability, data = averages_by_year)
+summary(my.model)
 
 danceability_by_year_1 <- ggplot(averages_by_year, aes(x = Group.1, y = danceability)) +
                               geom_line(aes(group = 1)) + 
@@ -102,7 +112,7 @@ mdata <- melt(averages_by_year__subset, id=c("Group.1"))
 attributes_by_year <- ggplot(averages_by_year__subset, aes(x = Group.1)) +
                           # geom_line(aes(y = danceability, group = 1, colour = "danceability")) + 
                           geom_line(aes(y = valence, group = 1, colour = "valence")) +
-                          # geom_line(aes(y = energy, group = 1, colour = "energy")) + 
+                          geom_line(aes(y = energy, group = 1, colour = "energy")) + 
                           geom_line(aes(y = acousticness, group = 1, colour = "acousticness")) +
                           scale_x_discrete(breaks=seq(1950, 2020, 5)) +
                           labs(title="atrributes over years", y="scale", x="year")
