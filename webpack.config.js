@@ -5,6 +5,9 @@ module.exports = {
 		path: __dirname + "/compiled/js",
 		filename: "bundle.js"
 	},
+	externals: [{
+		xmlhttprequest: '{XMLHttpRequest:XMLHttpRequest}',
+	}],
   module: {
       loaders: [
           {
