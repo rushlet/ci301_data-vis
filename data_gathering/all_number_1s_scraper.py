@@ -25,5 +25,5 @@ for x in range (1, len(tables)):
     for y in range (1, len(rows)):
         getSongDetails(rows[y])
 
-with open('charts.json', 'w') as outfile:
+with open('updated_charts.json', 'w') as outfile:
     json.dump(charts, outfile)
