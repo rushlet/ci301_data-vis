@@ -1,7 +1,7 @@
 require 'rspotify'
 require 'json'
 
-file = File.read('missedChartData.json')
+file = File.read('updated_charts.json')
 data_hash = JSON.parse(file)
 
 RSpotify.authenticate("30d58fa2956047a7ba12f51bd9ad2438", "029860e93bb241eda4fbdacde2e4a18b")
@@ -32,33 +32,10 @@ data_hash.each do |title, artist|
     audioFeatures.each do |feature, score|
         songDetails.push(score)
     end
-    # to get genre, use artist endpoint and returns array of genres for that artist, add as json object to 'genre'
-    # artistID = trackJSON["tracks"]["items"][0]["artists"][0]["id"]
-    # puts artistID
-    # artistDetails = RSpotify::Artist.find(artistID)
-    # artistJSON = JSON.parse(artistDetails)
-    # genres = artistJSON["genres"]
-    # songDetails.push(genres)
-    #
-    # # to get release year, use album endpoint
-    # albumID = trackJSON["tracks"]["items"][0]["album"]["id"]
-    # albumDetails = RSpotify::Album.find(albumID)
-    # albumJSON = JSON.parse(albumDetails)
-    # releaseDate = albumJSON["release_date"]
-    # releaseDatePrecision = albumJSON["release_date_precision"]
-    # if releaseDatePrecision === 'day'
-    #     date = Date.parse(releaseDate)
-    #     year = date.year
-    # end
-    # if releaseDatePrecision === 'year'
-    #     year = releaseDate
-    # end
-    # songDetails.push(year)
-
     allSongs.push(songDetails)
 end
 
-File.open("missed_tracks_spotified.json","w") do |f|
+File.open("updated_spotified_tracks.json","w") do |f|
   f.write(allSongs.to_json)
 end
 
