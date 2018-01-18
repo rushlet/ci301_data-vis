@@ -147,9 +147,6 @@
     "ARTIST": "ART GARFUNKEL"
   },
   {
-    "ARTIST": "Artist"
-  },
-  {
     "ARTIST": "ARTISTS FOR GRENFELL"
   },
   {
@@ -381,7 +378,7 @@
     "ARTIST": "BRYAN ADAMS"
   },
   {
-    "ARTIST": "BUBBLE RANX"
+    "ARTIST": "BUBBLER RANX"
   },
   {
     "ARTIST": "BUCKS FIZZ"
@@ -918,7 +915,7 @@
     "ARTIST": "EVA CASSIDY"
   },
   {
-    "ARTIST": "EVAN SIMONS"
+    "ARTIST": "EVA SIMONS"
   },
   {
     "ARTIST": "EVANESCENCE"
@@ -1209,7 +1206,10 @@
     "ARTIST": "JA RULE"
   },
   {
-    "ARTIST": "JACK RADICS & TAXI GANG"
+    "ARTIST": "JACK RADICS"
+  },
+  {
+    "ARTIST": "TAXI GANG"
   },
   {
     "ARTIST": "JACKIE TRENT"
@@ -1282,9 +1282,6 @@
   },
   {
     "ARTIST": "JESSIE J"
-  },
-  {
-    "ARTIST": "JESSIE J BOB"
   },
   {
     "ARTIST": "JET HARRIS"
@@ -1530,13 +1527,13 @@
     "ARTIST": "LIGHTNING SEEDS"
   },
   {
-    "ARTIST": "LIL KIM"
+    "ARTIST": "LIL' KIM"
   },
   {
     "ARTIST": "LIL WAYNE"
   },
   {
-    "ARTIST": "LIL' JOHN"
+    "ARTIST": "LIL' JON"
   },
   {
     "ARTIST": "LILLY WOOD"
@@ -1731,7 +1728,7 @@
     "ARTIST": "MEN AT WORK"
   },
   {
-    "ARTIST": "MÌ÷"
+    "ARTIST": "MO"
   },
   {
     "ARTIST": "MICHAEL ANDREWS"
@@ -1773,7 +1770,7 @@
     "ARTIST": "MINT ROYALE"
   },
   {
-    "ARTIST": "MIS D"
+    "ARTIST": "MS D"
   },
   {
     "ARTIST": "MISSY ELLIOTT"
@@ -1920,7 +1917,7 @@
     "ARTIST": "OLLY MURS FLO RIDA"
   },
   {
-    "ARTIST": "OLVIER CHEATHAM"
+    "ARTIST": "OLIVER CHEATHAM"
   },
   {
     "ARTIST": "OMI"
@@ -2284,9 +2281,6 @@
   },
   {
     "ARTIST": "SEARCHERS"
-  },
-  {
-    "ARTIST": "SEBASTIAN"
   },
   {
     "ARTIST": "SECONDCITY"
@@ -2805,7 +2799,10 @@
     "ARTIST": "X FACTOR FINALISTS 2011"
   },
   {
-    "ARTIST": "YANOU & DO"
+    "ARTIST": "YANOU"
+  },
+  {
+    "ARTIST": "DO"
   },
   {
     "ARTIST": "YAZZ"
