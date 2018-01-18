@@ -6,7 +6,7 @@ let output = {};
 let id = 0;
 
 uniqueArtists.forEach((artist) => {
-  let currentArtist = artist.Artist;
+  let currentArtist = artist["ARTIST"];
   if (typeof currentArtist !== "string") {
     currentArtist = String(currentArtist);
   }
