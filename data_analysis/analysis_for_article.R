@@ -134,8 +134,6 @@ attributes_by_weeks <- ggplot(averages_by_weeks__subset, aes(x = Group.1)) +
   labs(title="atrributes by weeks at 1", y="scale", x="weeks at 1")
 attributes_by_weeks
 
-
-
 most_acoustic <- subset(all_tracks, select = c('artist', 'title', 'acousticness', 'decade', 'date') ) %>% arrange(desc(acousticness)) %>% top_n(n=10, wt=acousticness)
 View(most_acoustic)
 
@@ -147,15 +145,3 @@ View(least_acoustic__2009)
 
 most_acoustic__2015 <- subset(all_tracks, select = c('artist', 'title', 'acousticness', 'decade', 'date') )  %>% filter(date >= as.Date("2015-01-01")  & date < as.Date("2016-01-01")) %>% top_n(n=10, wt=acousticness) %>% arrange(desc(acousticness)) 
 View(most_acoustic__2015)
-
-
-
-#check to see if artists collaborated and find total number of songs for that artist including collab
-#https://stackoverflow.com/questions/12409334/r-identifing-text-string-within-column-of-dataframe
-unique_artists <- read.csv('unique_artists_count.csv')
-View(unique_artists)
-ordered_unique_artists <- unique_artists[with(unique_artists, order(-count)), ]
-ordered_unique_artists <- ordered_unique_artists[-c(3), ] #drop elvis presley entry in favour of elvis (other data cleaning & checking will be needed) 
-View(ordered_unique_artists)
-ordered_unique_artists_time_at_one <- ordered_unique_artists[with(ordered_unique_artists, order(-total_weeks)), ]
-View(ordered_unique_artists_time_at_one)
