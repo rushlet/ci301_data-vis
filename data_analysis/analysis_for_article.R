@@ -12,39 +12,43 @@ library("stringr")
 
 #loads in csv and gives it variable name
 all_tracks <- read.csv('fixed_data_for_analysis.csv')
-unique_artists <- read.csv('uniqueArtists.csv')
+unique_artists <- read.csv('unique_artists_count.csv')
 View(all_tracks)
 View(unique_artists)
 
-#1 - most common artists
-#analyses data to sort by artist, ordered by most common
-most_common_artists <- group_by(all_tracks, artist) %>% summarise(count = n()) %>% arrange(desc(count)) %>% filter (count >= 3) 
-View(most_common_artists)
+# how many number 1 songs have there been?
+total_tracks <- nrow(all_tracks)
+print(total_tracks)
+#1325
 
-most_common_artists___decade <- group_by(all_tracks, artist, decade) %>% summarise(count = n()) %>% arrange(desc(decade), desc(count))
-most_common_artists___decade_top <- group_by(most_common_artists___decade, decade) %>% top_n(n=5, wt=count)
-View(most_common_artists___decade_top)
+# how many weeks does this cover?
+total_weeks <- sum(all_tracks$weeks_at_1)
+print(total_weeks)
+#3398
 
-most_common_artist_data <- merge(most_common_artists, all_tracks, by=("artist"))
-View(most_common_artist_data)
+# how many different artists have contributed to a number 1?
+total_artists <- nrow(unique_artists)
+print(total_artists)
+#941
 
-most_common_artist_subset <- unique(subset(most_common_artist_data, select = -c(3:21))) %>% arrange(desc(count)) %>% filter (count >= 5) 
-View(most_common_artist_subset)
+# Number of artists (and who) with 5 or more tracks
+most_common_artists <- subset(unique_artists, track_count >= 5) 
+number_of_artists_with_5_or_more_tracks <- nrow(most_common_artists)
+print(number_of_artists_with_5_or_more_tracks)
+#51
 
-most_common_artists_by_weeks_at_1 <- group_by(most_common_artist_data, weeks_at_1) %>% summarise(count = n()) %>% arrange(desc(count)) %>% filter (count >= 8) 
-print(most_common_artists_by_weeks_at_1)
+# These artists have how many tracks between them?
+number_of_tracks_from_most_common_artists <- sum(most_common_artists$track_count)
+print(number_of_tracks_from_most_common_artists)
+#377
 
-averages_by_artist <- group_by(most_common_artist_data, artist) %>% summarise(avg_danceability = mean(danceability, na.rm=TRUE), avg_valence = mean(valence, na.rm=TRUE), avg_decade = mean(decade, na.rm=TRUE)) %>% arrange(desc(avg_danceability))
+# Lasting how long at number 1?
+total_weeks_from_most_common_artists <- sum(most_common_artists$total_weeks)
+print(total_weeks_from_most_common_artists)
+# 921
 
-most_common_artists_graph <- ggplot(most_common_artist_subset, aes(x = decade, y = danceability)) + geom_point(aes(colour = artist)) + geom_smooth(method='lm',formula=y~x)
-most_common_artists_graph
-
-#artists by time at number 1
-all_tracks_without_attributes = subset(all_tracks, select = -c(1:18,20) ) #make subset of data with artist and weeks at 1
-artists_time_at_1 <-aggregate(all_tracks_without_attributes, by=list(all_tracks$artist), FUN=sum, na.rm=TRUE) #mean for each decade
-print(artists_time_at_1)
-
-
+# cumulative time at number 1 - what percentage of all time charts do these artists account for?
+#this is inaccurate because some collaborated, so same track counts twice :( (e.g. cliff richard and shadows)
 
 #mean attributes by decade
 #http://www.listendata.com/2015/06/r-keep-drop-columns-from-data-frame.html 
