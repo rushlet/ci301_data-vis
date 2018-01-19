@@ -15,12 +15,10 @@ def getSongDetails(row):
     song = []
     data = row.findAll('td')
     song.append ({'date' : data[0].string, 'title' : data[1].string, 'artist' : data[2].string, 'weeks_at_1' : data[3].string})
-    print song
     charts.append(song)
 
 for x in range (1, len(tables)):
     currentTable = tables[x]
-    print currentTable
     rows = currentTable.findAll('tr')
     for y in range (1, len(rows)):
         getSongDetails(rows[y])
