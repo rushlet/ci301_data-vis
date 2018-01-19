@@ -42,6 +42,7 @@ total_artists <- nrow(unique_artists)
 print(total_artists)
 #940
 
+## because of collaborations the next few are not particularly useful... 
 # Number of artists (and who) with 5 or more tracks
 most_common_artists <- subset(unique_artists, track_count >= 5) 
 View(most_common_artists)
