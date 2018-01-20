@@ -4,7 +4,7 @@ require 'json'
 file = File.read('updated_charts.json')
 data_hash = JSON.parse(file)
 
-RSpotify.authenticate("30d58fa2956047a7ba12f51bd9ad2438", "029860e93bb241eda4fbdacde2e4a18b")
+RSpotify.authenticate(x, y)
 RSpotify.raw_response = true
 
 allSongs = []
