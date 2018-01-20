@@ -2,9 +2,11 @@ require 'rspotify'
 require 'json'
 
 file = File.read('number_1_songs_with_data.json')
+key = File.read('spotify_keys.json')
 data_hash = JSON.parse(file)
+key = JSON.parse(key)
 
-RSpotify.authenticate("30d58fa2956047a7ba12f51bd9ad2438", "029860e93bb241eda4fbdacde2e4a18b")
+RSpotify.authenticate(key['1']['client'], key['1']['secret'])
 RSpotify.raw_response = true
 
 playlist = RSpotify::Playlist.find('rushlet', '6DNZV1L405XpElhIAUHaKZ')

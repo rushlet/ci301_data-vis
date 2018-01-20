@@ -1,10 +1,12 @@
 require 'rspotify'
 require 'json'
 
-file = File.read('updated_charts.json')
+file = File.read('missedChartData.json')
+key = File.read('spotify_keys.json')
 data_hash = JSON.parse(file)
+key = JSON.parse(key)
 
-RSpotify.authenticate(x, y)
+RSpotify.authenticate(key['1']['client'], key['1']['secret'])
 RSpotify.raw_response = true
 
 allSongs = []
