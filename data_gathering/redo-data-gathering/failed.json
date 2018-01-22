@@ -1,1 +1,42 @@
-[]
+[
+  {
+    "title": "THE STONK",
+    "artist": "HALE PACE THE STONKERS",
+    "date": "23/03/1991",
+    "decade": 1990,
+    "weeks_at_1": 1,
+    "consecutive": "TRUE",
+    "times_at_one": 1,
+    "spotify_id": "not available on spotify"
+  },
+  {
+    "title": "WITH A LITTLE HELP FROM MY FRIENDS",
+    "artist": "SAM & MARK",
+    "date": "21/02/2004",
+    "decade": 2000,
+    "weeks_at_1": 1,
+    "consecutive": "TRUE",
+    "times_at_one": 1,
+    "spotify_id": "not available on spotify"
+  },
+  {
+    "title": "GYM AND TONIC",
+    "artist": "SPACEDUST",
+    "date": "24/10/1998",
+    "decade": 1990,
+    "weeks_at_1": 1,
+    "consecutive": "TRUE",
+    "times_at_one": 1,
+    "spotify_id": "not available on spotify"
+  },
+  {
+    "title": "THE CHICKEN SONG",
+    "artist": "SPITTING IMAGE",
+    "date": "17/05/1986",
+    "decade": 1980,
+    "weeks_at_1": 3,
+    "consecutive": "TRUE",
+    "times_at_one": 1,
+    "spotify_id": "not available on spotify"
+  }
+]
