@@ -1,10 +1,4 @@
 setwd('~/Sites/uni/ci301_data-vis/data_analysis')
-install.packages("dplyr")
-install.packages("ggplot2") # for drawing graphs
-install.packages("reshape2") # for drawing graphs
-install.packages("fuzzyjoin")
-install.packages("stringr")
-install.packages("lubridate") # for working with dates
 library("dplyr")
 library("ggplot2")
 library("reshape2")
@@ -28,7 +22,7 @@ View(unique_artists)
 # how many number 1 songs have there been?
 total_tracks <- nrow(all_tracks)
 print(total_tracks)
-#1325
+#1324
 
 # how many weeks does this cover?
 total_weeks <- sum(all_tracks$weeks_at_1)
@@ -69,7 +63,7 @@ print (top_10_artists)
 
 # The artists who have spent most weeks at number 1 (in total)
 artists_most_weeks <- group_by(unique_artists, total_weeks) %>% arrange(desc(total_weeks))
-artists_most_weeks <- head(artists_ten_plus_weeks, 10)
+artists_most_weeks <- head(artists_most_weeks, 10)
 print (artists_most_weeks)
 
 # Frankie Laine has 4 track reach number 1, but has held the top spot for 32 weeks. Are any of these re-entries? (shouldn't be)
@@ -78,19 +72,19 @@ View(frankie_laine_tracks)
 # 4 different tracks, 1 of which was a re-entry but is not listed as a separate track.
 
 # which of the 10 artists with the most tracks are not in the top 10 longest at 1
-diff_top_10_number <- setdiff(top_10_artists,artists_ten_plus_weeks)
+diff_top_10_number <- setdiff(top_10_artists,artists_most_weeks)
 print(diff_top_10_number)
 # Westlife, Spice Girls and Rhianna have released 14, 9 and 9 number 1s but haven't stayed at number 1 so long
 
 # which of the 10 artists longest at 1 are not in 10 most tracks?
-diff_top_10_longest <- setdiff(artists_ten_plus_weeks,top_10_artists)
+diff_top_10_longest <- setdiff(artists_most_weeks,top_10_artists)
 print(diff_top_10_longest)
 # Frankie Laine, Abba and Justin Bieber have been at number 1 for 32, 31 and 29 weeks but have had 4, 9 and 6 tracks
 
 ### Tracks
 
 # Which single tracks have lasted longest at number 1?
-track_subset <- subset(all_tracks, select = c(2, 3, 17, 19))
+track_subset <- subset(all_tracks, select = c(1, 2, 16, 18))
 View(track_subset)
 tracks_longest_at_one <- group_by(track_subset, weeks_at_1) %>% arrange(desc(weeks_at_1))
 ten_tracks_longest_at_one <- head(tracks_longest_at_one, 10)
@@ -98,7 +92,7 @@ print(ten_tracks_longest_at_one)
 # I BELIEVE-FRANKIE LAINE (18), (EVERYTHING I DO) I DO IT FOR YOU-BRYAN ADAMS (16)
 
 # Which tracks lasted longest consecutively?
-track_subset_consecutive <- subset(all_tracks, select = c(2, 3, 17, 19, 20))
+track_subset_consecutive <- subset(all_tracks, select = c(1, 2, 16, 18, 19))
 track_subset_consecutive <- filter(track_subset_consecutive, consecutive == TRUE)
 tracks_longest_at_one_consecutive <- group_by(track_subset_consecutive, weeks_at_1) %>% arrange(desc(weeks_at_1))
 ten_tracks_longest_at_one_consecutive <- head(tracks_longest_at_one_consecutive, 10)
@@ -106,12 +100,12 @@ print(ten_tracks_longest_at_one_consecutive)
 # (EVERYTHING I DO) I DO IT FOR YOU-BRYAN ADAMS(16),LOVE IS ALL AROUND-WET WET WET(15),ONE DANCE-DRAKE WIZKID & KYLA(15)
 
 # Which tracks lasted longest out of reentries?
-track_subset_reentry <- subset(all_tracks, select = c(2, 3, 17, 19, 20, 21))
+track_subset_reentry <- subset(all_tracks, select = c(1, 2, 16, 18, 19, 20))
 track_subset_reentry <- filter(track_subset_reentry, consecutive == FALSE)
 tracks_longest_at_one_reentry <- arrange(track_subset_reentry, desc(weeks_at_1))
 ten_tracks_longest_at_one_reentry <- head(tracks_longest_at_one_reentry, 10)
 print(ten_tracks_longest_at_one_reentry)
-#I BELIEVE-FRANKIE LAINE(18),SHAPE OF YOU-ED SHEERAN(14), DESPACITO-LUIS FONSI & DADDY YANKEE JUSTIN BIEBER(12) 
+#I BELIEVE-FRANKIE LAINE(18),SHAPE OF YOU-ED SHEERAN(14), BOHEMIAN RHAPSODY-QUEEN(14) 
 
 # Which tracks reentered the charts most?
 most_reentered_tracks <- subset(track_subset_reentry, select = c(1, 2, 3, 4, 6))
@@ -124,14 +118,14 @@ print(ten_most_reentered_tracks)
 # How many songs re-entered number 1?
 number_of_reentries <- nrow(track_subset_reentry)
 print(number_of_reentries)
-# 55
+# 56
 
 
 ### Audio features
-audio_features <- subset(all_tracks, select = c(2, 3, 5:19))
+audio_features <- subset(all_tracks, select = c(1, 2, 4:18))
 
 ## group by decade, find average audio feature for each decade
-decade_averages_subset <- subset(all_tracks, select = c(5:16, 17:21))
+decade_averages_subset <- subset(all_tracks, select = c(4:15, 16:20))
 View(decade_averages_subset)
 decade_averages <- aggregate(decade_averages_subset, by=list(all_tracks$decade), FUN=mean, na.rm=TRUE) #mean for each decade
 print(decade_averages)
@@ -143,14 +137,14 @@ ggplot(decade_averages, aes(Group.1)) +
   geom_line(aes(y = valence, colour = "valence")) + 
   geom_line(aes(y = energy, colour = "energy")) + 
   geom_line(aes(y = danceability, colour = "danceability"))
-# 2000s least acoustic decade
+# 2000s least acoustic decade, declined massively decade on decade but started to increase in 2010s
 # 60s most feel good decade
 # energy peaked in 2000s, but hasn't decreased much (looks insignificant but would need to check)
 # Danceability increased most in the 80s and has increased by very small amounts since
 
 # most acoustic songs
 acoustic_ten <- arrange(all_tracks, desc(acousticness))
-acoustic_ten <- subset(acoustic_ten, select = c(2,3,10,17))
+acoustic_ten <- subset(acoustic_ten, select = c(1,2,9,16))
 acoustic_ten <- head(acoustic_ten, 10)
 print (acoustic_ten)
 
@@ -159,13 +153,13 @@ ggplot(acoustic_ten, aes(date)) +
 
 # least acoustic
 acoustic_ten_least <- arrange(all_tracks, acousticness)
-acoustic_ten_least <- subset(acoustic_ten_least, select = c(2,3,10,17))
+acoustic_ten_least <- subset(acoustic_ten_least, select = c(1,2,9,16))
 acoustic_ten_least <- head(acoustic_ten_least, 10)
 print (acoustic_ten_least)
 
 # most danceable songs
 danceable_ten <- arrange(all_tracks, desc(danceability))
-danceable_ten <- subset(danceable_ten, select = c(2,3,5,17))
+danceable_ten <- subset(danceable_ten, select = c(1,2,4,16))
 danceable_ten <- head(danceable_ten, 10)
 print (danceable_ten)
 
@@ -174,13 +168,13 @@ ggplot(danceable_ten, aes(date)) +
 
 # least danceable
 danceable_ten_least <- arrange(all_tracks, danceability)
-danceable_ten_least <- subset(danceable_ten_least, select = c(2,3,5,17))
+danceable_ten_least <- subset(danceable_ten_least, select = c(1,2,4,16))
 danceable_ten_least <- head(danceable_ten_least, 10)
 print (danceable_ten_least)
 
 # most valence songs
 valence_ten <- arrange(all_tracks, desc(valence))
-valence_ten <- subset(valence_ten, select = c(2,3,13,17))
+valence_ten <- subset(valence_ten, select = c(1,2,12,16))
 valence_ten <- head(valence_ten, 10)
 print (valence_ten)
 
@@ -189,11 +183,9 @@ ggplot(danceable_ten, aes(date)) +
 
 # least valence
 valence_ten_least <- arrange(all_tracks, valence)
-valence_ten_least <- subset(valence_ten_least, select = c(2,3,13,17))
+valence_ten_least <- subset(valence_ten_least, select = c(1,2,12,16))
 valence_ten_least <- head(valence_ten_least, 10)
 print (valence_ten_least)
-
-
 
 # attributes by year
 View(audio_features)
@@ -205,6 +197,12 @@ data_for_averages_by_year <-  subset(audio_features, select = c(3:14, 16:18))
 View(data_for_averages_by_year)
 averages_by_year <- aggregate(data_for_averages_by_year, by=list(data_for_averages_by_year$year), FUN=mean, na.rm=TRUE) #mean for each year
 print(averages_by_year)
+
+ggplot(averages_by_year, aes(Group.1)) + 
+  geom_line(aes(y = acousticness, colour = "acousticness")) + 
+  geom_line(aes(y = valence, colour = "valence")) + 
+  geom_line(aes(y = energy, colour = "energy")) + 
+  geom_line(aes(y = danceability, colour = "danceability"))
 
 valence_by_year <- ggplot(averages_by_year, aes(x = Group.1, y = valence)) + geom_line(aes(), group = 1) + geom_smooth(method='lm',formula=y~x) + scale_x_discrete(breaks=seq(1950, 2200, 5))
 valence_year_least <- arrange(averages_by_year, valence)
