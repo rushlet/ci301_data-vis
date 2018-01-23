@@ -34,7 +34,6 @@ print(total_weeks)
 # how many different artists have contributed to a number 1?
 total_artists <- nrow(unique_artists)
 print(total_artists)
-#940
 
 # Number of artists (and who) who contributed to 5 or more tracks
 most_common_artists <- subset(unique_artists, track_count >= 5) 
@@ -43,19 +42,6 @@ most_common_artists <- group_by(most_common_artists, track_count) %>% arrange(de
 View(most_common_artists)
 number_of_artists_with_5_or_more_tracks <- nrow(most_common_artists)
 print(number_of_artists_with_5_or_more_tracks)
-#50
-
-## because of collaborations the next few are not particularly useful... 
-# These artists have how many tracks between them?
-number_of_tracks_from_most_common_artists <- sum(most_common_artists$track_count)
-print(number_of_tracks_from_most_common_artists)
-#this includes the same track multiple time though because some were collaborations - ie cliff richard and shadows
-#370
-
-# Lasting how long at number 1?
-total_weeks_from_most_common_artists <- sum(most_common_artists$total_weeks)
-print(total_weeks_from_most_common_artists)
-#893
 
 # The top 10 artists with the most number 1s are:
 top_10_artists <- head(most_common_artists, 10)
