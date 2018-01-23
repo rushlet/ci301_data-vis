@@ -7,12 +7,12 @@ var spotifyApi = new SpotifyWebApi({
   clientSecret : '029860e93bb241eda4fbdacde2e4a18b',
 });
 
-// all_tracks.forEach((track) => {
-//   trackID = track.spotify_id;
-//   spotifyApi.addTracksToPlaylist('rushlet', '6DNZV1L405XpElhIAUHaKZ', trackID)m
-//   .then(function(data) {
-//     console.log(`Added ${track.title} to playlist!`);
-//   }, function(err) {
-//     console.log('Something went wrong!', err);
-//   });
-// })
+all_tracks.forEach((track) => {
+  trackID = track.spotify_id;
+  spotifyApi.addTracksToPlaylist('rushlet', '6DNZV1L405XpElhIAUHaKZ', trackID)
+  .then(function(data) {
+    console.log(`Added ${track.title} to playlist!`);
+  }, function(err) {
+    console.log('Something went wrong!', err);
+  });
+})
