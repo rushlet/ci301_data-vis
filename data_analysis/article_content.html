@@ -120,7 +120,7 @@ $(document).ready(function () {
 
 <h1 class="title toc-ignore">article_content.R</h1>
 <h4 class="author"><em>rushlet</em></h4>
-<h4 class="date"><em>Tue Jan 23 19:38:59 2018</em></h4>
+<h4 class="date"><em>Tue Jan 23 20:18:18 2018</em></h4>
 
 </div>
 
@@ -165,20 +165,16 @@ View(unique_artists)
 total_tracks &lt;- nrow(all_tracks)
 print(total_tracks)</code></pre>
 <pre><code>## [1] 1325</code></pre>
-<pre class="r"><code>#1324
-
-# how many weeks does this cover?
+<pre class="r"><code># how many weeks does this cover?
 total_weeks &lt;- sum(all_tracks$weeks_at_1)
 print(total_weeks)</code></pre>
 <pre><code>## [1] 3399</code></pre>
-<pre class="r"><code>#3398
-
-### Artists
+<pre class="r"><code>### Artists
 
 # how many different artists have contributed to a number 1?
 total_artists &lt;- nrow(unique_artists)
 print(total_artists)</code></pre>
-<pre><code>## [1] 941</code></pre>
+<pre><code>## [1] 939</code></pre>
 <pre class="r"><code># Number of artists (and who) who contributed to 5 or more tracks
 most_common_artists &lt;- subset(unique_artists, track_count &gt;= 5) 
 View(most_common_artists)
@@ -205,22 +201,19 @@ print (top_10_artists)</code></pre>
 ##  9       RIHANNA          25           9
 ## 10          ABBA          31           9</code></pre>
 <pre class="r"><code># The artists who have spent most weeks at number 1 (in total)
-artists_most_weeks &lt;- group_by(unique_artists, total_weeks) %&gt;% arrange(desc(total_weeks))
+artists_most_weeks &lt;- arrange(unique_artists, desc(total_weeks))
 artists_most_weeks &lt;- head(artists_most_weeks, 10)
 print (artists_most_weeks)</code></pre>
-<pre><code>## # A tibble: 10 x 3
-## # Groups:   total_weeks [8]
-##           artist total_weeks track_count
-##           &lt;fctr&gt;       &lt;int&gt;       &lt;int&gt;
-##  1         ELVIS          79          18
-##  2       BEATLES          69          17
-##  3 CLIFF RICHARD          46          14
-##  4       SHADOWS          44          12
-##  5 FRANKIE LAINE          32           4
-##  6          ABBA          31           9
-##  7 JUSTIN BIEBER          29           6
-##  8     TAKE THAT          29          12
-##  9       MADONNA          29          13
+<pre><code>##           artist total_weeks track_count
+## 1          ELVIS          79          18
+## 2        BEATLES          69          17
+## 3  CLIFF RICHARD          46          14
+## 4        SHADOWS          44          12
+## 5  FRANKIE LAINE          32           4
+## 6           ABBA          31           9
+## 7  JUSTIN BIEBER          29           6
+## 8      TAKE THAT          29          12
+## 9        MADONNA          29          13
 ## 10   THE SHADOWS          28           7</code></pre>
 <pre class="r"><code># Frankie Laine has 4 track reach number 1, but has held the top spot for 32 weeks. Are any of these re-entries? (shouldn't be)
 frankie_laine_tracks &lt;- subset(all_tracks, artist == &quot;FRANKIE LAINE&quot;)
@@ -249,19 +242,16 @@ print(diff_top_10_number)</code></pre>
 # which of the 10 artists longest at 1 are not in 10 most tracks?
 diff_top_10_longest &lt;- setdiff(artists_most_weeks,top_10_artists)
 print(diff_top_10_longest)</code></pre>
-<pre><code>## # A tibble: 10 x 3
-## # Groups:   total_weeks [8]
-##           artist total_weeks track_count
-##           &lt;fctr&gt;       &lt;int&gt;       &lt;int&gt;
-##  1         ELVIS          79          18
-##  2       BEATLES          69          17
-##  3 CLIFF RICHARD          46          14
-##  4       SHADOWS          44          12
-##  5 FRANKIE LAINE          32           4
-##  6          ABBA          31           9
-##  7 JUSTIN BIEBER          29           6
-##  8     TAKE THAT          29          12
-##  9       MADONNA          29          13
+<pre><code>##           artist total_weeks track_count
+## 1          ELVIS          79          18
+## 2        BEATLES          69          17
+## 3  CLIFF RICHARD          46          14
+## 4        SHADOWS          44          12
+## 5  FRANKIE LAINE          32           4
+## 6           ABBA          31           9
+## 7  JUSTIN BIEBER          29           6
+## 8      TAKE THAT          29          12
+## 9        MADONNA          29          13
 ## 10   THE SHADOWS          28           7</code></pre>
 <pre class="r"><code># Frankie Laine, Abba and Justin Bieber have been at number 1 for 32, 31 and 29 weeks but have had 4, 9 and 6 tracks
 
@@ -979,20 +969,20 @@ print (loudest_ten)</code></pre>
 artists_with_8_or_more_number_ones &lt;- subset(unique_artists, track_count &gt;= 8, select = c(1))
 print(artists_with_8_or_more_number_ones)</code></pre>
 <pre><code>##             artist
-## 834         EMINEM
-## 835          OASIS
-## 919  CALVIN HARRIS
-## 922 ROLLING STONES
-## 925       WESTLIFE
-## 928    SPICE GIRLS
+## 926         EMINEM
+## 927          OASIS
+## 928  CALVIN HARRIS
+## 929 ROLLING STONES
+## 930    SPICE GIRLS
 ## 931        RIHANNA
-## 934      TAKE THAT
+## 932           ABBA
+## 933      TAKE THAT
+## 934        SHADOWS
 ## 935        MADONNA
-## 936           ABBA
-## 938        SHADOWS
-## 939  CLIFF RICHARD
-## 940        BEATLES
-## 941          ELVIS</code></pre>
+## 936       WESTLIFE
+## 937  CLIFF RICHARD
+## 938        BEATLES
+## 939          ELVIS</code></pre>
 <pre class="r"><code>songs_by_artists_with_8_plus &lt;- merge(artists_with_8_or_more_number_ones,all_tracks,by='artist')
 View(songs_by_artists_with_8_plus)
 

@@ -34,7 +34,7 @@ print(total_weeks)
 # how many different artists have contributed to a number 1?
 total_artists <- nrow(unique_artists)
 print(total_artists)
-#941
+#939
 
 # Number of artists (and who) who contributed to 5 or more tracks
 most_common_artists <- subset(unique_artists, track_count >= 5) 
@@ -50,7 +50,7 @@ top_10_artists <- head(most_common_artists, 10)
 print (top_10_artists)
 
 # The artists who have spent most weeks at number 1 (in total)
-artists_most_weeks <- group_by(unique_artists, total_weeks) %>% arrange(desc(total_weeks))
+artists_most_weeks <- arrange(unique_artists, desc(total_weeks))
 artists_most_weeks <- head(artists_most_weeks, 10)
 print (artists_most_weeks)
 
