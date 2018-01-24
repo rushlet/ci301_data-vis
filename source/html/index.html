@@ -8,7 +8,33 @@
 	<body>
        <div class="container">
          <h1>Testing hosting a page on github.pages.io</h1>
-				 <div class="graph"></div
+				 <div class="graph"></div>
+				 <!--currently code copied from http://jsfiddle.net/JMPerez/62wafrm7/ to test-->
+				 <div class="container">
+				    <h1>Displaying User Data</h1>
+				    <p>Log in with your Spotify account and this demo will display information about you fetched using the Spotify Web API</p>
+				    <button class="btn btn-primary" id="btn-login">Login</button>
+				    <div id="result"></div>
+				</div>
+				<script id="result-template" type="text/x-handlebars-template">
+				    <dl>
+				      <img src="{{images.0.url}}">
+				      <dt>User Name</dt>
+				      <dd>{{id}}</dd>
+				      <dt>Display Name</dt>
+				      <dd>{{display_name}}</dd>
+				      <dt>Country</dt>
+				      <dd>{{country}}</dd>
+				      <dt>Followers</dt>
+				      <dd>{{followers.total}}</dd>
+				      <dt>Profile</dt>
+				      <dd><a href="{{external_urls.spotify}}" target="_blank">{{external_urls.spotify}}</a></dd>
+				      <dt>Email</dt>
+				      <dd>{{email}}</dd>
+				      <dt>Product</dt>
+				      <dd>{{product}}</dd>
+				    </dl>
+				</script>
 			 </div>
 		<script src="../bundle.js"></script>
 	</body>

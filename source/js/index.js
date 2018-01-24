@@ -1,5 +1,12 @@
 import * as d3 from "d3";
 import $ from 'jquery';
+// import * as SpotifyWebApi from 'spotify-web-api-node';
+import SpotifyAuth from './spotify_auth.js'
+//
+// console.log(SpotifyWebApi);
+// console.log(SpotifyAuth);
+// var auth = SpotifyAuth();
+
 
 let dataset = "http://gsx2json.com/api?id=1KfV5BohkeZMAjMWHBua23O02rP6EGCMDNUgySNuMhQo&integers=FALSE"
 $.getJSON(dataset).done(dataset=> {

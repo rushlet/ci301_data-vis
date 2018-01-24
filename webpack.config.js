@@ -1,4 +1,5 @@
 console.log('I am webpack.');
+const path = require('path');
 module.exports = {
 	entry: "./source/js/index.js",
 	output: {
@@ -8,6 +9,9 @@ module.exports = {
 	externals: [{
 		xmlhttprequest: '{XMLHttpRequest:XMLHttpRequest}',
 	}],
+	resolve: {
+	  root: path.resolve(__dirname)
+	},
   module: {
       loaders: [
           {
