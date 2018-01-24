@@ -467,7 +467,7 @@
   {
     "artist": "BILLY CONNOLLY",
     "total_weeks": 1,
-    "count": 1
+    "count" : 1
   },
   {
     "artist": "BILLY J. KRAMER & THE DAKOTAS",
@@ -1707,7 +1707,7 @@
   {
     "artist": "FUN.",
     "total_weeks": 1,
-    "count": 1
+    "count" : 1
   },
   {
     "artist": "GABRIELLE",
@@ -4147,7 +4147,7 @@
   {
     "artist": "t.A.T.u.",
     "total_weeks": 4,
-    "count": 1
+    "count" : 1
   },
   {
     "artist": "T'PAU",
@@ -4547,7 +4547,7 @@
   {
     "artist": "WHAM!",
     "total_weeks": 9,
-    "count": 4
+    "count" : 4
   },
   {
     "artist": "WHIGFIELD",
