@@ -22,7 +22,7 @@ View(unique_artists)
 # how many number 1 songs have there been?
 total_tracks <- nrow(all_tracks)
 print(total_tracks)
-#1324
+#1325
 
 # how many weeks does this cover?
 total_weeks <- sum(all_tracks$weeks_at_1)
@@ -34,7 +34,6 @@ print(total_weeks)
 # how many different artists have contributed to a number 1?
 total_artists <- nrow(unique_artists)
 print(total_artists)
-#939
 
 # Number of artists (and who) who contributed to 5 or more tracks
 most_common_artists <- subset(unique_artists, track_count >= 5) 
@@ -43,7 +42,6 @@ most_common_artists <- group_by(most_common_artists, track_count) %>% arrange(de
 View(most_common_artists)
 number_of_artists_with_5_or_more_tracks <- nrow(most_common_artists)
 print(number_of_artists_with_5_or_more_tracks)
-#50
 
 # The top 10 artists with the most number 1s are:
 top_10_artists <- head(most_common_artists, 10)
@@ -54,19 +52,10 @@ artists_most_weeks <- arrange(unique_artists, desc(total_weeks))
 artists_most_weeks <- head(artists_most_weeks, 10)
 print (artists_most_weeks)
 
-# Frankie Laine has 4 track reach number 1, but has held the top spot for 32 weeks. Are any of these re-entries? (shouldn't be)
-frankie_laine_tracks <- subset(all_tracks, artist == "FRANKIE LAINE")
-View(frankie_laine_tracks)
-# 4 different tracks, 1 of which was a re-entry but is not listed as a separate track.
-
 # which of the 10 artists with the most tracks are not in the top 10 longest at 1
-diff_top_10_number <- setdiff(top_10_artists,artists_most_weeks)
-print(diff_top_10_number)
 # Westlife, Spice Girls and Rhianna have released 14, 9 and 9 number 1s but haven't stayed at number 1 so long
 
 # which of the 10 artists longest at 1 are not in 10 most tracks?
-diff_top_10_longest <- setdiff(artists_most_weeks,top_10_artists)
-print(diff_top_10_longest)
 # Frankie Laine, Abba and Justin Bieber have been at number 1 for 32, 31 and 29 weeks but have had 4, 9 and 6 tracks
 
 ### Tracks
@@ -105,9 +94,12 @@ print(ten_most_reentered_tracks)
 
 # How many songs re-entered number 1?
 number_of_reentries <- nrow(track_subset_reentry)
+View(track_subset_reentry)
 print(number_of_reentries)
 # 56
 
+elvis_reentry <- subset(track_subset_reentry, artist=="ELVIS PRESLEY")
+print(elvis_reentry)
 
 ### Audio features
 audio_features <- subset(all_tracks, select = c(1, 2, 4:18))
@@ -175,6 +167,18 @@ valence_ten_least <- subset(valence_ten_least, select = c(1,2,12,16))
 valence_ten_least <- head(valence_ten_least, 10)
 print (valence_ten_least)
 
+# shortest songs
+duration_ten_least <- arrange(all_tracks, duration_ms)
+duration_ten_least <- subset(duration_ten_least, select = c(1,2,14,16))
+duration_ten_least <- head(duration_ten_least, 10)
+print (duration_ten_least)
+
+# longest songs
+duration_ten_most <- arrange(all_tracks, desc(duration_ms))
+duration_ten_most <- subset(duration_ten_most, select = c(1,2,14,16))
+duration_ten_most <- head(duration_ten_most, 10)
+print (duration_ten_most)
+
 # attributes by year
 View(audio_features)
 audio_features$date <- dmy(audio_features$date) #format date as a date type using lubridate library
@@ -193,15 +197,84 @@ ggplot(averages_by_year, aes(Group.1)) +
   geom_line(aes(y = danceability, colour = "danceability"))
 
 valence_by_year <- ggplot(averages_by_year, aes(x = Group.1, y = valence)) + geom_line(aes(), group = 1) + geom_smooth(method='lm',formula=y~x) + scale_x_discrete(breaks=seq(1950, 2200, 5))
+valence_by_year
 valence_year_least <- arrange(averages_by_year, valence)
 valence_year_least <- head(valence_year_least, 10)
 print (valence_year_least)
+
+#1996 valence was lowest since '54, what songs caused this?
+# last year of conservative power, dunblane massacre, take that split, charles di divorce, ira active
+all_tracks_with_year <- all_tracks
+all_tracks_with_year$date <- dmy(all_tracks_with_year$date) #format date as a date type using lubridate library
+all_tracks_with_year$year <- year(all_tracks_with_year$date)
+songs_1996 <- subset(all_tracks_with_year, year==1996)
+valence_1996_least <- arrange(songs_1996, valence)
+valence_1996_least <- head(valence_1996_least, 10)
+valence_1996_least <-  subset(valence_1996_least, select = c(1:2, 12))
+print (valence_1996_least)
+# and most
+valence_1996_most <- arrange(songs_1996, desc(valence))
+valence_1996_most <- head(valence_1996_most, 10)
+valence_1996_most <-  subset(valence_1996_most, select = c(1:2, 12))
+print (valence_1996_most)
+
 
 danceability_by_year <- ggplot(averages_by_year, aes(x = Group.1, y = danceability)) + geom_line(aes(), group = 1) + geom_smooth(method='lm',formula=y~x) + scale_x_discrete(breaks=seq(1950, 2200, 5))
 danceability_by_year
 danceability_year_most <- arrange(averages_by_year, desc(danceability))
 danceability_year_most <- head(danceability_year_most, 10)
 print (danceability_year_most)
+
+acousticness_by_year <- ggplot(averages_by_year, aes(x = Group.1, y = acousticness)) + geom_line(aes(), group = 1) + geom_smooth(method='lm',formula=y~x) + scale_x_discrete(breaks=seq(1950, 2200, 5))
+acousticness_by_year
+acousticness_year_most <- arrange(averages_by_year, desc(acousticness))
+View (acousticness_year_most)
+acousticness_year_most <- head(acousticness_year_most, 10)
+print (acousticness_year_most)
+
+#2015 acousticness spiked, what songs caused this?
+all_tracks$date <- dmy(all_tracks$date) #format date as a date type using lubridate library
+print(all_tracks$date)
+all_tracks$year <- year(all_tracks$date)
+songs_2015 <- subset(all_tracks, year==2015)
+View (songs_2015)
+
+energy_by_year <- ggplot(averages_by_year, aes(x = Group.1, y = energy)) + geom_line(aes(), group = 1) + geom_smooth(method='lm',formula=y~x) + scale_x_discrete(breaks=seq(1950, 2200, 5))
+energy_by_year
+energy_year_most <- arrange(averages_by_year, desc(energy))
+energy_year_most <- head(energy_year_most, 10)
+print (energy_year_most)
+
+loudness_by_year <- ggplot(averages_by_year, aes(x = Group.1, y = loudness)) + geom_line(aes(), group = 1) + geom_smooth(method='lm',formula=y~x) + scale_x_discrete(breaks=seq(1950, 2200, 5))
+loudness_by_year
+loudness_year_most <- arrange(averages_by_year, desc(loudness))
+loudness_year_most <- head(loudness_year_most, 10)
+print (loudness_year_most)
+
+speechiness_by_year <- ggplot(averages_by_year, aes(x = Group.1, y = speechiness)) + geom_line(aes(), group = 1) + geom_smooth(method='lm',formula=y~x) + scale_x_discrete(breaks=seq(1950, 2200, 5))
+speechiness_by_year
+speechiness_year_most <- arrange(averages_by_year, desc(speechiness))
+speechiness_year_most <- head(speechiness_year_most, 10)
+print (speechiness_year_most)
+
+instrumentalness_by_year <- ggplot(averages_by_year, aes(x = Group.1, y = instrumentalness)) + geom_line(aes(), group = 1) + geom_smooth(method='lm',formula=y~x) + scale_x_discrete(breaks=seq(1950, 2200, 5))
+instrumentalness_by_year
+instrumentalness_year_most <- arrange(averages_by_year, desc(instrumentalness))
+instrumentalness_year_most <- head(instrumentalness_year_most, 10)
+print (instrumentalness_year_most)
+
+tempo_by_year <- ggplot(averages_by_year, aes(x = Group.1, y = tempo)) + geom_line(aes(), group = 1) + geom_smooth(method='lm',formula=y~x) + scale_x_discrete(breaks=seq(1950, 2200, 5))
+tempo_by_year
+tempo_year_most <- arrange(averages_by_year, desc(tempo))
+tempo_year_most <- head(tempo_year_most, 10)
+print (tempo_year_most)
+
+# duration
+duration_by_year <- ggplot(averages_by_year, aes(x = Group.1, y = duration_ms)) + geom_line(aes(), group = 1) + geom_smooth(method='lm',formula=y~x) + scale_x_continuous(breaks=seq(1950, 2200, 5))
+duration_by_year
+duration_year_most <- arrange(averages_by_year, desc(duration_ms))
+duration_year_most <- head(duration_year_most, 10)
+print (duration_year_most)
 
 
 # loudness war
@@ -221,11 +294,9 @@ summary(loudness_model)
 
 # loudest songs?
 loudest_ten <- group_by(all_tracks, loudness) %>% arrange(desc(loudness))
-loudest_ten <- subset(loudest_ten, select = c(2,3,8,17))
+loudest_ten <- subset(loudest_ten, select = c(1,2,7,16))
 loudest_ten <- head(loudest_ten, 10)
 print (loudest_ten)
-
-
 
 
 # attributes by artist - how diverse are an artists number 1 songs? 
@@ -233,30 +304,9 @@ print (loudest_ten)
 artists_with_8_or_more_number_ones <- subset(unique_artists, track_count >= 8, select = c(1))
 print(artists_with_8_or_more_number_ones)
 songs_by_artists_with_8_plus <- merge(artists_with_8_or_more_number_ones,all_tracks,by='artist')
-View(songs_by_artists_with_8_plus)
+print (songs_by_artists_with_8_plus)
 
-# abba
-abba_songs <- filter(songs_by_artists_with_8_plus, artist == "ABBA")
-abba_valence_spread <- max(abba_songs$valence) - min(abba_songs$valence)
-abba_danceability_spread <- max(abba_songs$danceability) - min(abba_songs$danceability)
-abba_acousticness_spread <- max(abba_songs$acousticness) - min(abba_songs$acousticness)
-abba_energy_spread <- max(abba_songs$energy) - min(abba_songs$energy)
-print(abba_valence_spread)
-print(abba_danceability_spread)
-print(abba_acousticness_spread)
-print(abba_energy_spread)
-
-# eminem
-eminem_songs <- filter(songs_by_artists_with_8_plus, artist == "EMINEM")
-eminem_valence_spread <- max(eminem_songs$valence) - min(eminem_songs$valence)
-eminem_danceability_spread <- max(eminem_songs$danceability) - min(eminem_songs$danceability)
-eminem_acousticness_spread <- max(eminem_songs$acousticness) - min(eminem_songs$acousticness)
-eminem_energy_spread <- max(eminem_songs$energy) - min(eminem_songs$energy)
-print(eminem_valence_spread)
-print(eminem_danceability_spread)
-print(eminem_acousticness_spread)
-print(eminem_energy_spread)
-
+# This doesn't work
 # artist_ranges <- list()
 # 
 # findRanges <- function(dataset, current_artist) {
