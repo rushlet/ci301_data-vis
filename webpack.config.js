@@ -10,7 +10,10 @@ module.exports = {
 		xmlhttprequest: '{XMLHttpRequest:XMLHttpRequest}',
 	}],
 	resolve: {
-	  root: path.resolve(__dirname)
+	  root: path.resolve(__dirname),
+    alias: {
+       handlebars: 'handlebars/dist/handlebars.min.js'
+    }
 	},
   module: {
       loaders: [
