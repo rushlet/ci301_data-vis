@@ -165,7 +165,7 @@ ggplot(averages_by_year, aes(Group.1)) +
   geom_line(aes(y = energy, colour = "energy")) + 
   geom_line(aes(y = danceability, colour = "danceability"))
 
-valence_by_year <- ggplot(averages_by_year, aes(x = Group.1, y = valence)) + geom_line(aes(), group = 1) + geom_smooth(method='lm',formula=y~x) + scale_x_discrete(breaks=seq(1950, 2200, 5))
+valence_by_year <- ggplot(averages_by_year, aes(x = Group.1, y = valence)) + geom_line(aes(colour = "valence"), group = 1) + scale_x_discrete(breaks=seq(1950, 2200, 5))
 valence_by_year
 valence_year_most <- arrange(averages_by_year, desc(valence))
 valence_year_most <- head(valence_year_most, 10)
@@ -191,7 +191,7 @@ valence_1996_most <-  subset(valence_1996_most, select = c(1:2, 12))
 print (valence_1996_most)
 
 
-danceability_by_year <- ggplot(averages_by_year, aes(x = Group.1, y = danceability)) + geom_line(aes(), group = 1) + geom_smooth(method='lm',formula=y~x) + scale_x_discrete(breaks=seq(1950, 2200, 5))
+danceability_by_year <- ggplot(averages_by_year, aes(x = Group.1, y = danceability)) + geom_line(aes(colour="danceability"), group = 1) + scale_x_discrete(breaks=seq(1950, 2200, 5))
 danceability_by_year
 danceability_year_most <- arrange(averages_by_year, desc(danceability))
 danceability_year_most <- head(danceability_year_most, 10)
@@ -200,7 +200,7 @@ danceability_year_least <- arrange(averages_by_year, danceability)
 danceability_year_least <- head(danceability_year_least, 10)
 print (danceability_year_least)
 
-acousticness_by_year <- ggplot(averages_by_year, aes(x = Group.1, y = acousticness)) + geom_line(aes(), group = 1) + geom_smooth(method='lm',formula=y~x) + scale_x_discrete(breaks=seq(1950, 2200, 5))
+acousticness_by_year <- ggplot(averages_by_year, aes(x = Group.1, y = acousticness)) + geom_line(aes(colour="acousticness"), group = 1) + scale_x_discrete(breaks=seq(1950, 2200, 5))
 acousticness_by_year
 acousticness_year_most <- arrange(averages_by_year, desc(acousticness))
 View (acousticness_year_most)
@@ -216,43 +216,42 @@ songs_2015_acoustic <- head(songs_2015_acoustic, 10)
 songs_2015_acoustic <-  subset(songs_2015_acoustic, select = c(1:2, 9))
 print(songs_2015_acoustic)
 
-energy_by_year <- ggplot(averages_by_year, aes(x = Group.1, y = energy)) + geom_line(aes(), group = 1) + geom_smooth(method='lm',formula=y~x) + scale_x_discrete(breaks=seq(1950, 2200, 5))
+energy_by_year <- ggplot(averages_by_year, aes(x = Group.1, y = energy)) + geom_line(aes(colour="energy"), group = 1) + scale_x_discrete(breaks=seq(1950, 2200, 5))
 energy_by_year
 energy_year_most <- arrange(averages_by_year, desc(energy))
 energy_year_most <- head(energy_year_most, 10)
 print (energy_year_most)
 
-loudness_by_year <- ggplot(averages_by_year, aes(x = Group.1, y = loudness)) + geom_line(aes(), group = 1) + geom_smooth(method='lm',formula=y~x) + scale_x_discrete(breaks=seq(1950, 2200, 5))
+loudness_by_year <- ggplot(averages_by_year, aes(x = Group.1, y = loudness)) + geom_line(aes(colour="loudness"), group = 1) + scale_x_discrete(breaks=seq(1950, 2200, 5))
 loudness_by_year
 loudness_year_most <- arrange(averages_by_year, desc(loudness))
 loudness_year_most <- head(loudness_year_most, 10)
 print (loudness_year_most)
 
-speechiness_by_year <- ggplot(averages_by_year, aes(x = Group.1, y = speechiness)) + geom_line(aes(), group = 1) + geom_smooth(method='lm',formula=y~x) + scale_x_discrete(breaks=seq(1950, 2200, 5))
+speechiness_by_year <- ggplot(averages_by_year, aes(x = Group.1, y = speechiness)) + geom_line(aes(colour="speechiness"), group = 1) + scale_x_discrete(breaks=seq(1950, 2200, 5))
 speechiness_by_year
 speechiness_year_most <- arrange(averages_by_year, desc(speechiness))
 speechiness_year_most <- head(speechiness_year_most, 10)
 print (speechiness_year_most)
 
-instrumentalness_by_year <- ggplot(averages_by_year, aes(x = Group.1, y = instrumentalness)) + geom_line(aes(), group = 1) + geom_smooth(method='lm',formula=y~x) + scale_x_discrete(breaks=seq(1950, 2200, 5))
+instrumentalness_by_year <- ggplot(averages_by_year, aes(x = Group.1, y = instrumentalness)) + geom_line(aes(colour="instrumentalness"), group = 1) + scale_x_discrete(breaks=seq(1950, 2200, 5))
 instrumentalness_by_year
 instrumentalness_year_most <- arrange(averages_by_year, desc(instrumentalness))
 instrumentalness_year_most <- head(instrumentalness_year_most, 10)
 print (instrumentalness_year_most)
 
-tempo_by_year <- ggplot(averages_by_year, aes(x = Group.1, y = tempo)) + geom_line(aes(), group = 1) + geom_smooth(method='lm',formula=y~x) + scale_x_discrete(breaks=seq(1950, 2200, 5))
+tempo_by_year <- ggplot(averages_by_year, aes(x = Group.1, y = tempo)) + geom_line(aes(colour="tempo"), group = 1) + scale_x_discrete(breaks=seq(1950, 2200, 5))
 tempo_by_year
 tempo_year_most <- arrange(averages_by_year, desc(tempo))
 tempo_year_most <- head(tempo_year_most, 10)
 print (tempo_year_most)
 
 # duration
-duration_by_year <- ggplot(averages_by_year, aes(x = Group.1, y = duration_ms)) + geom_line(aes(), group = 1) + geom_smooth(method='lm',formula=y~x) + scale_x_continuous(breaks=seq(1950, 2200, 5))
+duration_by_year <- ggplot(averages_by_year, aes(x = Group.1, y = duration_ms)) + geom_line(aes(colour="duration"), group = 1) +scale_x_continuous(breaks=seq(1950, 2200, 5))
 duration_by_year
 duration_year_most <- arrange(averages_by_year, desc(duration_ms))
 duration_year_most <- head(duration_year_most, 10)
 print (duration_year_most)
-
 
 # loudness war
 loudness_over_time <- ggplot(all_tracks, aes(x = all_tracks$date, y = loudness)) + geom_point() + geom_smooth(method='lm',formula=y~x)
