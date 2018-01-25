@@ -9,25 +9,14 @@ library("lubridate")
 #loads in csv and gives it variable name
 all_tracks <- read.csv('data/fixed_data_for_analysis.csv')
 unique_artists <- read.csv('data/unique_artists_track_count.csv')
-View(all_tracks)
-View(unique_artists)
-#format dates
-#print(all_tracks$date)
-#dates <- as.Date(all_tracks$date, "%d/%m/%y")
-#print(dates) # not getting the right output.... 
-#format_dates <- as.Date(ifelse(dates > Sys.Date(), format(dates, "%d/%m/19%y"), format(dates)))
-#print(format_dates)
-#View(all_tracks)
 
 # how many number 1 songs have there been?
 total_tracks <- nrow(all_tracks)
 print(total_tracks)
-#1325
 
 # how many weeks does this cover?
 total_weeks <- sum(all_tracks$weeks_at_1)
 print(total_weeks)
-#3398
 
 ### Artists
 
@@ -37,9 +26,7 @@ print(total_artists)
 
 # Number of artists (and who) who contributed to 5 or more tracks
 most_common_artists <- subset(unique_artists, track_count >= 5) 
-View(most_common_artists)
 most_common_artists <- group_by(most_common_artists, track_count) %>% arrange(desc(track_count))
-View(most_common_artists)
 number_of_artists_with_5_or_more_tracks <- nrow(most_common_artists)
 print(number_of_artists_with_5_or_more_tracks)
 
@@ -62,7 +49,6 @@ print (artists_most_weeks)
 
 # Which single tracks have lasted longest at number 1?
 track_subset <- subset(all_tracks, select = c(1, 2, 16, 18))
-View(track_subset)
 tracks_longest_at_one <- group_by(track_subset, weeks_at_1) %>% arrange(desc(weeks_at_1))
 ten_tracks_longest_at_one <- head(tracks_longest_at_one, 10)
 print(ten_tracks_longest_at_one)
@@ -94,7 +80,6 @@ print(ten_most_reentered_tracks)
 
 # How many songs re-entered number 1?
 number_of_reentries <- nrow(track_subset_reentry)
-View(track_subset_reentry)
 print(number_of_reentries)
 # 56
 
@@ -102,11 +87,10 @@ elvis_reentry <- subset(track_subset_reentry, artist=="ELVIS PRESLEY")
 print(elvis_reentry)
 
 ### Audio features
-audio_features <- subset(all_tracks, select = c(1, 2, 4:18))
+audio_features <- subset(all_tracks, select = c(1, 2, 4:18, 21))
 
 ## group by decade, find average audio feature for each decade
 decade_averages_subset <- subset(all_tracks, select = c(4:15, 16:20))
-View(decade_averages_subset)
 decade_averages <- aggregate(decade_averages_subset, by=list(all_tracks$decade), FUN=mean, na.rm=TRUE) #mean for each decade
 print(decade_averages)
 
@@ -128,9 +112,6 @@ acoustic_ten <- subset(acoustic_ten, select = c(1,2,9,16))
 acoustic_ten <- head(acoustic_ten, 10)
 print (acoustic_ten)
 
-ggplot(acoustic_ten, aes(date)) + 
-  geom_point(aes(y = acousticness, colour = "acousticness"))
-
 # least acoustic
 acoustic_ten_least <- arrange(all_tracks, acousticness)
 acoustic_ten_least <- subset(acoustic_ten_least, select = c(1,2,9,16))
@@ -143,9 +124,6 @@ danceable_ten <- subset(danceable_ten, select = c(1,2,4,16))
 danceable_ten <- head(danceable_ten, 10)
 print (danceable_ten)
 
-ggplot(danceable_ten, aes(date)) + 
-  geom_point(aes(y = danceability, colour = "danceability"))
-
 # least danceable
 danceable_ten_least <- arrange(all_tracks, danceability)
 danceable_ten_least <- subset(danceable_ten_least, select = c(1,2,4,16))
@@ -157,9 +135,6 @@ valence_ten <- arrange(all_tracks, desc(valence))
 valence_ten <- subset(valence_ten, select = c(1,2,12,16))
 valence_ten <- head(valence_ten, 10)
 print (valence_ten)
-
-ggplot(danceable_ten, aes(date)) + 
-  geom_point(aes(y = danceability, colour = "valence"))
 
 # least valence
 valence_ten_least <- arrange(all_tracks, valence)
@@ -180,13 +155,7 @@ duration_ten_most <- head(duration_ten_most, 10)
 print (duration_ten_most)
 
 # attributes by year
-View(audio_features)
-audio_features$date <- dmy(audio_features$date) #format date as a date type using lubridate library
-audio_features$year <- year(audio_features$date)
-View(audio_features)
-ncol(audio_features)
 data_for_averages_by_year <-  subset(audio_features, select = c(3:14, 16:18))
-View(data_for_averages_by_year)
 averages_by_year <- aggregate(data_for_averages_by_year, by=list(data_for_averages_by_year$year), FUN=mean, na.rm=TRUE) #mean for each year
 print(averages_by_year)
 
@@ -198,6 +167,9 @@ ggplot(averages_by_year, aes(Group.1)) +
 
 valence_by_year <- ggplot(averages_by_year, aes(x = Group.1, y = valence)) + geom_line(aes(), group = 1) + geom_smooth(method='lm',formula=y~x) + scale_x_discrete(breaks=seq(1950, 2200, 5))
 valence_by_year
+valence_year_most <- arrange(averages_by_year, desc(valence))
+valence_year_most <- head(valence_year_most, 10)
+print (valence_year_most)
 valence_year_least <- arrange(averages_by_year, valence)
 valence_year_least <- head(valence_year_least, 10)
 print (valence_year_least)
@@ -224,6 +196,9 @@ danceability_by_year
 danceability_year_most <- arrange(averages_by_year, desc(danceability))
 danceability_year_most <- head(danceability_year_most, 10)
 print (danceability_year_most)
+danceability_year_least <- arrange(averages_by_year, danceability)
+danceability_year_least <- head(danceability_year_least, 10)
+print (danceability_year_least)
 
 acousticness_by_year <- ggplot(averages_by_year, aes(x = Group.1, y = acousticness)) + geom_line(aes(), group = 1) + geom_smooth(method='lm',formula=y~x) + scale_x_discrete(breaks=seq(1950, 2200, 5))
 acousticness_by_year
@@ -234,10 +209,12 @@ print (acousticness_year_most)
 
 #2015 acousticness spiked, what songs caused this?
 all_tracks$date <- dmy(all_tracks$date) #format date as a date type using lubridate library
-print(all_tracks$date)
 all_tracks$year <- year(all_tracks$date)
 songs_2015 <- subset(all_tracks, year==2015)
-View (songs_2015)
+songs_2015_acoustic <- arrange(songs_2015, desc(acousticness))
+songs_2015_acoustic <- head(songs_2015_acoustic, 10)
+songs_2015_acoustic <-  subset(songs_2015_acoustic, select = c(1:2, 9))
+print(songs_2015_acoustic)
 
 energy_by_year <- ggplot(averages_by_year, aes(x = Group.1, y = energy)) + geom_line(aes(), group = 1) + geom_smooth(method='lm',formula=y~x) + scale_x_discrete(breaks=seq(1950, 2200, 5))
 energy_by_year
@@ -298,39 +275,7 @@ loudest_ten <- subset(loudest_ten, select = c(1,2,7,16))
 loudest_ten <- head(loudest_ten, 10)
 print (loudest_ten)
 
-
-# attributes by artist - how diverse are an artists number 1 songs? 
-## this is unfinished - very problematic with variation of artist spellings and issues with loops -> needs further investigation, may not be relevant enough
-artists_with_8_or_more_number_ones <- subset(unique_artists, track_count >= 8, select = c(1))
-print(artists_with_8_or_more_number_ones)
-songs_by_artists_with_8_plus <- merge(artists_with_8_or_more_number_ones,all_tracks,by='artist')
-print (songs_by_artists_with_8_plus)
-
-# This doesn't work
-# artist_ranges <- list()
-# 
-# findRanges <- function(dataset, current_artist) {
-#   print(current_artist)
-#   typeOf(current_artist)
-#   artist_songs <- filter(dataset, artist == current_artist)
-#   print(artist_songs)
-#   valenceRange <- max(artist_songs$valence) - min(artist_songs$valence)
-#   danceabilityRange <- max(artist_songs$danceability) - min(artist_songs$danceability)
-#   energyRange <- max(artist_songs$energy) - min(artist_songs$energy)
-#   acousticnessRange <- max(artist_songs$acousticness) - min(artist_songs$acousticness)
-#   dat <- data.frame(current_artist, valenceRange, danceabilityRange, energyRange, acousticnessRange)
-#   print(dat)
-#   dat$artist <- current_artist
-#   artist_ranges[[current_artist]] <- dat
-# }
-# 
-# for(i in 1:nrow(artists_with_8_or_more_number_ones)){
-#   #row <- artists_with_8_or_more_number_ones[i,]
-#   artist <- get("artist")
-#   #print(row)
-#   print(artist)
-#   findRanges(songs_by_artists_with_8_plus, artist)
-# }
-# 
-# print (artist_ranges)
-# 
+#attributes by artist
+data_for_averages_by_artist <-  subset(audio_features, select = c(1:14, 16:18))
+averages_by_artist <- aggregate(data_for_averages_by_artist, by=list(data_for_averages_by_artist$artist), FUN=mean, na.rm=TRUE) #mean for each year
+print(averages_by_artist)
