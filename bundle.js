@@ -58,14 +58,14 @@
 
 	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
-	var dataset = "http://gsx2json.com/api?id=1KfV5BohkeZMAjMWHBua23O02rP6EGCMDNUgySNuMhQo&integers=FALSE";
+	var dataset = "source/assets/data/fixed_data_for_analysis.json";
 	_jquery2.default.getJSON(dataset).done(function (dataset) {
 	  start(dataset);
 	});
 
 	function start(dataset) {
 	  var eminemData = [];
-	  dataset.rows.forEach(function (track) {
+	  dataset.forEach(function (track) {
 	    var artist = track.artist.toString();
 	    if (artist.includes("EMINEM")) {
 	      eminemData.push(track);

@@ -1,14 +1,14 @@
 import * as d3 from "d3";
 import $ from 'jquery';
 
-let dataset = "http://gsx2json.com/api?id=1KfV5BohkeZMAjMWHBua23O02rP6EGCMDNUgySNuMhQo&integers=FALSE"
+let dataset = "source/assets/data/fixed_data_for_analysis.json"
 $.getJSON(dataset).done(dataset=> {
     start(dataset);
 });
 
 function start(dataset) {
   let eminemData = [];
-  dataset.rows.forEach((track) => {
+  dataset.forEach((track) => {
     let artist = track.artist.toString();
     if (artist.includes("EMINEM")) {
       eminemData.push(track);
