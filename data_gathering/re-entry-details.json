@@ -177,12 +177,16 @@
     ]
   },
   "IT'S NOW OR NEVER": {
-    "total": 8,
+    "total": 9,
     "details": [
       {
         "date": "03/11/1960",
         "weeks": "8"
-      }
+    },
+    {
+      "date": "05/02/2005",
+      "weeks": "1"
+    }
     ]
   },
   "JOHNNY REMEMBER ME": {
