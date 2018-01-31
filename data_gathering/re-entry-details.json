@@ -1,0 +1,723 @@
+{
+  "I BELIEVE": {
+    "total": 18,
+    "details": [
+      {
+        "date": "24/04/1953",
+        "length": "9"
+      },
+      {
+        "date": "03/07/1953",
+        "length": "6"
+      },
+      {
+        "date": "21/08/1953",
+        "length": "3"
+      }
+    ]
+  },
+  "ANSWER ME": {
+    "total": 2,
+    "details": [
+      {
+        "date": "06/11/1953",
+        "length": "1"
+      },
+      {
+        "date": "13/11/1953",
+        "length": "8"
+      },
+      {
+        "date": "11/12/1953",
+        "length": "1"
+      }
+    ]
+  },
+  "I SEE THE MOON": {
+    "total": 6,
+    "details": [
+      {
+        "date": "12/03/1954",
+        "length": "5"
+      },
+      {
+        "date": "23/04/1954",
+        "length": "1"
+      }
+    ]
+  },
+  "SECRET LOVE": {
+    "total": 9,
+    "details": [
+      {
+        "date": "16/04/1954",
+        "length": "1"
+      },
+      {
+        "date": "08/05/1954",
+        "length": "8"
+      }
+    ]
+  },
+  "HOLD MY HAND": {
+    "total": 5,
+    "details": [
+      {
+        "date": "08/10/1954",
+        "length": "4"
+      },
+      {
+        "date": "19/11/1954",
+        "length": "1"
+      },
+      {
+        "date": "04/04/2015",
+        "length": "3"
+      }
+    ]
+  },
+  "FINGER OF SUSPICION": {
+    "total": 3,
+    "details": [
+      {
+        "date": "07/01/1955",
+        "length": "1"
+      },
+      {
+        "date": "21/01/1955",
+        "length": "2"
+      }
+    ]
+  },
+  "MAMBO ITALIANO": {
+    "total": 3,
+    "details": [
+      {
+        "date": "14/01/1955",
+        "length": "1"
+      },
+      {
+        "date": "04/02/1955",
+        "length": "2"
+      }
+    ]
+  },
+  "ROCK AROUND THE CLOCK": {
+    "total": 6,
+    "details": [
+      {
+        "date": "25/11/1955",
+        "length": "3"
+      },
+      {
+        "date": "06/01/1956",
+        "length": "3"
+      }
+    ]
+  },
+  "IT'S ALMOST TOMORROW": {
+    "total": 3,
+    "details": [
+      {
+        "date": "16/03/1956",
+        "length": "2"
+      },
+      {
+        "date": "06/04/1956",
+        "length": "1"
+      }
+    ]
+  },
+  "SINGING THE BLUES": {
+    "total": 3,
+    "details": [
+      {
+        "date": "04/01/1957",
+        "length": "1"
+      },
+      {
+        "date": "11/01/1957",
+        "length": "1"
+      },
+      {
+        "date": "18/01/1957",
+        "length": "1"
+      },
+      {
+        "date": "01/02/1957",
+        "length": "1"
+      }
+    ]
+  },
+  "JAILHOUSE ROCK": {
+    "total": 4,
+    "details": [
+      {
+        "date": "24/01/1958",
+        "length": "3"
+      },
+      {
+        "date": "15/01/2005",
+        "length": "1"
+      }
+    ]
+  },
+  "ONE NIGHT": {
+    "total": 4,
+    "details": []
+  },
+  "PLEASE DON'T TEASE": {
+    "total": 3,
+    "details": [
+      {
+        "date": "28/07/1960",
+        "length": "1"
+      },
+      {
+        "date": "11/08/1960",
+        "length": "2"
+      }
+    ]
+  },
+  "IT'S NOW OR NEVER": {
+    "total": 8,
+    "details": [
+      {
+        "date": "03/11/1960",
+        "length": "8"
+      }
+    ]
+  },
+  "JOHNNY REMEMBER ME": {
+    "total": 4,
+    "details": [
+      {
+        "date": "31/08/1961",
+        "length": "3"
+      },
+      {
+        "date": "28/09/1961",
+        "length": "1"
+      }
+    ]
+  },
+  "SUMMER HOLIDAY": {
+    "total": 3,
+    "details": [
+      {
+        "date": "14/03/1963",
+        "length": "2"
+      },
+      {
+        "date": "04/04/1963",
+        "length": "1"
+      }
+    ]
+  },
+  "SHE LOVES YOU": {
+    "total": 6,
+    "details": [
+      {
+        "date": "12/09/1963",
+        "length": "4"
+      },
+      {
+        "date": "28/11/1963",
+        "length": "2"
+      }
+    ]
+  },
+  "OH PRETTY WOMAN": {
+    "total": 3,
+    "details": [
+      {
+        "date": "08/10/1964",
+        "length": "2"
+      },
+      {
+        "date": "12/11/1964",
+        "length": "1"
+      }
+    ]
+  },
+  "CRYING IN THE CHAPEL": {
+    "total": 2,
+    "details": [
+      {
+        "date": "17/06/1965",
+        "length": "1"
+      },
+      {
+        "date": "01/07/1965",
+        "length": "1"
+      }
+    ]
+  },
+  "I'M ALIVE": {
+    "total": 3,
+    "details": [
+      {
+        "date": "24/06/1965",
+        "length": "1"
+      },
+      {
+        "date": "08/07/1965",
+        "length": "2"
+      }
+    ]
+  },
+  "MONY MONY": {
+    "total": 3,
+    "details": [
+      {
+        "date": "31/07/1968",
+        "length": "2"
+      },
+      {
+        "date": "21/08/1968",
+        "length": "1"
+      }
+    ]
+  },
+  "LILY THE PINK": {
+    "total": 4,
+    "details": [
+      {
+        "date": "11/12/1968",
+        "length": "3"
+      },
+      {
+        "date": "08/01/1969",
+        "length": "1"
+      }
+    ]
+  },
+  "OB-LA-DI OB-LA-DA": {
+    "total": 3,
+    "details": [
+      {
+        "date": "01/01/1969",
+        "length": "1"
+      },
+      {
+        "date": "15/01/1969",
+        "length": "2"
+      }
+    ]
+  },
+  "MY SWEET LORD": {
+    "total": 6,
+    "details": [
+      {
+        "date": "30/01/1971",
+        "length": "5"
+      },
+      {
+        "date": "26/01/2002",
+        "length": "1"
+      }
+    ]
+  },
+  "MR BLOBBY": {
+    "total": 3,
+    "details": [
+      {
+        "date": "11/12/1993",
+        "length": "1"
+      },
+      {
+        "date": "25/12/1993",
+        "length": "2"
+      }
+    ]
+  },
+  "THREE LIONS (THE OFFICIAL SONG OF THE ENGLAND FOOTBALL TEAM)": {
+    "total": 2,
+    "details": [
+      {
+        "date": "01/06/1996",
+        "length": "1"
+      },
+      {
+        "date": "06/07/1996",
+        "length": "1"
+      }
+    ]
+  },
+  "KILLING ME SOFTLY": {
+    "total": 5,
+    "details": [
+      {
+        "date": "08/06/1996",
+        "length": "4"
+      },
+      {
+        "date": "13/07/1996",
+        "length": "1"
+      }
+    ]
+  },
+  "I'LL BE MISSING YOU": {
+    "total": 6,
+    "details": [
+      {
+        "date": "28/06/1997",
+        "length": "3"
+      },
+      {
+        "date": "26/07/1997",
+        "length": "3"
+      }
+    ]
+  },
+  "PERFECT DAY": {
+    "total": 3,
+    "details": [
+      {
+        "date": "29/11/1997",
+        "length": "2"
+      },
+      {
+        "date": "10/01/1998",
+        "length": "1"
+      }
+    ]
+  },
+  "MY HEART WILL GO ON": {
+    "total": 2,
+    "details": [
+      {
+        "date": "21/02/1998",
+        "length": "1"
+      },
+      {
+        "date": "14/03/1998",
+        "length": "1"
+      }
+    ]
+  },
+  "UNDER THE BRIDGE/LADY MARMALADE": {
+    "total": 2,
+    "details": [
+      {
+        "date": "09/05/1998",
+        "length": "1"
+      },
+      {
+        "date": "23/05/1998",
+        "length": "1"
+      }
+    ]
+  },
+  "DON'T STOP MOVIN'": {
+    "total": 2,
+    "details": [
+      {
+        "date": "05/05/2001",
+        "length": "1"
+      },
+      {
+        "date": "26/05/2001",
+        "length": "1"
+      }
+    ]
+  },
+  "GOTTA GET THRU THIS": {
+    "total": 3,
+    "details": [
+      {
+        "date": "08/12/2001",
+        "length": "2"
+      },
+      {
+        "date": "12/01/2002",
+        "length": "1"
+      }
+    ]
+  },
+  "CALL ON ME": {
+    "total": 5,
+    "details": [
+      {
+        "date": "25/09/2004",
+        "length": "3"
+      },
+      {
+        "date": "23/10/2004",
+        "length": "2"
+      }
+    ]
+  },
+  "HIPS DON'T LIE": {
+    "total": 5,
+    "details": [
+      {
+        "date": "08/07/2006",
+        "length": "1"
+      },
+      {
+        "date": "05/08/2006",
+        "length": "4"
+      }
+    ]
+  },
+  "BOOM BOOM POW": {
+    "total": 2,
+    "details": [
+      {
+        "date": "23/05/2009",
+        "length": "1"
+      },
+      {
+        "date": "13/06/2009",
+        "length": "1"
+      }
+    ]
+  },
+  "I GOTTA FEELING": {
+    "total": 2,
+    "details": [
+      {
+        "date": "08/08/2009",
+        "length": "1"
+      },
+      {
+        "date": "22/08/2009",
+        "length": "1"
+      }
+    ]
+  },
+  "BAD ROMANCE": {
+    "total": 2,
+    "details": [
+      {
+        "date": "19/12/2009",
+        "length": "1"
+      },
+      {
+        "date": "09/01/2010",
+        "length": "1"
+      }
+    ]
+  },
+  "JUST THE WAY YOU ARE": {
+    "total": 2,
+    "details": []
+  },
+  "SOMEONE LIKE YOU": {
+    "total": 5,
+    "details": [
+      {
+        "date": "26/02/2011",
+        "length": "4"
+      },
+      {
+        "date": "02/04/2011",
+        "length": "1"
+      }
+    ]
+  },
+  "WE FOUND LOVE": {
+    "total": 6,
+    "details": [
+      {
+        "date": "15/10/2011",
+        "length": "3"
+      },
+      {
+        "date": "19/11/2011",
+        "length": "3"
+      }
+    ]
+  },
+  "SOMEBODY THAT I USED TO KNOW": {
+    "total": 5,
+    "details": [
+      {
+        "date": "18/02/2012",
+        "length": "1"
+      },
+      {
+        "date": "03/03/2012",
+        "length": "4"
+      }
+    ]
+  },
+  "PAYPHONE": {
+    "total": 3,
+    "details": [
+      {
+        "date": "30/06/2012",
+        "length": "1"
+      },
+      {
+        "date": "14/07/2012",
+        "length": "2"
+      }
+    ]
+  },
+  "IMPOSSIBLE": {
+    "total": 4,
+    "details": [
+      {
+        "date": "15/12/2012",
+        "length": "1"
+      },
+      {
+        "date": "29/12/2012",
+        "length": "3"
+      }
+    ]
+  },
+  "BLURRED LINES": {
+    "total": 5,
+    "details": [
+      {
+        "date": "08/06/2013",
+        "length": "4"
+      },
+      {
+        "date": "20/07/2013",
+        "length": "1"
+      }
+    ]
+  },
+  "COUNTING STARS": {
+    "total": 2,
+    "details": [
+      {
+        "date": "12/10/2013",
+        "length": "1"
+      },
+      {
+        "date": "26/10/2013",
+        "length": "1"
+      }
+    ]
+  },
+  "SOMEWHERE ONLY WE KNOW": {
+    "total": 3,
+    "details": [
+      {
+        "date": "30/11/2013",
+        "length": "1"
+      },
+      {
+        "date": "14/12/2013",
+        "length": "2"
+      }
+    ]
+  },
+  "HAPPY": {
+    "total": 4,
+    "details": [
+      {
+        "date": "04/01/2014",
+        "length": "1"
+      },
+      {
+        "date": "18/01/2014",
+        "length": "2"
+      },
+      {
+        "date": "08/03/2014",
+        "length": "1"
+      }
+    ]
+  },
+  "WAVES": {
+    "total": 2,
+    "details": [
+      {
+        "date": "03/05/2014",
+        "length": "1"
+      },
+      {
+        "date": "17/05/2014",
+        "length": "1"
+      }
+    ]
+  },
+  "THINKING OUT LOUD": {
+    "total": 2,
+    "details": [
+      {
+        "date": "08/11/2014",
+        "length": "1"
+      },
+      {
+        "date": "13/12/2014",
+        "length": "1"
+      }
+    ]
+  },
+  "UPTOWN FUNK": {
+    "total": 7,
+    "details": [
+      {
+        "date": "20/12/2014",
+        "length": "1"
+      },
+      {
+        "date": "03/01/2015",
+        "length": "6"
+      }
+    ]
+  },
+  "WHAT DO YOU MEAN?": {
+    "total": 3,
+    "details": [
+      {
+        "date": "10/09/2015",
+        "length": "1"
+      },
+      {
+        "date": "24/09/2015",
+        "length": "2"
+      }
+    ]
+  },
+  "LOVE YOURSELF": {
+    "total": 6,
+    "details": [
+      {
+        "date": "10/12/2015",
+        "length": "3"
+      },
+      {
+        "date": "07/01/2016",
+        "length": "3"
+      }
+    ]
+  },
+  "SHAPE OF YOU": {
+    "total": 14,
+    "details": [
+      {
+        "date": "19/01/2017",
+        "length": "13"
+      },
+      {
+        "date": "27/04/2014",
+        "length": "1"
+      }
+    ]
+  },
+  "DESPACITO": {
+    "total": 12,
+    "details": [
+      {
+        "date": "18/05/2017",
+        "length": "6"
+      },
+      {
+        "date": "06/07/2017",
+        "length": "3"
+      },
+      {
+        "date": "03/08/2017",
+        "length": "2"
+      }
+    ]
+  }
+}
