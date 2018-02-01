@@ -89,6 +89,12 @@ print(elvis_reentry)
 ### Audio features
 audio_features <- subset(all_tracks, select = c(1, 2, 4:18, 21))
 
+# overall avergaes
+averages_subset <- subset(all_tracks, select = c(4:15,18, 20))
+audio_averages<- sapply(averages_subset, mean, na.rm = T)
+options("scipen"=100, "digits"=4) #converts exponentials to decimals
+print(audio_averages)
+
 ## group by decade, find average audio feature for each decade
 decade_averages_subset <- subset(all_tracks, select = c(4:15, 16:20))
 decade_averages <- aggregate(decade_averages_subset, by=list(all_tracks$decade), FUN=mean, na.rm=TRUE) #mean for each decade
@@ -142,6 +148,18 @@ valence_ten_least <- subset(valence_ten_least, select = c(1,2,12,16))
 valence_ten_least <- head(valence_ten_least, 10)
 print (valence_ten_least)
 
+# most energy songs
+energy_ten <- arrange(all_tracks, desc(energy))
+energy_ten <- subset(energy_ten, select = c(1,2,5,16))
+energy_ten <- head(energy_ten, 10)
+print (energy_ten)
+
+# least energy
+energy_ten_least <- arrange(all_tracks, energy)
+energy_ten_least <- subset(energy_ten_least, select = c(1,2,5,16))
+energy_ten_least <- head(energy_ten_least, 10)
+print (energy_ten_least)
+
 # shortest songs
 duration_ten_least <- arrange(all_tracks, duration_ms)
 duration_ten_least <- subset(duration_ten_least, select = c(1,2,14,16))
@@ -165,7 +183,7 @@ ggplot(averages_by_year, aes(Group.1)) +
   geom_line(aes(y = energy, colour = "energy")) + 
   geom_line(aes(y = danceability, colour = "danceability"))
 
-valence_by_year <- ggplot(averages_by_year, aes(x = Group.1, y = valence)) + geom_line(aes(colour = "valence"), group = 1) + scale_x_discrete(breaks=seq(1950, 2200, 5))
+valence_by_year <- ggplot(averages_by_year, aes(x = Group.1, y = valence)) + geom_line(aes(colour = "valence"), group = 1) + scale_x_continuous(breaks=seq(1950, 2200, 5))
 valence_by_year
 valence_year_most <- arrange(averages_by_year, desc(valence))
 valence_year_most <- head(valence_year_most, 10)
@@ -176,10 +194,7 @@ print (valence_year_least)
 
 #1996 valence was lowest since '54, what songs caused this?
 # last year of conservative power, dunblane massacre, take that split, charles di divorce, ira active
-all_tracks_with_year <- all_tracks
-all_tracks_with_year$date <- dmy(all_tracks_with_year$date) #format date as a date type using lubridate library
-all_tracks_with_year$year <- year(all_tracks_with_year$date)
-songs_1996 <- subset(all_tracks_with_year, year==1996)
+songs_1996 <- subset(all_tracks, year==1996)
 valence_1996_least <- arrange(songs_1996, valence)
 valence_1996_least <- head(valence_1996_least, 10)
 valence_1996_least <-  subset(valence_1996_least, select = c(1:2, 12))
@@ -190,8 +205,17 @@ valence_1996_most <- head(valence_1996_most, 10)
 valence_1996_most <-  subset(valence_1996_most, select = c(1:2, 12))
 print (valence_1996_most)
 
+# valence peaked in 1963
+songs_1963 <- subset(all_tracks, year==1963)
+valence_1963 <- arrange(songs_1963, desc(valence))
+valence_1963 <- head(valence_1963, 10)
+valence_1963 <-  subset(valence_1963, select = c(1:2, 12))
+print (valence_1963)
 
-danceability_by_year <- ggplot(averages_by_year, aes(x = Group.1, y = danceability)) + geom_line(aes(colour="danceability"), group = 1) + scale_x_discrete(breaks=seq(1950, 2200, 5))
+valence_summary <- lm(year ~ valence, data = all_tracks)
+summary(valence_summary)
+
+danceability_by_year <- ggplot(averages_by_year, aes(x = Group.1, y = danceability)) + geom_line(aes(colour="danceability"), group = 1) + scale_x_continuous(breaks=seq(1950, 2200, 5))
 danceability_by_year
 danceability_year_most <- arrange(averages_by_year, desc(danceability))
 danceability_year_most <- head(danceability_year_most, 10)
@@ -199,13 +223,26 @@ print (danceability_year_most)
 danceability_year_least <- arrange(averages_by_year, danceability)
 danceability_year_least <- head(danceability_year_least, 10)
 print (danceability_year_least)
+songs_1983 <- subset(all_tracks, year==1983)
+danceability_1983 <- arrange(songs_1983, desc(danceability))
+danceability_1983 <- head(danceability_1983, 10)
+danceability_1983 <-  subset(danceability_1983, select = c(1:2, 4))
+print (danceability_1983)
+songs_1969 <- subset(all_tracks, year==1969)
+danceability_1969 <- arrange(songs_1969, danceability)
+danceability_1969 <- head(danceability_1969, 10)
+danceability_1969 <-  subset(danceability_1969, select = c(1:2, 4))
+print (danceability_1969)
 
 acousticness_by_year <- ggplot(averages_by_year, aes(x = Group.1, y = acousticness)) + geom_line(aes(colour="acousticness"), group = 1) + scale_x_discrete(breaks=seq(1950, 2200, 5))
 acousticness_by_year
 acousticness_year_most <- arrange(averages_by_year, desc(acousticness))
-View (acousticness_year_most)
 acousticness_year_most <- head(acousticness_year_most, 10)
 print (acousticness_year_most)
+acousticness_year_least <- arrange(averages_by_year, acousticness)
+acousticness_year_least <- head(acousticness_year_least, 10)
+print (acousticness_year_least)
+
 
 #2015 acousticness spiked, what songs caused this?
 all_tracks$date <- dmy(all_tracks$date) #format date as a date type using lubridate library
@@ -215,6 +252,11 @@ songs_2015_acoustic <- arrange(songs_2015, desc(acousticness))
 songs_2015_acoustic <- head(songs_2015_acoustic, 10)
 songs_2015_acoustic <-  subset(songs_2015_acoustic, select = c(1:2, 9))
 print(songs_2015_acoustic)
+songs_2009 <- subset(all_tracks, year==2009)
+songs_2009_acoustic <- arrange(songs_2009, acousticness)
+songs_2009_acoustic <- head(songs_2009_acoustic, 10)
+songs_2009_acoustic <-  subset(songs_2009_acoustic, select = c(1:2, 9))
+print(songs_2009_acoustic)
 
 energy_by_year <- ggplot(averages_by_year, aes(x = Group.1, y = energy)) + geom_line(aes(colour="energy"), group = 1) + scale_x_discrete(breaks=seq(1950, 2200, 5))
 energy_by_year
@@ -246,7 +288,12 @@ tempo_year_most <- arrange(averages_by_year, desc(tempo))
 tempo_year_most <- head(tempo_year_most, 10)
 print (tempo_year_most)
 
-# duration
+
+# graph duration by decade
+ggplot(decade_averages, aes(Group.1)) + 
+  geom_line(aes(y = duration_ms, colour = "duration"))
+
+# duration by year
 duration_by_year <- ggplot(averages_by_year, aes(x = Group.1, y = duration_ms)) + geom_line(aes(colour="duration"), group = 1) +scale_x_continuous(breaks=seq(1950, 2200, 5))
 duration_by_year
 duration_year_most <- arrange(averages_by_year, desc(duration_ms))
@@ -258,6 +305,8 @@ loudness_over_time <- ggplot(all_tracks, aes(x = all_tracks$date, y = loudness))
 loudness_over_time
 ## shows a positive trend on songs getting louder over time, starting to drop in recent years?
 ## dates on x axis are incorrect?
+
+
 
 # graph loudness by decade
 ggplot(decade_averages, aes(Group.1)) + 

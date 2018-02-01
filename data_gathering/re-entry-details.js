@@ -1,12 +1,11 @@
 var writeJson = require('write-json');
 var data = require('../data_gathering/redo-data-gathering/chart_data.json');
 var chart_data = require('./updated_charts.json');
+var entries = require('./re-entry-details.json');
 var outputFile = './re-entries.json';
 var reentryFile = './re-entry-details.json';
 let output = {};
-
 let reentries = {};
-
 // data.forEach((track) => {
 //   if (track.consecutive === "FALSE") {
 //     reentries[track.title] = {};
@@ -27,17 +26,27 @@ let reentries = {};
 //   }
 // })
 
-const entries = require('./re-entry-details.json');
-entries.forEach((track)=>{
-  let sum;
-  let entries = track.details;
-  entries.forEach((entry)=>{
-    sum = sum + entry.length;
-  })
-  if (track.count !== sum) {
-    console.log(track.title);
-  }
-})
+// entries.forEach((track)=>{
+//   let sum;
+//   let entries = track.details;
+//   entries.forEach((entry)=>{
+//     sum = sum + entry.length;
+//   })
+//   if (track.count !== sum) {
+//     console.log(track.title);
+//   }
+// })
+
+for (var track in entries) {
+    let sum = 0;
+    let song = entries[track].details;
+    for (var i = 0; i < song.length; i++) {
+        sum = sum + parseInt(song[i].weeks);
+    }
+    if (entries[track].total !== sum) {
+        console.log(track);
+    }
+}
 
 //
 // reentries.forEach((reentry) => {
@@ -88,13 +97,13 @@ entries.forEach((track)=>{
 //   }))
 // })
 //
-writeJson(reentryFile, reentries, function(err) {
-  if (err) {
-    console.log('error :(  : ', err);
-  } else {
-    console.log('done! :)');
-  }
-})
+// writeJson(reentryFile, reentries, function(err) {
+//   if (err) {
+//     console.log('error :(  : ', err);
+//   } else {
+//     console.log('done! :)');
+//   }
+// })
 
 
 // re-entry check:
