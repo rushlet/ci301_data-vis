@@ -110,11 +110,6 @@
     "count": 3
   },
   {
-    "artist": "AKON EMINEM",
-    "total_weeks": 1,
-    "count": 1
-  },
-  {
     "artist": "AL MARTINO",
     "total_weeks": 9,
     "count": 1
@@ -456,8 +451,8 @@
   },
   {
     "artist": "BILLIE",
-    "total_weeks": 3,
-    "count": 3
+    "total_weeks": 2,
+    "count": 2
   },
   {
     "artist": "BILLIE PIPER",
@@ -521,8 +516,8 @@
   },
   {
     "artist": "BLUE",
-    "total_weeks": 7,
-    "count": 6
+    "total_weeks": 3,
+    "count": 3
   },
   {
     "artist": "BLUEBELLS",
@@ -771,8 +766,8 @@
   },
   {
     "artist": "CHER",
-    "total_weeks": 16,
-    "count": 5
+    "total_weeks": 15,
+    "count": 4
   },
   {
     "artist": "CHER LLOYD",
@@ -783,11 +778,6 @@
     "artist": "CHERYL",
     "total_weeks": 6,
     "count": 5
-  },
-  {
-    "artist": "CHERYL COLE",
-    "total_weeks": 4,
-    "count": 3
   },
   {
     "artist": "CHESNEY HAWKES",
@@ -1586,8 +1576,8 @@
   },
   {
     "artist": "FIVE",
-    "total_weeks": 6,
-    "count": 4
+    "total_weeks": 4,
+    "count": 3
   },
   {
     "artist": "FLEETWOOD MAC",
@@ -3041,8 +3031,8 @@
   },
   {
     "artist": "NELLY",
-    "total_weeks": 10,
-    "count": 6
+    "total_weeks": 6,
+    "count": 4
   },
   {
     "artist": "NELLY FURTADO",
@@ -3106,8 +3096,8 @@
   },
   {
     "artist": "NICOLE",
-    "total_weeks": 6,
-    "count": 3
+    "total_weeks": 2,
+    "count": 1
   },
   {
     "artist": "NICOLE KIDMAN",
@@ -3178,11 +3168,6 @@
     "artist": "OLLY MURS",
     "total_weeks": 5,
     "count": 4
-  },
-  {
-    "artist": "OLLY MURS FLO RIDA",
-    "total_weeks": 2,
-    "count": 1
   },
   {
     "artist": "OLIVER CHEATHAM",
@@ -3441,8 +3426,8 @@
   },
   {
     "artist": "PUSSYCAT",
-    "total_weeks": 9,
-    "count": 3
+    "total_weeks": 4,
+    "count": 1
   },
   {
     "artist": "PUSSYCAT DOLLS",
@@ -3456,8 +3441,8 @@
   },
   {
     "artist": "QUEEN",
-    "total_weeks": 22,
-    "count": 6
+    "total_weeks": 21,
+    "count": 5
   },
   {
     "artist": "R KELLY",
@@ -4131,8 +4116,8 @@
   },
   {
     "artist": "SWEET",
-    "total_weeks": 6,
-    "count": 2
+    "total_weeks": 5,
+    "count": 1
   },
   {
     "artist": "SWEET SENSATION",
