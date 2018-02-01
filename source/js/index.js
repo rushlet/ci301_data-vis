@@ -7,7 +7,6 @@ import SpotifyAuth from './spotify_auth.js'
 // console.log(SpotifyAuth);
 // var auth = SpotifyAuth();
 
-
 let dataset = "source/assets/data/fixed_data_for_analysis.json"
 $.getJSON(dataset).done(dataset=> {
     start(dataset);
