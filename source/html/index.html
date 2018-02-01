@@ -1,44 +1,23 @@
 <DOCTYPE html>
 <html>
 	<head>
-		<title></title>
-        <link href="https://fonts.googleapis.com/css?family=Crimson+Text|Open+Sans:400,700" rel="stylesheet">
-        <link rel="stylesheet" href="./main.css">
+		<title>A Visual Analysis of UK Number 1s</title>
+		<meta charset="utf-8"/>
+		<meta name="description" content="A data visualisation project investigating data associated with UK Number 1 songs. A final year university project focusing on web design and development."/>
+		<meta name="author" content="Becky Rush" />
+		<meta name="copyright" content="Copyright of Becky Rush (2018)" />
+    <link href="https://fonts.googleapis.com/css?family=Crimson+Text|Open+Sans:400,700" rel="stylesheet">
+    <link rel="stylesheet" href="./main.css">
+		<script src="./bundle.js"></script>
 	</head>
 	<body>
-       <div class="container">
-         <h1>Testing hosting a page on github.pages.io</h1>
-				 <div class="graph"></div>
-<<<<<<< HEAD
-				 <!--currently code copied from http://jsfiddle.net/JMPerez/62wafrm7/ to test-->
-				 <div class="container">
-				    <h1>Displaying User Data</h1>
-				    <p>Log in with your Spotify account and this demo will display information about you fetched using the Spotify Web API</p>
-				    <button class="btn btn-primary" id="btn-login">Login</button>
-				    <div id="result"></div>
-				</div>
-				<script id="result-template" type="text/x-handlebars-template">
-				    <dl>
-				      <img src="{{images.0.url}}">
-				      <dt>User Name</dt>
-				      <dd>{{id}}</dd>
-				      <dt>Display Name</dt>
-				      <dd>{{display_name}}</dd>
-				      <dt>Country</dt>
-				      <dd>{{country}}</dd>
-				      <dt>Followers</dt>
-				      <dd>{{followers.total}}</dd>
-				      <dt>Profile</dt>
-				      <dd><a href="{{external_urls.spotify}}" target="_blank">{{external_urls.spotify}}</a></dd>
-				      <dt>Email</dt>
-				      <dd>{{email}}</dd>
-				      <dt>Product</dt>
-				      <dd>{{product}}</dd>
-				    </dl>
-				</script>
-=======
->>>>>>> master
+		<script id="entry-template" type="text/x-handlebars-template">
+     <div class="wrapper">
+			 <div class="intro">
+				 <h1>A Visual Analysis of UK Number 1s</h1>
+				 {{intro}}
 			 </div>
-		<script src="./bundle.js"></script>
+		 </div>
+		 </script>
 	</body>
 </html>
