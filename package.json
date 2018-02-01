@@ -30,6 +30,7 @@
     "webpack": "^2.4.1"
   },
   "dependencies": {
+    "chai": "^4.1.2",
     "d3": "^4.11.0",
     "d3-fetch": "^0.0.2",
     "d3-request": "^1.0.5",
@@ -38,5 +39,8 @@
     "jquery": "^3.2.1",
     "spotify-web-api-node": "^2.5.0",
     "write-json": "^2.0.0"
+  },
+  "scripts": {
+    "cucumber": "./node_modules/.bin/cucumber-js test/features/uk_number_1s.feature -r test/features/support/step_definitions.js"
   }
 }
