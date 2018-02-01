@@ -182,10 +182,7 @@ print (valence_year_least)
 
 #1996 valence was lowest since '54, what songs caused this?
 # last year of conservative power, dunblane massacre, take that split, charles di divorce, ira active
-all_tracks_with_year <- all_tracks
-all_tracks_with_year$date <- dmy(all_tracks_with_year$date) #format date as a date type using lubridate library
-all_tracks_with_year$year <- year(all_tracks_with_year$date)
-songs_1996 <- subset(all_tracks_with_year, year==1996)
+songs_1996 <- subset(all_tracks, year==1996)
 valence_1996_least <- arrange(songs_1996, valence)
 valence_1996_least <- head(valence_1996_least, 10)
 valence_1996_least <-  subset(valence_1996_least, select = c(1:2, 12))
@@ -196,6 +193,15 @@ valence_1996_most <- head(valence_1996_most, 10)
 valence_1996_most <-  subset(valence_1996_most, select = c(1:2, 12))
 print (valence_1996_most)
 
+# valence peaked in 1963
+songs_1963 <- subset(all_tracks, year==1963)
+valence_1963 <- arrange(songs_1963, desc(valence))
+valence_1963 <- head(valence_1963, 10)
+valence_1963 <-  subset(valence_1963, select = c(1:2, 12))
+print (valence_1963)
+
+valence_summary <- lm(year ~ valence, data = all_tracks)
+summary(valence_summary)
 
 danceability_by_year <- ggplot(averages_by_year, aes(x = Group.1, y = danceability)) + geom_line(aes(colour="danceability"), group = 1) + scale_x_continuous(breaks=seq(1950, 2200, 5))
 danceability_by_year
@@ -205,6 +211,16 @@ print (danceability_year_most)
 danceability_year_least <- arrange(averages_by_year, danceability)
 danceability_year_least <- head(danceability_year_least, 10)
 print (danceability_year_least)
+songs_1983 <- subset(all_tracks, year==1983)
+danceability_1983 <- arrange(songs_1983, desc(danceability))
+danceability_1983 <- head(danceability_1983, 10)
+danceability_1983 <-  subset(danceability_1983, select = c(1:2, 4))
+print (danceability_1983)
+songs_1969 <- subset(all_tracks, year==1969)
+danceability_1969 <- arrange(songs_1969, danceability)
+danceability_1969 <- head(danceability_1969, 10)
+danceability_1969 <-  subset(danceability_1969, select = c(1:2, 4))
+print (danceability_1969)
 
 acousticness_by_year <- ggplot(averages_by_year, aes(x = Group.1, y = acousticness)) + geom_line(aes(colour="acousticness"), group = 1) + scale_x_discrete(breaks=seq(1950, 2200, 5))
 acousticness_by_year
