@@ -89,6 +89,12 @@ print(elvis_reentry)
 ### Audio features
 audio_features <- subset(all_tracks, select = c(1, 2, 4:18, 21))
 
+# overall avergaes
+averages_subset <- subset(all_tracks, select = c(4:15,18, 20))
+audio_averages<- sapply(averages_subset, mean, na.rm = T)
+options("scipen"=100, "digits"=4) #converts exponentials to decimals
+print(audio_averages)
+
 ## group by decade, find average audio feature for each decade
 decade_averages_subset <- subset(all_tracks, select = c(4:15, 16:20))
 decade_averages <- aggregate(decade_averages_subset, by=list(all_tracks$decade), FUN=mean, na.rm=TRUE) #mean for each decade
@@ -165,7 +171,7 @@ ggplot(averages_by_year, aes(Group.1)) +
   geom_line(aes(y = energy, colour = "energy")) + 
   geom_line(aes(y = danceability, colour = "danceability"))
 
-valence_by_year <- ggplot(averages_by_year, aes(x = Group.1, y = valence)) + geom_line(aes(colour = "valence"), group = 1) + scale_x_discrete(breaks=seq(1950, 2200, 5))
+valence_by_year <- ggplot(averages_by_year, aes(x = Group.1, y = valence)) + geom_line(aes(colour = "valence"), group = 1) + scale_x_continuous(breaks=seq(1950, 2200, 5))
 valence_by_year
 valence_year_most <- arrange(averages_by_year, desc(valence))
 valence_year_most <- head(valence_year_most, 10)
@@ -191,7 +197,7 @@ valence_1996_most <-  subset(valence_1996_most, select = c(1:2, 12))
 print (valence_1996_most)
 
 
-danceability_by_year <- ggplot(averages_by_year, aes(x = Group.1, y = danceability)) + geom_line(aes(colour="danceability"), group = 1) + scale_x_discrete(breaks=seq(1950, 2200, 5))
+danceability_by_year <- ggplot(averages_by_year, aes(x = Group.1, y = danceability)) + geom_line(aes(colour="danceability"), group = 1) + scale_x_continuous(breaks=seq(1950, 2200, 5))
 danceability_by_year
 danceability_year_most <- arrange(averages_by_year, desc(danceability))
 danceability_year_most <- head(danceability_year_most, 10)
@@ -203,9 +209,11 @@ print (danceability_year_least)
 acousticness_by_year <- ggplot(averages_by_year, aes(x = Group.1, y = acousticness)) + geom_line(aes(colour="acousticness"), group = 1) + scale_x_discrete(breaks=seq(1950, 2200, 5))
 acousticness_by_year
 acousticness_year_most <- arrange(averages_by_year, desc(acousticness))
-View (acousticness_year_most)
 acousticness_year_most <- head(acousticness_year_most, 10)
 print (acousticness_year_most)
+acousticness_year_least <- arrange(averages_by_year, acousticness)
+acousticness_year_least <- head(acousticness_year_least, 10)
+print (acousticness_year_least)
 
 #2015 acousticness spiked, what songs caused this?
 all_tracks$date <- dmy(all_tracks$date) #format date as a date type using lubridate library
@@ -215,6 +223,11 @@ songs_2015_acoustic <- arrange(songs_2015, desc(acousticness))
 songs_2015_acoustic <- head(songs_2015_acoustic, 10)
 songs_2015_acoustic <-  subset(songs_2015_acoustic, select = c(1:2, 9))
 print(songs_2015_acoustic)
+songs_2009 <- subset(all_tracks, year==2009)
+songs_2009_acoustic <- arrange(songs_2009, acousticness)
+songs_2009_acoustic <- head(songs_2009_acoustic, 10)
+songs_2009_acoustic <-  subset(songs_2009_acoustic, select = c(1:2, 9))
+print(songs_2009_acoustic)
 
 energy_by_year <- ggplot(averages_by_year, aes(x = Group.1, y = energy)) + geom_line(aes(colour="energy"), group = 1) + scale_x_discrete(breaks=seq(1950, 2200, 5))
 energy_by_year
@@ -246,7 +259,12 @@ tempo_year_most <- arrange(averages_by_year, desc(tempo))
 tempo_year_most <- head(tempo_year_most, 10)
 print (tempo_year_most)
 
-# duration
+
+# graph duration by decade
+ggplot(decade_averages, aes(Group.1)) + 
+  geom_line(aes(y = duration_ms, colour = "duration"))
+
+# duration by year
 duration_by_year <- ggplot(averages_by_year, aes(x = Group.1, y = duration_ms)) + geom_line(aes(colour="duration"), group = 1) +scale_x_continuous(breaks=seq(1950, 2200, 5))
 duration_by_year
 duration_year_most <- arrange(averages_by_year, desc(duration_ms))
@@ -258,6 +276,8 @@ loudness_over_time <- ggplot(all_tracks, aes(x = all_tracks$date, y = loudness))
 loudness_over_time
 ## shows a positive trend on songs getting louder over time, starting to drop in recent years?
 ## dates on x axis are incorrect?
+
+
 
 # graph loudness by decade
 ggplot(decade_averages, aes(Group.1)) + 
