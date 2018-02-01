@@ -148,6 +148,18 @@ valence_ten_least <- subset(valence_ten_least, select = c(1,2,12,16))
 valence_ten_least <- head(valence_ten_least, 10)
 print (valence_ten_least)
 
+# most energy songs
+energy_ten <- arrange(all_tracks, desc(energy))
+energy_ten <- subset(energy_ten, select = c(1,2,5,16))
+energy_ten <- head(energy_ten, 10)
+print (energy_ten)
+
+# least energy
+energy_ten_least <- arrange(all_tracks, energy)
+energy_ten_least <- subset(energy_ten_least, select = c(1,2,5,16))
+energy_ten_least <- head(energy_ten_least, 10)
+print (energy_ten_least)
+
 # shortest songs
 duration_ten_least <- arrange(all_tracks, duration_ms)
 duration_ten_least <- subset(duration_ten_least, select = c(1,2,14,16))
@@ -230,6 +242,7 @@ print (acousticness_year_most)
 acousticness_year_least <- arrange(averages_by_year, acousticness)
 acousticness_year_least <- head(acousticness_year_least, 10)
 print (acousticness_year_least)
+
 
 #2015 acousticness spiked, what songs caused this?
 all_tracks$date <- dmy(all_tracks$date) #format date as a date type using lubridate library
