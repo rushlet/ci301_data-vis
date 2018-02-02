@@ -9,19 +9,24 @@ gulp.task('watch', function () {
 
 gulp.task('html', function(){
 		return gulp.src('source/html/**/*.html')
-		.pipe(gulp.dest(''));
+		.pipe(gulp.dest('website/'));
 });
 
 gulp.task('css', function(){
     return gulp.src('source/css/**/*.scss')
     .pipe(sass())
-    .pipe(gulp.dest(''))
+    .pipe(gulp.dest('website/'))
 });
 
 gulp.task('js', function(){
 		return gulp.src('source/js/**/*.js')
 		.pipe(webpack(require('./webpack.config.js')))
-		.pipe(gulp.dest(''));
+		.pipe(gulp.dest('website/'));
 });
 
-gulp.task('default', ['html', 'css', 'js']);
+gulp.task('assets', function(){
+  return gulp.src('source/assets/**/*')
+  .pipe(gulp.dest('website/assets'));
+})
+
+gulp.task('default', ['html', 'css', 'js', 'assets']);
