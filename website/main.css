@@ -44,7 +44,6 @@ p.intro__introduction {
   overflow: hidden;
   width: 63%;
   min-height: 60vh;
-  background-image: url("assets/img/bubble.png");
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center; }
@@ -70,3 +69,19 @@ p.intro__introduction {
   text-align: center;
   padding: 1rem;
   font-size: 1.5rem; }
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges; }
+
+.axis text {
+  font: 10px sans-serif; }
+
+.cells path {
+  fill: none;
+  pointer-events: all; }
+
+.cells :hover circle {
+  fill: red; }

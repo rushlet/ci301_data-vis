@@ -16,34 +16,34 @@ scroller
   .onContainerExit(handleContainerExit);
 
 function handleStepEnter(interaction, steps) {
-  console.log('handleStepEnter', interaction, steps);
-  console.log(interaction.element);
+  //console.log('handleStepEnter', interaction, steps);
+  //console.log(interaction.element);
   const currentStep = interaction.element;
   currentStep.classList.add('is-active');
   if (interaction.index===0) {
-    document.querySelector('.scroll__graphic').style.backgroundImage = "url(assets/img/bubble.png)"
+    document.querySelector('.scroll__graphic').style.backgroundColor = "#fff"
   }
   if (interaction.index===1) {
-    document.querySelector('.scroll__graphic').style.backgroundImage = "url(assets/img/bubble1.png)"
+    document.querySelector('.scroll__graphic').style.backgroundColor = "#f5a62a"
   }
   if (interaction.index===2) {
-    document.querySelector('.scroll__graphic').style.backgroundImage = "url(assets/img/swarm.png)"
+    document.querySelector('.scroll__graphic').style.backgroundColor = "#55b4d8"
   }
 }
 
 function handleStepExit(interaction, steps) {
-  console.log('handleStepEnter', interaction, steps);
-  console.log(interaction.element);
+  //console.log('handleStepEnter', interaction, steps);
+  //console.log(interaction.element);
   const currentStep = interaction.element;
   currentStep.classList.remove('is-active');
 }
 
 function handleContainerEnter(interaction, steps) {
-  console.log('handleStepEnter', interaction, steps);
+  //console.log('handleStepEnter', interaction, steps);
 }
 
 function handleContainerExit(interaction, steps) {
-  console.log('handleStepEnter', interaction, steps);
+  //console.log('handleStepEnter', interaction, steps);
 }
 
 export default scroller;
