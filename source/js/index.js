@@ -1,62 +1,49 @@
-// import * as d3 from "d3";
-// import $ from 'jquery';
-// // import * as SpotifyWebApi from 'spotify-web-api-node';
-// import SpotifyAuth from './spotify_auth.js'
-// //
-// // console.log(SpotifyWebApi);
-// // console.log(SpotifyAuth);
-// // var auth = SpotifyAuth();
-//
-// let dataset = "source/assets/data/fixed_data_for_analysis.json"
-// $.getJSON(dataset).done(dataset=> {
-//     start(dataset);
-// });
-//
-// function start(dataset) {
-//   let eminemData = [];
-//   dataset.forEach((track) => {
-//     let artist = track.artist.toString();
-//     if (artist.includes("EMINEM")) {
-//       eminemData.push(track);
-//     }
-//   })
-//   createGraph(eminemData);
-// }
-//
-// function createGraph(eminemData) {
-//   console.log(eminemData);
-//   var w = 300;
-//   var h = 100;
-//   var padding = 2;
-//   var graphData = [];
-//   eminemData.forEach((track) => {
-//     graphData.push(parseFloat(track.danceability));
-//   });
-//   console.log(graphData);
-//
-//   var svg = d3.select(".graph").append("svg")
-//               .attr('width', w)
-//               .attr('height', h);
-//   svg.selectAll('rect')
-//     .data(graphData)
-//     .enter()
-//       .append('rect')
-//       .attr("x", function(d, index) {return index * (w / graphData.length);})
-//       .attr("y", function(d) { return h - (d*40);})
-//       .attr("width", (w / graphData.length - padding))
-//       .attr("height", function(d) {return (d*100);})
-//       .attr("fill", function(d) {return `rgb(${parseInt(d*50)}, ${parseInt(d*150)}, 0)`;});
-//
-//   var text = svg.selectAll("text")
-//                           .data(eminemData)
-//                           .enter()
-//                           .append("text")
-//   var textLabels = text
-//                     .attr("x", function(d, index) {return index * (w / eminemData.length);})
-//                     .attr("y", 100)
-//                     .text(function (d){return d.title})
-//                     .attr("font-family", "sans-serif")
-//                     .attr("font-size", "20px")
-//                     .attr("fill", "red");
-//                     // .attr("transform", "rotate(180)");
-// }
+import * as d3 from "d3";
+import $ from 'jquery';
+import scrollama from 'scrollama';
+const scroller = scrollama();
+
+// setup the instance, pass callback functions
+scroller
+  .setup({
+    step: '.scroll__text .step', // required
+    container: '.scroll', // required (for sticky)
+    graphic: '.scroll__graphic', // required (for sticky)
+    offset: 0.33, // optional, default = 0.5
+    debug: false // optional, default = false
+  })
+  .onStepEnter(handleStepEnter)
+  .onStepExit(handleStepExit)
+  .onContainerEnter(handleContainerEnter)
+  .onContainerExit(handleContainerExit);
+
+  function handleStepEnter(interaction, steps) {
+    console.log('handleStepEnter', interaction, steps);
+    console.log(interaction.element);
+    const currentStep = interaction.element;
+    currentStep.classList.add('is-active');
+    if (interaction.index===0) {
+      document.querySelector('.scroll__graphic').style.backgroundImage = "url(assets/img/bubble.png)"
+    }
+    if (interaction.index===1) {
+      document.querySelector('.scroll__graphic').style.backgroundImage = "url(assets/img/bubble1.png)"
+    }
+    if (interaction.index===2) {
+      document.querySelector('.scroll__graphic').style.backgroundImage = "url(assets/img/swarm.png)"
+    }
+  }
+
+  function handleStepExit(interaction, steps) {
+    console.log('handleStepEnter', interaction, steps);
+    console.log(interaction.element);
+    const currentStep = interaction.element;
+    currentStep.classList.remove('is-active');
+  }
+
+  function handleContainerEnter(interaction, steps) {
+    console.log('handleStepEnter', interaction, steps);
+  }
+
+  function handleContainerExit(interaction, steps) {
+    console.log('handleStepEnter', interaction, steps);
+  }

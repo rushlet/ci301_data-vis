@@ -5,3 +5,49 @@ body {
 
 .wrapper {
   padding: 1em 2em; }
+
+.scroll {
+  position: relative;
+  border-top: 2px dashed #000;
+  border-bottom: 2px dashed #000; }
+
+.scroll__graphic {
+  position: -webkit-sticky;
+  position: sticky;
+  float: right;
+  top: 10%;
+  right: 2rem;
+  -webkit-transform: translate3d(0, 0, 0);
+  -moz-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+  background-color: #ddd;
+  border: 1px solid #000;
+  overflow: hidden;
+  width: 63%;
+  min-height: 60vh;
+  background-image: url("assets/img/bubble.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center; }
+
+.scroll__text {
+  position: relative;
+  padding: 0 1rem;
+  max-width: 30rem;
+  width: 33%; }
+
+.step {
+  margin: 0 auto 2rem auto;
+  border: 1px solid #333;
+  min-height: 80vh; }
+
+.step:last-child {
+  border-bottom: 1px solid #333; }
+
+.step.is-active {
+  background-color: lightgoldenrodyellow; }
+
+.step p {
+  text-align: center;
+  padding: 1rem;
+  font-size: 1.5rem; }

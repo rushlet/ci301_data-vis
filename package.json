@@ -4,7 +4,7 @@
   "description": "final year project - a visual analysis of number 1 songs",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "cucumber": "./node_modules/.bin/cucumber-js test/features/uk_number_1s.feature"
   },
   "repository": {
     "type": "git",
@@ -36,10 +36,8 @@
     "d3-request": "^1.0.5",
     "d3-selection-multi": "^1.0.1",
     "jquery": "^3.2.1",
+    "scrollama": "^1.3.0",
     "spotify-web-api-node": "^2.5.0",
     "write-json": "^2.0.0"
-  },
-  "scripts": {
-    "cucumber": "./node_modules/.bin/cucumber-js test/features/uk_number_1s.feature"
   }
 }
