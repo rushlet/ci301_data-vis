@@ -1,5 +1,3 @@
-import * as d3 from "d3";
-import $ from 'jquery';
 import scrollama from 'scrollama';
 
 const scroller = scrollama();
