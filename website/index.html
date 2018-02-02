@@ -14,27 +14,53 @@
 
 <body id="body">
   <div class="wrapper">
-    <div class='scroll'>
-      <div class='scroll__graphic'>
+    <section class="intro">
+      <div class="intro__slide intro__slide-1">
+        <h1 class="intro__title">{{lookup vocabs 'intro__title'}}</h1>
+        <p class="intro__description">Becky Rush</p>
       </div>
-      <div class='scroll__text'>
-        <div class='step' data-step='a'>
-          <p>
-            This is a waving bear in step 1
-          </p>
+      <div class="intro__slide intro__slide-2">
+        <p>
+          This data visualisation project highlights the most successful songs in UK chart history. <br />
+          It considers how certain attributes of songs have changed over time and showcases some of
+          the most surprising songs to have made music history.
+        </p>
+      </div>
+      <div class="intro__slide intro__slide-3">
+        <p class="intro__introduction">
+          The UK Music Charts began on
+          <strong>14th November 1952</strong>
+        </p>
+      </div>
+      <div class="intro__slide intro__slide-4">
+        <p class="intro__introduction">
+          In the <strong>3398 weeks</strong> between then and the 1st of January 2018, <strong>1325</strong> different songs have reached number 1
+        </p>
+      </div>
+    </section>
+    <section class="section-1">
+      <div class='scroll'>
+        <div class='scroll__graphic'>
         </div>
-        <div class='step' data-step='b'>
-          <p>
-            And in step 2 it has updated to something else
-          </p>
-        </div>
-        <div class='step' data-step='c'>
-          <p>
-            And this is step 3.
-          </p>
+        <div class='scroll__text'>
+          <div class='step' data-step='a'>
+            <p>
+              This is step 1
+            </p>
+          </div>
+          <div class='step' data-step='b'>
+            <p>
+              This is step 2.
+            </p>
+          </div>
+          <div class='step' data-step='c'>
+            <p>
+              And this is step 3.
+            </p>
+          </div>
         </div>
       </div>
-    </div>
+    </section>
   </div>
 </body>
 <script src="./bundle.js"></script>
