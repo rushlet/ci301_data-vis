@@ -18,7 +18,7 @@ var spotifyApi = new SpotifyWebApi({
   redirectUri : 'http://localhost:8888/callback'
 });
 
-spotifyApi.setAccessToken('BQAKzzggx0uiw4nmCoy8DYok9Z7v0I5fvH_Rwd4Gdc3X4LD5OoZnKHa4A4S4E-EnHU9q5jFYK_kIS9Mku3XJdKuAbt6J-VciN13fLaWIDH7xQrzKgoNq6AKj9l9qQxLLptCHN74Fv2i4KQuXFPVpgj2H5J20WS53vpg_Fr-RoH_dbgHeaLOc-jH2QQnm56Ecii01Ww');
+spotifyApi.setAccessToken('BQDbyp_1gPVA3IqJJmEc5WjC-fDPPXUpNWmOrk7ZtbxyO9ZMW7rQnGcP0BmzPrqunOcArls29VcuEIlCXwPLHhvbizWV5Ux6GF0DV22K9Qvx4LhOJaeYLnntKjnwP2bbjR0blQ-_6YayDA');
 
 // tracks.forEach((track)=>{
 //   setTimeout(function () {
@@ -41,10 +41,13 @@ spotifyApi.setAccessToken('BQAKzzggx0uiw4nmCoy8DYok9Z7v0I5fvH_Rwd4Gdc3X4LD5OoZnK
 tracks.forEach((track)=>{
   setTimeout(function () {
       if (track.artistId) {
-        if (!track.imageUrl) {
+        if (!track.imageHeight || !track.imageWidth) {
           spotifyApi.getArtist(track.artistId)
             .then(function(data) {
+              console.log(data.body.images[2]);
               track["imageUrl"] = data.body.images[2].url;
+              track["imageWidth"] = data.body.images[2].width;
+              track["imageHeight"] = data.body.images[2].height;
               writeOutOutput();
             }, function(err) {
               console.log('Something went wrong!', err);
