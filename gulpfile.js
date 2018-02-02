@@ -2,6 +2,7 @@ const gulp = require('gulp');
 const sass = require('gulp-sass');
 const babel = require('gulp-babel');
 const webpack = require('gulp-webpack');
+const del = require('del');
 
 gulp.task('watch', function () {
     gulp.watch('source/**/*.*', ['default']);
@@ -12,10 +13,11 @@ gulp.task('html', function(){
 		.pipe(gulp.dest('website/'));
 });
 
-gulp.task('css', function(){
-    return gulp.src('source/css/**/*.scss')
+gulp.task('sass', function(cb) {
+    return gulp.src('source/css/*.scss')
     .pipe(sass())
-    .pipe(gulp.dest('website/'))
+    .pipe(gulp.dest('website/'));
+    cb(err);
 });
 
 gulp.task('js', function(){
@@ -27,6 +29,10 @@ gulp.task('js', function(){
 gulp.task('assets', function(){
   return gulp.src('source/assets/**/*')
   .pipe(gulp.dest('website/assets'));
-})
+});
 
-gulp.task('default', ['html', 'css', 'js', 'assets']);
+gulp.task('clean-up', ['sass'], function(){
+    del(['website/*', '!website/main.css', '!website/bundle.js', '!website/index.html', '!website/assets']);
+});
+
+gulp.task('default', ['html', 'sass', 'js', 'assets', 'clean-up']);
