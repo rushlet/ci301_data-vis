@@ -81,7 +81,7 @@
 	(0, _swarmChart2.default)();
 
 	var scroller = (0, _scrollama2.default)();
-	var dispatch = d3.dispatch;
+	// const dispatch = d3.dispatch;
 
 	// setup the instance, pass callback functions
 	scroller.setup({
@@ -99,15 +99,15 @@
 	  currentStep.classList.add('is-active');
 	  if (interaction.index === 0) {
 	    document.querySelector('.scroll__graphic').style.backgroundColor = "#fff";
-	    dispatch.call("swarm 1");
+	    // dispatch.call("swarm 1");
 	  }
 	  if (interaction.index === 1) {
 	    document.querySelector('.scroll__graphic').style.backgroundColor = "#f5a62a";
-	    dispatch.call("swarm 2");
+	    // dispatch.call("swarm 2");
 	  }
 	  if (interaction.index === 2) {
 	    document.querySelector('.scroll__graphic').style.backgroundColor = "#55b4d8";
-	    dispatch.call("swarm 3");
+	    // dispatch.call("swarm 3");
 	  }
 	}
 
@@ -1732,6 +1732,8 @@
 	    // parse string as number - https://stackoverflow.com/questions/17601105/how-do-i-convert-strings-from-csv-in-d3-js-and-be-able-to-use-them-as-a-dataset
 	    data.forEach(function (d) {
 	      d['track_count'] = +d['track_count'];
+	      d['imageWidth'] = +d['imageWidth'];
+	      d['imageHeight'] = +d['imageHeight'];
 	    });
 
 	    var simulation = d3.forceSimulation(data).force("x", d3.forceX(function (d) {
@@ -1750,32 +1752,37 @@
 	      return d.y;
 	    }).polygons(data)).enter().append("g");
 
-	    cell.append("circle").attr("r", function (d) {
-	      return d.data.track_count;
-	    }).attr("cx", function (d) {
-	      return d.data.x;
-	    }).attr("cy", function (d) {
-	      return d.data.y;
+	    var defs = svg.append('svg:defs');
+	    data.forEach(function (d, i) {
+	      defs.append("svg:pattern").attr("id", "artist_image" + i).attr("width", d.imageWidth).attr("height", d.imageHeight).attr("x", d.imageWidth).attr("y", d.imageHeight).attr("patternUnits", "userSpaceOnUse").append("svg:image").attr("xlink:href", d.imageUrl).attr("width", d.imageWidth).attr("height", d.imageHeight).attr("x", 0).attr("y", 0);
+
+	      var circle = svg.append("circle").attr("cx", d.x).attr("cy", d.y).attr("r", d.track_count).style("fill", "#000").style("fill", "url(#artist_image" + i + ")");
 	    });
+
+	    // cell.append("circle")
+	    //     .attr("r", function(d) { return d.data.track_count; })
+	    //     .attr("cx", function(d) { return d.data.x; })
+	    //     .attr("cy", function(d) { return d.data.y; });
+
 
 	    cell.append("path").attr("d", function (d) {
 	      return "M" + d.join("L") + "Z";
 	    });
 
 	    cell.append("title").text(function (d) {
-	      return d.data.title + "\n" + formatValue(d.data.total_weeks) + " weeks at one with " + formatValue(d.data.track_count) + " tracks";
+	      return d.data.artist + "\n" + formatValue(d.data.total_weeks) + " weeks at one with " + formatValue(d.data.track_count) + " tracks";
 	    });
 	  });
-	  var dispatch = d3.dispatch(["swarm_1", "swarm_2", "swarm_3"]);
-	  dispatch.on("swarm_1", function () {
-	    console.log('swarm 1');
-	  });
-	  dispatch.on("swarm_2", function () {
-	    console.log('swarm 2');
-	  });
-	  dispatch.on("swarm_3", function () {
-	    console.log('swarm 3');
-	  });
+	  // var dispatch = d3.dispatch(["swarm_1", "swarm_2", "swarm_3"]);
+	  // dispatch.on("swarm_1", () => {
+	  //   console.log('swarm 1');
+	  // });
+	  // dispatch.on("swarm_2", () => {
+	  //   console.log('swarm 2');
+	  // });
+	  // dispatch.on("swarm_3", () => {
+	  //   console.log('swarm 3');
+	  // });
 	}
 
 	function type(d) {
