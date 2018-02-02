@@ -1,6 +1,12 @@
 import scrollama from 'scrollama';
+import swarmChart from './swarm-chart.js';
+import * as d3 from "d3-dispatch";
+
+swarmChart();
 
 const scroller = scrollama();
+const dispatch = d3.dispatch;
+
 // setup the instance, pass callback functions
 scroller
   .setup({
@@ -21,13 +27,16 @@ function handleStepEnter(interaction, steps) {
   const currentStep = interaction.element;
   currentStep.classList.add('is-active');
   if (interaction.index===0) {
-    document.querySelector('.scroll__graphic').style.backgroundColor = "#fff"
+    document.querySelector('.scroll__graphic').style.backgroundColor = "#fff";
+    dispatch.call("swarm 1");
   }
   if (interaction.index===1) {
-    document.querySelector('.scroll__graphic').style.backgroundColor = "#f5a62a"
+    document.querySelector('.scroll__graphic').style.backgroundColor = "#f5a62a";
+    dispatch.call("swarm 2");
   }
   if (interaction.index===2) {
-    document.querySelector('.scroll__graphic').style.backgroundColor = "#55b4d8"
+    document.querySelector('.scroll__graphic').style.backgroundColor = "#55b4d8";
+    dispatch.call("swarm 3");
   }
 }
 

@@ -1,15 +1,17 @@
+// https://bl.ocks.org/mbostock/6526445e2b44303eebf21da3b6627320
 import $ from 'jquery';
 import * as d3 from "d3";
 
 function swarmChart() {
-  var svg = d3.select("svg"),
+  var svg = d3.select("#swarm-chart"),
       margin = {top: 40, right: 40, bottom: 40, left: 40},
       width = svg.attr("width") - margin.left - margin.right,
       height = svg.attr("height") - margin.top - margin.bottom;
 
   var formatValue = d3.format(",d");
 
-  var x = d3.scaleLog()
+  var x = d3.scaleLinear()
+      .domain([0, width])
       .rangeRound([0, width]);
 
   var g = svg.append("g")
@@ -17,14 +19,11 @@ function swarmChart() {
 
   d3.csv(`./assets/data/unique_artists_track_count.csv`, type, function(error, data) {
     if (error) throw error;
-    console.log(data);
     x.domain(d3.extent(data, function(d) {
-      console.log(d);
       return d.total_weeks;
     }));
     // parse string as number - https://stackoverflow.com/questions/17601105/how-do-i-convert-strings-from-csv-in-d3-js-and-be-able-to-use-them-as-a-dataset
     data.forEach(function(d){
-      console.log(d);
       d['track_count'] = +d['track_count'];
     });
 
@@ -61,6 +60,16 @@ function swarmChart() {
 
     cell.append("title")
         .text(function(d) { return d.data.title + "\n" + formatValue(d.data.total_weeks) + " weeks at one with " + formatValue(d.data.track_count) + " tracks"; });
+  });
+  var dispatch = d3.dispatch(["swarm_1", "swarm_2", "swarm_3"]);
+  dispatch.on("swarm_1", () => {
+    console.log('swarm 1');
+  });
+  dispatch.on("swarm_2", () => {
+    console.log('swarm 2');
+  });
+  dispatch.on("swarm_3", () => {
+    console.log('swarm 3');
   });
 }
 

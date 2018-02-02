@@ -70,6 +70,10 @@ p.intro__introduction {
   padding: 1rem;
   font-size: 1.5rem; }
 
+#swarm-chart {
+  display: block;
+  margin: auto; }
+
 .axis path,
 .axis line {
   fill: none;

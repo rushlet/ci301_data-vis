@@ -33,6 +33,7 @@
   "dependencies": {
     "chai": "^4.1.2",
     "d3": "^4.11.0",
+    "d3-dispatch": "^1.0.3",
     "d3-fetch": "^0.0.2",
     "d3-request": "^1.0.5",
     "d3-selection-multi": "^1.0.1",

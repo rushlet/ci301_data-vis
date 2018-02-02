@@ -50,13 +50,7 @@
 
 	var _scroller2 = _interopRequireDefault(_scroller);
 
-	var _swarmChart = __webpack_require__(3);
-
-	var _swarmChart2 = _interopRequireDefault(_swarmChart);
-
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	(0, _swarmChart2.default)();
 
 /***/ }),
 /* 1 */
@@ -72,9 +66,23 @@
 
 	var _scrollama2 = _interopRequireDefault(_scrollama);
 
+	var _swarmChart = __webpack_require__(3);
+
+	var _swarmChart2 = _interopRequireDefault(_swarmChart);
+
+	var _d3Dispatch = __webpack_require__(9);
+
+	var d3 = _interopRequireWildcard(_d3Dispatch);
+
+	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+	(0, _swarmChart2.default)();
+
 	var scroller = (0, _scrollama2.default)();
+	var dispatch = d3.dispatch;
+
 	// setup the instance, pass callback functions
 	scroller.setup({
 	  step: '.scroll__text .step', // required
@@ -91,12 +99,15 @@
 	  currentStep.classList.add('is-active');
 	  if (interaction.index === 0) {
 	    document.querySelector('.scroll__graphic').style.backgroundColor = "#fff";
+	    dispatch.call("swarm 1");
 	  }
 	  if (interaction.index === 1) {
 	    document.querySelector('.scroll__graphic').style.backgroundColor = "#f5a62a";
+	    dispatch.call("swarm 2");
 	  }
 	  if (interaction.index === 2) {
 	    document.querySelector('.scroll__graphic').style.backgroundColor = "#55b4d8";
+	    dispatch.call("swarm 3");
 	  }
 	}
 
@@ -1685,7 +1696,7 @@
 	"use strict";
 
 	Object.defineProperty(exports, "__esModule", {
-	    value: true
+	  value: true
 	});
 
 	var _jquery = __webpack_require__(4);
@@ -1700,69 +1711,77 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+	// https://bl.ocks.org/mbostock/6526445e2b44303eebf21da3b6627320
 	function swarmChart() {
-	    var svg = d3.select("svg"),
-	        margin = { top: 40, right: 40, bottom: 40, left: 40 },
-	        width = svg.attr("width") - margin.left - margin.right,
-	        height = svg.attr("height") - margin.top - margin.bottom;
+	  var svg = d3.select("#swarm-chart"),
+	      margin = { top: 40, right: 40, bottom: 40, left: 40 },
+	      width = svg.attr("width") - margin.left - margin.right,
+	      height = svg.attr("height") - margin.top - margin.bottom;
 
-	    var formatValue = d3.format(",d");
+	  var formatValue = d3.format(",d");
 
-	    var x = d3.scaleLog().rangeRound([0, width]);
+	  var x = d3.scaleLinear().domain([0, width]).rangeRound([0, width]);
 
-	    var g = svg.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+	  var g = svg.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-	    d3.csv("./assets/data/unique_artists_track_count.csv", type, function (error, data) {
-	        if (error) throw error;
-	        console.log(data);
-	        x.domain(d3.extent(data, function (d) {
-	            console.log(d);
-	            return d.total_weeks;
-	        }));
-	        // parse string as number - https://stackoverflow.com/questions/17601105/how-do-i-convert-strings-from-csv-in-d3-js-and-be-able-to-use-them-as-a-dataset
-	        data.forEach(function (d) {
-	            console.log(d);
-	            d['track_count'] = +d['track_count'];
-	        });
-
-	        var simulation = d3.forceSimulation(data).force("x", d3.forceX(function (d) {
-	            return x(d.total_weeks);
-	        })).force("y", d3.forceY(height / 2)).force('collision', d3.forceCollide().radius(function (d) {
-	            return d.track_count + 1;
-	        })).stop();
-
-	        for (var i = 0; i < 120; ++i) {
-	            simulation.tick();
-	        }g.append("g").attr("class", "axis axis--x").attr("transform", "translate(0," + height + ")").call(d3.axisBottom(x).ticks(20, ".0s")); // +"0.s" formats as ints
-
-	        var cell = g.append("g").attr("class", "cells").selectAll("g").data(d3.voronoi().extent([[-margin.left, -margin.top], [width + margin.right, height + margin.top]]).x(function (d) {
-	            return d.x;
-	        }).y(function (d) {
-	            return d.y;
-	        }).polygons(data)).enter().append("g");
-
-	        cell.append("circle").attr("r", function (d) {
-	            return d.data.track_count;
-	        }).attr("cx", function (d) {
-	            return d.data.x;
-	        }).attr("cy", function (d) {
-	            return d.data.y;
-	        });
-
-	        cell.append("path").attr("d", function (d) {
-	            return "M" + d.join("L") + "Z";
-	        });
-
-	        cell.append("title").text(function (d) {
-	            return d.data.title + "\n" + formatValue(d.data.total_weeks) + " weeks at one with " + formatValue(d.data.track_count) + " tracks";
-	        });
+	  d3.csv("./assets/data/unique_artists_track_count.csv", type, function (error, data) {
+	    if (error) throw error;
+	    x.domain(d3.extent(data, function (d) {
+	      return d.total_weeks;
+	    }));
+	    // parse string as number - https://stackoverflow.com/questions/17601105/how-do-i-convert-strings-from-csv-in-d3-js-and-be-able-to-use-them-as-a-dataset
+	    data.forEach(function (d) {
+	      d['track_count'] = +d['track_count'];
 	    });
+
+	    var simulation = d3.forceSimulation(data).force("x", d3.forceX(function (d) {
+	      return x(d.total_weeks);
+	    })).force("y", d3.forceY(height / 2)).force('collision', d3.forceCollide().radius(function (d) {
+	      return d.track_count + 1;
+	    })).stop();
+
+	    for (var i = 0; i < 120; ++i) {
+	      simulation.tick();
+	    }g.append("g").attr("class", "axis axis--x").attr("transform", "translate(0," + height + ")").call(d3.axisBottom(x).ticks(20, ".0s")); // +"0.s" formats as ints
+
+	    var cell = g.append("g").attr("class", "cells").selectAll("g").data(d3.voronoi().extent([[-margin.left, -margin.top], [width + margin.right, height + margin.top]]).x(function (d) {
+	      return d.x;
+	    }).y(function (d) {
+	      return d.y;
+	    }).polygons(data)).enter().append("g");
+
+	    cell.append("circle").attr("r", function (d) {
+	      return d.data.track_count;
+	    }).attr("cx", function (d) {
+	      return d.data.x;
+	    }).attr("cy", function (d) {
+	      return d.data.y;
+	    });
+
+	    cell.append("path").attr("d", function (d) {
+	      return "M" + d.join("L") + "Z";
+	    });
+
+	    cell.append("title").text(function (d) {
+	      return d.data.title + "\n" + formatValue(d.data.total_weeks) + " weeks at one with " + formatValue(d.data.track_count) + " tracks";
+	    });
+	  });
+	  var dispatch = d3.dispatch(["swarm_1", "swarm_2", "swarm_3"]);
+	  dispatch.on("swarm_1", function () {
+	    console.log('swarm 1');
+	  });
+	  dispatch.on("swarm_2", function () {
+	    console.log('swarm 2');
+	  });
+	  dispatch.on("swarm_3", function () {
+	    console.log('swarm 3');
+	  });
 	}
 
 	function type(d) {
-	    if (!d.total_weeks) return;
-	    d.total_weeks = +d.total_weeks;
-	    return d;
+	  if (!d.total_weeks) return;
+	  d.total_weeks = +d.total_weeks;
+	  return d;
 	}
 
 	exports.default = swarmChart;
