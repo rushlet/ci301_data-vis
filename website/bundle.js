@@ -1754,7 +1754,7 @@
 
 	    var defs = svg.append('svg:defs');
 	    data.forEach(function (d, i) {
-	      defs.append("svg:pattern").attr("id", "artist_image" + i).attr("width", d.imageWidth).attr("height", d.imageHeight).attr("x", d.imageWidth).attr("y", d.imageHeight).attr("patternUnits", "userSpaceOnUse").append("svg:image").attr("xlink:href", d.imageUrl).attr("width", d.imageWidth).attr("height", d.imageHeight).attr("x", 0).attr("y", 0);
+	      defs.append("svg:pattern").attr("id", "artist_image" + i).attr("width", d.imageWidth).attr("height", d.imageHeight).attr("x", d.imageWidth / 2).attr("y", d.imageHeight / 2).attr("patternUnits", "userSpaceOnUse").append("svg:image").attr("xlink:href", d.imageUrl).attr("width", d.imageWidth).attr("height", d.imageHeight);
 
 	      var circle = svg.append("circle").attr("cx", d.x).attr("cy", d.y).attr("r", d.track_count).style("fill", "#000").style("fill", "url(#artist_image" + i + ")");
 	    });
