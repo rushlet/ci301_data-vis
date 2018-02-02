@@ -41,6 +41,6 @@
     "write-json": "^2.0.0"
   },
   "scripts": {
-    "cucumber": "./node_modules/.bin/cucumber-js test/features/uk_number_1s.feature -r test/features/support/step_definitions.js"
+    "cucumber": "./node_modules/.bin/cucumber-js test/features/uk_number_1s.feature"
   }
 }
