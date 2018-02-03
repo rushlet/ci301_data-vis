@@ -7,11 +7,16 @@ let userTopTracks;
 
 if (document.getElementById('spotify-log-in') !== null) {
   document.getElementById('spotify-log-in').addEventListener("click", spotifyAuth, false);
+  document.getElementById('skip-log-in').addEventListener("click", skipLogIn, false);
+}
+
+function skipLogIn() {
+  window.location.href = './project.html';
 }
 
 function spotifyAuth() {
   var clientID = 'ddba468408e2427090e0d79450f3d535';
-  var url = 'http://127.0.0.1:8080/website/index.html';
+  var url = 'http://127.0.0.1:8080/website/project.html';
   var scopes = 'user-read-private%20user-top-read%20playlist-modify-public';
   var spotifyRequest = `https://accounts.spotify.com/authorize/?client_id=${clientID}&response_type=token&redirect_uri=${url}&scope=${scopes}`;
   window.location.href = spotifyRequest;

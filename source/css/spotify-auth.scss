@@ -1,0 +1,55 @@
+/* Reset `button` and button-style `input` default styles */
+button {
+    background: none;
+    border: 0;
+    color: inherit;
+    /* cursor: default; */
+    font: inherit;
+    line-height: normal;
+    overflow: visible;
+    padding: 0;
+    -webkit-appearance: button; /* for input */
+    -webkit-user-select: none; /* for button */
+       -moz-user-select: none;
+        -ms-user-select: none;
+}
+
+.spotify-auth {
+  text-align: center;
+  font-size: 18px;
+  max-width: 750px;
+  display: block;
+  margin: 10vh auto 0;
+
+  h1 {
+    font-size: 2.5em;
+  }
+
+  h2 {
+    font-size: 3em;
+    color: #1ed760;
+  }
+
+  .btn {
+    text-decoration: none;
+    -moz-border-radius: 30px;
+    -webkit-border-radius: 30px;
+    border-radius: 30px;
+    padding: 0.5em 1em;
+    color: #fff;
+    font-weight: bold;
+    position: relative;
+    -moz-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+    display: inline-block;
+    background-color: #1ed760;
+    margin: 1em;
+  }
+
+  .btn:hover {
+    background-color: #12913f;
+    cursor: pointer;
+  }
+}

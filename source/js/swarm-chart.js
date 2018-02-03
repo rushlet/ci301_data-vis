@@ -56,20 +56,17 @@ function swarmChart() {
     data.forEach(function(d, i) {
       defs.append("svg:pattern")
         .attr("id", "artist_image" + i)
-        .attr("width", d.imageWidth)
-        .attr("height", d.imageHeight)
-        .attr("x", d.imageWidth / 2)
-        .attr("y", d.imageHeight / 2)
-        .attr("patternUnits", "userSpaceOnUse")
+        .attr("width", d.track_count)
+        .attr("height", d.track_count)
+        .attr("y", 0)
+        .attr("x", 0)
         .append("svg:image")
         .attr("xlink:href", d.imageUrl)
-        .attr("width", d.imageWidth)
-        .attr("height", d.imageHeight);
 
       var circle = svg.append("circle")
+        .attr("r", d.track_count)
         .attr("cx", d.x)
         .attr("cy", d.y)
-        .attr("r", d.track_count)
         .style("fill", "#000")
         .style("fill", "url(#artist_image" + i + ")");
     })
