@@ -32,7 +32,7 @@ gulp.task('assets', function(){
 });
 
 gulp.task('clean-up', ['sass'], function(){
-    del(['website/*', '!website/main.css', '!website/bundle.js', '!website/index.html', '!website/assets']);
+    del(['website/*', '!website/main.css', '!website/bundle.js', '!website/index.html', '!website/spotify_auth.html', '!website/assets']);
 });
 
 gulp.task('default', ['html', 'sass', 'js', 'assets', 'clean-up']);
