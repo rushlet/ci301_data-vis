@@ -1,9 +1,9 @@
-.intro__title {
+.project-intro__title {
   font-size: 5em;
   margin-top: 2em;
 }
 
-.intro__slide {
+.intro-slide {
   min-height: 75vh;
   text-align: center;
   vertical-align: middle;
@@ -13,15 +13,15 @@
 
   p {
     font-size: 2.2em;
-    // display: table-cell;
-  }
-
-  &.intro__slide-1,
-  &.intro__slide-4 {
-    min-height: 100vh;
   }
 }
 
-p.intro__introduction {
+.charts-intro {
+  background-color: #e8e8e8;
+  padding-bottom: 50vh;
+}
+
+.charts-intro__slide p {
+  padding-top: 50vh;
   font-size: 3.5em;
 }

@@ -1,28 +1,32 @@
 @import url("https://fonts.googleapis.com/css?family=Open+Sans|Quicksand");
 body {
   font-family: 'Quicksand', sans-serif;
-  font-size: 16px; }
+  font-size: 16px;
+  margin: 0; }
 
-.wrapper {
+section {
   padding: 1em 2em; }
 
-.intro__title {
+.project-intro__title {
   font-size: 5em;
   margin-top: 2em; }
 
-.intro__slide {
+.intro-slide {
   min-height: 75vh;
   text-align: center;
   vertical-align: middle;
   display: block;
   margin: 2em auto;
   max-width: 750px; }
-  .intro__slide p {
+  .intro-slide p {
     font-size: 2.2em; }
-  .intro__slide.intro__slide-1, .intro__slide.intro__slide-4 {
-    min-height: 100vh; }
 
-p.intro__introduction {
+.charts-intro {
+  background-color: #e8e8e8;
+  padding-bottom: 50vh; }
+
+.charts-intro__slide p {
+  padding-top: 50vh;
   font-size: 3.5em; }
 
 .scroll {
