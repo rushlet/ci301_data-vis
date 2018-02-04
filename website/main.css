@@ -7,6 +7,9 @@ body {
 section {
   padding: 1em 2em; }
 
+.section-1 {
+  background-color: #e8e8e8; }
+
 /* Reset `button` and button-style `input` default styles */
 button {
   background: none;
@@ -71,16 +74,14 @@ button {
 
 .charts-intro {
   background-color: #e8e8e8;
-  padding-bottom: 50vh; }
+  padding-bottom: 30vh; }
 
 .charts-intro__slide p {
   padding-top: 50vh;
   font-size: 3.5em; }
 
 .scroll {
-  position: relative;
-  border-top: 2px dashed #000;
-  border-bottom: 2px dashed #000; }
+  position: relative; }
 
 .scroll__graphic {
   position: -webkit-sticky;
