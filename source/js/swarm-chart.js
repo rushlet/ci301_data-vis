@@ -1,4 +1,4 @@
-// https://bl.ocks.org/mbostock/6526445e2b44303eebf21da3b6627320
+// adapted from https://bl.ocks.org/mbostock/6526445e2b44303eebf21da3b6627320
 import $ from 'jquery';
 import * as d3 from "d3";
 var zoom = d3.zoom();
@@ -23,6 +23,8 @@ class SwarmChart {
         .scaleExtent([1, 40])
         .translateExtent([[-100, -100], [this.width + 90, this.height + 100]])
         .on("zoom", this.zoomed);
+
+    // this.defs = this.svg.append('svg:defs');
   }
 
   swarmChart() {
@@ -62,9 +64,8 @@ class SwarmChart {
             .y(function(d) { return d.y; })
           .polygons(data)).enter().append("g");
 
-      // var defs = svg.append('svg:defs');
       // data.forEach(function(d, i) {
-      //   defs.append("svg:pattern")
+      //   swarm.defs.append("svg:pattern")
       //     .attr("id", "artist_image" + i)
       //     .attr("width", d.track_count)
       //     .attr("height", d.track_count)
@@ -73,7 +74,7 @@ class SwarmChart {
       //     .append("svg:image")
       //     .attr("xlink:href", d.imageUrl)
       //
-      //   var circle = svg.append("circle")
+      //   swarm.svg.append("circle")
       //     .attr("r", d.track_count)
       //     .attr("cx", d.x)
       //     .attr("cy", d.y)
@@ -81,28 +82,21 @@ class SwarmChart {
       //     .style("fill", "url(#artist_image" + i + ")");
       // })
 
-        cell.append("circle")
-            .attr("r", function(d) { return d.data.track_count; })
-            .attr("cx", function(d) { return d.data.x; })
-            .attr("cy", function(d) { return d.data.y; });
+      cell.attr("class", function(d) { return d.data.artist.replace(/ /g,"_"); })
+
+      cell.append("circle")
+          .attr("r", function(d) { return d.data.track_count; })
+          .attr("cx", function(d) { return d.data.x; })
+          .attr("cy", function(d) { return d.data.y; })
+          .attr("class", function(d) { return `${d.data.artist.replace(/ /g,"_")}_circle`; })
 
 
-        cell.append("path")
-            .attr("d", function(d) { return "M" + d.join("L") + "Z"; });
+      cell.append("path")
+          .attr("d", function(d) { return "M" + d.join("L") + "Z"; });
 
-        cell.append("title")
-            .text(function(d) { return d.data.artist + "\n" + swarm.formatValue(d.data.total_weeks) + " weeks at one with " + swarm.formatValue(d.data.track_count) + " tracks"; });
+      cell.append("title")
+          .text(function(d) { return d.data.artist + "\n" + swarm.formatValue(d.data.total_weeks) + " weeks at one with " + swarm.formatValue(d.data.track_count) + " tracks"; });
       });
-      // var dispatch = d3.dispatch(["swarm_1", "swarm_2", "swarm_3"]);
-      // dispatch.on("swarm_1", () => {
-      //   console.log('swarm 1');
-      // });
-      // dispatch.on("swarm_2", () => {
-      //   console.log('swarm 2');
-      // });
-      // dispatch.on("swarm_3", () => {
-      //   console.log('swarm 3');
-      // });
     }
 
   type(d) {
@@ -132,6 +126,12 @@ class SwarmChart {
         .duration(1750)
         .attr("transform", `translate(0,0)scale(1)`);
   }
+
+  highlightArtistNode(artist, colour) {
+    console.log('highlight node');
+    d3.select(`.${artist.replace(/ /g,"_")}_circle`)
+      .style("fill", colour)
+   }
 }
 
 export default SwarmChart;

@@ -129,6 +129,7 @@
 
 	var scroller = (0, _scrollama2.default)();
 	var swarm = void 0;
+	var artists = void 0;
 
 	if (document.getElementById('project-page') !== null) {
 	  swarm = new _swarmChart2.default();
@@ -144,6 +145,8 @@
 	    offset: 0.33, // optional, default = 0.5
 	    debug: false // optional, default = false
 	  }).onStepEnter(handleStepEnter).onStepExit(handleStepExit).onContainerEnter(handleContainerEnter).onContainerExit(handleContainerExit);
+
+	  artists = document.querySelectorAll('.artist-name');
 	}
 
 	function handleStepEnter(interaction, steps) {
@@ -152,19 +155,46 @@
 	  var currentStep = interaction.element;
 	  currentStep.classList.add('is-active');
 	  if (interaction.index === 0) {
-	    document.querySelector('.scroll__graphic').style.backgroundColor = "#fff";
+	    // document.querySelector('.scroll__graphic').style.backgroundColor = "#fff";
 	    // dispatch.call("swarm 1");
 	    swarm.zoomReset();
+	    resetArtists(['BEATLES', 'ELVIS']);
 	  }
 	  if (interaction.index === 1) {
-	    document.querySelector('.scroll__graphic').style.backgroundColor = "#f5a62a";
+	    // document.querySelector('.scroll__graphic').style.backgroundColor = "#f5a62a";
 	    swarm.zoomAndPan(-1750, 0, 6);
-	    // dispatch.call("swarm 2");
+
+	    highlightArtist('BEATLES', '#ff6a07');
+	    highlightArtist('ELVIS', '#37a1cf');
+	    resetArtists(['WESTLIFE', 'MADONNA', 'CLIFF RICHARD']);
 	  }
 	  if (interaction.index === 2) {
-	    document.querySelector('.scroll__graphic').style.backgroundColor = "#55b4d8";
-	    // dispatch.call("swarm 3");
-	    swarm.zoomAndPan(450, 50, 5);
+	    // document.querySelector('.scroll__graphic').style.backgroundColor = "#55b4d8";
+	    swarm.zoomAndPan(150, 50, 2.5);
+	    resetArtists(['BEATLES', 'ELVIS']);
+	    highlightArtist('WESTLIFE', '#eeb420');
+	    highlightArtist('MADONNA', '#439428');
+	    highlightArtist('CLIFF RICHARD', '#6b2188');
+	  }
+	  if (interaction.index === 3) {
+	    // document.querySelector('.scroll__graphic').style.backgroundColor = "#55b4d8";
+	    swarm.zoomAndPan(650, -150, 8);
+	    resetArtists(['WESTLIFE', 'MADONNA', 'CLIFF RICHARD', 'FRANKIE LAINE', 'WET WET WET']);
+	    highlightArtist('FRANKIE LAINE', '#e61c17');
+	  }
+	  if (interaction.index === 4) {
+	    // document.querySelector('.scroll__graphic').style.backgroundColor = "#55b4d8";
+	    swarm.zoomAndPan(700, -30, 6);
+	    highlightArtist('WET WET WET', '#e61c17');
+	    resetArtists(['MADONNA', 'JUSTIN BIEBER', 'TAKE THAT']);
+	  }
+	  if (interaction.index === 5) {
+	    // document.querySelector('.scroll__graphic').style.backgroundColor = "#55b4d8";
+	    swarm.zoomAndPan(600, 50, 7);
+	    resetArtists(['FRANKIE LAINE', 'WET WET WET']);
+	    highlightArtist('JUSTIN BIEBER', '#ff6a07');
+	    highlightArtist('MADONNA', '#439428');
+	    highlightArtist('TAKE THAT', '#560f85');
 	  }
 	}
 
@@ -181,6 +211,32 @@
 
 	function handleContainerExit(interaction, steps) {
 	  //console.log('handleStepEnter', interaction, steps);
+	}
+
+	function highlightArtist(artist, colour) {
+	  artists.forEach(function (artistText) {
+	    if (artistText.textContent.includes(capitalize(artist))) {
+	      artistText.style.color = colour;
+	    }
+	  });
+	  swarm.highlightArtistNode(artist, colour);
+	}
+
+	function resetArtists(artistsToReset) {
+	  artistsToReset.forEach(function (artist) {
+	    artists.forEach(function (artistText) {
+	      if (artistText.textContent.includes(capitalize(artist))) {
+	        artistText.style.color = '#000';
+	      }
+	    });
+	    swarm.highlightArtistNode(artist, '#000');
+	  });
+	}
+
+	function capitalize(string) {
+	  return string.toLowerCase().split(' ').map(function (word) {
+	    return word[0].toUpperCase() + word.substr(1);
+	  }).join(' ');
 	}
 
 	exports.default = scroller;
@@ -1756,7 +1812,7 @@
 	  value: true
 	});
 
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }(); // https://bl.ocks.org/mbostock/6526445e2b44303eebf21da3b6627320
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }(); // adapted from https://bl.ocks.org/mbostock/6526445e2b44303eebf21da3b6627320
 
 
 	var _jquery = __webpack_require__(4);
@@ -1791,6 +1847,8 @@
 	    this.g = this.svg.append("g").attr("transform", "translate(" + this.margin.left + "," + this.margin.top + ")");
 
 	    this.zoom = d3.zoom().scaleExtent([1, 40]).translateExtent([[-100, -100], [this.width + 90, this.height + 100]]).on("zoom", this.zoomed);
+
+	    // this.defs = this.svg.append('svg:defs');
 	  }
 
 	  _createClass(SwarmChart, [{
@@ -1825,9 +1883,8 @@
 	          return d.y;
 	        }).polygons(data)).enter().append("g");
 
-	        // var defs = svg.append('svg:defs');
 	        // data.forEach(function(d, i) {
-	        //   defs.append("svg:pattern")
+	        //   swarm.defs.append("svg:pattern")
 	        //     .attr("id", "artist_image" + i)
 	        //     .attr("width", d.track_count)
 	        //     .attr("height", d.track_count)
@@ -1836,7 +1893,7 @@
 	        //     .append("svg:image")
 	        //     .attr("xlink:href", d.imageUrl)
 	        //
-	        //   var circle = svg.append("circle")
+	        //   swarm.svg.append("circle")
 	        //     .attr("r", d.track_count)
 	        //     .attr("cx", d.x)
 	        //     .attr("cy", d.y)
@@ -1844,12 +1901,18 @@
 	        //     .style("fill", "url(#artist_image" + i + ")");
 	        // })
 
+	        cell.attr("class", function (d) {
+	          return d.data.artist.replace(/ /g, "_");
+	        });
+
 	        cell.append("circle").attr("r", function (d) {
 	          return d.data.track_count;
 	        }).attr("cx", function (d) {
 	          return d.data.x;
 	        }).attr("cy", function (d) {
 	          return d.data.y;
+	        }).attr("class", function (d) {
+	          return d.data.artist.replace(/ /g, "_") + "_circle";
 	        });
 
 	        cell.append("path").attr("d", function (d) {
@@ -1860,16 +1923,6 @@
 	          return d.data.artist + "\n" + swarm.formatValue(d.data.total_weeks) + " weeks at one with " + swarm.formatValue(d.data.track_count) + " tracks";
 	        });
 	      });
-	      // var dispatch = d3.dispatch(["swarm_1", "swarm_2", "swarm_3"]);
-	      // dispatch.on("swarm_1", () => {
-	      //   console.log('swarm 1');
-	      // });
-	      // dispatch.on("swarm_2", () => {
-	      //   console.log('swarm 2');
-	      // });
-	      // dispatch.on("swarm_3", () => {
-	      //   console.log('swarm 3');
-	      // });
 	    }
 	  }, {
 	    key: "type",
@@ -1896,6 +1949,12 @@
 	    value: function zoomReset() {
 	      console.log('zoom reset called');
 	      var svg = d3.select("#swarm-chart").transition().duration(1750).attr("transform", "translate(0,0)scale(1)");
+	    }
+	  }, {
+	    key: "highlightArtistNode",
+	    value: function highlightArtistNode(artist, colour) {
+	      console.log('highlight node');
+	      d3.select("." + artist.replace(/ /g, "_") + "_circle").style("fill", colour);
 	    }
 	  }]);
 
