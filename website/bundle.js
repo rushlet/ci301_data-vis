@@ -74,7 +74,7 @@
 
 	function spotifyAuth() {
 	  var clientID = 'ddba468408e2427090e0d79450f3d535';
-	  var url = './website/project.html';
+	  var url = window.location.protocol + '//' + window.location.host + '/website/project.html';
 	  var scopes = 'user-read-private%20user-top-read%20playlist-modify-public';
 	  var spotifyRequest = 'https://accounts.spotify.com/authorize/?client_id=' + clientID + '&response_type=token&redirect_uri=' + url + '&scope=' + scopes;
 	  window.location.href = spotifyRequest;
