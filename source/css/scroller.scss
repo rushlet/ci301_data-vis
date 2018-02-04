@@ -14,8 +14,8 @@
 	background-color: #ddd;
 	border: 1px solid #000;
   overflow: hidden;
-  width: 63%;
-  min-height: 60vh;
+  width: 70%;
+  min-height: 70vh;
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
@@ -23,27 +23,32 @@
 
 .scroll__text {
 	position: relative;
-	padding: 0 1rem;
-	max-width: 30rem;
-	width: 33%;
+	padding: 0;
+	width: 25%;
 }
 
 .step {
 	margin: 0 auto 2rem auto;
-	border: 1px solid #333;
-  min-height: 80vh;
+	border: 1px solid #e8e8e8;
+  min-height: 70vh;
+}
+
+.step:first-of-type p {
+  margin-top: 50vh;
+  margin-bottom: 20vh;
 }
 
 .step:last-child {
 	border-bottom: 1px solid #333;
 }
 
-.step.is-active {
-	background-color: lightgoldenrodyellow;
-}
+// .step.is-active {
+// 	background-color: lightgoldenrodyellow;
+// }
 
 .step p {
-	text-align: center;
+  text-align: left;
 	padding: 1rem;
 	font-size: 1.5rem;
+  padding-left: 0;
 }
