@@ -52,29 +52,29 @@ function swarmChart() {
           .y(function(d) { return d.y; })
         .polygons(data)).enter().append("g");
 
-    var defs = svg.append('svg:defs');
-    data.forEach(function(d, i) {
-      defs.append("svg:pattern")
-        .attr("id", "artist_image" + i)
-        .attr("width", d.track_count)
-        .attr("height", d.track_count)
-        .attr("y", 0)
-        .attr("x", 0)
-        .append("svg:image")
-        .attr("xlink:href", d.imageUrl)
+    // var defs = svg.append('svg:defs');
+    // data.forEach(function(d, i) {
+    //   defs.append("svg:pattern")
+    //     .attr("id", "artist_image" + i)
+    //     .attr("width", d.track_count)
+    //     .attr("height", d.track_count)
+    //     .attr("y", 0)
+    //     .attr("x", 0)
+    //     .append("svg:image")
+    //     .attr("xlink:href", d.imageUrl)
+    //
+    //   var circle = svg.append("circle")
+    //     .attr("r", d.track_count)
+    //     .attr("cx", d.x)
+    //     .attr("cy", d.y)
+    //     .style("fill", "#000")
+    //     .style("fill", "url(#artist_image" + i + ")");
+    // })
 
-      var circle = svg.append("circle")
-        .attr("r", d.track_count)
-        .attr("cx", d.x)
-        .attr("cy", d.y)
-        .style("fill", "#000")
-        .style("fill", "url(#artist_image" + i + ")");
-    })
-
-    // cell.append("circle")
-    //     .attr("r", function(d) { return d.data.track_count; })
-    //     .attr("cx", function(d) { return d.data.x; })
-    //     .attr("cy", function(d) { return d.data.y; });
+    cell.append("circle")
+        .attr("r", function(d) { return d.data.track_count; })
+        .attr("cx", function(d) { return d.data.x; })
+        .attr("cy", function(d) { return d.data.y; });
 
 
     cell.append("path")
@@ -101,4 +101,21 @@ function type(d) {
   return d;
 }
 
-export default swarmChart;
+function zoomIn() {
+  console.log('zoom swarm called');
+  var svg = d3.select("#swarm-chart")
+      .attr("transform", "scale(4)");
+}
+
+function zoomReset() {
+  console.log('zoom reset called');
+  var svg = d3.select("#swarm-chart")
+      .attr("transform", "scale(1)");
+}
+
+var swarm = {};
+swarm.chart = swarmChart;
+swarm.zoom = zoomIn;
+swarm.zoomReset = zoomReset;
+
+export default swarm;
