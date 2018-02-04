@@ -162,7 +162,7 @@
 	  }
 	  if (interaction.index === 1) {
 	    // document.querySelector('.scroll__graphic').style.backgroundColor = "#f5a62a";
-	    swarm.zoomAndPan(-1750, 0, 6);
+	    swarm.zoomAndPan(-1900, 0, 5.5);
 
 	    highlightArtist('BEATLES', '#ff6a07');
 	    highlightArtist('ELVIS', '#37a1cf');
@@ -170,31 +170,36 @@
 	  }
 	  if (interaction.index === 2) {
 	    // document.querySelector('.scroll__graphic').style.backgroundColor = "#55b4d8";
-	    swarm.zoomAndPan(150, 50, 2.5);
-	    resetArtists(['BEATLES', 'ELVIS']);
+	    swarm.zoomAndPan(225, 0, 3);
+	    resetArtists(['BEATLES', 'ELVIS', 'FRANKIE LAINE']);
 	    highlightArtist('WESTLIFE', '#eeb420');
 	    highlightArtist('MADONNA', '#439428');
 	    highlightArtist('CLIFF RICHARD', '#6b2188');
 	  }
 	  if (interaction.index === 3) {
 	    // document.querySelector('.scroll__graphic').style.backgroundColor = "#55b4d8";
-	    swarm.zoomAndPan(650, -150, 8);
-	    resetArtists(['WESTLIFE', 'MADONNA', 'CLIFF RICHARD', 'FRANKIE LAINE', 'WET WET WET']);
+	    swarm.zoomAndPan(650, -0, 8);
+	    resetArtists(['WESTLIFE', 'MADONNA', 'CLIFF RICHARD', 'WET WET WET']);
 	    highlightArtist('FRANKIE LAINE', '#e61c17');
 	  }
 	  if (interaction.index === 4) {
 	    // document.querySelector('.scroll__graphic').style.backgroundColor = "#55b4d8";
-	    swarm.zoomAndPan(700, -30, 6);
+	    swarm.zoomAndPan(900, -30, 6);
 	    highlightArtist('WET WET WET', '#e61c17');
 	    resetArtists(['MADONNA', 'JUSTIN BIEBER', 'TAKE THAT']);
 	  }
 	  if (interaction.index === 5) {
 	    // document.querySelector('.scroll__graphic').style.backgroundColor = "#55b4d8";
-	    swarm.zoomAndPan(600, 50, 7);
+	    swarm.zoomAndPan(750, 50, 7);
 	    resetArtists(['FRANKIE LAINE', 'WET WET WET']);
 	    highlightArtist('JUSTIN BIEBER', '#ff6a07');
 	    highlightArtist('MADONNA', '#439428');
 	    highlightArtist('TAKE THAT', '#560f85');
+	  }
+	  if (interaction.index === 6) {
+	    // document.querySelector('.scroll__graphic').style.backgroundColor = "#55b4d8";
+	    swarm.zoomReset();
+	    resetArtists(['MADONNA', 'JUSTIN BIEBER', 'TAKE THAT']);
 	  }
 	}
 
