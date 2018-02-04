@@ -1,11 +1,13 @@
 import scrollama from 'scrollama';
-import swarm from './swarm-chart.js';
+import SwarmChart from './swarm-chart.js';
 import * as d3 from "d3-dispatch";
 
 const scroller = scrollama();
+let swarm;
 
-if (document.getElementById('project-page')) {
-  swarm.chart();
+if (document.getElementById('project-page') !== null) {
+  swarm = new SwarmChart();
+  swarm.swarmChart();
 
   // const dispatch = d3.dispatch;
 
@@ -36,7 +38,7 @@ function handleStepEnter(interaction, steps) {
   }
   if (interaction.index===1) {
     document.querySelector('.scroll__graphic').style.backgroundColor = "#f5a62a";
-    swarm.zoom();
+    swarm.zoomIn();
     // dispatch.call("swarm 2");
   }
   if (interaction.index===2) {
