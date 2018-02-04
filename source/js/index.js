@@ -37,6 +37,9 @@ if (localStorage.getItem('access_token') !== null) {
     .then(function(data) {
     console.log('top tracks', data);
   }, function(err) {
-    console.error(err);
+    if (err.status === 401) {
+      spotifyAuth();
+      // window.location.href = './index.html';
+    }
   });
 }
