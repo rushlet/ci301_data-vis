@@ -1,6 +1,7 @@
 // https://bl.ocks.org/mbostock/6526445e2b44303eebf21da3b6627320
 import $ from 'jquery';
 import * as d3 from "d3";
+var zoom = d3.zoom();
 
 class SwarmChart {
   constructor() {
@@ -18,6 +19,10 @@ class SwarmChart {
     this.g = this.svg.append("g")
         .attr("transform", "translate(" + this.margin.left + "," + this.margin.top + ")");
 
+    this.zoom = d3.zoom()
+        .scaleExtent([1, 40])
+        .translateExtent([[-100, -100], [this.width + 90, this.height + 100]])
+        .on("zoom", this.zoomed);
   }
 
   swarmChart() {
@@ -76,29 +81,29 @@ class SwarmChart {
       //     .style("fill", "url(#artist_image" + i + ")");
       // })
 
-      cell.append("circle")
-          .attr("r", function(d) { return d.data.track_count; })
-          .attr("cx", function(d) { return d.data.x; })
-          .attr("cy", function(d) { return d.data.y; });
+        cell.append("circle")
+            .attr("r", function(d) { return d.data.track_count; })
+            .attr("cx", function(d) { return d.data.x; })
+            .attr("cy", function(d) { return d.data.y; });
 
 
-      cell.append("path")
-          .attr("d", function(d) { return "M" + d.join("L") + "Z"; });
+        cell.append("path")
+            .attr("d", function(d) { return "M" + d.join("L") + "Z"; });
 
-      cell.append("title")
-          .text(function(d) { return d.data.artist + "\n" + swarm.formatValue(d.data.total_weeks) + " weeks at one with " + swarm.formatValue(d.data.track_count) + " tracks"; });
-    });
-    // var dispatch = d3.dispatch(["swarm_1", "swarm_2", "swarm_3"]);
-    // dispatch.on("swarm_1", () => {
-    //   console.log('swarm 1');
-    // });
-    // dispatch.on("swarm_2", () => {
-    //   console.log('swarm 2');
-    // });
-    // dispatch.on("swarm_3", () => {
-    //   console.log('swarm 3');
-    // });
-  }
+        cell.append("title")
+            .text(function(d) { return d.data.artist + "\n" + swarm.formatValue(d.data.total_weeks) + " weeks at one with " + swarm.formatValue(d.data.track_count) + " tracks"; });
+      });
+      // var dispatch = d3.dispatch(["swarm_1", "swarm_2", "swarm_3"]);
+      // dispatch.on("swarm_1", () => {
+      //   console.log('swarm 1');
+      // });
+      // dispatch.on("swarm_2", () => {
+      //   console.log('swarm 2');
+      // });
+      // dispatch.on("swarm_3", () => {
+      //   console.log('swarm 3');
+      // });
+    }
 
   type(d) {
     if (!d.total_weeks) return;
@@ -106,16 +111,26 @@ class SwarmChart {
     return d;
   }
 
-  zoomIn() {
+  zoomed() {
+    view.attr("transform", d3.event.transform);
+    gX.call(xAxis.scale(d3.event.transform.rescaleX(x)));
+    gY.call(yAxis.scale(d3.event.transform.rescaleY(y)));
+  }
+
+  zoomAndPan(translateX, translateY, scale) {
     console.log('zoom swarm called');
     var svg = d3.select("#swarm-chart")
-        .attr("transform", "scale(4)");
+        .transition()
+          .duration(1750)
+          .attr("transform", `translate(${translateX},${translateY})scale(${scale})`);
   }
 
   zoomReset() {
     console.log('zoom reset called');
     var svg = d3.select("#swarm-chart")
-        .attr("transform", "scale(1)");
+      .transition()
+        .duration(1750)
+        .attr("transform", `translate(0,0)scale(1)`);
   }
 }
 

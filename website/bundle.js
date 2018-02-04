@@ -94,7 +94,10 @@
 	  spotifyApi.getMyTopTracks('limit:10').then(function (data) {
 	    console.log('top tracks', data);
 	  }, function (err) {
-	    console.error(err);
+	    if (err.status === 401) {
+	      spotifyAuth();
+	      // window.location.href = './index.html';
+	    }
 	  });
 	}
 
@@ -125,9 +128,11 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var scroller = (0, _scrollama2.default)();
+	var swarm = void 0;
 
-	if (document.getElementById('project-page')) {
-	  (0, _swarmChart2.default)();
+	if (document.getElementById('project-page') !== null) {
+	  swarm = new _swarmChart2.default();
+	  swarm.swarmChart();
 
 	  // const dispatch = d3.dispatch;
 
@@ -149,14 +154,17 @@
 	  if (interaction.index === 0) {
 	    document.querySelector('.scroll__graphic').style.backgroundColor = "#fff";
 	    // dispatch.call("swarm 1");
+	    swarm.zoomReset();
 	  }
 	  if (interaction.index === 1) {
 	    document.querySelector('.scroll__graphic').style.backgroundColor = "#f5a62a";
+	    swarm.zoomAndPan(-1750, 0, 6);
 	    // dispatch.call("swarm 2");
 	  }
 	  if (interaction.index === 2) {
 	    document.querySelector('.scroll__graphic').style.backgroundColor = "#55b4d8";
 	    // dispatch.call("swarm 3");
+	    swarm.zoomAndPan(450, 50, 5);
 	  }
 	}
 
@@ -1748,6 +1756,9 @@
 	  value: true
 	});
 
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }(); // https://bl.ocks.org/mbostock/6526445e2b44303eebf21da3b6627320
+
+
 	var _jquery = __webpack_require__(4);
 
 	var _jquery2 = _interopRequireDefault(_jquery);
@@ -1760,87 +1771,138 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	// https://bl.ocks.org/mbostock/6526445e2b44303eebf21da3b6627320
-	function swarmChart() {
-	  var svg = d3.select("#swarm-chart"),
-	      margin = { top: 40, right: 40, bottom: 40, left: 40 },
-	      width = svg.attr("width") - margin.left - margin.right,
-	      height = svg.attr("height") - margin.top - margin.bottom;
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-	  var formatValue = d3.format(",d");
+	var zoom = d3.zoom();
 
-	  var x = d3.scaleLinear().domain([0, width]).rangeRound([0, width]);
+	var SwarmChart = function () {
+	  function SwarmChart() {
+	    _classCallCheck(this, SwarmChart);
 
-	  var g = svg.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+	    this.svg = d3.select("#swarm-chart");
+	    this.margin = { top: 40, right: 40, bottom: 40, left: 40 };
+	    this.width = this.svg.attr("width") - this.margin.left - this.margin.right;
+	    this.height = this.svg.attr("height") - this.margin.top - this.margin.bottom;
 
-	  d3.csv("./assets/data/unique_artists_track_count.csv", type, function (error, data) {
-	    if (error) throw error;
-	    x.domain(d3.extent(data, function (d) {
-	      return d.total_weeks;
-	    }));
-	    // parse string as number - https://stackoverflow.com/questions/17601105/how-do-i-convert-strings-from-csv-in-d3-js-and-be-able-to-use-them-as-a-dataset
-	    data.forEach(function (d) {
-	      d['track_count'] = +d['track_count'];
-	      d['imageWidth'] = +d['imageWidth'];
-	      d['imageHeight'] = +d['imageHeight'];
-	    });
+	    this.formatValue = d3.format(",d");
 
-	    var simulation = d3.forceSimulation(data).force("x", d3.forceX(function (d) {
-	      return x(d.total_weeks);
-	    })).force("y", d3.forceY(height / 2)).force('collision', d3.forceCollide().radius(function (d) {
-	      return d.track_count + 1;
-	    })).stop();
+	    this.x = d3.scaleLinear().domain([0, this.width]).rangeRound([0, this.width]);
 
-	    for (var i = 0; i < 120; ++i) {
-	      simulation.tick();
-	    }g.append("g").attr("class", "axis axis--x").attr("transform", "translate(0," + height + ")").call(d3.axisBottom(x).ticks(20, ".0s")); // +"0.s" formats as ints
+	    this.g = this.svg.append("g").attr("transform", "translate(" + this.margin.left + "," + this.margin.top + ")");
 
-	    var cell = g.append("g").attr("class", "cells").selectAll("g").data(d3.voronoi().extent([[-margin.left, -margin.top], [width + margin.right, height + margin.top]]).x(function (d) {
-	      return d.x;
-	    }).y(function (d) {
-	      return d.y;
-	    }).polygons(data)).enter().append("g");
+	    this.zoom = d3.zoom().scaleExtent([1, 40]).translateExtent([[-100, -100], [this.width + 90, this.height + 100]]).on("zoom", this.zoomed);
+	  }
 
-	    var defs = svg.append('svg:defs');
-	    data.forEach(function (d, i) {
-	      defs.append("svg:pattern").attr("id", "artist_image" + i).attr("width", d.track_count).attr("height", d.track_count).attr("y", 0).attr("x", 0).append("svg:image").attr("xlink:href", d.imageUrl);
+	  _createClass(SwarmChart, [{
+	    key: "swarmChart",
+	    value: function swarmChart() {
+	      var swarm = this;
+	      d3.csv("./assets/data/unique_artists_track_count.csv", this.type, function (error, data) {
+	        if (error) throw error;
+	        swarm.x.domain(d3.extent(data, function (d) {
+	          return d.total_weeks;
+	        }));
+	        // parse string as number - https://stackoverflow.com/questions/17601105/how-do-i-convert-strings-from-csv-in-d3-js-and-be-able-to-use-them-as-a-dataset
+	        data.forEach(function (d) {
+	          d['track_count'] = +d['track_count'];
+	          d['imageWidth'] = +d['imageWidth'];
+	          d['imageHeight'] = +d['imageHeight'];
+	        });
 
-	      var circle = svg.append("circle").attr("r", d.track_count).attr("cx", d.x).attr("cy", d.y).style("fill", "#000").style("fill", "url(#artist_image" + i + ")");
-	    });
+	        var simulation = d3.forceSimulation(data).force("x", d3.forceX(function (d) {
+	          return swarm.x(d.total_weeks);
+	        })).force("y", d3.forceY(swarm.height / 2)).force('collision', d3.forceCollide().radius(function (d) {
+	          return d.track_count + 1;
+	        })).stop();
 
-	    // cell.append("circle")
-	    //     .attr("r", function(d) { return d.data.track_count; })
-	    //     .attr("cx", function(d) { return d.data.x; })
-	    //     .attr("cy", function(d) { return d.data.y; });
+	        for (var i = 0; i < 120; ++i) {
+	          simulation.tick();
+	        }swarm.g.append("g").attr("class", "axis axis--x").attr("transform", "translate(0," + swarm.height + ")").call(d3.axisBottom(swarm.x).ticks(20, ".0s")); // +"0.s" formats as ints
 
+	        var cell = swarm.g.append("g").attr("class", "cells").selectAll("g").data(d3.voronoi().extent([[-swarm.margin.left, -swarm.margin.top], [swarm.width + swarm.margin.right, swarm.height + swarm.margin.top]]).x(function (d) {
+	          return d.x;
+	        }).y(function (d) {
+	          return d.y;
+	        }).polygons(data)).enter().append("g");
 
-	    cell.append("path").attr("d", function (d) {
-	      return "M" + d.join("L") + "Z";
-	    });
+	        // var defs = svg.append('svg:defs');
+	        // data.forEach(function(d, i) {
+	        //   defs.append("svg:pattern")
+	        //     .attr("id", "artist_image" + i)
+	        //     .attr("width", d.track_count)
+	        //     .attr("height", d.track_count)
+	        //     .attr("y", 0)
+	        //     .attr("x", 0)
+	        //     .append("svg:image")
+	        //     .attr("xlink:href", d.imageUrl)
+	        //
+	        //   var circle = svg.append("circle")
+	        //     .attr("r", d.track_count)
+	        //     .attr("cx", d.x)
+	        //     .attr("cy", d.y)
+	        //     .style("fill", "#000")
+	        //     .style("fill", "url(#artist_image" + i + ")");
+	        // })
 
-	    cell.append("title").text(function (d) {
-	      return d.data.artist + "\n" + formatValue(d.data.total_weeks) + " weeks at one with " + formatValue(d.data.track_count) + " tracks";
-	    });
-	  });
-	  // var dispatch = d3.dispatch(["swarm_1", "swarm_2", "swarm_3"]);
-	  // dispatch.on("swarm_1", () => {
-	  //   console.log('swarm 1');
-	  // });
-	  // dispatch.on("swarm_2", () => {
-	  //   console.log('swarm 2');
-	  // });
-	  // dispatch.on("swarm_3", () => {
-	  //   console.log('swarm 3');
-	  // });
-	}
+	        cell.append("circle").attr("r", function (d) {
+	          return d.data.track_count;
+	        }).attr("cx", function (d) {
+	          return d.data.x;
+	        }).attr("cy", function (d) {
+	          return d.data.y;
+	        });
 
-	function type(d) {
-	  if (!d.total_weeks) return;
-	  d.total_weeks = +d.total_weeks;
-	  return d;
-	}
+	        cell.append("path").attr("d", function (d) {
+	          return "M" + d.join("L") + "Z";
+	        });
 
-	exports.default = swarmChart;
+	        cell.append("title").text(function (d) {
+	          return d.data.artist + "\n" + swarm.formatValue(d.data.total_weeks) + " weeks at one with " + swarm.formatValue(d.data.track_count) + " tracks";
+	        });
+	      });
+	      // var dispatch = d3.dispatch(["swarm_1", "swarm_2", "swarm_3"]);
+	      // dispatch.on("swarm_1", () => {
+	      //   console.log('swarm 1');
+	      // });
+	      // dispatch.on("swarm_2", () => {
+	      //   console.log('swarm 2');
+	      // });
+	      // dispatch.on("swarm_3", () => {
+	      //   console.log('swarm 3');
+	      // });
+	    }
+	  }, {
+	    key: "type",
+	    value: function type(d) {
+	      if (!d.total_weeks) return;
+	      d.total_weeks = +d.total_weeks;
+	      return d;
+	    }
+	  }, {
+	    key: "zoomed",
+	    value: function zoomed() {
+	      view.attr("transform", d3.event.transform);
+	      gX.call(xAxis.scale(d3.event.transform.rescaleX(x)));
+	      gY.call(yAxis.scale(d3.event.transform.rescaleY(y)));
+	    }
+	  }, {
+	    key: "zoomAndPan",
+	    value: function zoomAndPan(translateX, translateY, scale) {
+	      console.log('zoom swarm called');
+	      var svg = d3.select("#swarm-chart").transition().duration(1750).attr("transform", "translate(" + translateX + "," + translateY + ")scale(" + scale + ")");
+	    }
+	  }, {
+	    key: "zoomReset",
+	    value: function zoomReset() {
+	      console.log('zoom reset called');
+	      var svg = d3.select("#swarm-chart").transition().duration(1750).attr("transform", "translate(0,0)scale(1)");
+	    }
+	  }]);
+
+	  return SwarmChart;
+	}();
+
+	exports.default = SwarmChart;
 
 /***/ }),
 /* 4 */

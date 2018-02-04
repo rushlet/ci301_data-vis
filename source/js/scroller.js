@@ -38,12 +38,13 @@ function handleStepEnter(interaction, steps) {
   }
   if (interaction.index===1) {
     document.querySelector('.scroll__graphic').style.backgroundColor = "#f5a62a";
-    swarm.zoomIn();
+    swarm.zoomAndPan(-1750, 0, 6);
     // dispatch.call("swarm 2");
   }
   if (interaction.index===2) {
     document.querySelector('.scroll__graphic').style.backgroundColor = "#55b4d8";
     // dispatch.call("swarm 3");
+    swarm.zoomAndPan(450, 50, 5);
   }
 }
 
