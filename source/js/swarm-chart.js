@@ -34,11 +34,6 @@ class SwarmChart {
         .style("font-size", "16px")
         .text('Number of Weeks');
 
-    this.zoom = d3.zoom()
-        .scaleExtent([1, 40])
-        .translateExtent([[-100, -100], [this.width + 90, this.height + 100]])
-        .on("zoom", this.zoomed);
-
     this.key();
   }
 
@@ -138,12 +133,6 @@ class SwarmChart {
     if (!d.total_weeks) return;
     d.total_weeks = +d.total_weeks;
     return d;
-  }
-
-  zoomed() {
-    view.attr("transform", d3.event.transform);
-    gX.call(xAxis.scale(d3.event.transform.rescaleX(x)));
-    gY.call(yAxis.scale(d3.event.transform.rescaleY(y)));
   }
 
   zoomAndPan(translateX, translateY, scale) {
