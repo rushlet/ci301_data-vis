@@ -1,5 +1,5 @@
 #swarm-chart {
-  margin:  10% auto 20%;
+  margin:  5em auto 3em;
   display: block;
 }
 
@@ -20,5 +20,5 @@
 }
 
 .cells :hover circle {
-  fill: red;
+  fill: red!important;
 }
