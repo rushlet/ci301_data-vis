@@ -31939,26 +31939,35 @@
 
 	function playTrack() {
 	  var clickedSong = new Audio(this.dataset.url);
+	  var clickedSongIcon = this.getAttribute('background');
+	  console.log(this);
+	  var playIcon = './assets/img/sound_on.svg';
+	  var pauseIcon = './assets/img/sound_off.svg';
 	  if (_config2.default['currentSong'] !== null) {
 	    var previousSong = _config2.default['currentSong'];
 	    previousSong.pause();
+	    document.querySelector('[data-url=\'' + previousSong.getAttribute('src') + '\']').style.backgroundImage = 'url(' + playIcon + ')';
 	    _config2.default['currentSong'] = clickedSong;
 	    if (!_config2.default['songPlaying']) {
 	      clickedSong.play();
+	      this.style.backgroundImage = 'url(' + pauseIcon + ')';
 	      _config2.default['songPlaying'] = true;
 	    } else {
 	      if (clickedSong.getAttribute('src') === previousSong.getAttribute('src')) {
 	        clickedSong.pause();
 	        _config2.default['songPlaying'] = false;
+	        this.style.backgroundImage = 'url(' + playIcon + ')';
 	      } else {
 	        clickedSong.play();
 	        _config2.default['songPlaying'] = true;
+	        this.style.backgroundImage = 'url(' + pauseIcon + ')';
 	      }
 	    }
 	  } else {
 	    clickedSong.play();
 	    _config2.default['currentSong'] = clickedSong;
 	    _config2.default['songPlaying'] = true;
+	    this.style.backgroundImage = 'url(' + pauseIcon + ')';
 	  }
 	}
 
