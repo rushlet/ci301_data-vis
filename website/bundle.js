@@ -69,6 +69,7 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var loggedIn = false;
+	var songPlaying = false;
 
 	if (document.getElementById('spotify-log-in') !== null) {
 	  document.getElementById('spotify-log-in').addEventListener("click", spotifyAuth, false);
@@ -122,7 +123,6 @@
 	      });
 	    });
 	    _config2.default["user_top_tracks"] = userTopTracks;
-	    (0, _previewTracks2.default)();
 	  }, function (err) {
 	    if (err.status === 401) {
 	      spotifyAuth();
@@ -130,6 +130,11 @@
 	    }
 	  });
 	}
+
+	_jquery2.default.getJSON("./assets/data/fixed_data_for_analysis.json", function (data) {
+	  _config2.default['dataset'] = data;
+	  (0, _previewTracks2.default)();
+	});
 
 /***/ }),
 /* 1 */
@@ -31906,11 +31911,7 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	exports.default = playableTrack;
-
-	var _jquery = __webpack_require__(4);
-
-	var _jquery2 = _interopRequireDefault(_jquery);
+	exports.default = addTrackPreviewListeners;
 
 	var _config = __webpack_require__(39);
 
@@ -31918,11 +31919,47 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	function playableTrack() {
-	  console.log(_config2.default["user_top_tracks"]);
-	  _jquery2.default.getJSON("./assets/data/fixed_data_for_analysis.json", function (data) {
-	    console.log(data);
+	function addTrackPreviewListeners() {
+	  var playableTracks = document.querySelectorAll('.playable-track');
+	  var allTracks = _config2.default.dataset;
+	  _config2.default['songPlaying'] = false;
+	  _config2.default['currentSong'] = null;
+	  playableTracks.forEach(function (track) {
+	    var trackID = track.dataset.id;
+	    var trackURL = "";
+	    console.log(track.dataset.id);
+	    allTracks.forEach(function (entry) {
+	      if (entry['spotify_id'] === trackID) {
+	        track.setAttribute("data-url", entry['preview_url']);
+	      }
+	    });
+	    track.addEventListener("click", playTrack, false);
 	  });
+	}
+
+	function playTrack() {
+	  var clickedSong = new Audio(this.dataset.url);
+	  if (_config2.default['currentSong'] !== null) {
+	    var previousSong = _config2.default['currentSong'];
+	    previousSong.pause();
+	    _config2.default['currentSong'] = clickedSong;
+	    if (!_config2.default['songPlaying']) {
+	      clickedSong.play();
+	      _config2.default['songPlaying'] = true;
+	    } else {
+	      if (clickedSong.getAttribute('src') === previousSong.getAttribute('src')) {
+	        clickedSong.pause();
+	        _config2.default['songPlaying'] = false;
+	      } else {
+	        clickedSong.play();
+	        _config2.default['songPlaying'] = true;
+	      }
+	    }
+	  } else {
+	    clickedSong.play();
+	    _config2.default['currentSong'] = clickedSong;
+	    _config2.default['songPlaying'] = true;
+	  }
 	}
 
 /***/ }),

@@ -1,10 +1,11 @@
 import scroller from './scroller.js';
 import Spotify from 'spotify-web-api-js';
-import playableTrack from './preview-tracks.js'
+import addTrackPreviewListeners from './preview-tracks.js'
 import config from './config.js';
 import $ from 'jquery';
 
 let loggedIn = false;
+let songPlaying = false;
 
 if (document.getElementById('spotify-log-in') !== null) {
   document.getElementById('spotify-log-in').addEventListener("click", spotifyAuth, false);
@@ -64,7 +65,6 @@ if (localStorage.getItem('access_token') !== null) {
       });
     });
     config["user_top_tracks"] = userTopTracks;
-    playableTrack();
   },
   function(err) {
     if (err.status === 401) {
@@ -73,3 +73,8 @@ if (localStorage.getItem('access_token') !== null) {
     }
   });
 }
+
+$.getJSON( "./assets/data/fixed_data_for_analysis.json", function( data ) {
+  config['dataset'] = data;
+  addTrackPreviewListeners();
+});

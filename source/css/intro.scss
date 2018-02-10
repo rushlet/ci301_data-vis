@@ -3,17 +3,16 @@
   margin-top: 2em;
 }
 
-.intro-slide {
+.intro-slide,
+.text-slide,
+.section-re-entries__slide,
+.section-tracks__slide  {
   min-height: 75vh;
   text-align: center;
   vertical-align: middle;
   display: block;
   margin: 2em auto;
   max-width: 750px;
-
-  p {
-    font-size: 2.2em;
-  }
 }
 
 .charts-intro {
@@ -21,7 +20,7 @@
   padding-bottom: 30vh;
 }
 
-.charts-intro__slide p {
+p, h2 {
   padding-top: 50vh;
   font-size: 3.5em;
 }
