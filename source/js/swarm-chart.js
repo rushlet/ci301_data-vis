@@ -28,13 +28,28 @@ class SwarmChart {
 
     this.axistext = this.svg.append("text")
         .attr("x", this.width / 2 + this.margin.left)
-        .attr("y", (this.height))
-        .attr("transform", "translate(0," + this.margin.bottom*1.5 + ")")
+        .attr("y", 315)
         .attr("text-anchor", "middle")
         .style("font-size", "16px")
-        .text('Number of Weeks');
+        .text('Total Weeks at 1');
 
-    this.key();
+    // this.key = this.svg.append("g")
+    //       .attr("transform", "translate(0," + this.height + ")");
+    // const keyData = [7.5, 10, 15];
+    // const keyContainer = this.key.append("g");
+    // keyData.forEach((d, i) => {
+    //   this.key.append("circle")
+    //       .attr("r", d)
+    //       .attr("cx", this.width/2 + d*(i+2))
+    //       .attr("cy", 0)
+    //       .attr("class", "key");
+    // });
+    // this.key.append("text")
+    //     .text("Fewer Tracks")
+    //     .attr("y", 50)
+    //
+    // this.key.append("text")
+    //     .text("More Tracks")
   }
 
   swarmChart() {
@@ -64,43 +79,65 @@ class SwarmChart {
 
       swarm.g.append("g")
           .attr("class", "axis axis--x")
-          .attr("transform", "translate(0," + swarm.height * 1.75 + ")")
+          .attr("transform", "translate(0," + (swarm.height*0.55) + ")")
           .call(d3.axisBottom(swarm.x).ticks(20, ".0s")); // +"0.s" formats as ints
 
       var cell = swarm.g.append("g")
           .attr("class", "cells")
-          .attr("transform", "translate(0," + (swarm.height/2) + ")")
+          .attr("transform", "translate(0," + -swarm.margin.bottom + ")")
         .selectAll("g").data(d3.voronoi()
-            .extent([[-swarm.margin.left, -swarm.margin.top], [swarm.width + swarm.margin.right, swarm.height + swarm.margin.top]])
+            .extent([[-swarm.margin.left, -swarm.margin.top], [swarm.width + swarm.margin.right, 300]])
             .x(function(d) { return d.x; })
             .y(function(d) { return d.y; })
           .polygons(data)).enter().append("g");
 
-      // data.forEach(function(d, i) {
-      //   swarm.defs.append("svg:pattern")
-      //     .attr("id", "artist_image" + i)
-      //     .attr("width", d.track_count)
-      //     .attr("height", d.track_count)
-      //     .attr("y", 0)
-      //     .attr("x", 0)
-      //     .append("svg:image")
-      //     .attr("xlink:href", d.imageUrl)
-      //
-      //   swarm.svg.append("circle")
-      //     .attr("r", d.track_count)
-      //     .attr("cx", d.x)
-      //     .attr("cy", d.y)
-      //     .style("fill", "#000")
-      //     .style("fill", "url(#artist_image" + i + ")");
-      // })
-
       cell.attr("class", function(d) { return d.data.artist.replace(/ /g,"_"); })
+
+      var defs = swarm.svg.append('svg:defs');
+      data.forEach(function(d, i) { //this isn't the d3 way to do this -> once working, will need refactoring
+          defs.append("svg:pattern")
+              .attr("id", "artist_image" + d.artist.replace(/ /g,"_"))
+              .attr("width", "100%")
+              .attr("height", "100%")
+              .attr("x", d.imageWidth)
+              .attr("y", d.imageHeight)
+              .append("svg:image")
+              .attr("xlink:href", d.imageUrl)
+              .attr("width", d.track_count * 4)
+              .attr("height", d.track_count * 4);
+
+            // var circle = swarm.g.append("circle")
+            //   .attr("cx", d.x)
+            //   .attr("cy", d.y)
+            //   .attr("r", d.track_count)
+            //   .style("fill", "#000")
+            //   .style("fill", "url(#artist_image" + i + ")");
+       })
+
+       // swarm.svg.append("svg:defs").selectAll("marker")
+       //   .data(data)
+       //   .enter().append("svg:marker")
+       //   .attr("id", function(d) { return "artist_image_" + d.artist.replace(/ /g,"_"); })
+       //   .attr("width", "100%")
+       //   .attr("height", "100%")
+       //   .attr("x", function(d) { return d.imageWidth })
+       //   .attr("y", function(d) { return d.imageHeight })
+       //   .append("svg:image")
+       //   .attr("xlink:href", function(d) { return d.imageUrl })
+       //   .attr("width", function(d) { return d.track_count * 4 })
+       //   .attr("height", function(d) { return d.track_count * 4 });
 
       cell.append("circle")
           .attr("r", function(d) { return d.data.track_count; })
           .attr("cx", function(d) { return d.data.x; })
           .attr("cy", function(d) { return d.data.y; })
           .attr("class", function(d) { return `${d.data.artist.replace(/ /g,"_")}_circle`; })
+          .style("fill", "#000")
+          .style("stroke", "#bfbfbf")
+          .style("stroke-opacity", 0.5)
+          .style("stroke-width", 0.5)
+          .style("fill", function(d) { return "url(#artist_image" + d.data.artist.replace(/ /g,"_") + ")"; });
+
 
       cell.append("path")
           .attr("d", function(d) { return "M" + d.join("L") + "Z"; });
@@ -108,25 +145,6 @@ class SwarmChart {
       cell.append("title")
           .text(function(d) { return d.data.artist + "\n" + swarm.formatValue(d.data.total_weeks) + " weeks at one with " + swarm.formatValue(d.data.track_count) + " tracks"; });
     });
-  }
-
-  key() {
-    console.log('called');
-    const swarm = this;
-    this.svg = d3.select("#swarm-chart-key");
-    this.margin = {top: 0, right: 40, bottom: 40, left: 40};
-    this.width = this.svg.attr("width") - this.margin.left - this.margin.right;
-    this.height = this.svg.attr("height") - this.margin.top - this.margin.bottom;
-    const data = [1, 40, 80];
-    const keyContainer = this.svg.append("g")
-    data.forEach((d, i) => {
-      console.log(d, i);
-      keyContainer.append("circle")
-          .attr("r", function(data) {return data; })
-          .attr("cx", function(d) { return 150 * i; })
-          .attr("cy", function(d) { return 50; })
-          .attr("class", "key");
-    })
   }
 
   type(d) {
@@ -154,7 +172,9 @@ class SwarmChart {
   highlightArtistNode(artist, colour) {
     console.log('highlight node');
     d3.select(`.${artist.replace(/ /g,"_")}_circle`)
-      .style("fill", colour)
+      .style("stroke", "#ff6a07")
+      .style("stroke-width", 0.5)
+      .style("stroke-opacity", 1)
    }
 }
 
