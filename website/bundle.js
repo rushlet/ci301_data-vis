@@ -54,6 +54,14 @@
 
 	var _spotifyWebApiJs2 = _interopRequireDefault(_spotifyWebApiJs);
 
+	var _previewTracks = __webpack_require__(38);
+
+	var _previewTracks2 = _interopRequireDefault(_previewTracks);
+
+	var _config = __webpack_require__(39);
+
+	var _config2 = _interopRequireDefault(_config);
+
 	var _jquery = __webpack_require__(4);
 
 	var _jquery2 = _interopRequireDefault(_jquery);
@@ -61,7 +69,6 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var loggedIn = false;
-	var userTopTracks = void 0;
 
 	if (document.getElementById('spotify-log-in') !== null) {
 	  document.getElementById('spotify-log-in').addEventListener("click", spotifyAuth, false);
@@ -88,15 +95,34 @@
 	  var url = window.location.href;
 	  var access_token = url.match(/\#(?:access_token)\=([\S\s]*?)\&/)[1];
 	  localStorage.setItem('access_token', access_token);
-	  console.log(localStorage.getItem('access_token'));
 	  loggedIn = true;
 	}
 
 	if (localStorage.getItem('access_token') !== null) {
 	  var spotifyApi = new _spotifyWebApiJs2.default();
+	  var userTopTracks = {};
 	  spotifyApi.setAccessToken(localStorage.getItem('access_token'));
 	  spotifyApi.getMyTopTracks('limit:10').then(function (data) {
-	    console.log('top tracks', data);
+	    data.items.forEach(function (track) {
+	      userTopTracks[track.name] = {};
+	      userTopTracks[track.name].name = track.name;
+	      userTopTracks[track.name].id = track.id;
+	      spotifyApi.getArtist(track.artists[0].id).then(function (data) {
+	        userTopTracks[track.name].artist = data.name;
+	      }, function (err) {});
+	      spotifyApi.getAudioFeaturesForTrack(track.id).then(function (data) {
+	        for (var feature in data) {
+	          userTopTracks[track.name].feature = data[feature];
+	        }
+	      }, function (err) {
+	        if (err.status === 401) {
+	          console.log('error');
+	          // window.location.href = './index.html';
+	        }
+	      });
+	    });
+	    _config2.default["user_top_tracks"] = userTopTracks;
+	    (0, _previewTracks2.default)();
 	  }, function (err) {
 	    if (err.status === 401) {
 	      spotifyAuth();
@@ -162,40 +188,40 @@
 	    // document.querySelector('.scroll__graphic').style.backgroundColor = "#fff";
 	    // dispatch.call("swarm 1");
 	    swarm.zoomReset();
-	    resetArtists(['BEATLES', 'ELVIS']);
+	    // resetArtists(['BEATLES', 'ELVIS']);
 	  }
 	  if (interaction.index === 1) {
 	    // document.querySelector('.scroll__graphic').style.backgroundColor = "#f5a62a";
-	    swarm.zoomAndPan(-1900, 0, 5.5);
+	    swarm.zoomAndPan(-1950, 150, 5.5);
 
 	    highlightArtist('BEATLES', '#ff6a07');
 	    highlightArtist('ELVIS', '#37a1cf');
-	    resetArtists(['WESTLIFE', 'MADONNA', 'CLIFF RICHARD']);
+	    // resetArtists(['WESTLIFE', 'MADONNA', 'CLIFF RICHARD']);
 	  }
 	  if (interaction.index === 2) {
 	    // document.querySelector('.scroll__graphic').style.backgroundColor = "#55b4d8";
-	    swarm.zoomAndPan(225, 0, 3);
-	    resetArtists(['BEATLES', 'ELVIS', 'FRANKIE LAINE']);
+	    swarm.zoomAndPan(225, 75, 3);
+	    // resetArtists(['BEATLES', 'ELVIS', 'FRANKIE LAINE']);
 	    highlightArtist('WESTLIFE', '#eeb420');
 	    highlightArtist('MADONNA', '#439428');
 	    highlightArtist('CLIFF RICHARD', '#6b2188');
 	  }
 	  if (interaction.index === 3) {
 	    // document.querySelector('.scroll__graphic').style.backgroundColor = "#55b4d8";
-	    swarm.zoomAndPan(650, -0, 8);
-	    resetArtists(['WESTLIFE', 'MADONNA', 'CLIFF RICHARD', 'WET WET WET']);
+	    swarm.zoomAndPan(650, 350, 8);
+	    // resetArtists(['WESTLIFE', 'MADONNA', 'CLIFF RICHARD', 'WET WET WET']);
 	    highlightArtist('FRANKIE LAINE', '#e61c17');
 	  }
 	  if (interaction.index === 4) {
 	    // document.querySelector('.scroll__graphic').style.backgroundColor = "#55b4d8";
-	    swarm.zoomAndPan(900, -30, 6);
+	    swarm.zoomAndPan(1200, 300, 7.5);
 	    highlightArtist('WET WET WET', '#e61c17');
-	    resetArtists(['MADONNA', 'JUSTIN BIEBER', 'TAKE THAT']);
+	    // resetArtists(['MADONNA', 'JUSTIN BIEBER', 'TAKE THAT']);
 	  }
 	  if (interaction.index === 5) {
 	    // document.querySelector('.scroll__graphic').style.backgroundColor = "#55b4d8";
-	    swarm.zoomAndPan(750, 50, 7);
-	    resetArtists(['FRANKIE LAINE', 'WET WET WET']);
+	    swarm.zoomAndPan(750, 300, 7);
+	    // resetArtists(['FRANKIE LAINE', 'WET WET WET']);
 	    highlightArtist('JUSTIN BIEBER', '#ff6a07');
 	    highlightArtist('MADONNA', '#439428');
 	    highlightArtist('TAKE THAT', '#560f85');
@@ -203,7 +229,7 @@
 	  if (interaction.index === 6) {
 	    // document.querySelector('.scroll__graphic').style.backgroundColor = "#55b4d8";
 	    swarm.zoomReset();
-	    resetArtists(['MADONNA', 'JUSTIN BIEBER', 'TAKE THAT']);
+	    // resetArtists(['MADONNA', 'JUSTIN BIEBER', 'TAKE THAT']);
 	  }
 	}
 
@@ -223,11 +249,11 @@
 	}
 
 	function highlightArtist(artist, colour) {
-	  artists.forEach(function (artistText) {
-	    if (artistText.textContent.includes(capitalize(artist))) {
-	      artistText.style.color = colour;
-	    }
-	  });
+	  // artists.forEach((artistText)=>{
+	  //   if (artistText.textContent.includes(capitalize(artist))) {
+	  //     artistText.style.color = colour;
+	  //   }
+	  // })
 	  swarm.highlightArtistNode(artist, colour);
 	}
 
@@ -1857,9 +1883,25 @@
 
 	    this.title = this.svg.append("text").attr("x", this.width / 2 + this.margin.left).attr("y", this.margin.top / 1.75).attr("text-anchor", "middle").style("font-size", "30px").text('Artists: Number of tracks and time at 1');
 
-	    this.axistext = this.svg.append("text").attr("x", this.width / 2 + this.margin.left).attr("y", this.height).attr("transform", "translate(0," + this.margin.bottom * 1.5 + ")").attr("text-anchor", "middle").style("font-size", "16px").text('Number of Weeks');
+	    this.axistext = this.svg.append("text").attr("x", this.width / 2 + this.margin.left).attr("y", 315).attr("text-anchor", "middle").style("font-size", "16px").text('Total Weeks at 1');
 
-	    this.key();
+	    // this.key = this.svg.append("g")
+	    //       .attr("transform", "translate(0," + this.height + ")");
+	    // const keyData = [7.5, 10, 15];
+	    // const keyContainer = this.key.append("g");
+	    // keyData.forEach((d, i) => {
+	    //   this.key.append("circle")
+	    //       .attr("r", d)
+	    //       .attr("cx", this.width/2 + d*(i+2))
+	    //       .attr("cy", 0)
+	    //       .attr("class", "key");
+	    // });
+	    // this.key.append("text")
+	    //     .text("Fewer Tracks")
+	    //     .attr("y", 50)
+	    //
+	    // this.key.append("text")
+	    //     .text("More Tracks")
 	  }
 
 	  _createClass(SwarmChart, [{
@@ -1887,35 +1929,43 @@
 
 	        for (var i = 0; i < 120; ++i) {
 	          simulation.tick();
-	        }swarm.g.append("g").attr("class", "axis axis--x").attr("transform", "translate(0," + swarm.height * 1.75 + ")").call(d3.axisBottom(swarm.x).ticks(20, ".0s")); // +"0.s" formats as ints
+	        }swarm.g.append("g").attr("class", "axis axis--x").attr("transform", "translate(0," + swarm.height * 0.55 + ")").call(d3.axisBottom(swarm.x).ticks(20, ".0s")); // +"0.s" formats as ints
 
-	        var cell = swarm.g.append("g").attr("class", "cells").attr("transform", "translate(0," + swarm.height / 2 + ")").selectAll("g").data(d3.voronoi().extent([[-swarm.margin.left, -swarm.margin.top], [swarm.width + swarm.margin.right, swarm.height + swarm.margin.top]]).x(function (d) {
+	        var cell = swarm.g.append("g").attr("class", "cells").attr("transform", "translate(0," + -swarm.margin.bottom + ")").selectAll("g").data(d3.voronoi().extent([[-swarm.margin.left, -swarm.margin.top], [swarm.width + swarm.margin.right, 300]]).x(function (d) {
 	          return d.x;
 	        }).y(function (d) {
 	          return d.y;
 	        }).polygons(data)).enter().append("g");
 
-	        // data.forEach(function(d, i) {
-	        //   swarm.defs.append("svg:pattern")
-	        //     .attr("id", "artist_image" + i)
-	        //     .attr("width", d.track_count)
-	        //     .attr("height", d.track_count)
-	        //     .attr("y", 0)
-	        //     .attr("x", 0)
-	        //     .append("svg:image")
-	        //     .attr("xlink:href", d.imageUrl)
-	        //
-	        //   swarm.svg.append("circle")
-	        //     .attr("r", d.track_count)
-	        //     .attr("cx", d.x)
-	        //     .attr("cy", d.y)
-	        //     .style("fill", "#000")
-	        //     .style("fill", "url(#artist_image" + i + ")");
-	        // })
-
 	        cell.attr("class", function (d) {
 	          return d.data.artist.replace(/ /g, "_");
 	        });
+
+	        var defs = swarm.svg.append('svg:defs');
+	        data.forEach(function (d, i) {
+	          //this isn't the d3 way to do this -> once working, will need refactoring
+	          defs.append("svg:pattern").attr("id", "artist_image" + d.artist.replace(/ /g, "_")).attr("width", "100%").attr("height", "100%").attr("x", d.imageWidth).attr("y", d.imageHeight).append("svg:image").attr("xlink:href", d.imageUrl).attr("width", d.track_count * 4).attr("height", d.track_count * 4);
+
+	          // var circle = swarm.g.append("circle")
+	          //   .attr("cx", d.x)
+	          //   .attr("cy", d.y)
+	          //   .attr("r", d.track_count)
+	          //   .style("fill", "#000")
+	          //   .style("fill", "url(#artist_image" + i + ")");
+	        });
+
+	        // swarm.svg.append("svg:defs").selectAll("marker")
+	        //   .data(data)
+	        //   .enter().append("svg:marker")
+	        //   .attr("id", function(d) { return "artist_image_" + d.artist.replace(/ /g,"_"); })
+	        //   .attr("width", "100%")
+	        //   .attr("height", "100%")
+	        //   .attr("x", function(d) { return d.imageWidth })
+	        //   .attr("y", function(d) { return d.imageHeight })
+	        //   .append("svg:image")
+	        //   .attr("xlink:href", function(d) { return d.imageUrl })
+	        //   .attr("width", function(d) { return d.track_count * 4 })
+	        //   .attr("height", function(d) { return d.track_count * 4 });
 
 	        cell.append("circle").attr("r", function (d) {
 	          return d.data.track_count;
@@ -1925,6 +1975,8 @@
 	          return d.data.y;
 	        }).attr("class", function (d) {
 	          return d.data.artist.replace(/ /g, "_") + "_circle";
+	        }).style("fill", "#000").style("stroke", "#bfbfbf").style("stroke-opacity", 0.5).style("stroke-width", 0.5).style("fill", function (d) {
+	          return "url(#artist_image" + d.data.artist.replace(/ /g, "_") + ")";
 	        });
 
 	        cell.append("path").attr("d", function (d) {
@@ -1934,28 +1986,6 @@
 	        cell.append("title").text(function (d) {
 	          return d.data.artist + "\n" + swarm.formatValue(d.data.total_weeks) + " weeks at one with " + swarm.formatValue(d.data.track_count) + " tracks";
 	        });
-	      });
-	    }
-	  }, {
-	    key: "key",
-	    value: function key() {
-	      console.log('called');
-	      var swarm = this;
-	      this.svg = d3.select("#swarm-chart-key");
-	      this.margin = { top: 0, right: 40, bottom: 40, left: 40 };
-	      this.width = this.svg.attr("width") - this.margin.left - this.margin.right;
-	      this.height = this.svg.attr("height") - this.margin.top - this.margin.bottom;
-	      var data = [1, 40, 80];
-	      var keyContainer = this.svg.append("g");
-	      data.forEach(function (d, i) {
-	        console.log(d, i);
-	        keyContainer.append("circle").attr("r", function (data) {
-	          return data;
-	        }).attr("cx", function (d) {
-	          return 150 * i;
-	        }).attr("cy", function (d) {
-	          return 50;
-	        }).attr("class", "key");
 	      });
 	    }
 	  }, {
@@ -1981,7 +2011,7 @@
 	    key: "highlightArtistNode",
 	    value: function highlightArtistNode(artist, colour) {
 	      console.log('highlight node');
-	      d3.select("." + artist.replace(/ /g, "_") + "_circle").style("fill", colour);
+	      d3.select("." + artist.replace(/ /g, "_") + "_circle").style("stroke", "#ff6a07").style("stroke-width", 0.5).style("stroke-opacity", 1);
 	    }
 	  }]);
 
@@ -31866,6 +31896,48 @@
 	  module.exports = SpotifyWebApi;
 	}
 
+
+/***/ }),
+/* 38 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.default = playableTrack;
+
+	var _jquery = __webpack_require__(4);
+
+	var _jquery2 = _interopRequireDefault(_jquery);
+
+	var _config = __webpack_require__(39);
+
+	var _config2 = _interopRequireDefault(_config);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function playableTrack() {
+	  console.log(_config2.default["user_top_tracks"]);
+	  _jquery2.default.getJSON("./assets/data/fixed_data_for_analysis.json", function (data) {
+	    console.log(data);
+	  });
+	}
+
+/***/ }),
+/* 39 */
+/***/ (function(module, exports) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	var config = {
+	  "user_top_tracks": {}
+	};
+	exports.default = config;
 
 /***/ })
 /******/ ]);

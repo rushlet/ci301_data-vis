@@ -1,9 +1,10 @@
 import scroller from './scroller.js';
 import Spotify from 'spotify-web-api-js';
+import playableTrack from './preview-tracks.js'
+import config from './config.js';
 import $ from 'jquery';
 
 let loggedIn = false;
-let userTopTracks;
 
 if (document.getElementById('spotify-log-in') !== null) {
   document.getElementById('spotify-log-in').addEventListener("click", spotifyAuth, false);
@@ -30,17 +31,42 @@ if (window.location.href.includes('access_token')) {
   var url = window.location.href;
   var access_token = url.match(/\#(?:access_token)\=([\S\s]*?)\&/)[1];
   localStorage.setItem('access_token', access_token);
-  console.log(localStorage.getItem('access_token'));
   loggedIn = true;
 }
 
 if (localStorage.getItem('access_token') !== null) {
-  var spotifyApi = new Spotify();
+  let spotifyApi = new Spotify();
+  let userTopTracks = {};
   spotifyApi.setAccessToken(localStorage.getItem('access_token'));
   spotifyApi.getMyTopTracks('limit:10')
     .then(function(data) {
-    console.log('top tracks', data);
-  }, function(err) {
+    data.items.forEach((track) => {
+      userTopTracks[track.name] = {};
+      userTopTracks[track.name].name = track.name;
+      userTopTracks[track.name].id = track.id;
+      spotifyApi.getArtist(track.artists[0].id)
+        .then(function(data) {
+          userTopTracks[track.name].artist = data.name;
+        }, function(err) {
+
+      });
+      spotifyApi.getAudioFeaturesForTrack(track.id)
+        .then(function(data) {
+          for (var feature in data) {
+            userTopTracks[track.name].feature = data[feature];
+          }
+        },
+        function(err) {
+          if (err.status === 401) {
+            console.log('error');
+            // window.location.href = './index.html';
+          }
+      });
+    });
+    config["user_top_tracks"] = userTopTracks;
+    playableTrack();
+  },
+  function(err) {
     if (err.status === 401) {
       spotifyAuth();
       // window.location.href = './index.html';
