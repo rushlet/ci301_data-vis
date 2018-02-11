@@ -31939,8 +31939,7 @@
 
 	function playTrack() {
 	  var clickedSong = new Audio(this.dataset.url);
-	  var clickedSongIcon = this.getAttribute('background');
-	  console.log(this);
+	  var clickedSongElement = this;
 	  var playIcon = './assets/img/sound_on.svg';
 	  var pauseIcon = './assets/img/sound_off.svg';
 	  if (_config2.default['currentSong'] !== null) {
@@ -31949,26 +31948,30 @@
 	    document.querySelector('[data-url=\'' + previousSong.getAttribute('src') + '\']').style.backgroundImage = 'url(' + playIcon + ')';
 	    _config2.default['currentSong'] = clickedSong;
 	    if (!_config2.default['songPlaying']) {
-	      clickedSong.play();
-	      this.style.backgroundImage = 'url(' + pauseIcon + ')';
-	      _config2.default['songPlaying'] = true;
+	      playSong(clickedSong, clickedSongElement, pauseIcon);
 	    } else {
 	      if (clickedSong.getAttribute('src') === previousSong.getAttribute('src')) {
-	        clickedSong.pause();
-	        _config2.default['songPlaying'] = false;
-	        this.style.backgroundImage = 'url(' + playIcon + ')';
+	        pauseSong(clickedSong, clickedSongElement, pauseIcon);
 	      } else {
-	        clickedSong.play();
-	        _config2.default['songPlaying'] = true;
-	        this.style.backgroundImage = 'url(' + pauseIcon + ')';
+	        playSong(clickedSong, clickedSongElement, pauseIcon);
 	      }
 	    }
 	  } else {
-	    clickedSong.play();
 	    _config2.default['currentSong'] = clickedSong;
-	    _config2.default['songPlaying'] = true;
-	    this.style.backgroundImage = 'url(' + pauseIcon + ')';
+	    playSong(clickedSong, clickedSongElement, pauseIcon);
 	  }
+	}
+
+	function pauseSong(song, songElement, playIcon) {
+	  song.pause();
+	  _config2.default['songPlaying'] = false;
+	  songElement.style.backgroundImage = 'url(' + playIcon + ')';
+	}
+
+	function playSong(song, songElement, pauseIcon) {
+	  song.play();
+	  _config2.default['songPlaying'] = true;
+	  songElement.style.backgroundImage = 'url(' + pauseIcon + ')';
 	}
 
 /***/ }),

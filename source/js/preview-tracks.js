@@ -19,35 +19,38 @@ export default function addTrackPreviewListeners() {
 }
 
 function playTrack () {
-  var clickedSong = new Audio(this.dataset.url);
-  var clickedSongIcon = this.getAttribute('background');
-  console.log(this);
-  var playIcon = './assets/img/sound_on.svg';
-  var pauseIcon = './assets/img/sound_off.svg';
+  let clickedSong = new Audio(this.dataset.url);
+  let clickedSongElement = this;
+  const playIcon = './assets/img/sound_on.svg';
+  const pauseIcon = './assets/img/sound_off.svg';
   if (config['currentSong'] !== null) {
     var previousSong = config['currentSong'];
     previousSong.pause();
     document.querySelector(`[data-url='${previousSong.getAttribute('src')}']`).style.backgroundImage = `url(${playIcon})`;
     config['currentSong'] = clickedSong;
     if (!config['songPlaying']) {
-      clickedSong.play();
-      this.style.backgroundImage = `url(${pauseIcon})`;
-      config['songPlaying'] = true;
+      playSong(clickedSong, clickedSongElement, pauseIcon);
     } else {
       if (clickedSong.getAttribute('src') === previousSong.getAttribute('src')) {
-        clickedSong.pause();
-        config['songPlaying'] = false;
-        this.style.backgroundImage = `url(${playIcon})`;
+        pauseSong(clickedSong, clickedSongElement, pauseIcon);
       } else {
-        clickedSong.play();
-        config['songPlaying'] = true;
-        this.style.backgroundImage = `url(${pauseIcon})`;
+        playSong(clickedSong, clickedSongElement, pauseIcon);
       }
     }
   } else {
-    clickedSong.play();
     config['currentSong'] = clickedSong;
-    config['songPlaying'] = true;
-    this.style.backgroundImage = `url(${pauseIcon})`;
+    playSong(clickedSong, clickedSongElement, pauseIcon);
   }
+}
+
+function pauseSong(song, songElement, playIcon) {
+  song.pause();
+  config['songPlaying'] = false;
+  songElement.style.backgroundImage = `url(${playIcon})`;
+}
+
+function playSong(song, songElement, pauseIcon) {
+  song.play();
+  config['songPlaying'] = true;
+  songElement.style.backgroundImage = `url(${pauseIcon})`;
 }
