@@ -74,6 +74,8 @@
 	if (document.getElementById('spotify-log-in') !== null) {
 	  document.getElementById('spotify-log-in').addEventListener("click", spotifyAuth, false);
 	  document.getElementById('skip-log-in').addEventListener("click", skipLogIn, false);
+	} else {
+	  document.getElementById('spotify-playlist').addEventListener("click", followPlaylist, false);
 	}
 
 	function skipLogIn() {
@@ -103,6 +105,15 @@
 	  var spotifyApi = new _spotifyWebApiJs2.default();
 	  var userTopTracks = {};
 	  spotifyApi.setAccessToken(localStorage.getItem('access_token'));
+	  spotifyApi.getMe().then(function (data) {
+	    console.log(data);
+	    _config2.default['user_id'] = data.id;
+	  }, function (err) {
+	    if (err.status === 401) {
+	      console.log('error');
+	      // window.location.href = './index.html';
+	    }
+	  });
 	  spotifyApi.getMyTopTracks('limit:10').then(function (data) {
 	    data.items.forEach(function (track) {
 	      userTopTracks[track.name] = {};
@@ -128,6 +139,15 @@
 	      spotifyAuth();
 	      // window.location.href = './index.html';
 	    }
+	  });
+	}
+
+	function followPlaylist() {
+	  var spotifyApi = new _spotifyWebApiJs2.default();
+	  spotifyApi.followPlaylist(_config2.default['user_id'], '6DNZV1L405XpElhIAUHaKZ').then(function (data) {
+	    console.log('playlist followed!');
+	  }, function (err) {
+	    console.log('playlist follow error');
 	  });
 	}
 
