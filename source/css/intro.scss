@@ -1,7 +1,11 @@
-.project-intro__title {
-  font-size: 5em;
-  margin-top: 2em;
-}
+
+// .intro-slide {
+//   min-height: 75vh;
+//   p {
+//     font-size: initial;
+//     padding: initial;
+//   }
+// }
 
 .intro-slide,
 .text-slide,
@@ -15,12 +19,24 @@
   max-width: 750px;
 }
 
-.charts-intro {
-  background-color: #e8e8e8;
-  padding-bottom: 30vh;
-}
-
 p, h2 {
   padding-top: 50vh;
   font-size: 3.5em;
+}
+
+.project-intro__title {
+  font-size: 5em;
+  margin-top: 2em;
+}
+
+.intro-slide {
+  p {
+    font-size: 2.2em;
+    padding: initial;
+  }
+}
+
+.charts-intro {
+  background-color: #e8e8e8;
+  padding-bottom: 30vh;
 }
