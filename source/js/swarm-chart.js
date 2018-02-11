@@ -1,6 +1,7 @@
 // adapted from https://bl.ocks.org/mbostock/6526445e2b44303eebf21da3b6627320
 import $ from 'jquery';
 import * as d3 from "d3";
+import * as d4 from 'd3-svg-annotation';
 var zoom = d3.zoom();
 
 class SwarmChart {
@@ -131,13 +132,12 @@ class SwarmChart {
           .attr("r", function(d) { return d.data.track_count; })
           .attr("cx", function(d) { return d.data.x; })
           .attr("cy", function(d) { return d.data.y; })
-          .attr("class", function(d) { return `${d.data.artist.replace(/ /g,"_")}_circle`; })
+          .attr("id", function(d) { return `${d.data.artist.replace(/ /g,"_")}_circle`; })
           .style("fill", "#000")
           .style("stroke", "#bfbfbf")
           .style("stroke-opacity", 0.5)
           .style("stroke-width", 0.5)
           .style("fill", function(d) { return "url(#artist_image" + d.data.artist.replace(/ /g,"_") + ")"; });
-
 
       cell.append("path")
           .attr("d", function(d) { return "M" + d.join("L") + "Z"; });
@@ -175,7 +175,30 @@ class SwarmChart {
       .style("stroke", "#ff6a07")
       .style("stroke-width", 0.5)
       .style("stroke-opacity", 1)
-   }
+
+    const type = d4.annotationLabel
+
+    const annotations = [{
+    note: {
+      title: "Beatles"
+    },
+    x: 760, y: 210,
+    dx: 15, dy: 38,
+    connector: {end: "arrow"},
+    }]
+
+    const makeAnnotations = d4.annotation()
+        .editMode(false)
+        .type(d4.annotationLabel)
+        .annotations(annotations)
+
+    d3.select("svg")
+    .append("g")
+    .attr("class", "annotation-group")
+    .attr("id", "beatles")
+    .call(makeAnnotations)
+  }
+
 }
 
 export default SwarmChart;
