@@ -219,37 +219,38 @@
 	    // document.querySelector('.scroll__graphic').style.backgroundColor = "#f5a62a";
 	    swarm.zoomAndPan(-1950, 150, 5.5);
 
-	    highlightArtist('BEATLES', '#ff6a07');
-	    highlightArtist('ELVIS', '#37a1cf');
+	    swarm.highlightArtistNode('Beatles', 758, 212, 15, 40);
+	    swarm.highlightArtistNode('Elvis', 850, 210, -15, 42);
+	    // highlightArtist('ELVIS', '#37a1cf');
 	    // resetArtists(['WESTLIFE', 'MADONNA', 'CLIFF RICHARD']);
 	  }
 	  if (interaction.index === 2) {
 	    // document.querySelector('.scroll__graphic').style.backgroundColor = "#55b4d8";
 	    swarm.zoomAndPan(225, 75, 3);
 	    // resetArtists(['BEATLES', 'ELVIS', 'FRANKIE LAINE']);
-	    highlightArtist('WESTLIFE', '#eeb420');
-	    highlightArtist('MADONNA', '#439428');
-	    highlightArtist('CLIFF RICHARD', '#6b2188');
+	    // highlightArtist('WESTLIFE', '#eeb420');
+	    // highlightArtist('MADONNA', '#439428');
+	    // highlightArtist('CLIFF RICHARD', '#6b2188');
 	  }
 	  if (interaction.index === 3) {
 	    // document.querySelector('.scroll__graphic').style.backgroundColor = "#55b4d8";
 	    swarm.zoomAndPan(650, 350, 8);
 	    // resetArtists(['WESTLIFE', 'MADONNA', 'CLIFF RICHARD', 'WET WET WET']);
-	    highlightArtist('FRANKIE LAINE', '#e61c17');
+	    // highlightArtist('FRANKIE LAINE', '#e61c17');
 	  }
 	  if (interaction.index === 4) {
 	    // document.querySelector('.scroll__graphic').style.backgroundColor = "#55b4d8";
 	    swarm.zoomAndPan(1200, 300, 7.5);
-	    highlightArtist('WET WET WET', '#e61c17');
+	    // highlightArtist('WET WET WET', '#e61c17');
 	    // resetArtists(['MADONNA', 'JUSTIN BIEBER', 'TAKE THAT']);
 	  }
 	  if (interaction.index === 5) {
 	    // document.querySelector('.scroll__graphic').style.backgroundColor = "#55b4d8";
 	    swarm.zoomAndPan(750, 300, 7);
 	    // resetArtists(['FRANKIE LAINE', 'WET WET WET']);
-	    highlightArtist('JUSTIN BIEBER', '#ff6a07');
-	    highlightArtist('MADONNA', '#439428');
-	    highlightArtist('TAKE THAT', '#560f85');
+	    // highlightArtist('JUSTIN BIEBER', '#ff6a07');
+	    // highlightArtist('MADONNA', '#439428');
+	    // highlightArtist('TAKE THAT', '#560f85');
 	  }
 	  if (interaction.index === 6) {
 	    // document.querySelector('.scroll__graphic').style.backgroundColor = "#55b4d8";
@@ -271,15 +272,6 @@
 
 	function handleContainerExit(interaction, steps) {
 	  //console.log('handleStepEnter', interaction, steps);
-	}
-
-	function highlightArtist(artist, colour) {
-	  // artists.forEach((artistText)=>{
-	  //   if (artistText.textContent.includes(capitalize(artist))) {
-	  //     artistText.style.color = colour;
-	  //   }
-	  // })
-	  swarm.highlightArtistNode(artist, colour);
 	}
 
 	function resetArtists(artistsToReset) {
@@ -2038,24 +2030,22 @@
 	    }
 	  }, {
 	    key: 'highlightArtistNode',
-	    value: function highlightArtistNode(artist, colour) {
-	      console.log('highlight node');
-	      d3.select('.' + artist.replace(/ /g, "_") + '_circle').style("stroke", "#ff6a07").style("stroke-width", 0.5).style("stroke-opacity", 1);
-
+	    value: function highlightArtistNode(artist, x, y, dx, dy) {
+	      console.log(artist, x, y, dx, dy);
 	      var type = d4.annotationLabel;
 
 	      var annotations = [{
 	        note: {
-	          title: "Beatles"
+	          title: artist
 	        },
-	        x: 760, y: 210,
-	        dx: 15, dy: 38,
+	        x: x, y: y,
+	        dx: dx, dy: dy,
 	        connector: { end: "arrow" }
 	      }];
 
 	      var makeAnnotations = d4.annotation().editMode(false).type(d4.annotationLabel).annotations(annotations);
 
-	      d3.select("svg").append("g").attr("class", "annotation-group").attr("id", "beatles").call(makeAnnotations);
+	      d3.select("#swarm-chart").append("g").attr("class", "annotation-group").attr("id", artist + '_label').style('font-size', "10px").call(makeAnnotations);
 	    }
 	  }]);
 

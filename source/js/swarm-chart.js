@@ -169,22 +169,17 @@ class SwarmChart {
         .attr("transform", `translate(0,0)scale(1)`);
   }
 
-  highlightArtistNode(artist, colour) {
-    console.log('highlight node');
-    d3.select(`.${artist.replace(/ /g,"_")}_circle`)
-      .style("stroke", "#ff6a07")
-      .style("stroke-width", 0.5)
-      .style("stroke-opacity", 1)
-
+  highlightArtistNode(artist, x, y, dx, dy) {
+    console.log(artist, x, y, dx, dy);
     const type = d4.annotationLabel
 
     const annotations = [{
-    note: {
-      title: "Beatles"
-    },
-    x: 760, y: 210,
-    dx: 15, dy: 38,
-    connector: {end: "arrow"},
+      note: {
+        title: artist
+      },
+      x: x, y: y,
+      dx: dx, dy: dy,
+      connector: {end: "arrow"},
     }]
 
     const makeAnnotations = d4.annotation()
@@ -192,13 +187,13 @@ class SwarmChart {
         .type(d4.annotationLabel)
         .annotations(annotations)
 
-    d3.select("svg")
-    .append("g")
-    .attr("class", "annotation-group")
-    .attr("id", "beatles")
-    .call(makeAnnotations)
+    d3.select("#swarm-chart")
+      .append("g")
+      .attr("class", "annotation-group")
+      .attr("id", `${artist}_label`)
+      .style('font-size', "10px")
+      .call(makeAnnotations)
   }
-
 }
 
 export default SwarmChart;
