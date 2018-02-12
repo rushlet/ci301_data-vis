@@ -170,7 +170,7 @@ class SwarmChart {
   }
 
   highlightArtistNode(artist, x, y, dx, dy) {
-    console.log(artist, x, y, dx, dy);
+    // add check to see if label already exists
     const type = d4.annotationLabel
 
     const annotations = [{
@@ -190,9 +190,17 @@ class SwarmChart {
     d3.select("#swarm-chart")
       .append("g")
       .attr("class", "annotation-group")
-      .attr("id", `${artist}_label`)
+      .attr("id", `${artist.replace(/ /g,"_")}_label`)
       .style('font-size', "10px")
       .call(makeAnnotations)
+  }
+
+  removeAllAnnotations() {
+    var labels = document.querySelectorAll('.annotation-group');
+      labels.forEach((label) => {
+        console.log(label);
+        label.style.display = "none";
+      });
   }
 }
 

@@ -43,15 +43,21 @@ function handleStepEnter(interaction, steps) {
   if (interaction.index===1) {
     // document.querySelector('.scroll__graphic').style.backgroundColor = "#f5a62a";
     swarm.zoomAndPan(-1950, 150, 5.5);
-
+    swarm.removeAllAnnotations();
     swarm.highlightArtistNode('Beatles', 758, 212, 15, 40);
     swarm.highlightArtistNode('Elvis', 850, 210, -15, 42);
+
     // highlightArtist('ELVIS', '#37a1cf');
     // resetArtists(['WESTLIFE', 'MADONNA', 'CLIFF RICHARD']);
   }
   if (interaction.index===2) {
     // document.querySelector('.scroll__graphic').style.backgroundColor = "#55b4d8";
     swarm.zoomAndPan(225, 75, 3);
+    swarm.removeAllAnnotations();
+    swarm.highlightArtistNode('Cliff Richard', 500, 218, -15, 33);
+    swarm.highlightArtistNode('Madonna', 320, 205, 0, 46);
+    swarm.highlightArtistNode('Westlife', 250, 180, 15, -20);
+
     // resetArtists(['BEATLES', 'ELVIS', 'FRANKIE LAINE']);
     // highlightArtist('WESTLIFE', '#eeb420');
     // highlightArtist('MADONNA', '#439428');
@@ -60,18 +66,26 @@ function handleStepEnter(interaction, steps) {
   if (interaction.index===3) {
     // document.querySelector('.scroll__graphic').style.backgroundColor = "#55b4d8";
     swarm.zoomAndPan(650, 350, 8);
+    swarm.removeAllAnnotations();
+    swarm.highlightArtistNode('Frankie Laine', 370, 199, 15, 30);
     // resetArtists(['WESTLIFE', 'MADONNA', 'CLIFF RICHARD', 'WET WET WET']);
     // highlightArtist('FRANKIE LAINE', '#e61c17');
   }
   if (interaction.index===4) {
     // document.querySelector('.scroll__graphic').style.backgroundColor = "#55b4d8";
     swarm.zoomAndPan(1200, 300, 7.5);
+    swarm.removeAllAnnotations();
+    swarm.highlightArtistNode('Wet Wet Wet', 265, 212, 13, 20);
     // highlightArtist('WET WET WET', '#e61c17');
     // resetArtists(['MADONNA', 'JUSTIN BIEBER', 'TAKE THAT']);
   }
   if (interaction.index===5) {
     // document.querySelector('.scroll__graphic').style.backgroundColor = "#55b4d8";
-    swarm.zoomAndPan(750, 300, 7);
+    swarm.zoomAndPan(700, 300, 7);
+    swarm.removeAllAnnotations();
+    swarm.highlightArtistNode('Justin Bieber', 360, 210, 15, 24);
+    swarm.highlightArtistNode('Madonna', 320, 205, -5, 20);
+    swarm.highlightArtistNode('Take That', 360, 180, 20, -3);
     // resetArtists(['FRANKIE LAINE', 'WET WET WET']);
     // highlightArtist('JUSTIN BIEBER', '#ff6a07');
     // highlightArtist('MADONNA', '#439428');
@@ -80,6 +94,7 @@ function handleStepEnter(interaction, steps) {
   if (interaction.index===6) {
     // document.querySelector('.scroll__graphic').style.backgroundColor = "#55b4d8";
     swarm.zoomReset();
+    swarm.removeAllAnnotations();
     // resetArtists(['MADONNA', 'JUSTIN BIEBER', 'TAKE THAT']);
   }
 }
