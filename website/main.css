@@ -154,13 +154,16 @@ p, h2 {
   .section-tracks__intro h2 {
     padding-top: 25vh; }
 
-.section-tracks__slide p {
-  font-size: 1.5em;
-  padding-top: 1em;
-  text-align: left;
-  max-width: 650px;
-  display: block;
-  margin: auto; }
+.section-tracks__slide {
+  min-height: 0;
+  margin: 5em auto; }
+  .section-tracks__slide p {
+    font-size: 1.5em;
+    padding-top: 1em;
+    text-align: justify;
+    max-width: 650px;
+    display: block;
+    margin: auto; }
 
 .playable-track {
   text-decoration: underline;

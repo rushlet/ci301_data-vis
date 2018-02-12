@@ -2067,7 +2067,6 @@
 	    value: function removeAllAnnotations() {
 	      var labels = document.querySelectorAll('.annotation-group');
 	      labels.forEach(function (label) {
-	        console.log(label);
 	        label.style.display = "none";
 	      });
 	    }
@@ -37225,7 +37224,7 @@
 	      playSong(clickedSong, clickedSongElement, pauseIcon);
 	    } else {
 	      if (clickedSong.getAttribute('src') === previousSong.getAttribute('src')) {
-	        pauseSong(clickedSong, clickedSongElement, pauseIcon);
+	        pauseSong(clickedSong, clickedSongElement, playIcon);
 	      } else {
 	        playSong(clickedSong, clickedSongElement, pauseIcon);
 	      }

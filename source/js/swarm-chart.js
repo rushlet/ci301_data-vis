@@ -198,7 +198,6 @@ class SwarmChart {
   removeAllAnnotations() {
     var labels = document.querySelectorAll('.annotation-group');
       labels.forEach((label) => {
-        console.log(label);
         label.style.display = "none";
       });
   }
