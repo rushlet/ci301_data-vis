@@ -32,7 +32,7 @@ function playTrack () {
       playSong(clickedSong, clickedSongElement, pauseIcon);
     } else {
       if (clickedSong.getAttribute('src') === previousSong.getAttribute('src')) {
-        pauseSong(clickedSong, clickedSongElement, pauseIcon);
+        pauseSong(clickedSong, clickedSongElement, playIcon);
       } else {
         playSong(clickedSong, clickedSongElement, pauseIcon);
       }
