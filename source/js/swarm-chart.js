@@ -55,7 +55,7 @@ class SwarmChart {
 
   swarmChart() {
     let swarm = this;
-    d3.csv(`./assets/data/unique_artists_track_count.csv`, this.type, function(error, data) {
+    d3.csv("./assets/data/unique_artists_track_count.csv", this.type, function(error, data) {
       if (error) throw error;
 
       swarm.x.domain(d3.extent(data, function(d) {

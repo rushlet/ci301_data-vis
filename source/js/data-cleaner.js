@@ -6,7 +6,7 @@ export default function meanData() {
   let years = new Set();
   let count = 0;
   let audioFeatures = ['danceability', 'energy', 'valence', 'acousticness'];
-  let yearlyAverages = {};
+  let yearlyAverages = [];
   data.forEach((d) => {
     years.add(d.year);
     if (d.danceability) {
@@ -46,12 +46,9 @@ export default function meanData() {
     audioFeatures.forEach((feature) => {
         output[feature] = (output[feature] / output['count']).toFixed(3);
     });
-    yearlyAverages[year] = output;
+    yearlyAverages.push(output);
   })
 
   config["yearlyAverages"] = yearlyAverages;
   config["overallAverages"] = averages;
-
-  console.log(config['yearlyAverages']);
-  console.log(config['overallAverages']);
 }

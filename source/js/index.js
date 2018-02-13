@@ -3,7 +3,8 @@ import Spotify from 'spotify-web-api-js';
 import addTrackPreviewListeners from './preview-tracks.js'
 import config from './config.js';
 import $ from 'jquery';
-import meanData from './data-cleaner.js'
+import meanData from './data-cleaner.js';
+import LineChart from './line-chart.js'
 
 
 let loggedIn = false;
@@ -103,4 +104,5 @@ $.getJSON( "./assets/data/fixed_data_for_analysis.json", function( data ) {
   config['dataset'] = data;
   addTrackPreviewListeners();
   meanData();
+  new LineChart();
 });

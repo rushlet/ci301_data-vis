@@ -66,6 +66,14 @@
 
 	var _jquery2 = _interopRequireDefault(_jquery);
 
+	var _dataCleaner = __webpack_require__(45);
+
+	var _dataCleaner2 = _interopRequireDefault(_dataCleaner);
+
+	var _lineChart = __webpack_require__(46);
+
+	var _lineChart2 = _interopRequireDefault(_lineChart);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var loggedIn = false;
@@ -154,6 +162,8 @@
 	_jquery2.default.getJSON("./assets/data/fixed_data_for_analysis.json", function (data) {
 	  _config2.default['dataset'] = data;
 	  (0, _previewTracks2.default)();
+	  (0, _dataCleaner2.default)();
+	  new _lineChart2.default();
 	});
 
 /***/ }),
@@ -1944,7 +1954,7 @@
 	    key: 'swarmChart',
 	    value: function swarmChart() {
 	      var swarm = this;
-	      d3.csv('./assets/data/unique_artists_track_count.csv', this.type, function (error, data) {
+	      d3.csv("./assets/data/unique_artists_track_count.csv", this.type, function (error, data) {
 	        if (error) throw error;
 
 	        swarm.x.domain(d3.extent(data, function (d) {
@@ -37260,6 +37270,186 @@
 	  "user_top_tracks": {}
 	};
 	exports.default = config;
+
+/***/ }),
+/* 45 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.default = meanData;
+
+	var _config = __webpack_require__(44);
+
+	var _config2 = _interopRequireDefault(_config);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function meanData() {
+	  var data = _config2.default['dataset'];
+	  var averages = {};
+	  var years = new Set();
+	  var count = 0;
+	  var audioFeatures = ['danceability', 'energy', 'valence', 'acousticness'];
+	  var yearlyAverages = [];
+	  data.forEach(function (d) {
+	    years.add(d.year);
+	    if (d.danceability) {
+	      count++;
+	      audioFeatures.forEach(function (feature) {
+	        if (averages[feature]) {
+	          averages[feature] += d[feature];
+	        } else {
+	          averages[feature] = d[feature];
+	        }
+	      });
+	    }
+	  });
+	  for (var feature in averages) {
+	    averages[feature] = averages[feature] / count;
+	  }
+
+	  years.forEach(function (year) {
+	    var counter = 0;
+	    var output = {};
+	    data.forEach(function (d) {
+	      if (d.year === year) {
+	        output['year'] = year;
+	        counter++;
+	        if (d.danceability) {
+	          output['count'] = counter;
+	          audioFeatures.forEach(function (feature) {
+	            if (output[feature]) {
+	              output[feature] += d[feature];
+	            } else {
+	              output[feature] = d[feature];
+	            }
+	          });
+	        }
+	      }
+	    });
+	    audioFeatures.forEach(function (feature) {
+	      output[feature] = (output[feature] / output['count']).toFixed(3);
+	    });
+	    yearlyAverages.push(output);
+	  });
+
+	  _config2.default["yearlyAverages"] = yearlyAverages;
+	  _config2.default["overallAverages"] = averages;
+	}
+
+/***/ }),
+/* 46 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _jquery = __webpack_require__(4);
+
+	var _jquery2 = _interopRequireDefault(_jquery);
+
+	var _d = __webpack_require__(5);
+
+	var d3 = _interopRequireWildcard(_d);
+
+	var _d3SvgAnnotation = __webpack_require__(37);
+
+	var d4 = _interopRequireWildcard(_d3SvgAnnotation);
+
+	var _config = __webpack_require__(44);
+
+	var _config2 = _interopRequireDefault(_config);
+
+	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	var LineChart = function LineChart() {
+	    _classCallCheck(this, LineChart);
+
+	    var margin = { top: 20, right: 20, bottom: 30, left: 50 },
+	        width = 960 - margin.left - margin.right,
+	        height = 500 - margin.top - margin.bottom;
+
+	    // parse the date / time
+	    var parseTime = d3.timeParse("%Y");
+
+	    // set the ranges
+	    var x = d3.scaleTime().range([0, width]);
+	    var y = d3.scaleLinear().range([height, 0]);
+
+	    var danceabilityLine = d3.line().x(function (d) {
+	        return x(d.year);
+	    }).y(function (d) {
+	        return y(d.danceability);
+	    });
+
+	    var valenceLine = d3.line().x(function (d) {
+	        return x(d.year);
+	    }).y(function (d) {
+	        return y(d.valence);
+	    });
+
+	    var acousticLine = d3.line().x(function (d) {
+	        return x(d.year);
+	    }).y(function (d) {
+	        return y(d.acousticness);
+	    });
+
+	    var energyLine = d3.line().x(function (d) {
+	        return x(d.year);
+	    }).y(function (d) {
+	        return y(d.energy);
+	    });
+
+	    // append the svg obgect to the body of the page
+	    // appends a 'group' element to 'svg'
+	    // moves the 'group' element to the top left margin
+	    var svg = d3.select("#line-chart").attr("width", width + margin.left + margin.right).attr("height", height + margin.top + margin.bottom).append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+	    // Get the data
+	    var data = _config2.default["yearlyAverages"];
+	    console.log(data);
+	    // format the data
+	    data.forEach(function (d) {
+	        d.year = parseTime(d.year);
+	        d.danceability = +d.danceability;
+	        d.valence = +d.valence;
+	        d.acousticness = +d.acousticness;
+	        d.energy = +d.energy;
+	    });
+
+	    x.domain(d3.extent(data, function (d) {
+	        return d.year;
+	    }));
+	    y.domain([0, 1]);
+
+	    // add the lines
+	    svg.append("path").data([data]).attr("class", "line").style("stroke", "blue").attr("d", danceabilityLine);
+
+	    svg.append("path").data([data]).attr("class", "line").style("stroke", "red").attr("d", valenceLine);
+
+	    svg.append("path").data([data]).attr("class", "line").style("stroke", "orange").attr("d", acousticLine);
+
+	    svg.append("path").data([data]).attr("class", "line").style("stroke", "purple").attr("d", energyLine);
+
+	    // Add the X Axis
+	    svg.append("g").attr("transform", "translate(0," + height + ")").call(d3.axisBottom(x));
+
+	    // Add the Y Axis
+	    svg.append("g").call(d3.axisLeft(y));
+	};
+
+	exports.default = LineChart;
 
 /***/ })
 /******/ ]);
