@@ -25,7 +25,7 @@ class LineChart {
         .x(function(d) { return x(d.year); })
         .y(function(d) { return y(d.valence); });
 
-    var acousticLine = d3.line()
+    var acousticnessLine = d3.line()
         .x(function(d) { return x(d.year); })
         .y(function(d) { return y(d.acousticness); });
 
@@ -39,7 +39,7 @@ class LineChart {
         .attr("class", "line-chart__container")
         .attr("height", height)
         .attr("width", width)
-        .attr("transform", `translate(${(svg.attr("width") - width)/ 4}, ${(svg.attr("height") - height) /2})`);
+        .attr("transform", `translate(${(svg.attr("width") * 0.1)}, ${(svg.attr("height") - height) /2})`);
 
      var title = svg.append("text")
          .attr("x", svg.attr("width") / 2)
@@ -71,44 +71,8 @@ class LineChart {
     x.domain(d3.extent(data, function(d) { return d.year; }));
     y.domain([0, 1]);
 
-    // add the lines
-    svg.g.append("path")
-        .data([data])
-        .attr("class", "line-chart__line")
-        .style("stroke", "blue")
-        .attr("d", danceabilityLine);
-
-    svg.g.append("path")
-        .data([data])
-        .attr("class", "line-chart__line")
-        .style("stroke", "red")
-        .attr("d", valenceLine);
-
-    svg.g.append("path")
-        .data([data])
-        .attr("class", "line-chart__line")
-        .style("stroke", "orange")
-        .attr("d", acousticLine);
-
-    svg.g.append("path")
-        .data([data])
-        .attr("class", "line-chart__line")
-        .style("stroke", "purple")
-        .attr("d", energyLine);
-
-    // Add the X Axis
-    svg.g.append("g")
-        .attr("transform", "translate(0," + height + ")")
-        .call(d3.axisBottom(x));
-
-    // Add the Y Axis
-    svg.g.append("g")
-        .call(d3.axisLeft(y));
-
-
-    // key
-
     var features = ["Danceability", "Valence", "Acousticness", "Energy"];
+    var featureLines = [danceabilityLine, valenceLine, acousticnessLine, energyLine];
     var colours = ["blue", "red", "orange", "purple"];
     var key = svg.append("g")
         .attr("class", "line-chart__key")
@@ -116,7 +80,14 @@ class LineChart {
     key.append("text")
           .text("Key")
           .attr("text-decoration", "underline");
+
     for (var i = 0; i < features.length; i++) {
+      svg.g.append("path")
+          .data([data])
+          .attr("class", "line-chart__line")
+          .style("stroke", colours[i])
+          .attr("d", featureLines[i]);
+
       key.append("line")
             .attr("x1", 5)
             .attr("y1", (i * 20) + 20)
@@ -129,6 +100,15 @@ class LineChart {
             .attr("x", 20)
             .attr("y", (i * 20) + 25);
     }
+
+    // Add the X Axis
+    svg.g.append("g")
+        .attr("transform", "translate(0," + height + ")")
+        .call(d3.axisBottom(x));
+
+    // Add the Y Axis
+    svg.g.append("g")
+        .call(d3.axisLeft(y));
   }
 }
 
