@@ -37376,9 +37376,10 @@
 	var LineChart = function LineChart() {
 	    _classCallCheck(this, LineChart);
 
-	    var margin = { top: 20, right: 20, bottom: 30, left: 50 },
-	        width = 960 - margin.left - margin.right,
-	        height = 500 - margin.top - margin.bottom;
+	    var svg = d3.select("#line-chart"),
+	        margin = { top: 40, right: 40, bottom: 40, left: 40 },
+	        width = 600,
+	        height = 400;
 
 	    // parse the date / time
 	    var parseTime = d3.timeParse("%Y");
@@ -37411,10 +37412,12 @@
 	        return y(d.energy);
 	    });
 
-	    // append the svg obgect to the body of the page
-	    // appends a 'group' element to 'svg'
-	    // moves the 'group' element to the top left margin
-	    var svg = d3.select("#line-chart").attr("width", width + margin.left + margin.right).attr("height", height + margin.top + margin.bottom).append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+	    svg.attr("width", 900).attr("height", 600);
+	    svg.g = svg.append("g").attr("class", "line-chart__container").attr("height", height).attr("width", width).attr("transform", 'translate(' + (svg.attr("width") - width) / 2 + ', ' + (svg.attr("height") - height) / 2 + ')');
+
+	    var title = svg.append("text").attr("x", svg.attr("width") / 2).attr("y", margin.top * 1.5).attr("margin-bottom", margin.bottom).attr("text-anchor", "middle").style("font-size", "30px").text('Average Audio Features by Year');
+
+	    var axistext = svg.g.append("text").attr("x", width / 2 + margin.left).attr("y", height + margin.bottom).attr("text-anchor", "middle").style("font-size", "16px").text('Years');
 
 	    // Get the data
 	    var data = _config2.default["yearlyAverages"];
@@ -37434,19 +37437,19 @@
 	    y.domain([0, 1]);
 
 	    // add the lines
-	    svg.append("path").data([data]).attr("class", "line").style("stroke", "blue").attr("d", danceabilityLine);
+	    svg.g.append("path").data([data]).attr("class", "line-chart__line").style("stroke", "blue").attr("d", danceabilityLine);
 
-	    svg.append("path").data([data]).attr("class", "line").style("stroke", "red").attr("d", valenceLine);
+	    svg.g.append("path").data([data]).attr("class", "line-chart__line").style("stroke", "red").attr("d", valenceLine);
 
-	    svg.append("path").data([data]).attr("class", "line").style("stroke", "orange").attr("d", acousticLine);
+	    svg.g.append("path").data([data]).attr("class", "line-chart__line").style("stroke", "orange").attr("d", acousticLine);
 
-	    svg.append("path").data([data]).attr("class", "line").style("stroke", "purple").attr("d", energyLine);
+	    svg.g.append("path").data([data]).attr("class", "line-chart__line").style("stroke", "purple").attr("d", energyLine);
 
 	    // Add the X Axis
-	    svg.append("g").attr("transform", "translate(0," + height + ")").call(d3.axisBottom(x));
+	    svg.g.append("g").attr("transform", "translate(0," + height + ")").call(d3.axisBottom(x));
 
 	    // Add the Y Axis
-	    svg.append("g").call(d3.axisLeft(y));
+	    svg.g.append("g").call(d3.axisLeft(y));
 	};
 
 	exports.default = LineChart;

@@ -1,6 +1,9 @@
-#line-chart {
-  .line {
-    fill: none;
-    stroke-width: 2px;
-  }
+.line-chart__line {
+  fill: none;
+  stroke-width: 2px;
+}
+
+.line-chart__container {
+  display: block;
+  margin: auto;
 }
