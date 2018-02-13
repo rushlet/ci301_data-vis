@@ -37413,7 +37413,7 @@
 	    });
 
 	    svg.attr("width", 900).attr("height", 600);
-	    svg.g = svg.append("g").attr("class", "line-chart__container").attr("height", height).attr("width", width).attr("transform", 'translate(' + (svg.attr("width") - width) / 2 + ', ' + (svg.attr("height") - height) / 2 + ')');
+	    svg.g = svg.append("g").attr("class", "line-chart__container").attr("height", height).attr("width", width).attr("transform", 'translate(' + (svg.attr("width") - width) / 4 + ', ' + (svg.attr("height") - height) / 2 + ')');
 
 	    var title = svg.append("text").attr("x", svg.attr("width") / 2).attr("y", margin.top * 1.5).attr("margin-bottom", margin.bottom).attr("text-anchor", "middle").style("font-size", "30px").text('Average Audio Features by Year');
 
@@ -37450,6 +37450,17 @@
 
 	    // Add the Y Axis
 	    svg.g.append("g").call(d3.axisLeft(y));
+
+	    // key
+
+	    var features = ["Danceability", "Valence", "Acousticness", "Energy"];
+	    var colours = ["blue", "red", "orange", "purple"];
+	    var key = svg.append("g").attr("class", "line-chart__key").attr("transform", 'translate(' + svg.attr("width") * 0.85 + ', ' + height * 0.4 + ')');
+	    key.append("text").text("Key").attr("text-decoration", "underline");
+	    for (var i = 0; i < features.length; i++) {
+	        key.append("line").attr("x1", 5).attr("y1", i * 20 + 20).attr("x2", 15).attr("y2", i * 20 + 20).attr("stroke-width", 3).attr("stroke", colours[i]);
+	        key.append("text").text(features[i]).attr("x", 20).attr("y", i * 20 + 25);
+	    }
 	};
 
 	exports.default = LineChart;
