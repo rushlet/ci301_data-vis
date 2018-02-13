@@ -73,7 +73,7 @@ class LineChart {
 
     var features = ["Danceability", "Valence", "Acousticness", "Energy"];
     var featureLines = [danceabilityLine, valenceLine, acousticnessLine, energyLine];
-    var colours = ["#ff6a07", "#27ae60", "#8e44ad", "#3498db"];
+    var colours = ["#ff6a07", "#27ae60", "#9b59b6", "#3498db"];
     var key = svg.append("g")
         .attr("class", "line-chart__key")
         .attr("transform", `translate(${svg.attr("width") * 0.85}, ${height * 0.4})`);
