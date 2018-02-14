@@ -15,11 +15,11 @@ class Scroller {
       lineChart = new LineChart();
       scroller
         .setup({
-          step: '.scroll__text .step', // required
-          container: '.scroll', // required (for sticky)
-          graphic: '.scroll__graphic', // required (for sticky)
-          offset: 0.33, // optional, default = 0.5
-          debug: false // optional, default = false
+          step: '.scroll__text .step',
+          container: '.scroll',
+          graphic: '.scroll__graphic',
+          offset: 0.33,
+          debug: false
         })
         .onStepEnter(this.handleStepEnter)
         .onStepExit(this.handleStepExit);
@@ -71,12 +71,23 @@ class Scroller {
     }
     if (currentStep.dataset.step === "line-chart--acousticness-intro") {
       lineChart.removeLines(['danceability', 'valence', 'energy']);
+      // lineChart.annotate();
+    }
+    if (currentStep.dataset.step === "line-chart--acousticness-low") {
+      lineChart.zoomAndPan(-1400, -1000, 7);
+    }
+    if (currentStep.dataset.step === "line-chart--acousticness-high") {
+      lineChart.zoomAndPan(-1400, -800, 7);
     }
   }
 
   handleStepExit(interaction, steps) {
     const currentStep = interaction.element;
     currentStep.classList.remove('is-active');
+    console.log('exiting', currentStep.dataset.step);
+    if (currentStep.dataset.step === "line-chart--acousticness-high") {
+      lineChart.zoomAndPan(0, 0, 1);
+    }
   }
 
   resetArtists(artistsToReset) {

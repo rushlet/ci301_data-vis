@@ -116,13 +116,26 @@ class LineChart {
   }
 
   removeLines(featuresToRemove) {
-    var lineChart = document.getElementById("#line-chart");
+    var lineChartEl = document.getElementById("line-chart");
+    console.log(lineChartEl);
     featuresToRemove.forEach((feature) => {
-      var featureElements = lineChart.querySelectorAll(`.line-chart__${feature}`);
-      featureElements.forEach((el))
-      el.style.display = 'none';
+      var featureElements = lineChartEl.querySelectorAll(`.line-chart__${feature}`);
+      featureElements.forEach((el) => {
+        el.style.display = 'none';
+      })
     })
   }
+
+  zoomAndPan(translateX, translateY, scale) {
+    var svg = d3.select("#line-chart")
+        .transition()
+          .duration(1750)
+          .attr("transform", `translate(${translateX},${translateY})scale(${scale})`);
+  }
+
+  // annotate() {
+  //
+  // }
 }
 
 export default LineChart;

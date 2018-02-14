@@ -50,15 +50,15 @@
 
 	var _scroller2 = _interopRequireDefault(_scroller);
 
-	var _spotifyWebApiJs = __webpack_require__(42);
+	var _spotifyWebApiJs = __webpack_require__(44);
 
 	var _spotifyWebApiJs2 = _interopRequireDefault(_spotifyWebApiJs);
 
-	var _previewTracks = __webpack_require__(43);
+	var _previewTracks = __webpack_require__(45);
 
 	var _previewTracks2 = _interopRequireDefault(_previewTracks);
 
-	var _config = __webpack_require__(44);
+	var _config = __webpack_require__(43);
 
 	var _config2 = _interopRequireDefault(_config);
 
@@ -66,13 +66,9 @@
 
 	var _jquery2 = _interopRequireDefault(_jquery);
 
-	var _dataCleaner = __webpack_require__(45);
+	var _dataCleaner = __webpack_require__(46);
 
 	var _dataCleaner2 = _interopRequireDefault(_dataCleaner);
-
-	var _lineChart = __webpack_require__(46);
-
-	var _lineChart2 = _interopRequireDefault(_lineChart);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -163,7 +159,7 @@
 	  _config2.default['dataset'] = data;
 	  (0, _previewTracks2.default)();
 	  (0, _dataCleaner2.default)();
-	  new _lineChart2.default();
+	  new _scroller2.default();
 	});
 
 /***/ }),
@@ -176,6 +172,8 @@
 	  value: true
 	});
 
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
 	var _scrollama = __webpack_require__(2);
 
 	var _scrollama2 = _interopRequireDefault(_scrollama);
@@ -184,94 +182,128 @@
 
 	var _swarmChart2 = _interopRequireDefault(_swarmChart);
 
-	var _d3Dispatch = __webpack_require__(9);
+	var _lineChart = __webpack_require__(42);
 
-	var d3 = _interopRequireWildcard(_d3Dispatch);
-
-	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+	var _lineChart2 = _interopRequireDefault(_lineChart);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	var scroller = (0, _scrollama2.default)();
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
 	var swarm = void 0;
 	var artists = void 0;
+	var lineChart = void 0;
 
-	if (document.getElementById('project-page') !== null) {
-	  swarm = new _swarmChart2.default();
-	  swarm.swarmChart();
-	  scroller.setup({
-	    step: '.scroll__text .step', // required
-	    container: '.scroll', // required (for sticky)
-	    graphic: '.scroll__graphic', // required (for sticky)
-	    offset: 0.33, // optional, default = 0.5
-	    debug: false // optional, default = false
-	  }).onStepEnter(handleStepEnter).onStepExit(handleStepExit);
+	var Scroller = function () {
+	  function Scroller() {
+	    _classCallCheck(this, Scroller);
 
-	  artists = document.querySelectorAll('.artist-name');
-	}
+	    var scroller = (0, _scrollama2.default)();
+	    if (document.getElementById('project-page') !== null) {
+	      swarm = new _swarmChart2.default();
+	      swarm.swarmChart();
+	      lineChart = new _lineChart2.default();
+	      scroller.setup({
+	        step: '.scroll__text .step',
+	        container: '.scroll',
+	        graphic: '.scroll__graphic',
+	        offset: 0.33,
+	        debug: false
+	      }).onStepEnter(this.handleStepEnter).onStepExit(this.handleStepExit);
 
-	function handleStepEnter(interaction, steps) {
-	  var currentStep = interaction.element;
-	  currentStep.classList.add('is-active');
-	  if (currentStep.dataset.step === "swarm--intro" || currentStep.dataset.step === "swarm--explore") {
-	    swarm.zoomReset();
-	    swarm.removeAllAnnotations();
+	      artists = document.querySelectorAll('.artist-name');
+	    }
 	  }
-	  if (currentStep.dataset.step === "swarm--longest") {
-	    swarm.zoomAndPan(-1950, 150, 5.5);
-	    swarm.removeAllAnnotations();
-	    swarm.highlightArtistNode('Beatles', 758, 212, 15, 40);
-	    swarm.highlightArtistNode('Elvis', 850, 210, -15, 42);
-	  }
-	  if (currentStep.dataset.step === "swarm--successful") {
-	    swarm.zoomAndPan(225, 75, 3);
-	    swarm.removeAllAnnotations();
-	    swarm.highlightArtistNode('Cliff Richard', 500, 218, -15, 33);
-	    swarm.highlightArtistNode('Madonna', 320, 205, 0, 46);
-	    swarm.highlightArtistNode('Westlife', 250, 180, 15, -20);
-	  }
-	  if (currentStep.dataset.step === "swarm--frankie-laine") {
-	    swarm.zoomAndPan(650, 350, 8);
-	    swarm.removeAllAnnotations();
-	    swarm.highlightArtistNode('Frankie Laine', 370, 199, 15, 30);
-	  }
-	  if (currentStep.dataset.step === "swarm--wet-wet-wet") {
-	    swarm.zoomAndPan(1200, 300, 7.5);
-	    swarm.removeAllAnnotations();
-	    swarm.highlightArtistNode('Wet Wet Wet', 265, 212, 13, 20);
-	  }
-	  if (currentStep.dataset.step === "swarm--bieber") {
-	    swarm.zoomAndPan(700, 300, 7);
-	    swarm.removeAllAnnotations();
-	    swarm.highlightArtistNode('Justin Bieber', 360, 210, 15, 24);
-	    swarm.highlightArtistNode('Madonna', 320, 205, -5, 20);
-	    swarm.highlightArtistNode('Take That', 360, 180, 20, -3);
-	  }
-	}
 
-	function handleStepExit(interaction, steps) {
-	  var currentStep = interaction.element;
-	  currentStep.classList.remove('is-active');
-	}
-
-	function resetArtists(artistsToReset) {
-	  artistsToReset.forEach(function (artist) {
-	    artists.forEach(function (artistText) {
-	      if (artistText.textContent.includes(capitalize(artist))) {
-	        artistText.style.color = '#000';
+	  _createClass(Scroller, [{
+	    key: 'handleStepEnter',
+	    value: function handleStepEnter(interaction, steps) {
+	      console.log('interaction', interaction);
+	      var currentStep = interaction.element;
+	      currentStep.classList.add('is-active');
+	      if (currentStep.dataset.step === "swarm--intro" || currentStep.dataset.step === "swarm--explore") {
+	        swarm.zoomReset();
+	        swarm.removeAllAnnotations();
 	      }
-	    });
-	    swarm.highlightArtistNode(artist, '#000');
-	  });
-	}
+	      if (currentStep.dataset.step === "swarm--longest") {
+	        swarm.zoomAndPan(-1950, 150, 5.5);
+	        swarm.removeAllAnnotations();
+	        swarm.highlightArtistNode('Beatles', 758, 212, 15, 40);
+	        swarm.highlightArtistNode('Elvis', 850, 210, -15, 42);
+	      }
+	      if (currentStep.dataset.step === "swarm--successful") {
+	        swarm.zoomAndPan(225, 75, 3);
+	        swarm.removeAllAnnotations();
+	        swarm.highlightArtistNode('Cliff Richard', 500, 218, -15, 33);
+	        swarm.highlightArtistNode('Madonna', 320, 205, 0, 46);
+	        swarm.highlightArtistNode('Westlife', 250, 180, 15, -20);
+	      }
+	      if (currentStep.dataset.step === "swarm--frankie-laine") {
+	        swarm.zoomAndPan(650, 350, 8);
+	        swarm.removeAllAnnotations();
+	        swarm.highlightArtistNode('Frankie Laine', 370, 199, 15, 30);
+	      }
+	      if (currentStep.dataset.step === "swarm--wet-wet-wet") {
+	        swarm.zoomAndPan(1200, 300, 7.5);
+	        swarm.removeAllAnnotations();
+	        swarm.highlightArtistNode('Wet Wet Wet', 265, 212, 13, 20);
+	      }
+	      if (currentStep.dataset.step === "swarm--bieber") {
+	        swarm.zoomAndPan(700, 300, 7);
+	        swarm.removeAllAnnotations();
+	        swarm.highlightArtistNode('Justin Bieber', 360, 210, 15, 24);
+	        swarm.highlightArtistNode('Madonna', 320, 205, -5, 20);
+	        swarm.highlightArtistNode('Take That', 360, 180, 20, -3);
+	      }
+	      if (currentStep.dataset.step === "line-chart--intro") {
+	        // trigger building line chart if direciton down (once building of line chart split from constructor)
+	      }
+	      if (currentStep.dataset.step === "line-chart--acousticness-intro") {
+	        lineChart.removeLines(['danceability', 'valence', 'energy']);
+	        // lineChart.annotate();
+	      }
+	      if (currentStep.dataset.step === "line-chart--acousticness-low") {
+	        lineChart.zoomAndPan(-1400, -1000, 7);
+	      }
+	      if (currentStep.dataset.step === "line-chart--acousticness-high") {
+	        lineChart.zoomAndPan(-1400, -800, 7);
+	      }
+	    }
+	  }, {
+	    key: 'handleStepExit',
+	    value: function handleStepExit(interaction, steps) {
+	      var currentStep = interaction.element;
+	      currentStep.classList.remove('is-active');
+	      console.log('exiting', currentStep.dataset.step);
+	      if (currentStep.dataset.step === "line-chart--acousticness-high") {
+	        lineChart.zoomAndPan(0, 0, 1);
+	      }
+	    }
+	  }, {
+	    key: 'resetArtists',
+	    value: function resetArtists(artistsToReset) {
+	      artistsToReset.forEach(function (artist) {
+	        artists.forEach(function (artistText) {
+	          if (artistText.textContent.includes(capitalize(artist))) {
+	            artistText.style.color = '#000';
+	          }
+	        });
+	        swarm.highlightArtistNode(artist, '#000');
+	      });
+	    }
+	  }, {
+	    key: 'capitalize',
+	    value: function capitalize(string) {
+	      return string.toLowerCase().split(' ').map(function (word) {
+	        return word[0].toUpperCase() + word.substr(1);
+	      }).join(' ');
+	    }
+	  }]);
 
-	function capitalize(string) {
-	  return string.toLowerCase().split(' ').map(function (word) {
-	    return word[0].toUpperCase() + word.substr(1);
-	  }).join(' ');
-	}
+	  return Scroller;
+	}();
 
-	exports.default = scroller;
+	exports.default = Scroller;
 
 /***/ }),
 /* 2 */
@@ -35371,6 +35403,167 @@
 
 /***/ }),
 /* 42 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _jquery = __webpack_require__(4);
+
+	var _jquery2 = _interopRequireDefault(_jquery);
+
+	var _d = __webpack_require__(5);
+
+	var d3 = _interopRequireWildcard(_d);
+
+	var _d3SvgAnnotation = __webpack_require__(37);
+
+	var d4 = _interopRequireWildcard(_d3SvgAnnotation);
+
+	var _config = __webpack_require__(43);
+
+	var _config2 = _interopRequireDefault(_config);
+
+	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	var LineChart = function () {
+	    function LineChart() {
+	        _classCallCheck(this, LineChart);
+
+	        var svg = d3.select("#line-chart"),
+	            margin = { top: 40, right: 40, bottom: 40, left: 40 },
+	            width = 600,
+	            height = 400;
+
+	        // parse the date / time
+	        var parseTime = d3.timeParse("%Y");
+
+	        // set the ranges
+	        var x = d3.scaleTime().range([0, width]);
+	        var y = d3.scaleLinear().range([height, 0]);
+
+	        var danceabilityLine = d3.line().x(function (d) {
+	            return x(d.year);
+	        }).y(function (d) {
+	            return y(d.danceability);
+	        });
+
+	        var valenceLine = d3.line().x(function (d) {
+	            return x(d.year);
+	        }).y(function (d) {
+	            return y(d.valence);
+	        });
+
+	        var acousticnessLine = d3.line().x(function (d) {
+	            return x(d.year);
+	        }).y(function (d) {
+	            return y(d.acousticness);
+	        });
+
+	        var energyLine = d3.line().x(function (d) {
+	            return x(d.year);
+	        }).y(function (d) {
+	            return y(d.energy);
+	        });
+
+	        svg.attr("width", 900).attr("height", 600);
+	        svg.g = svg.append("g").attr("class", "line-chart__container").attr("height", height).attr("width", width).attr("transform", 'translate(' + svg.attr("width") * 0.1 + ', ' + (svg.attr("height") - height) / 2 + ')');
+
+	        var title = svg.append("text").attr("x", svg.attr("width") / 2).attr("y", margin.top * 1.5).attr("margin-bottom", margin.bottom).attr("text-anchor", "middle").style("font-size", "30px").text('Average Audio Features by Year');
+
+	        var axistext = svg.g.append("text").attr("x", width / 2 + margin.left).attr("y", height + margin.bottom).attr("text-anchor", "middle").style("font-size", "16px").text('Years');
+
+	        // Get the data
+	        var data = _config2.default["yearlyAverages"];
+	        console.log(data);
+	        // format the data
+	        data.forEach(function (d) {
+	            d.year = parseTime(d.year);
+	            d.danceability = +d.danceability;
+	            d.valence = +d.valence;
+	            d.acousticness = +d.acousticness;
+	            d.energy = +d.energy;
+	        });
+
+	        x.domain(d3.extent(data, function (d) {
+	            return d.year;
+	        }));
+	        y.domain([0, 1]);
+
+	        var features = ["Danceability", "Valence", "Acousticness", "Energy"];
+	        var featureLines = [danceabilityLine, valenceLine, acousticnessLine, energyLine];
+	        var colours = ["#ff6a07", "#27ae60", "#9b59b6", "#3498db"];
+	        var key = svg.append("g").attr("class", "line-chart__key").attr("transform", 'translate(' + svg.attr("width") * 0.85 + ', ' + height * 0.4 + ')');
+	        key.append("text").text("Key").attr("text-decoration", "underline");
+
+	        for (var i = 0; i < features.length; i++) {
+	            svg.g.append("path").data([data]).attr("class", 'line-chart__line, line-chart__' + features[i].toLowerCase()).style("stroke", colours[i]).style("fill", "none").style("stroke-width", 2).attr("d", featureLines[i]);
+
+	            key.append("line").attr("x1", 5).attr("y1", i * 20 + 20).attr("x2", 15).attr("y2", i * 20 + 20).attr("stroke-width", 3).attr("stroke", colours[i]).attr("class", 'line-chart__key, line-chart__' + features[i].toLowerCase());
+	            key.append("text").text(features[i]).attr("x", 20).attr("y", i * 20 + 25).attr("class", 'line-chart__' + features[i].toLowerCase());
+	        }
+
+	        // Add the X Axis
+	        svg.g.append("g").attr("transform", "translate(0," + height + ")").call(d3.axisBottom(x));
+
+	        // Add the Y Axis
+	        svg.g.append("g").call(d3.axisLeft(y));
+	    }
+
+	    _createClass(LineChart, [{
+	        key: 'removeLines',
+	        value: function removeLines(featuresToRemove) {
+	            var lineChartEl = document.getElementById("line-chart");
+	            console.log(lineChartEl);
+	            featuresToRemove.forEach(function (feature) {
+	                var featureElements = lineChartEl.querySelectorAll('.line-chart__' + feature);
+	                featureElements.forEach(function (el) {
+	                    el.style.display = 'none';
+	                });
+	            });
+	        }
+	    }, {
+	        key: 'zoomAndPan',
+	        value: function zoomAndPan(translateX, translateY, scale) {
+	            var svg = d3.select("#line-chart").transition().duration(1750).attr("transform", 'translate(' + translateX + ',' + translateY + ')scale(' + scale + ')');
+	        }
+
+	        // annotate() {
+	        //
+	        // }
+
+	    }]);
+
+	    return LineChart;
+	}();
+
+	exports.default = LineChart;
+
+/***/ }),
+/* 43 */
+/***/ (function(module, exports) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	var config = {
+	  "user_top_tracks": {}
+	};
+	exports.default = config;
+
+/***/ }),
+/* 44 */
 /***/ (function(module, exports) {
 
 	/* global module */
@@ -37141,7 +37334,7 @@
 
 
 /***/ }),
-/* 43 */
+/* 45 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -37151,7 +37344,7 @@
 	});
 	exports.default = addTrackPreviewListeners;
 
-	var _config = __webpack_require__(44);
+	var _config = __webpack_require__(43);
 
 	var _config2 = _interopRequireDefault(_config);
 
@@ -37213,21 +37406,7 @@
 	}
 
 /***/ }),
-/* 44 */
-/***/ (function(module, exports) {
-
-	"use strict";
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	var config = {
-	  "user_top_tracks": {}
-	};
-	exports.default = config;
-
-/***/ }),
-/* 45 */
+/* 46 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -37237,7 +37416,7 @@
 	});
 	exports.default = meanData;
 
-	var _config = __webpack_require__(44);
+	var _config = __webpack_require__(43);
 
 	var _config2 = _interopRequireDefault(_config);
 
@@ -37295,141 +37474,6 @@
 	  _config2.default["yearlyAverages"] = yearlyAverages;
 	  _config2.default["overallAverages"] = averages;
 	}
-
-/***/ }),
-/* 46 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	var _jquery = __webpack_require__(4);
-
-	var _jquery2 = _interopRequireDefault(_jquery);
-
-	var _d = __webpack_require__(5);
-
-	var d3 = _interopRequireWildcard(_d);
-
-	var _d3SvgAnnotation = __webpack_require__(37);
-
-	var d4 = _interopRequireWildcard(_d3SvgAnnotation);
-
-	var _config = __webpack_require__(44);
-
-	var _config2 = _interopRequireDefault(_config);
-
-	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	var LineChart = function () {
-	    function LineChart() {
-	        _classCallCheck(this, LineChart);
-
-	        var svg = d3.select("#line-chart"),
-	            margin = { top: 40, right: 40, bottom: 40, left: 40 },
-	            width = 600,
-	            height = 400;
-
-	        // parse the date / time
-	        var parseTime = d3.timeParse("%Y");
-
-	        // set the ranges
-	        var x = d3.scaleTime().range([0, width]);
-	        var y = d3.scaleLinear().range([height, 0]);
-
-	        var danceabilityLine = d3.line().x(function (d) {
-	            return x(d.year);
-	        }).y(function (d) {
-	            return y(d.danceability);
-	        });
-
-	        var valenceLine = d3.line().x(function (d) {
-	            return x(d.year);
-	        }).y(function (d) {
-	            return y(d.valence);
-	        });
-
-	        var acousticnessLine = d3.line().x(function (d) {
-	            return x(d.year);
-	        }).y(function (d) {
-	            return y(d.acousticness);
-	        });
-
-	        var energyLine = d3.line().x(function (d) {
-	            return x(d.year);
-	        }).y(function (d) {
-	            return y(d.energy);
-	        });
-
-	        svg.attr("width", 900).attr("height", 600);
-	        svg.g = svg.append("g").attr("class", "line-chart__container").attr("height", height).attr("width", width).attr("transform", 'translate(' + svg.attr("width") * 0.1 + ', ' + (svg.attr("height") - height) / 2 + ')');
-
-	        var title = svg.append("text").attr("x", svg.attr("width") / 2).attr("y", margin.top * 1.5).attr("margin-bottom", margin.bottom).attr("text-anchor", "middle").style("font-size", "30px").text('Average Audio Features by Year');
-
-	        var axistext = svg.g.append("text").attr("x", width / 2 + margin.left).attr("y", height + margin.bottom).attr("text-anchor", "middle").style("font-size", "16px").text('Years');
-
-	        // Get the data
-	        var data = _config2.default["yearlyAverages"];
-	        console.log(data);
-	        // format the data
-	        data.forEach(function (d) {
-	            d.year = parseTime(d.year);
-	            d.danceability = +d.danceability;
-	            d.valence = +d.valence;
-	            d.acousticness = +d.acousticness;
-	            d.energy = +d.energy;
-	        });
-
-	        x.domain(d3.extent(data, function (d) {
-	            return d.year;
-	        }));
-	        y.domain([0, 1]);
-
-	        var features = ["Danceability", "Valence", "Acousticness", "Energy"];
-	        var featureLines = [danceabilityLine, valenceLine, acousticnessLine, energyLine];
-	        var colours = ["#ff6a07", "#27ae60", "#9b59b6", "#3498db"];
-	        var key = svg.append("g").attr("class", "line-chart__key").attr("transform", 'translate(' + svg.attr("width") * 0.85 + ', ' + height * 0.4 + ')');
-	        key.append("text").text("Key").attr("text-decoration", "underline");
-
-	        for (var i = 0; i < features.length; i++) {
-	            svg.g.append("path").data([data]).attr("class", 'line-chart__line, line-chart__' + features[i].toLowerCase()).style("stroke", colours[i]).style("fill", "none").style("stroke-width", 2).attr("d", featureLines[i]);
-
-	            key.append("line").attr("x1", 5).attr("y1", i * 20 + 20).attr("x2", 15).attr("y2", i * 20 + 20).attr("stroke-width", 3).attr("stroke", colours[i]).attr("class", 'line-chart__key, line-chart__' + features[i].toLowerCase());
-	            key.append("text").text(features[i]).attr("x", 20).attr("y", i * 20 + 25).attr("class", 'line-chart__' + features[i].toLowerCase());
-	        }
-
-	        // Add the X Axis
-	        svg.g.append("g").attr("transform", "translate(0," + height + ")").call(d3.axisBottom(x));
-
-	        // Add the Y Axis
-	        svg.g.append("g").call(d3.axisLeft(y));
-	    }
-
-	    _createClass(LineChart, [{
-	        key: 'removeLines',
-	        value: function removeLines(featuresToRemove) {
-	            var lineChart = document.getElementById("#line-chart");
-	            featuresToRemove.forEach(function (feature) {
-	                var featureElements = lineChart.querySelectorAll('.line-chart__' + feature);
-	                featureElements.forEach(el);
-	                el.style.display = 'none';
-	            });
-	        }
-	    }]);
-
-	    return LineChart;
-	}();
-
-	exports.default = LineChart;
 
 /***/ })
 /******/ ]);
