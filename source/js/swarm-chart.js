@@ -152,55 +152,6 @@ class SwarmChart {
     d.total_weeks = +d.total_weeks;
     return d;
   }
-
-  zoomAndPan(translateX, translateY, scale) {
-    console.log('zoom swarm called');
-    var svg = d3.select("#swarm-chart")
-        .transition()
-          .duration(1750)
-          .attr("transform", `translate(${translateX},${translateY})scale(${scale})`);
-  }
-
-  zoomReset() {
-    console.log('zoom reset called');
-    var svg = d3.select("#swarm-chart")
-      .transition()
-        .duration(1750)
-        .attr("transform", `translate(0,0)scale(1)`);
-  }
-
-  highlightArtistNode(artist, x, y, dx, dy) {
-    // add check to see if label already exists
-    const type = d4.annotationLabel
-
-    const annotations = [{
-      note: {
-        title: artist
-      },
-      x: x, y: y,
-      dx: dx, dy: dy,
-      connector: {end: "arrow"},
-    }]
-
-    const makeAnnotations = d4.annotation()
-        .editMode(false)
-        .type(d4.annotationLabel)
-        .annotations(annotations)
-
-    d3.select("#swarm-chart")
-      .append("g")
-      .attr("class", "annotation-group")
-      .attr("id", `${artist.replace(/ /g,"_")}_label`)
-      .style('font-size', "10px")
-      .call(makeAnnotations)
-  }
-
-  removeAllAnnotations() {
-    var labels = document.querySelectorAll('.annotation-group');
-      labels.forEach((label) => {
-        label.style.display = "none";
-      });
-  }
 }
 
 export default SwarmChart;

@@ -137,48 +137,6 @@ class LineChart {
       })
     })
   }
-
-  zoomAndPan(translateX, translateY, scale) {
-    var svg = d3.select("#line-chart")
-        .transition()
-          .duration(1750)
-          .attr("transform", `translate(${translateX},${translateY})scale(${scale})`);
-  }
-
-  annotate(label, x, y, dx, dy) {
-    // add check to see if label already exists
-    const type = d4.annotationLabel
-
-    const annotations = [{
-      note: {
-        title: label
-      },
-      x: x, y: y,
-      dx: dx, dy: dy,
-      connector: {end: "arrow"},
-    }]
-
-    const makeAnnotations = d4.annotation()
-        .editMode(false)
-        .type(d4.annotationLabel)
-        .annotations(annotations)
-
-    d3.select("#line-chart")
-      .append("g")
-      .attr("class", "line-chart--annotation-group")
-      .attr("id", `${label}_label`)
-      .style('font-size', "10px")
-      .call(makeAnnotations)
-  }
-
-  removeAllAnnotations() {
-    console.log('called remove annotations');
-    var labels = document.querySelectorAll('.line-chart--annotation-group');
-      labels.forEach((label) => {
-        label.style.display = "none";
-      });
-  }
-
 }
 
 export default LineChart;

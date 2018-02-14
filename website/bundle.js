@@ -50,11 +50,11 @@
 
 	var _scroller2 = _interopRequireDefault(_scroller);
 
-	var _spotifyWebApiJs = __webpack_require__(44);
+	var _spotifyWebApiJs = __webpack_require__(45);
 
 	var _spotifyWebApiJs2 = _interopRequireDefault(_spotifyWebApiJs);
 
-	var _previewTracks = __webpack_require__(45);
+	var _previewTracks = __webpack_require__(46);
 
 	var _previewTracks2 = _interopRequireDefault(_previewTracks);
 
@@ -66,7 +66,7 @@
 
 	var _jquery2 = _interopRequireDefault(_jquery);
 
-	var _dataCleaner = __webpack_require__(46);
+	var _dataCleaner = __webpack_require__(47);
 
 	var _dataCleaner2 = _interopRequireDefault(_dataCleaner);
 
@@ -190,6 +190,12 @@
 
 	var _config2 = _interopRequireDefault(_config);
 
+	var _chartUtils = __webpack_require__(44);
+
+	var chartFunctions = _interopRequireWildcard(_chartUtils);
+
+	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -224,99 +230,113 @@
 	    value: function handleStepEnter(interaction, steps) {
 	      var currentStep = interaction.element;
 	      currentStep.classList.add('is-active');
-	      if (currentStep.dataset.step === "swarm--intro" || currentStep.dataset.step === "swarm--explore") {
-	        swarm.zoomReset();
-	        swarm.removeAllAnnotations();
-	      }
-	      if (currentStep.dataset.step === "swarm--longest") {
-	        swarm.zoomAndPan(-1950, 150, 5.5);
-	        swarm.removeAllAnnotations();
-	        swarm.highlightArtistNode('Beatles', 758, 212, 15, 40);
-	        swarm.highlightArtistNode('Elvis', 850, 210, -15, 42);
-	      }
-	      if (currentStep.dataset.step === "swarm--successful") {
-	        swarm.zoomAndPan(225, 75, 3);
-	        swarm.removeAllAnnotations();
-	        swarm.highlightArtistNode('Cliff Richard', 500, 218, -15, 33);
-	        swarm.highlightArtistNode('Madonna', 320, 205, 0, 46);
-	        swarm.highlightArtistNode('Westlife', 250, 180, 15, -20);
-	      }
-	      if (currentStep.dataset.step === "swarm--frankie-laine") {
-	        swarm.zoomAndPan(650, 350, 8);
-	        swarm.removeAllAnnotations();
-	        swarm.highlightArtistNode('Frankie Laine', 370, 199, 15, 30);
-	      }
-	      if (currentStep.dataset.step === "swarm--wet-wet-wet") {
-	        swarm.zoomAndPan(1200, 300, 7.5);
-	        swarm.removeAllAnnotations();
-	        swarm.highlightArtistNode('Wet Wet Wet', 265, 212, 13, 20);
-	      }
-	      if (currentStep.dataset.step === "swarm--bieber") {
-	        swarm.zoomAndPan(700, 300, 7);
-	        swarm.removeAllAnnotations();
-	        swarm.highlightArtistNode('Justin Bieber', 360, 210, 15, 24);
-	        swarm.highlightArtistNode('Madonna', 320, 205, -5, 20);
-	        swarm.highlightArtistNode('Take That', 360, 180, 20, -3);
-	      }
-	      if (currentStep.dataset.step === "line-chart--intro") {
-	        if (_config2.default["lineChartBuilt"] === true) {
-	          lineChart.addLines(['danceability', 'valence', 'energy']);
-	          lineChart.zoomAndPan(0, 0, 1);
-	        } else {
-	          lineChart.buildGraph();
-	        }
-	      }
-	      if (currentStep.dataset.step === "line-chart--reset") {
-	        lineChart.zoomAndPan(0, 0, 1);
-	      }
-	      if (currentStep.dataset.step === "line-chart--acousticness-intro") {
-	        lineChart.removeLines(['danceability', 'valence', 'energy']);
-	        lineChart.removeAllAnnotations();
-	      }
-	      if (currentStep.dataset.step === "line-chart--acousticness-low") {
-	        lineChart.zoomAndPan(-950, -1000, 7);
-	        lineChart.annotate('2009', 610, 470, -20, 0);
-	      }
-	      if (currentStep.dataset.step === "line-chart--acousticness-high") {
-	        lineChart.zoomAndPan(-1400, -800, 7);
-	        lineChart.annotate('2015', 665, 390, -20, 0);
-	      }
-	      if (currentStep.dataset.step === "line-chart--danceability-intro") {
-	        lineChart.removeLines(['acousticness']);
-	        lineChart.removeAllAnnotations();
-	        lineChart.addLines(['danceability']);
-	        lineChart.zoomAndPan(0, 0, 1);
-	      }
-	      if (currentStep.dataset.step === "line-chart--danceability-high") {
-	        lineChart.zoomAndPan(400, 500, 6);
-	        lineChart.annotate('1983', 375, 220, -20, -10);
-	      }
-	      if (currentStep.dataset.step === "line-chart--danceability-low") {
-	        lineChart.zoomAndPan(1400, -100, 6);
-	        lineChart.annotate('1967', 225, 330, -20, 5);
-	      }
-	      if (currentStep.dataset.step === "line-chart--valence-intro") {
-	        lineChart.removeAllAnnotations();
-	        lineChart.removeLines(['danceability']);
-	        lineChart.addLines(['valence']);
-	        lineChart.zoomAndPan(0, 0, 1);
-	      }
-	      if (currentStep.dataset.step === "line-chart--valence-high") {
-	        lineChart.zoomAndPan(1400, 600, 6);
-	        lineChart.annotate('1963', 193, 177, 15, 0);
-	      }
-	      if (currentStep.dataset.step === "line-chart--valence-low-1954") {
-	        lineChart.zoomAndPan(1800, 0, 6);
-	        lineChart.annotate('1954', 110, 315, 20, 5);
-	      }
-	      if (currentStep.dataset.step === "line-chart--valence-low-1996") {
-	        lineChart.zoomAndPan(-400, -50, 6);
-	        lineChart.annotate('1996', 495, 310, 0, 20);
-	      }
-	      if (currentStep.dataset.step === "line-chart--explore") {
-	        lineChart.zoomAndPan(0, 0, 1);
-	        lineChart.removeAllAnnotations();
-	        lineChart.addLines(['danceability', 'acousticness', 'energy']);
+	      switch (currentStep.dataset.step) {
+	        case "swarm--intro":
+	        case "swarm--explore":
+	          chartFunctions.zoomReset('swarm-chart');
+	          chartFunctions.removeAllAnnotations('swarm-chart');
+	          break;
+	        case "swarm--longest":
+	          chartFunctions.zoomAndPan('swarm-chart', -1950, 150, 5.5);
+	          chartFunctions.removeAllAnnotations('swarm-chart');
+	          chartFunctions.annotate('swarm-chart', 'Beatles', 758, 212, 15, 40);
+	          chartFunctions.annotate('swarm-chart', 'Elvis', 850, 210, -15, 42);
+	          break;
+	        case "swarm--successful":
+	          chartFunctions.zoomAndPan('swarm-chart', 225, 75, 3);
+	          chartFunctions.removeAllAnnotations('swarm-chart');
+	          chartFunctions.annotate('swarm-chart', 'Cliff Richard', 500, 218, -15, 33);
+	          chartFunctions.annotate('swarm-chart', 'Madonna', 320, 205, 0, 46);
+	          chartFunctions.annotate('swarm-chart', 'Westlife', 250, 180, 15, -20);
+	          break;
+	        case "swarm--frankie-laine":
+	          chartFunctions.zoomAndPan('swarm-chart', 650, 350, 8);
+	          chartFunctions.removeAllAnnotations('swarm-chart');
+	          chartFunctions.annotate('swarm-chart', 'Frankie Laine', 370, 199, 15, 30);
+	          break;
+	        case "swarm--wet-wet-wet":
+	          chartFunctions.zoomAndPan('swarm-chart', 1200, 300, 7.5);
+	          chartFunctions.removeAllAnnotations('swarm-chart');
+	          chartFunctions.annotate('swarm-chart', 'Wet Wet Wet', 265, 212, 13, 20);
+	          break;
+	        case "swarm--bieber":
+	          chartFunctions.zoomAndPan('swarm-chart', 700, 300, 7);
+	          chartFunctions.removeAllAnnotations('swarm-chart');
+	          chartFunctions.annotate('swarm-chart', 'Justin Bieber', 360, 210, 15, 24);
+	          chartFunctions.annotate('swarm-chart', 'Madonna', 320, 205, -5, 20);
+	          chartFunctions.annotate('swarm-chart', 'Take That', 360, 180, 20, -3);
+	          break;
+	        case "line-chart--intro":
+	          if (_config2.default["lineChartBuilt"] === true) {
+	            if (interaction.direction === "up") {
+	              lineChart.addLines(['danceability', 'valence', 'energy']);
+	            }
+	          } else {
+	            lineChart.buildGraph();
+	          }
+	          break;
+	        case "line-chart--reset":
+	          chartFunctions.zoomReset('line-chart');
+	          break;
+	        case "line-chart--acousticness-intro":
+	          lineChart.removeLines(['danceability', 'valence', 'energy']);
+	          chartFunctions.removeAllAnnotations('line-chart');
+	          chartFunctions.zoomReset('line-chart');
+	          break;
+	        case "line-chart--acousticness-low":
+	          chartFunctions.zoomAndPan('line-chart', -950, -1000, 7);
+	          chartFunctions.annotate('line-chart', '2009', 615, 470, -20, 0);
+	          break;
+	        case "line-chart--acousticness-high":
+	          chartFunctions.zoomAndPan('line-chart', -1400, -800, 7);
+	          chartFunctions.annotate('line-chart', '2015', 670, 388, -20, 0);
+	          if (interaction.direction === "up") {
+	            lineChart.removeLines(['danceability']);
+	            lineChart.addLines(['acousticness']);
+	          }
+	          break;
+	        case "line-chart--danceability-intro":
+	          lineChart.removeLines(['acousticness']);
+	          chartFunctions.removeAllAnnotations('line-chart');
+	          lineChart.addLines(['danceability']);
+	          chartFunctions.zoomReset('line-chart');
+	          break;
+	        case "line-chart--danceability-high":
+	          chartFunctions.zoomAndPan('line-chart', 400, 500, 6);
+	          chartFunctions.annotate('line-chart', '1983', 375, 220, -20, -10);
+	          break;
+	        case "line-chart--danceability-low":
+	          chartFunctions.zoomAndPan('line-chart', 1400, -100, 6);
+	          chartFunctions.annotate('line-chart', '1967', 227, 330, -20, 5);
+	          if (interaction.direction === "up") {
+	            lineChart.removeLines(['valence']);
+	            lineChart.addLines(['danceability']);
+	          }
+	          break;
+	        case "line-chart--valence-intro":
+	          chartFunctions.removeAllAnnotations('line-chart');
+	          lineChart.removeLines(['danceability']);
+	          lineChart.addLines(['valence']);
+	          chartFunctions.zoomReset('line-chart');
+	          break;
+	        case "line-chart--valence-high":
+	          chartFunctions.zoomAndPan('line-chart', 1400, 600, 6);
+	          chartFunctions.annotate('line-chart', '1963', 193, 177, 15, 0);
+	          break;
+	        case "line-chart--valence-low-1954":
+	          chartFunctions.zoomAndPan('line-chart', 1800, 0, 6);
+	          chartFunctions.annotate('line-chart', '1954', 110, 315, 20, 5);
+	          break;
+	        case "line-chart--valence-low-1996":
+	          lineChart.removeLines(['danceability', 'acousticness', 'energy']);
+	          chartFunctions.zoomAndPan('line-chart', -400, -50, 6);
+	          chartFunctions.annotate('line-chart', '1996', 495, 310, 0, 20);
+	          break;
+	        case "line-chart--explore":
+	          chartFunctions.zoomReset('line-chart');
+	          chartFunctions.removeAllAnnotations('line-chart');
+	          lineChart.addLines(['danceability', 'acousticness', 'energy']);
+	          break;
 	      }
 	    }
 	  }, {
@@ -334,7 +354,7 @@
 	            artistText.style.color = '#000';
 	          }
 	        });
-	        swarm.highlightArtistNode(artist, '#000');
+	        swarm.annotate(artist, '#000');
 	      });
 	    }
 	  }, {
@@ -1919,7 +1939,7 @@
 	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
-	  value: true
+	    value: true
 	});
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }(); // adapted from https://bl.ocks.org/mbostock/6526445e2b44303eebf21da3b6627320
@@ -1946,176 +1966,137 @@
 	var zoom = d3.zoom();
 
 	var SwarmChart = function () {
-	  function SwarmChart() {
-	    _classCallCheck(this, SwarmChart);
+	    function SwarmChart() {
+	        _classCallCheck(this, SwarmChart);
 
-	    this.svg = d3.select("#swarm-chart");
-	    this.margin = { top: 40, right: 40, bottom: 50, left: 40 };
-	    this.width = this.svg.attr("width") - this.margin.left - this.margin.right;
-	    this.height = this.svg.attr("height") - this.margin.top - this.margin.bottom;
+	        this.svg = d3.select("#swarm-chart");
+	        this.margin = { top: 40, right: 40, bottom: 50, left: 40 };
+	        this.width = this.svg.attr("width") - this.margin.left - this.margin.right;
+	        this.height = this.svg.attr("height") - this.margin.top - this.margin.bottom;
 
-	    this.formatValue = d3.format(",d");
+	        this.formatValue = d3.format(",d");
 
-	    this.x = d3.scaleLinear().domain([0, this.width]).rangeRound([0, this.width]);
+	        this.x = d3.scaleLinear().domain([0, this.width]).rangeRound([0, this.width]);
 
-	    this.g = this.svg.append("g").attr("transform", "translate(" + this.margin.left + "," + this.margin.top + ")");
+	        this.g = this.svg.append("g").attr("transform", "translate(" + this.margin.left + "," + this.margin.top + ")");
 
-	    this.title = this.svg.append("text").attr("x", this.width / 2 + this.margin.left).attr("y", this.margin.top / 1.75).attr("text-anchor", "middle").style("font-size", "30px").text('Artists: Number of tracks and time at 1');
+	        this.title = this.svg.append("text").attr("x", this.width / 2 + this.margin.left).attr("y", this.margin.top / 1.75).attr("text-anchor", "middle").style("font-size", "30px").text('Artists: Number of tracks and time at 1');
 
-	    this.axistext = this.svg.append("text").attr("x", this.width / 2 + this.margin.left).attr("y", 315).attr("text-anchor", "middle").style("font-size", "16px").text('Total Weeks at 1');
+	        this.axistext = this.svg.append("text").attr("x", this.width / 2 + this.margin.left).attr("y", 315).attr("text-anchor", "middle").style("font-size", "16px").text('Total Weeks at 1');
 
-	    // this.key = this.svg.append("g")
-	    //       .attr("transform", "translate(0," + this.height + ")");
-	    // const keyData = [7.5, 10, 15];
-	    // const keyContainer = this.key.append("g");
-	    // keyData.forEach((d, i) => {
-	    //   this.key.append("circle")
-	    //       .attr("r", d)
-	    //       .attr("cx", this.width/2 + d*(i+2))
-	    //       .attr("cy", 0)
-	    //       .attr("class", "key");
-	    // });
-	    // this.key.append("text")
-	    //     .text("Fewer Tracks")
-	    //     .attr("y", 50)
-	    //
-	    // this.key.append("text")
-	    //     .text("More Tracks")
-	  }
-
-	  _createClass(SwarmChart, [{
-	    key: 'swarmChart',
-	    value: function swarmChart() {
-	      var swarm = this;
-	      d3.csv("./assets/data/unique_artists_track_count.csv", this.type, function (error, data) {
-	        if (error) throw error;
-
-	        swarm.x.domain(d3.extent(data, function (d) {
-	          return d.total_weeks;
-	        }));
-	        // parse string as number - https://stackoverflow.com/questions/17601105/how-do-i-convert-strings-from-csv-in-d3-js-and-be-able-to-use-them-as-a-dataset
-	        data.forEach(function (d) {
-	          d['track_count'] = +d['track_count'];
-	          d['imageWidth'] = +d['imageWidth'];
-	          d['imageHeight'] = +d['imageHeight'];
-	        });
-
-	        var simulation = d3.forceSimulation(data).force("x", d3.forceX(function (d) {
-	          return swarm.x(d.total_weeks);
-	        })).force("y", d3.forceY(swarm.height / 2)).force('collision', d3.forceCollide().radius(function (d) {
-	          return d.track_count + 1;
-	        })).stop();
-
-	        for (var i = 0; i < 120; ++i) {
-	          simulation.tick();
-	        }swarm.g.append("g").attr("class", "axis axis--x").attr("transform", "translate(0," + swarm.height * 0.55 + ")").call(d3.axisBottom(swarm.x).ticks(20, ".0s")); // +"0.s" formats as ints
-
-	        var cell = swarm.g.append("g").attr("class", "cells").attr("transform", "translate(0," + -swarm.margin.bottom + ")").selectAll("g").data(d3.voronoi().extent([[-swarm.margin.left, -swarm.margin.top], [swarm.width + swarm.margin.right, 300]]).x(function (d) {
-	          return d.x;
-	        }).y(function (d) {
-	          return d.y;
-	        }).polygons(data)).enter().append("g");
-
-	        cell.attr("class", function (d) {
-	          return d.data.artist.replace(/ /g, "_");
-	        });
-
-	        var defs = swarm.svg.append('svg:defs');
-	        data.forEach(function (d, i) {
-	          //this isn't the d3 way to do this -> once working, will need refactoring
-	          defs.append("svg:pattern").attr("id", "artist_image" + d.artist.replace(/ /g, "_")).attr("width", "100%").attr("height", "100%").attr("x", d.imageWidth).attr("y", d.imageHeight).append("svg:image").attr("xlink:href", d.imageUrl).attr("width", d.track_count * 4).attr("height", d.track_count * 4);
-
-	          // var circle = swarm.g.append("circle")
-	          //   .attr("cx", d.x)
-	          //   .attr("cy", d.y)
-	          //   .attr("r", d.track_count)
-	          //   .style("fill", "#000")
-	          //   .style("fill", "url(#artist_image" + i + ")");
-	        });
-
-	        // swarm.svg.append("svg:defs").selectAll("marker")
-	        //   .data(data)
-	        //   .enter().append("svg:marker")
-	        //   .attr("id", function(d) { return "artist_image_" + d.artist.replace(/ /g,"_"); })
-	        //   .attr("width", "100%")
-	        //   .attr("height", "100%")
-	        //   .attr("x", function(d) { return d.imageWidth })
-	        //   .attr("y", function(d) { return d.imageHeight })
-	        //   .append("svg:image")
-	        //   .attr("xlink:href", function(d) { return d.imageUrl })
-	        //   .attr("width", function(d) { return d.track_count * 4 })
-	        //   .attr("height", function(d) { return d.track_count * 4 });
-
-	        cell.append("circle").attr("r", function (d) {
-	          return d.data.track_count;
-	        }).attr("cx", function (d) {
-	          return d.data.x;
-	        }).attr("cy", function (d) {
-	          return d.data.y;
-	        }).attr("id", function (d) {
-	          return d.data.artist.replace(/ /g, "_") + '_circle';
-	        }).style("fill", "#000").style("stroke", "#bfbfbf").style("stroke-opacity", 0.5).style("stroke-width", 0.5).style("fill", function (d) {
-	          return "url(#artist_image" + d.data.artist.replace(/ /g, "_") + ")";
-	        });
-
-	        cell.append("path").attr("d", function (d) {
-	          return "M" + d.join("L") + "Z";
-	        });
-
-	        cell.append("title").text(function (d) {
-	          return d.data.artist + "\n" + swarm.formatValue(d.data.total_weeks) + " weeks at one with " + swarm.formatValue(d.data.track_count) + " tracks";
-	        });
-	      });
+	        // this.key = this.svg.append("g")
+	        //       .attr("transform", "translate(0," + this.height + ")");
+	        // const keyData = [7.5, 10, 15];
+	        // const keyContainer = this.key.append("g");
+	        // keyData.forEach((d, i) => {
+	        //   this.key.append("circle")
+	        //       .attr("r", d)
+	        //       .attr("cx", this.width/2 + d*(i+2))
+	        //       .attr("cy", 0)
+	        //       .attr("class", "key");
+	        // });
+	        // this.key.append("text")
+	        //     .text("Fewer Tracks")
+	        //     .attr("y", 50)
+	        //
+	        // this.key.append("text")
+	        //     .text("More Tracks")
 	    }
-	  }, {
-	    key: 'type',
-	    value: function type(d) {
-	      if (!d.total_weeks) return;
-	      d.total_weeks = +d.total_weeks;
-	      return d;
-	    }
-	  }, {
-	    key: 'zoomAndPan',
-	    value: function zoomAndPan(translateX, translateY, scale) {
-	      console.log('zoom swarm called');
-	      var svg = d3.select("#swarm-chart").transition().duration(1750).attr("transform", 'translate(' + translateX + ',' + translateY + ')scale(' + scale + ')');
-	    }
-	  }, {
-	    key: 'zoomReset',
-	    value: function zoomReset() {
-	      console.log('zoom reset called');
-	      var svg = d3.select("#swarm-chart").transition().duration(1750).attr("transform", 'translate(0,0)scale(1)');
-	    }
-	  }, {
-	    key: 'highlightArtistNode',
-	    value: function highlightArtistNode(artist, x, y, dx, dy) {
-	      // add check to see if label already exists
-	      var type = d4.annotationLabel;
 
-	      var annotations = [{
-	        note: {
-	          title: artist
-	        },
-	        x: x, y: y,
-	        dx: dx, dy: dy,
-	        connector: { end: "arrow" }
-	      }];
+	    _createClass(SwarmChart, [{
+	        key: 'swarmChart',
+	        value: function swarmChart() {
+	            var swarm = this;
+	            d3.csv("./assets/data/unique_artists_track_count.csv", this.type, function (error, data) {
+	                if (error) throw error;
 
-	      var makeAnnotations = d4.annotation().editMode(false).type(d4.annotationLabel).annotations(annotations);
+	                swarm.x.domain(d3.extent(data, function (d) {
+	                    return d.total_weeks;
+	                }));
+	                // parse string as number - https://stackoverflow.com/questions/17601105/how-do-i-convert-strings-from-csv-in-d3-js-and-be-able-to-use-them-as-a-dataset
+	                data.forEach(function (d) {
+	                    d['track_count'] = +d['track_count'];
+	                    d['imageWidth'] = +d['imageWidth'];
+	                    d['imageHeight'] = +d['imageHeight'];
+	                });
 
-	      d3.select("#swarm-chart").append("g").attr("class", "annotation-group").attr("id", artist.replace(/ /g, "_") + '_label').style('font-size', "10px").call(makeAnnotations);
-	    }
-	  }, {
-	    key: 'removeAllAnnotations',
-	    value: function removeAllAnnotations() {
-	      var labels = document.querySelectorAll('.annotation-group');
-	      labels.forEach(function (label) {
-	        label.style.display = "none";
-	      });
-	    }
-	  }]);
+	                var simulation = d3.forceSimulation(data).force("x", d3.forceX(function (d) {
+	                    return swarm.x(d.total_weeks);
+	                })).force("y", d3.forceY(swarm.height / 2)).force('collision', d3.forceCollide().radius(function (d) {
+	                    return d.track_count + 1;
+	                })).stop();
 
-	  return SwarmChart;
+	                for (var i = 0; i < 120; ++i) {
+	                    simulation.tick();
+	                }swarm.g.append("g").attr("class", "axis axis--x").attr("transform", "translate(0," + swarm.height * 0.55 + ")").call(d3.axisBottom(swarm.x).ticks(20, ".0s")); // +"0.s" formats as ints
+
+	                var cell = swarm.g.append("g").attr("class", "cells").attr("transform", "translate(0," + -swarm.margin.bottom + ")").selectAll("g").data(d3.voronoi().extent([[-swarm.margin.left, -swarm.margin.top], [swarm.width + swarm.margin.right, 300]]).x(function (d) {
+	                    return d.x;
+	                }).y(function (d) {
+	                    return d.y;
+	                }).polygons(data)).enter().append("g");
+
+	                cell.attr("class", function (d) {
+	                    return d.data.artist.replace(/ /g, "_");
+	                });
+
+	                var defs = swarm.svg.append('svg:defs');
+	                data.forEach(function (d, i) {
+	                    //this isn't the d3 way to do this -> once working, will need refactoring
+	                    defs.append("svg:pattern").attr("id", "artist_image" + d.artist.replace(/ /g, "_")).attr("width", "100%").attr("height", "100%").attr("x", d.imageWidth).attr("y", d.imageHeight).append("svg:image").attr("xlink:href", d.imageUrl).attr("width", d.track_count * 4).attr("height", d.track_count * 4);
+
+	                    // var circle = swarm.g.append("circle")
+	                    //   .attr("cx", d.x)
+	                    //   .attr("cy", d.y)
+	                    //   .attr("r", d.track_count)
+	                    //   .style("fill", "#000")
+	                    //   .style("fill", "url(#artist_image" + i + ")");
+	                });
+
+	                // swarm.svg.append("svg:defs").selectAll("marker")
+	                //   .data(data)
+	                //   .enter().append("svg:marker")
+	                //   .attr("id", function(d) { return "artist_image_" + d.artist.replace(/ /g,"_"); })
+	                //   .attr("width", "100%")
+	                //   .attr("height", "100%")
+	                //   .attr("x", function(d) { return d.imageWidth })
+	                //   .attr("y", function(d) { return d.imageHeight })
+	                //   .append("svg:image")
+	                //   .attr("xlink:href", function(d) { return d.imageUrl })
+	                //   .attr("width", function(d) { return d.track_count * 4 })
+	                //   .attr("height", function(d) { return d.track_count * 4 });
+
+	                cell.append("circle").attr("r", function (d) {
+	                    return d.data.track_count;
+	                }).attr("cx", function (d) {
+	                    return d.data.x;
+	                }).attr("cy", function (d) {
+	                    return d.data.y;
+	                }).attr("id", function (d) {
+	                    return d.data.artist.replace(/ /g, "_") + '_circle';
+	                }).style("fill", "#000").style("stroke", "#bfbfbf").style("stroke-opacity", 0.5).style("stroke-width", 0.5).style("fill", function (d) {
+	                    return "url(#artist_image" + d.data.artist.replace(/ /g, "_") + ")";
+	                });
+
+	                cell.append("path").attr("d", function (d) {
+	                    return "M" + d.join("L") + "Z";
+	                });
+
+	                cell.append("title").text(function (d) {
+	                    return d.data.artist + "\n" + swarm.formatValue(d.data.total_weeks) + " weeks at one with " + swarm.formatValue(d.data.track_count) + " tracks";
+	                });
+	            });
+	        }
+	    }, {
+	        key: 'type',
+	        value: function type(d) {
+	            if (!d.total_weeks) return;
+	            d.total_weeks = +d.total_weeks;
+	            return d;
+	        }
+	    }]);
+
+	    return SwarmChart;
 	}();
 
 	exports.default = SwarmChart;
@@ -35454,7 +35435,7 @@
 	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
-	  value: true
+	    value: true
 	});
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -35482,151 +35463,118 @@
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 	var LineChart = function () {
-	  function LineChart() {
-	    _classCallCheck(this, LineChart);
+	    function LineChart() {
+	        _classCallCheck(this, LineChart);
 
-	    // Get the data
-	    this.data = _config2.default["yearlyAverages"];
-	    // format the data
-	    var parseTime = d3.timeParse("%Y");
-	    this.data.forEach(function (d) {
-	      d.year = parseTime(d.year);
-	      d.danceability = +d.danceability;
-	      d.valence = +d.valence;
-	      d.acousticness = +d.acousticness;
-	      d.energy = +d.energy;
-	    });
-	    _config2.default["lineChartBuilt"] = false;
-	  }
-
-	  _createClass(LineChart, [{
-	    key: 'buildGraph',
-	    value: function buildGraph() {
-	      var svg = d3.select("#line-chart");
-	      this.margin = { top: 40, right: 40, bottom: 40, left: 40 };
-	      this.width = 600;
-	      this.height = 400;
-
-	      // set the ranges
-	      var x = d3.scaleTime().range([0, this.width]);
-	      var y = d3.scaleLinear().range([this.height, 0]);
-
-	      svg.attr("width", 900).attr("height", 600);
-	      svg.g = svg.append("g").attr("class", "line-chart__container").attr("height", this.height).attr("width", this.width).attr("transform", 'translate(' + svg.attr("width") * 0.1 + ', ' + (svg.attr("height") - this.height) / 2 + ')');
-
-	      var title = svg.append("text").attr("x", svg.attr("width") / 2).attr("y", this.margin.top * 1.5).attr("margin-bottom", this.margin.bottom).attr("text-anchor", "middle").style("font-size", "30px").text('Average Audio Features by Year');
-
-	      var axistext = svg.g.append("text").attr("x", this.width / 2 + this.margin.left).attr("y", this.height + this.margin.bottom).attr("text-anchor", "middle").style("font-size", "16px").text('Years');
-
-	      var danceabilityLine = d3.line().x(function (d) {
-	        return x(d.year);
-	      }).y(function (d) {
-	        return y(d.danceability);
-	      });
-
-	      var valenceLine = d3.line().x(function (d) {
-	        return x(d.year);
-	      }).y(function (d) {
-	        return y(d.valence);
-	      });
-
-	      var acousticnessLine = d3.line().x(function (d) {
-	        return x(d.year);
-	      }).y(function (d) {
-	        return y(d.acousticness);
-	      });
-
-	      var energyLine = d3.line().x(function (d) {
-	        return x(d.year);
-	      }).y(function (d) {
-	        return y(d.energy);
-	      });
-
-	      // axis ranges
-	      x.domain(d3.extent(this.data, function (d) {
-	        return d.year;
-	      }));
-	      y.domain([0, 1]);
-
-	      var features = ["Danceability", "Valence", "Acousticness", "Energy"];
-	      var featureLines = [danceabilityLine, valenceLine, acousticnessLine, energyLine];
-	      var colours = ["#ff6a07", "#27ae60", "#9b59b6", "#3498db"];
-	      var key = svg.append("g").attr("class", "line-chart__key").attr("transform", 'translate(' + svg.attr("width") * 0.85 + ', ' + this.height * 0.4 + ')');
-	      key.append("text").text("Key").attr("text-decoration", "underline");
-
-	      for (var i = 0; i < features.length; i++) {
-	        svg.g.append("path").data([this.data]).attr("class", 'line-chart__line, line-chart__' + features[i].toLowerCase()).style("stroke", colours[i]).style("fill", "none").style("stroke-width", 2).attr("d", featureLines[i]);
-
-	        key.append("line").attr("x1", 5).attr("y1", i * 20 + 20).attr("x2", 15).attr("y2", i * 20 + 20).attr("stroke-width", 3).attr("stroke", colours[i]).attr("class", 'line-chart__key, line-chart__' + features[i].toLowerCase());
-	        key.append("text").text(features[i]).attr("x", 20).attr("y", i * 20 + 25).attr("class", 'line-chart__' + features[i].toLowerCase());
-	      }
-
-	      // Add the X Axis
-	      svg.g.append("g").attr("transform", "translate(0," + this.height + ")").call(d3.axisBottom(x));
-
-	      // Add the Y Axis
-	      svg.g.append("g").call(d3.axisLeft(y));
-
-	      _config2.default["lineChartBuilt"] = true;
-	    }
-	  }, {
-	    key: 'removeLines',
-	    value: function removeLines(featuresToRemove) {
-	      var lineChartEl = document.getElementById("line-chart");
-	      featuresToRemove.forEach(function (feature) {
-	        var featureElements = lineChartEl.querySelectorAll('.line-chart__' + feature);
-	        featureElements.forEach(function (el) {
-	          el.style.display = 'none';
+	        // Get the data
+	        this.data = _config2.default["yearlyAverages"];
+	        // format the data
+	        var parseTime = d3.timeParse("%Y");
+	        this.data.forEach(function (d) {
+	            d.year = parseTime(d.year);
+	            d.danceability = +d.danceability;
+	            d.valence = +d.valence;
+	            d.acousticness = +d.acousticness;
+	            d.energy = +d.energy;
 	        });
-	      });
+	        _config2.default["lineChartBuilt"] = false;
 	    }
-	  }, {
-	    key: 'addLines',
-	    value: function addLines(featuresToAdd) {
-	      var lineChartEl = document.getElementById("line-chart");
-	      featuresToAdd.forEach(function (feature) {
-	        var featureElements = lineChartEl.querySelectorAll('.line-chart__' + feature);
-	        featureElements.forEach(function (el) {
-	          el.style.display = 'initial';
-	        });
-	      });
-	    }
-	  }, {
-	    key: 'zoomAndPan',
-	    value: function zoomAndPan(translateX, translateY, scale) {
-	      var svg = d3.select("#line-chart").transition().duration(1750).attr("transform", 'translate(' + translateX + ',' + translateY + ')scale(' + scale + ')');
-	    }
-	  }, {
-	    key: 'annotate',
-	    value: function annotate(label, x, y, dx, dy) {
-	      // add check to see if label already exists
-	      var type = d4.annotationLabel;
 
-	      var annotations = [{
-	        note: {
-	          title: label
-	        },
-	        x: x, y: y,
-	        dx: dx, dy: dy,
-	        connector: { end: "arrow" }
-	      }];
+	    _createClass(LineChart, [{
+	        key: 'buildGraph',
+	        value: function buildGraph() {
+	            var svg = d3.select("#line-chart");
+	            this.margin = { top: 40, right: 40, bottom: 40, left: 40 };
+	            this.width = 600;
+	            this.height = 400;
 
-	      var makeAnnotations = d4.annotation().editMode(false).type(d4.annotationLabel).annotations(annotations);
+	            // set the ranges
+	            var x = d3.scaleTime().range([0, this.width]);
+	            var y = d3.scaleLinear().range([this.height, 0]);
 
-	      d3.select("#line-chart").append("g").attr("class", "line-chart--annotation-group").attr("id", label + '_label').style('font-size', "10px").call(makeAnnotations);
-	    }
-	  }, {
-	    key: 'removeAllAnnotations',
-	    value: function removeAllAnnotations() {
-	      console.log('called remove annotations');
-	      var labels = document.querySelectorAll('.line-chart--annotation-group');
-	      labels.forEach(function (label) {
-	        label.style.display = "none";
-	      });
-	    }
-	  }]);
+	            svg.attr("width", 900).attr("height", 600);
+	            svg.g = svg.append("g").attr("class", "line-chart__container").attr("height", this.height).attr("width", this.width).attr("transform", 'translate(' + svg.attr("width") * 0.1 + ', ' + (svg.attr("height") - this.height) / 2 + ')');
 
-	  return LineChart;
+	            var title = svg.append("text").attr("x", svg.attr("width") / 2).attr("y", this.margin.top * 1.5).attr("margin-bottom", this.margin.bottom).attr("text-anchor", "middle").style("font-size", "30px").text('Average Audio Features by Year');
+
+	            var axistext = svg.g.append("text").attr("x", this.width / 2 + this.margin.left).attr("y", this.height + this.margin.bottom).attr("text-anchor", "middle").style("font-size", "16px").text('Years');
+
+	            var danceabilityLine = d3.line().x(function (d) {
+	                return x(d.year);
+	            }).y(function (d) {
+	                return y(d.danceability);
+	            });
+
+	            var valenceLine = d3.line().x(function (d) {
+	                return x(d.year);
+	            }).y(function (d) {
+	                return y(d.valence);
+	            });
+
+	            var acousticnessLine = d3.line().x(function (d) {
+	                return x(d.year);
+	            }).y(function (d) {
+	                return y(d.acousticness);
+	            });
+
+	            var energyLine = d3.line().x(function (d) {
+	                return x(d.year);
+	            }).y(function (d) {
+	                return y(d.energy);
+	            });
+
+	            // axis ranges
+	            x.domain(d3.extent(this.data, function (d) {
+	                return d.year;
+	            }));
+	            y.domain([0, 1]);
+
+	            var features = ["Danceability", "Valence", "Acousticness", "Energy"];
+	            var featureLines = [danceabilityLine, valenceLine, acousticnessLine, energyLine];
+	            var colours = ["#ff6a07", "#27ae60", "#9b59b6", "#3498db"];
+	            var key = svg.append("g").attr("class", "line-chart__key").attr("transform", 'translate(' + svg.attr("width") * 0.85 + ', ' + this.height * 0.4 + ')');
+	            key.append("text").text("Key").attr("text-decoration", "underline");
+
+	            for (var i = 0; i < features.length; i++) {
+	                svg.g.append("path").data([this.data]).attr("class", 'line-chart__line, line-chart__' + features[i].toLowerCase()).style("stroke", colours[i]).style("fill", "none").style("stroke-width", 2).attr("d", featureLines[i]);
+
+	                key.append("line").attr("x1", 5).attr("y1", i * 20 + 20).attr("x2", 15).attr("y2", i * 20 + 20).attr("stroke-width", 3).attr("stroke", colours[i]).attr("class", 'line-chart__key, line-chart__' + features[i].toLowerCase());
+	                key.append("text").text(features[i]).attr("x", 20).attr("y", i * 20 + 25).attr("class", 'line-chart__' + features[i].toLowerCase());
+	            }
+
+	            // Add the X Axis
+	            svg.g.append("g").attr("transform", "translate(0," + this.height + ")").call(d3.axisBottom(x));
+
+	            // Add the Y Axis
+	            svg.g.append("g").call(d3.axisLeft(y));
+
+	            _config2.default["lineChartBuilt"] = true;
+	        }
+	    }, {
+	        key: 'removeLines',
+	        value: function removeLines(featuresToRemove) {
+	            var lineChartEl = document.getElementById("line-chart");
+	            featuresToRemove.forEach(function (feature) {
+	                var featureElements = lineChartEl.querySelectorAll('.line-chart__' + feature);
+	                featureElements.forEach(function (el) {
+	                    el.style.display = 'none';
+	                });
+	            });
+	        }
+	    }, {
+	        key: 'addLines',
+	        value: function addLines(featuresToAdd) {
+	            var lineChartEl = document.getElementById("line-chart");
+	            featuresToAdd.forEach(function (feature) {
+	                var featureElements = lineChartEl.querySelectorAll('.line-chart__' + feature);
+	                featureElements.forEach(function (el) {
+	                    el.style.display = 'initial';
+	                });
+	            });
+	        }
+	    }]);
+
+	    return LineChart;
 	}();
 
 	exports.default = LineChart;
@@ -35647,6 +35595,75 @@
 
 /***/ }),
 /* 44 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.zoomAndPan = zoomAndPan;
+	exports.annotate = annotate;
+	exports.removeAllAnnotations = removeAllAnnotations;
+	exports.zoomReset = zoomReset;
+
+	var _jquery = __webpack_require__(4);
+
+	var _jquery2 = _interopRequireDefault(_jquery);
+
+	var _d = __webpack_require__(5);
+
+	var d3 = _interopRequireWildcard(_d);
+
+	var _d3SvgAnnotation = __webpack_require__(37);
+
+	var d4 = _interopRequireWildcard(_d3SvgAnnotation);
+
+	var _config = __webpack_require__(43);
+
+	var _config2 = _interopRequireDefault(_config);
+
+	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function zoomAndPan(graph, translateX, translateY, scale) {
+	  var svg = d3.select('#' + graph).transition().duration(1750).attr("transform", 'translate(' + translateX + ',' + translateY + ')scale(' + scale + ')');
+	}
+
+	function annotate(graph, label, x, y, dx, dy) {
+	  // add check to see if label already exists
+	  var type = d4.annotationLabel;
+
+	  var annotations = [{
+	    note: {
+	      title: label
+	    },
+	    x: x, y: y,
+	    dx: dx, dy: dy,
+	    connector: { end: "arrow" }
+	  }];
+
+	  var makeAnnotations = d4.annotation().editMode(false).type(d4.annotationLabel).annotations(annotations);
+
+	  d3.select('#' + graph).append("g").attr("class", graph + '--annotation-group').attr("id", label + '_label').style('font-size', "10px").call(makeAnnotations);
+	}
+
+	function removeAllAnnotations(graph) {
+	  console.log('called remove annotations');
+	  var labels = document.querySelectorAll('.' + graph + '--annotation-group');
+	  labels.forEach(function (label) {
+	    label.style.display = "none";
+	  });
+	}
+
+	function zoomReset(graph) {
+	  console.log('zoom reset called');
+	  var svg = d3.select('#' + graph).transition().duration(1750).attr("transform", 'translate(0,0)scale(1)');
+	}
+
+/***/ }),
+/* 45 */
 /***/ (function(module, exports) {
 
 	/* global module */
@@ -37417,7 +37434,7 @@
 
 
 /***/ }),
-/* 45 */
+/* 46 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -37489,7 +37506,7 @@
 	}
 
 /***/ }),
-/* 46 */
+/* 47 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
