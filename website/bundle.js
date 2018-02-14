@@ -300,21 +300,22 @@
 	        lineChart.removeLines(['danceability']);
 	        lineChart.addLines(['valence']);
 	        lineChart.zoomAndPan(0, 0, 1);
-	        lineChart.annotate('1963', 193, 177, 15, 0);
-	        lineChart.annotate('1954', 110, 315, 20, 5);
-	        lineChart.annotate('1996', 495, 310, 0, 20);
 	      }
 	      if (currentStep.dataset.step === "line-chart--valence-high") {
 	        lineChart.zoomAndPan(1400, 600, 6);
+	        lineChart.annotate('1963', 193, 177, 15, 0);
 	      }
 	      if (currentStep.dataset.step === "line-chart--valence-low-1954") {
 	        lineChart.zoomAndPan(1800, 0, 6);
+	        lineChart.annotate('1954', 110, 315, 20, 5);
 	      }
 	      if (currentStep.dataset.step === "line-chart--valence-low-1996") {
 	        lineChart.zoomAndPan(-400, -50, 6);
+	        lineChart.annotate('1996', 495, 310, 0, 20);
 	      }
 	      if (currentStep.dataset.step === "line-chart--explore") {
 	        lineChart.zoomAndPan(0, 0, 1);
+	        lineChart.removeAllAnnotations();
 	        lineChart.addLines(['danceability', 'acousticness', 'energy']);
 	      }
 	    }
