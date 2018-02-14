@@ -183,8 +183,3 @@ p, h2 {
 .line-chart__container {
   display: block;
   margin: auto; }
-
-.charts-intro,
-.section-artists,
-.section-re-entries {
-  display: none; }
