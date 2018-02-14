@@ -105,7 +105,7 @@ class Scroller {
       lineChart.zoomAndPan(1800, 0, 6);
     }
     if (currentStep.dataset.step === "line-chart--valence-low-1996") {
-      lineChart.zoomAndPan(-400, 250, 6);
+      lineChart.zoomAndPan(-400, -50, 6);
     }
     if (currentStep.dataset.step === "line-chart--explore") {
       lineChart.zoomAndPan(0, 0, 1);
