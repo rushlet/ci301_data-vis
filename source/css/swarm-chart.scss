@@ -1,24 +1,20 @@
 #swarm-chart {
-  margin:  10% auto 20%;
+  margin:  5em auto 3em;
   display: block;
 }
 
-.axis path,
-.axis line {
-  fill: none;
-  stroke: #000;
-  shape-rendering: crispEdges;
-}
-
-.axis text {
-  font: 10px sans-serif;
-}
+// .axis path,
+// .axis line {
+//   fill: none;
+//   stroke: #000;
+//   shape-rendering: crispEdges;
+// }
 
 .cells path {
   fill: none;
   pointer-events: all;
 }
 
-.cells :hover circle {
-  fill: red;
-}
+// .cells :hover circle {
+//   border: grey 1px solid;
+// }

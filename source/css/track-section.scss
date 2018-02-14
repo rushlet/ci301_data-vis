@@ -1,0 +1,45 @@
+.section-re-entries__slide,
+.section-tracks__intro {
+  min-height: 70vh;
+  text-align: center;
+
+  p {
+    font-size: 2em;
+    padding-top: 1em;
+  }
+
+  h2 {
+    padding-top: 25vh;
+  }
+}
+
+.section-tracks__slide {
+  min-height: 0;
+  margin: 5em auto;
+
+  p {
+    font-size: 1.5em;
+    padding-top: 1em;
+    text-align: justify;
+    max-width: 650px;
+    display: block;
+    margin: auto;
+  }
+}
+
+.playable-track {
+  text-decoration: underline;
+  cursor: pointer;
+  padding-right: 1.25em;
+  background: url("./assets/img/sound_on.svg") no-repeat center right;
+  background-size: 1em 1em;
+
+  // &:after {
+  //   content: "";
+  //   display: inline-block;
+  //   background: url("./assets/img/sound_on.svg") no-repeat top right;
+  //   width: 0.75em;
+  //   height: 0.75em;
+  //   padding-left: 0.25em;
+  // }
+}

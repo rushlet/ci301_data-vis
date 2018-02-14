@@ -10,6 +10,16 @@ section {
   padding: 1em 3em;
 }
 
+h3 {
+  font-size: 2.5em;
+  margin-bottom: 0;
+}
+
+h4 {
+  font-size: 2em;
+  margin-bottom: 0;
+}
+
 .section-1 {
   background-color: #e8e8e8;
 }
@@ -18,3 +28,12 @@ section {
 @import 'intro';
 @import 'scroller';
 @import 'swarm-chart';
+@import 'track-section';
+@import 'line-chart';
+
+
+// .charts-intro,
+// .section-artists,
+// .section-re-entries {
+//   display: none;
+// }

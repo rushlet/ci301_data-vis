@@ -1,12 +1,13 @@
 // adapted from https://bl.ocks.org/mbostock/6526445e2b44303eebf21da3b6627320
 import $ from 'jquery';
 import * as d3 from "d3";
+import * as d4 from 'd3-svg-annotation';
 var zoom = d3.zoom();
 
 class SwarmChart {
   constructor() {
     this.svg = d3.select("#swarm-chart");
-    this.margin = {top: 40, right: 40, bottom: 40, left: 40};
+    this.margin = {top: 40, right: 40, bottom: 50, left: 40};
     this.width = this.svg.attr("width") - this.margin.left - this.margin.right;
     this.height = this.svg.attr("height") - this.margin.top - this.margin.bottom;
 
@@ -19,18 +20,44 @@ class SwarmChart {
     this.g = this.svg.append("g")
         .attr("transform", "translate(" + this.margin.left + "," + this.margin.top + ")");
 
-    this.zoom = d3.zoom()
-        .scaleExtent([1, 40])
-        .translateExtent([[-100, -100], [this.width + 90, this.height + 100]])
-        .on("zoom", this.zoomed);
+  this.title = this.svg.append("text")
+      .attr("x", this.width / 2 + this.margin.left)
+      .attr("y", (this.margin.top/1.75))
+      .attr("text-anchor", "middle")
+      .style("font-size", "30px")
+      .text('Artists: Number of tracks and time at 1');
 
-    // this.defs = this.svg.append('svg:defs');
+    this.axistext = this.svg.append("text")
+        .attr("x", this.width / 2 + this.margin.left)
+        .attr("y", 315)
+        .attr("text-anchor", "middle")
+        .style("font-size", "16px")
+        .text('Total Weeks at 1');
+
+    // this.key = this.svg.append("g")
+    //       .attr("transform", "translate(0," + this.height + ")");
+    // const keyData = [7.5, 10, 15];
+    // const keyContainer = this.key.append("g");
+    // keyData.forEach((d, i) => {
+    //   this.key.append("circle")
+    //       .attr("r", d)
+    //       .attr("cx", this.width/2 + d*(i+2))
+    //       .attr("cy", 0)
+    //       .attr("class", "key");
+    // });
+    // this.key.append("text")
+    //     .text("Fewer Tracks")
+    //     .attr("y", 50)
+    //
+    // this.key.append("text")
+    //     .text("More Tracks")
   }
 
   swarmChart() {
     let swarm = this;
-    d3.csv(`./assets/data/unique_artists_track_count.csv`, this.type, function(error, data) {
+    d3.csv("./assets/data/unique_artists_track_count.csv", this.type, function(error, data) {
       if (error) throw error;
+
       swarm.x.domain(d3.extent(data, function(d) {
         return d.total_weeks;
       }));
@@ -53,85 +80,78 @@ class SwarmChart {
 
       swarm.g.append("g")
           .attr("class", "axis axis--x")
-          .attr("transform", "translate(0," + swarm.height + ")")
+          .attr("transform", "translate(0," + (swarm.height*0.55) + ")")
           .call(d3.axisBottom(swarm.x).ticks(20, ".0s")); // +"0.s" formats as ints
 
       var cell = swarm.g.append("g")
           .attr("class", "cells")
+          .attr("transform", "translate(0," + -swarm.margin.bottom + ")")
         .selectAll("g").data(d3.voronoi()
-            .extent([[-swarm.margin.left, -swarm.margin.top], [swarm.width + swarm.margin.right, swarm.height + swarm.margin.top]])
+            .extent([[-swarm.margin.left, -swarm.margin.top], [swarm.width + swarm.margin.right, 300]])
             .x(function(d) { return d.x; })
             .y(function(d) { return d.y; })
           .polygons(data)).enter().append("g");
 
-      // data.forEach(function(d, i) {
-      //   swarm.defs.append("svg:pattern")
-      //     .attr("id", "artist_image" + i)
-      //     .attr("width", d.track_count)
-      //     .attr("height", d.track_count)
-      //     .attr("y", 0)
-      //     .attr("x", 0)
-      //     .append("svg:image")
-      //     .attr("xlink:href", d.imageUrl)
-      //
-      //   swarm.svg.append("circle")
-      //     .attr("r", d.track_count)
-      //     .attr("cx", d.x)
-      //     .attr("cy", d.y)
-      //     .style("fill", "#000")
-      //     .style("fill", "url(#artist_image" + i + ")");
-      // })
-
       cell.attr("class", function(d) { return d.data.artist.replace(/ /g,"_"); })
+
+      var defs = swarm.svg.append('svg:defs');
+      data.forEach(function(d, i) { //this isn't the d3 way to do this -> once working, will need refactoring
+          defs.append("svg:pattern")
+              .attr("id", "artist_image" + d.artist.replace(/ /g,"_"))
+              .attr("width", "100%")
+              .attr("height", "100%")
+              .attr("x", d.imageWidth)
+              .attr("y", d.imageHeight)
+              .append("svg:image")
+              .attr("xlink:href", d.imageUrl)
+              .attr("width", d.track_count * 4)
+              .attr("height", d.track_count * 4);
+
+            // var circle = swarm.g.append("circle")
+            //   .attr("cx", d.x)
+            //   .attr("cy", d.y)
+            //   .attr("r", d.track_count)
+            //   .style("fill", "#000")
+            //   .style("fill", "url(#artist_image" + i + ")");
+       })
+
+       // swarm.svg.append("svg:defs").selectAll("marker")
+       //   .data(data)
+       //   .enter().append("svg:marker")
+       //   .attr("id", function(d) { return "artist_image_" + d.artist.replace(/ /g,"_"); })
+       //   .attr("width", "100%")
+       //   .attr("height", "100%")
+       //   .attr("x", function(d) { return d.imageWidth })
+       //   .attr("y", function(d) { return d.imageHeight })
+       //   .append("svg:image")
+       //   .attr("xlink:href", function(d) { return d.imageUrl })
+       //   .attr("width", function(d) { return d.track_count * 4 })
+       //   .attr("height", function(d) { return d.track_count * 4 });
 
       cell.append("circle")
           .attr("r", function(d) { return d.data.track_count; })
           .attr("cx", function(d) { return d.data.x; })
           .attr("cy", function(d) { return d.data.y; })
-          .attr("class", function(d) { return `${d.data.artist.replace(/ /g,"_")}_circle`; })
-
+          .attr("id", function(d) { return `${d.data.artist.replace(/ /g,"_")}_circle`; })
+          .style("fill", "#000")
+          .style("stroke", "#bfbfbf")
+          .style("stroke-opacity", 0.5)
+          .style("stroke-width", 0.5)
+          .style("fill", function(d) { return "url(#artist_image" + d.data.artist.replace(/ /g,"_") + ")"; });
 
       cell.append("path")
           .attr("d", function(d) { return "M" + d.join("L") + "Z"; });
 
       cell.append("title")
           .text(function(d) { return d.data.artist + "\n" + swarm.formatValue(d.data.total_weeks) + " weeks at one with " + swarm.formatValue(d.data.track_count) + " tracks"; });
-      });
-    }
+    });
+  }
 
   type(d) {
     if (!d.total_weeks) return;
     d.total_weeks = +d.total_weeks;
     return d;
   }
-
-  zoomed() {
-    view.attr("transform", d3.event.transform);
-    gX.call(xAxis.scale(d3.event.transform.rescaleX(x)));
-    gY.call(yAxis.scale(d3.event.transform.rescaleY(y)));
-  }
-
-  zoomAndPan(translateX, translateY, scale) {
-    console.log('zoom swarm called');
-    var svg = d3.select("#swarm-chart")
-        .transition()
-          .duration(1750)
-          .attr("transform", `translate(${translateX},${translateY})scale(${scale})`);
-  }
-
-  zoomReset() {
-    console.log('zoom reset called');
-    var svg = d3.select("#swarm-chart")
-      .transition()
-        .duration(1750)
-        .attr("transform", `translate(0,0)scale(1)`);
-  }
-
-  highlightArtistNode(artist, colour) {
-    console.log('highlight node');
-    d3.select(`.${artist.replace(/ /g,"_")}_circle`)
-      .style("fill", colour)
-   }
 }
 
 export default SwarmChart;

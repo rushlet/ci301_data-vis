@@ -19,56 +19,59 @@
         <h1 class="project-intro__title">A Visual Analysis of UK Number 1s</h1>
         <p class="project-intro__description">Becky Rush</p>
       </div>
-      <div class="intro__slide intro__slide-2 intro-slide">
+      <div class="intro-slide">
         <p>
-          This data visualisation project highlights the most successful songs in UK chart history.<br />
+          This data visualisation project highlights the most successful songs in UK chart history.
+        </p>
+        <p>
           It considers how certain attributes of songs have changed over time and showcases some of
           the most surprising songs to have made music history.
         </p>
+        <button class="btn" id="spotify-playlist">Follow the Playlist on Spotify</button>
       </div>
     </section>
     <section class="charts-intro">
-      <div class="charts-intro__slide intro__slide-3 intro-slide">
+      <div class="charts-intro__slide text-slide">
         <p>
           The UK Music Charts began on
           <strong>14th November 1952</strong>
         </p>
       </div>
-      <div class="charts-intro__slide intro__slide-4 intro-slide">
+      <div class="charts-intro__slide text-slide">
         <p>
           In the <strong>3398 weeks</strong> between then and the 1st of January 2018, <strong>1325</strong> different songs have reached number 1
         </p>
       </div>
-      <div class="charts-intro__slide intro__slide-5 intro-slide">
+      <div class="charts-intro__slide text-slide">
         <p>
           Out of these, only 2 are held by Grammy award-winning singer Adele. <br />
           The same number as children's cartoon character Bob the Builder.
         </p>
       </div>
-      <div class="charts-intro__slide intro__slide-6 intro-slide">
+      <div class="charts-intro__slide text-slide">
         <p>
           Similarly, music legends Jimi Hendrix and Prince both only hold one number 1 each - the same number as the Teletubbies.
         </p>
       </div>
-      <div class="charts-intro__slide intro__slide-6 intro-slide">
-        <p>
+      <div class="charts-intro__slide text-slide">
+        <h2>
           Let's take a closer look at the artists who have topped the charts
-        </p>
+        </h2>
       </div>
     </section>
-    <section class="section-1">
+    <section class="section-artists">
       <div class='scroll'>
         <div class='scroll__graphic'>
-          <svg id="swarm-chart" width="900" height="250"></svg>
+          <svg id="swarm-chart" width="900" height="500"></svg>
         </div>
         <div class='scroll__text'>
-          <div class='step' data-step='a'>
+          <div class='step' data-step='swarm--intro'>
             <p>
               This graph shows the distribution of artists who have lasted the longest at number 1.
               The size of each bubble represents the number of tracks that have contributed to the length of time.
             </p>
           </div>
-          <div class='step' data-step='b'>
+          <div class='step' data-step='swarm--longest'>
             <p>
               <span class="artist-name">Elvis</span> is the King of the Charts, with 18 UK number 1s.
               <span class="artist-name">The Beatles</span> just miss out, with 17.
@@ -78,12 +81,12 @@
               number 1, with 79 and 69 weeks respectively.
             </p>
           </div>
-          <div class='step' data-step='c'>
+          <div class='step' data-step='swarm--successful'>
             <p>
               Other successful artists, in terms of most number 1s, include <span class="artist-name">Cliff Richard</span> (14), <span class="artist-name">Westlife</span> (14) and <span class="artist-name">Madonna</span> (13).
             </p>
           </div>
-          <div class='step' data-step='d'>
+          <div class='step' data-step='swarm--frankie-laine'>
             <p>
               <span class="artist-name">Frankie Laine</span> has held the number 1 position for 32 weeks - the 5th longest serving artist.
               He did this with only 4 songs reaching number 1.
@@ -93,18 +96,303 @@
               just beginning so there may have been less competition.
             </p>
           </div>
-          <div class='step' data-step='e'>
+          <div class='step' data-step='swarm--wet-wet-wet'>
             <p>
               However, <span class="artist-name">Wet Wet Wet</span> have also held the position for a substantial amount of time
               (23 weeks) with only 3 tracks, thanks to the success of ‘Love is all Around’ in 1994.
             </p>
           </div>
-          <div class='step' data-step='f'>
+          <div class='step' data-step='swarm--bieber'>
             <p>
               <span class="artist-name">Justin Bieber</span> has spent the same amount of time at the top of the charts as <span class="artist-name">Madonna</span> and <span class="artist-name">Take That</span>,
               despite having half the number of songs reach number 1.
               They have each held the position for 29 weeks, with 6, 13 and 12 songs respectively.
             </p>
+          </div>
+          <div class='step' data-step='swarm--explore'>
+            <p>
+              Explore the graph for yourself
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="section-re-entries">
+      <div class="section-re-entries__slide">
+        <h2>
+          Which tracks were most successful?
+        </h2>
+        <p>
+          Let's take a look at the tracks which have stayed at number 1 the longest
+        </p>
+      </div>
+      <div class='scroll'>
+        <div class='scroll__graphic'>
+          <svg id="gantt-chart" width="900" height="500"></svg>
+        </div>
+        <div class='scroll__text'>
+          <div class='step' data-step='gantt-chart--1'>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
+            </p>
+          </div>
+          <div class='step' data-step='gantt-chart--2'>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
+            </p>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
+            </p>
+          </div>
+          <div class='step' data-step='gantt-chart--3'>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum            </p>
+          </div>
+          <div class='step' data-step='f'>
+            <p>
+              Explore the graph for yourself
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="section-tracks">
+      <div class="section-tracks__slide section-tracks__intro">
+        <h2>
+          Let's look a little deeper into the audio features of number 1 songs.
+        </h2>
+      </div>
+      <div class="section-tracks__slide">
+        <p>
+          Spotify attaches a variety of attributes to each of the songs in their
+          library. Described as ‘audio features’, these include danceability,
+          valence (‘feel goodness’), energy, acousticness and loudness.
+        </p>
+        <p>
+          The attributes are generated by EchoNest, who employ a range of
+          techniques to quantify them. For example, danceability is
+          calculated by considering overall tempo and beat strength, whereas
+          valence used the opinion of a musical expert which was then
+          expanded upon using machine learning.
+        </p>
+        <p>
+          The following analysis is based on the values provided by Spotify for the songs which have reached number 1.
+          5 songs have been ommited as they are not available on Spotify.
+        </p>
+      </div>
+      <div class="section-tracks__slide">
+        <h3>Danceability</h3>
+        <p>
+          The most danceable songs that have reached number 1 are <span class="playable-track" data-id="3XVozq1aeqsJwpXrEZrDJ9">Ice Ice Baby</span> by Vanilla Ice and <span class="playable-track" data-id="2KjpWqvSKoQh0XIAywplWn">Give It To Me</span> by
+          Timberland, Nelly Furtado and Justin Timberlake.
+        </p>
+        <p>
+          Arguabley, Justin Timberlake is the most danceable artist, holding both the
+          joint first most danceable number one and
+          the second most danceable (<span class="playable-track" data-id="40VAYnnGBDLQVXD8D1ager">SexyBack</span>).
+        </p>
+        <p>
+          Surprisingly, Eminem holds 3 of the top 10 - <span class="playable-track" data-id="7KccdUP4IslFXUNNseqBc7">The Real Slim Shady</span>, <span class="playable-track" data-id="2RzWl7MCWqwQbTkA3vwGUk">Just Lose It</span> and <span class="playable-track" data-id="3qKGvSu1inEZKwYQnMavNA">Smack That</span> (collaboration with Akon).
+        </p>
+        <p>
+          The least danceable song that has reached
+          number 1 is Westlife’s <span class="playable-track" data-id="5XQavlXrNHBBvlN4IJqhqW">You Raise Me Up</span>.
+        </p>
+      </div>
+      <div class="section-tracks__slide">
+        <h3>Valence</h3>
+        <p>
+          The most ‘feel good’ song is Madness’
+          <span class="playable-track" data-id="78gWMNi0b8lgSgVe0U0AMX">House of Fun</span>, with a valence score of
+          98.5%. This is closely followed by Bucks Fizz
+          <span class="playable-track" data-id="5tK13ThQnZJF1YOVjQ0FAx">‘Making your mind up’</span>.
+        </p>
+        <p>
+          The song with the lowest valence score is
+          <span class="playable-track" data-id="39KVdXz6ZlBhv9pv1fGuun">Amazing Grace</span>,
+           as performed by the Pipes
+          drums dragon band… followed by Celine
+          Dion’s <span class="playable-track" data-id="3oEHQmhvFLiE7ZYES0ulzv">My Heart Will Go On</span>.
+        </p>
+      </div>
+      <div class="section-tracks__slide">
+        <h3>Acousticness</h3>
+        <p>
+          The most acoustic song to reach number 1
+          is <span class="playable-track" data-id="25TwSzCQuyeBJsOzkEj0kd">Whispering Grass</span>
+          by Windsor Davies & Don
+          Estelle.
+          <span class="playable-track" data-id="049uxirFkHOefJ0yqPW8Kk">I Believe</span> by Frankie Laine and
+          <span class="playable-track" data-id="3JOVTQ5h8HGFnDdp4VT3MP">Mad World</span>
+          by Michael Andrews and Gary Jules follow closely behind.
+        </p>
+        <p>
+          The least acoustic ones are Manic Street Preachers' <span class="playable-track" data-id="0Wij6cWb0i3R6TXrX01nEy">The Masses
+          Against The Classes</span> and
+          <span class="playable-track" data-id="2w4B7otstT2CGZKNgaMtiR">The Hindu Times</span> by Oasis.
+        </p>
+      </div>
+      <div class="section-tracks__slide">
+        <h3>Energy</h3>
+        <p>
+          The highest energy songs to reach the top
+          spot are <span class="playable-track" data-id="7pSJmBTlbA4S5zSLsj6Pzz">No Limit</span>
+          by 2 Unlimited with a
+          huge 99.9% energy. Close behind with
+          99.7% is <span class="playable-track" data-id="4ih3dyFZoeTdaeJW9mPbOI">Mr Vain</span>
+          by Culture Beat and <span class="playable-track" data-id="3WEdk4BoEaQCSpqEA3JKXM">Ooh
+          Aah... Just A Little Bit</span> by Gina G with 99.6%.
+        </p>
+        <p>
+          The lowest scoring song in terms of energy
+          is <span class="playable-track" data-id="61J0HC1L0XJq6kCU4sY3d5">Albatross</span>
+          by Fleetwood Mac (3.82%).
+        </p>
+      </div>
+      <div class="section-tracks__slide">
+        <h3>Now we've seen the examples of the extremes for some of the audio attributes, let's look at how they might have changed over time</h3>
+      </div>
+      <div class='scroll'>
+        <div class='scroll__graphic'>
+          <svg id="line-chart" width="900" height="650"></svg>
+        </div>
+        <div class='scroll__text'>
+          <div class='step' data-step='line-chart--intro'>
+            <p>
+              This graph shows the mean average of a few of the audio features by year, allowing us to see
+              see which years had the most changes musically.
+            </p>
+          </div>
+          <div class='step' data-step='line-chart--acousticness-intro'>
+            <h4>Acousticness</h4>
+            <p>
+              We can see that generally, acousticness has been declining.
+            </p>
+          </div>
+          <div class='step' data-step='line-chart--acousticness-low'>
+            <p>
+              It reached its lowest point (on average) in 2009, with songs such as La Roux’s
+              <span class="playable-track" data-id="3pU3mRumn5rWii1rKNu1eV">Bulletproof</span>
+               and Lady GaGa’s <span class="playable-track" data-id="1CZOrmHUUjeDP7N2B4Ba6S">Bad Romance</span>.
+            </p>
+          </div>
+          <div class='step' data-step='line-chart--acousticness-high'>
+            <p>
+              It then spiked in 2015 thanks to more acoustic tracks taking the scene, thanks to artists such as
+              Sam Smith and Justin Bieber.
+            </p>
+          </div>
+          <div class='step' data-step='line-chart--reset'>
+          </div>
+          <div class='step' data-step='line-chart--danceability-intro'>
+            <h4>Danceability</h4>
+            <p>
+              Danceability has generally been increasing over the years.
+            </p>
+          </div>
+          <div class='step' data-step='line-chart--danceability-high'>
+            <p>
+              It saw its peak in 1983. This year saw some pretty danceable classics,
+              including Michael Jackson's <span class="playable-track" data-id="5ChkMS8OtdzJeqyybCc9R5">Billie Jean</span>,
+               <span class="playable-track" data-id="7sm3orGGwNFqmWFSPRl8eT">Give It Up</span> by KC & The Sunshine Band
+              and <span class="playable-track" data-id="3sFEGvMPkY8Ti97K94Pwp9">Red Red Wine</span> By Ub40.
+            </p>
+          </div>
+          <div class='step' data-step='line-chart--danceability-low'>
+            <p>
+              Danceability plummeted in 1967, the year when songs including Nancy and Frank Sinatra's
+              <span class="playable-track" data-id="3cVWNLd0uEHkc2tnBoE3Ay">Something' Stupid</span>
+              and The Beatles' <span class="playable-track" data-id="3xMSaDC9TU6AQJIsxQB7MK">All You Need Is Love</span> made it big.
+            </p>
+          </div>
+          <div class='step' data-step='line-chart--reset'>
+          </div>
+          <div class='step' data-step='line-chart--valence-intro'>
+            <h4>Valence</h4>
+            <p>
+              There is less of an obvious trend for valence than other audio features, but it seems to have generally declined since the 60s.
+            </p>
+          </div>
+          <div class='step' data-step='line-chart--valence-high'>
+            <p>
+              It reached its highest
+              in 1963, with songs such as <span class="playable-track" data-id="2Q2Gu7Bv8iLenuygtBgDUw">From Me To You</span>, by The Beatles.
+            </p>
+            <p>
+              Most number 1s had high valence scores this year,
+              even the lowest scoring
+              ones were pretty feel
+              good - such as Cliff
+              Richard’s <span class="playable-track" data-id="054qLeg034PXr1wM3DMstk">Summer Holiday</span>
+              (the 3rd lowest in 1963).
+            </p>
+          </div>
+          <div class='step' data-step='line-chart--valence-low-1954'>
+            <p>
+            On average, the least feel
+            good year was 1954, featuring songs such as
+            <span class="playable-track" data-id="2YqfGrsn017nC17cx84Onq">Secret Love</span> by Doris Day.
+          </p>
+          </div>
+          <div class='step' data-step='line-chart--valence-low-1996'>
+            <p>
+              The least feel good year since 1954 is 1996. <br />
+              Curiously, both of these were the year before the current Conservative prime minister was replaced. <br />
+              (Churchill by Conservative candidate Eden in 1955 and Major by Labour's Tony Blair)
+          </p>
+          <p>
+            Furthermore, a few major events happened
+            in 1996, including the
+            Dunblance Massacre, IRA
+            bombing in Manchester,
+            Charles and Diana divorcing
+            and Take That splitting up.
+            </p>
+            <p>
+              Could it be that these events
+              had an impact on the
+              happiness of music
+              produced that year?
+            </p>
+          </div>
+          <div class='step' data-step='line-chart--explore'>
+            <p>
+              Explore the graph for yourself
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="section-personalisation">
+      <div class="section-personalisation__slide">
+        <h2>
+          How do your favourite tracks compare?
+        </h2>
+        <p>
+          Use the graph below to see how your most listened to tracks compare to the number 1s.
+        </p>
+      </div>
+      <div class='scroll'>
+        <div class='scroll__graphic'>
+          <svg id="bar-chart" width="900" height="500"></svg>
+        </div>
+        <div class='scroll__text'>
+          <div class='step' data-step='gantt-chart--1'>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
+            </p>
+          </div>
+          <div class='step' data-step='gantt-chart--2'>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
+            </p>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
+            </p>
+          </div>
+          <div class='step' data-step='gantt-chart--3'>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum            </p>
           </div>
           <div class='step' data-step='f'>
             <p>
