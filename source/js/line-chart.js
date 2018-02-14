@@ -5,17 +5,52 @@ import config from './config.js';
 
 class LineChart {
   constructor() {
-    var svg = d3.select("#line-chart"),
-        margin = {top: 40, right: 40, bottom: 40, left: 40},
-        width = 600,
-        height = 400;
-
-    // parse the date / time
+    // Get the data
+    this.data = config["yearlyAverages"];
+    // format the data
     var parseTime = d3.timeParse("%Y");
+    this.data.forEach(function(d) {
+        d.year = parseTime(d.year);
+        d.danceability = +d.danceability;
+        d.valence = +d.valence;
+        d.acousticness = +d.acousticness;
+        d.energy = +d.energy;
+    });
+    config["lineChartBuilt"] = false;
+  }
+
+  buildGraph() {
+    const svg = d3.select("#line-chart");
+    this.margin = {top: 40, right: 40, bottom: 40, left: 40};
+    this.width = 600;
+    this.height = 400;
 
     // set the ranges
-    var x = d3.scaleTime().range([0, width]);
-    var y = d3.scaleLinear().range([height, 0]);
+    var x = d3.scaleTime().range([0, this.width]);
+    var y = d3.scaleLinear().range([this.height, 0]);
+
+    svg.attr("width", 900)
+        .attr("height", 600)
+    svg.g = svg.append("g")
+        .attr("class", "line-chart__container")
+        .attr("height", this.height)
+        .attr("width", this.width)
+        .attr("transform", `translate(${(svg.attr("width") * 0.1)}, ${(svg.attr("height") - this.height) /2})`);
+
+    var title = svg.append("text")
+        .attr("x", svg.attr("width") / 2)
+        .attr("y", this.margin.top * 1.5)
+        .attr("margin-bottom", this.margin.bottom)
+        .attr("text-anchor", "middle")
+        .style("font-size", "30px")
+        .text('Average Audio Features by Year');
+
+   var axistext = svg.g.append("text")
+        .attr("x", this.width / 2 + this.margin.left)
+        .attr("y", this.height + this.margin.bottom)
+        .attr("text-anchor", "middle")
+        .style("font-size", "16px")
+        .text('Years');
 
     var danceabilityLine = d3.line()
         .x(function(d) { return x(d.year); })
@@ -33,42 +68,8 @@ class LineChart {
         .x(function(d) { return x(d.year); })
         .y(function(d) { return y(d.energy); });
 
-    svg.attr("width", 900)
-        .attr("height", 600)
-    svg.g = svg.append("g")
-        .attr("class", "line-chart__container")
-        .attr("height", height)
-        .attr("width", width)
-        .attr("transform", `translate(${(svg.attr("width") * 0.1)}, ${(svg.attr("height") - height) /2})`);
-
-     var title = svg.append("text")
-         .attr("x", svg.attr("width") / 2)
-         .attr("y", margin.top * 1.5)
-         .attr("margin-bottom", margin.bottom)
-         .attr("text-anchor", "middle")
-         .style("font-size", "30px")
-         .text('Average Audio Features by Year');
-
-    var axistext = svg.g.append("text")
-         .attr("x", width / 2 + margin.left)
-         .attr("y", height + margin.bottom)
-         .attr("text-anchor", "middle")
-         .style("font-size", "16px")
-         .text('Years');
-
-    // Get the data
-    var data = config["yearlyAverages"];
-    console.log(data);
-    // format the data
-    data.forEach(function(d) {
-        d.year = parseTime(d.year);
-        d.danceability = +d.danceability;
-        d.valence = +d.valence;
-        d.acousticness = +d.acousticness;
-        d.energy = +d.energy;
-    });
-
-    x.domain(d3.extent(data, function(d) { return d.year; }));
+    // axis ranges
+    x.domain(d3.extent(this.data, function(d) { return d.year; }));
     y.domain([0, 1]);
 
     var features = ["Danceability", "Valence", "Acousticness", "Energy"];
@@ -76,14 +77,14 @@ class LineChart {
     var colours = ["#ff6a07", "#27ae60", "#9b59b6", "#3498db"];
     var key = svg.append("g")
         .attr("class", "line-chart__key")
-        .attr("transform", `translate(${svg.attr("width") * 0.85}, ${height * 0.4})`);
+        .attr("transform", `translate(${svg.attr("width") * 0.85}, ${this.height * 0.4})`);
     key.append("text")
           .text("Key")
           .attr("text-decoration", "underline");
 
     for (var i = 0; i < features.length; i++) {
       svg.g.append("path")
-          .data([data])
+          .data([this.data])
           .attr("class", `line-chart__line, line-chart__${features[i].toLowerCase()}`)
           .style("stroke", colours[i])
           .style("fill", "none")
@@ -107,17 +108,18 @@ class LineChart {
 
     // Add the X Axis
     svg.g.append("g")
-        .attr("transform", "translate(0," + height + ")")
+        .attr("transform", "translate(0," + this.height + ")")
         .call(d3.axisBottom(x));
 
     // Add the Y Axis
     svg.g.append("g")
         .call(d3.axisLeft(y));
+
+    config["lineChartBuilt"] = true;
   }
 
   removeLines(featuresToRemove) {
     var lineChartEl = document.getElementById("line-chart");
-    console.log(lineChartEl);
     featuresToRemove.forEach((feature) => {
       var featureElements = lineChartEl.querySelectorAll(`.line-chart__${feature}`);
       featureElements.forEach((el) => {
@@ -128,7 +130,6 @@ class LineChart {
 
   addLines(featuresToAdd) {
     var lineChartEl = document.getElementById("line-chart");
-    console.log(lineChartEl);
     featuresToAdd.forEach((feature) => {
       var featureElements = lineChartEl.querySelectorAll(`.line-chart__${feature}`);
       featureElements.forEach((el) => {
@@ -144,9 +145,40 @@ class LineChart {
           .attr("transform", `translate(${translateX},${translateY})scale(${scale})`);
   }
 
-  // annotate() {
-  //
-  // }
+  annotate(label, x, y, dx, dy) {
+    // add check to see if label already exists
+    const type = d4.annotationLabel
+
+    const annotations = [{
+      note: {
+        title: label
+      },
+      x: x, y: y,
+      dx: dx, dy: dy,
+      connector: {end: "arrow"},
+    }]
+
+    const makeAnnotations = d4.annotation()
+        .editMode(false)
+        .type(d4.annotationLabel)
+        .annotations(annotations)
+
+    d3.select("#line-chart")
+      .append("g")
+      .attr("class", "line-chart--annotation-group")
+      .attr("id", `${label}_label`)
+      .style('font-size', "10px")
+      .call(makeAnnotations)
+  }
+
+  removeAllAnnotations() {
+    console.log('called remove annotations');
+    var labels = document.querySelectorAll('.line-chart--annotation-group');
+      labels.forEach((label) => {
+        label.style.display = "none";
+      });
+  }
+
 }
 
 export default LineChart;

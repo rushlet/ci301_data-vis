@@ -1,6 +1,8 @@
 import scrollama from 'scrollama';
 import SwarmChart from './swarm-chart.js';
 import LineChart from './line-chart.js'
+import config from './config.js';
+
 
 let swarm;
 let artists;
@@ -29,7 +31,6 @@ class Scroller {
   }
 
   handleStepEnter(interaction, steps) {
-    console.log('interaction', interaction);
     const currentStep = interaction.element;
     currentStep.classList.add('is-active');
     if (currentStep.dataset.step === "swarm--intro" || currentStep.dataset.step === "swarm--explore") {
@@ -67,36 +68,50 @@ class Scroller {
       swarm.highlightArtistNode('Take That', 360, 180, 20, -3);
     }
     if (currentStep.dataset.step === "line-chart--intro") {
-      // trigger building line chart if direciton down (once building of line chart split from constructor)
+      if (config["lineChartBuilt"] === true) {
+        lineChart.addLines(['danceability', 'valence', 'energy']);
+        lineChart.zoomAndPan(0, 0, 1);
+      } else {
+        lineChart.buildGraph();
+      }
     }
     if (currentStep.dataset.step === "line-chart--reset") {
       lineChart.zoomAndPan(0, 0, 1);
     }
     if (currentStep.dataset.step === "line-chart--acousticness-intro") {
       lineChart.removeLines(['danceability', 'valence', 'energy']);
-      // lineChart.annotate();
+      lineChart.removeAllAnnotations();
     }
     if (currentStep.dataset.step === "line-chart--acousticness-low") {
-      lineChart.zoomAndPan(-1400, -1000, 7);
+      lineChart.zoomAndPan(-950, -1000, 7);
+      lineChart.annotate('2009', 610, 470, -20, 0);
     }
     if (currentStep.dataset.step === "line-chart--acousticness-high") {
       lineChart.zoomAndPan(-1400, -800, 7);
+      lineChart.annotate('2015', 665, 390, -20, 0);
     }
     if (currentStep.dataset.step === "line-chart--danceability-intro") {
       lineChart.removeLines(['acousticness']);
+      lineChart.removeAllAnnotations();
       lineChart.addLines(['danceability']);
       lineChart.zoomAndPan(0, 0, 1);
     }
     if (currentStep.dataset.step === "line-chart--danceability-high") {
       lineChart.zoomAndPan(400, 500, 6);
+      lineChart.annotate('1983', 375, 220, -20, -10);
     }
     if (currentStep.dataset.step === "line-chart--danceability-low") {
       lineChart.zoomAndPan(1400, -100, 6);
+      lineChart.annotate('1967', 225, 330, -20, 5);
     }
     if (currentStep.dataset.step === "line-chart--valence-intro") {
+      lineChart.removeAllAnnotations();
       lineChart.removeLines(['danceability']);
       lineChart.addLines(['valence']);
       lineChart.zoomAndPan(0, 0, 1);
+      lineChart.annotate('1963', 193, 177, 15, 0);
+      lineChart.annotate('1954', 110, 315, 20, 5);
+      lineChart.annotate('1996', 495, 310, 0, 20);
     }
     if (currentStep.dataset.step === "line-chart--valence-high") {
       lineChart.zoomAndPan(1400, 600, 6);
@@ -116,7 +131,6 @@ class Scroller {
   handleStepExit(interaction, steps) {
     const currentStep = interaction.element;
     currentStep.classList.remove('is-active');
-    console.log('exiting', currentStep.dataset.step);
   }
 
   resetArtists(artistsToReset) {

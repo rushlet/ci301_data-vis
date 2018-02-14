@@ -186,6 +186,10 @@
 
 	var _lineChart2 = _interopRequireDefault(_lineChart);
 
+	var _config = __webpack_require__(43);
+
+	var _config2 = _interopRequireDefault(_config);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -218,7 +222,6 @@
 	  _createClass(Scroller, [{
 	    key: 'handleStepEnter',
 	    value: function handleStepEnter(interaction, steps) {
-	      console.log('interaction', interaction);
 	      var currentStep = interaction.element;
 	      currentStep.classList.add('is-active');
 	      if (currentStep.dataset.step === "swarm--intro" || currentStep.dataset.step === "swarm--explore") {
@@ -256,36 +259,50 @@
 	        swarm.highlightArtistNode('Take That', 360, 180, 20, -3);
 	      }
 	      if (currentStep.dataset.step === "line-chart--intro") {
-	        // trigger building line chart if direciton down (once building of line chart split from constructor)
+	        if (_config2.default["lineChartBuilt"] === true) {
+	          lineChart.addLines(['danceability', 'valence', 'energy']);
+	          lineChart.zoomAndPan(0, 0, 1);
+	        } else {
+	          lineChart.buildGraph();
+	        }
 	      }
 	      if (currentStep.dataset.step === "line-chart--reset") {
 	        lineChart.zoomAndPan(0, 0, 1);
 	      }
 	      if (currentStep.dataset.step === "line-chart--acousticness-intro") {
 	        lineChart.removeLines(['danceability', 'valence', 'energy']);
-	        // lineChart.annotate();
+	        lineChart.removeAllAnnotations();
 	      }
 	      if (currentStep.dataset.step === "line-chart--acousticness-low") {
-	        lineChart.zoomAndPan(-1400, -1000, 7);
+	        lineChart.zoomAndPan(-950, -1000, 7);
+	        lineChart.annotate('2009', 610, 470, -20, 0);
 	      }
 	      if (currentStep.dataset.step === "line-chart--acousticness-high") {
 	        lineChart.zoomAndPan(-1400, -800, 7);
+	        lineChart.annotate('2015', 665, 390, -20, 0);
 	      }
 	      if (currentStep.dataset.step === "line-chart--danceability-intro") {
 	        lineChart.removeLines(['acousticness']);
+	        lineChart.removeAllAnnotations();
 	        lineChart.addLines(['danceability']);
 	        lineChart.zoomAndPan(0, 0, 1);
 	      }
 	      if (currentStep.dataset.step === "line-chart--danceability-high") {
 	        lineChart.zoomAndPan(400, 500, 6);
+	        lineChart.annotate('1983', 375, 220, -20, -10);
 	      }
 	      if (currentStep.dataset.step === "line-chart--danceability-low") {
 	        lineChart.zoomAndPan(1400, -100, 6);
+	        lineChart.annotate('1967', 225, 330, -20, 5);
 	      }
 	      if (currentStep.dataset.step === "line-chart--valence-intro") {
+	        lineChart.removeAllAnnotations();
 	        lineChart.removeLines(['danceability']);
 	        lineChart.addLines(['valence']);
 	        lineChart.zoomAndPan(0, 0, 1);
+	        lineChart.annotate('1963', 193, 177, 15, 0);
+	        lineChart.annotate('1954', 110, 315, 20, 5);
+	        lineChart.annotate('1996', 495, 310, 0, 20);
 	      }
 	      if (currentStep.dataset.step === "line-chart--valence-high") {
 	        lineChart.zoomAndPan(1400, 600, 6);
@@ -306,7 +323,6 @@
 	    value: function handleStepExit(interaction, steps) {
 	      var currentStep = interaction.element;
 	      currentStep.classList.remove('is-active');
-	      console.log('exiting', currentStep.dataset.step);
 	    }
 	  }, {
 	    key: 'resetArtists',
@@ -35437,7 +35453,7 @@
 	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
-	    value: true
+	  value: true
 	});
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -35465,126 +35481,151 @@
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 	var LineChart = function () {
-	    function LineChart() {
-	        _classCallCheck(this, LineChart);
+	  function LineChart() {
+	    _classCallCheck(this, LineChart);
 
-	        var svg = d3.select("#line-chart"),
-	            margin = { top: 40, right: 40, bottom: 40, left: 40 },
-	            width = 600,
-	            height = 400;
+	    // Get the data
+	    this.data = _config2.default["yearlyAverages"];
+	    // format the data
+	    var parseTime = d3.timeParse("%Y");
+	    this.data.forEach(function (d) {
+	      d.year = parseTime(d.year);
+	      d.danceability = +d.danceability;
+	      d.valence = +d.valence;
+	      d.acousticness = +d.acousticness;
+	      d.energy = +d.energy;
+	    });
+	    _config2.default["lineChartBuilt"] = false;
+	  }
 
-	        // parse the date / time
-	        var parseTime = d3.timeParse("%Y");
+	  _createClass(LineChart, [{
+	    key: 'buildGraph',
+	    value: function buildGraph() {
+	      var svg = d3.select("#line-chart");
+	      this.margin = { top: 40, right: 40, bottom: 40, left: 40 };
+	      this.width = 600;
+	      this.height = 400;
 
-	        // set the ranges
-	        var x = d3.scaleTime().range([0, width]);
-	        var y = d3.scaleLinear().range([height, 0]);
+	      // set the ranges
+	      var x = d3.scaleTime().range([0, this.width]);
+	      var y = d3.scaleLinear().range([this.height, 0]);
 
-	        var danceabilityLine = d3.line().x(function (d) {
-	            return x(d.year);
-	        }).y(function (d) {
-	            return y(d.danceability);
-	        });
+	      svg.attr("width", 900).attr("height", 600);
+	      svg.g = svg.append("g").attr("class", "line-chart__container").attr("height", this.height).attr("width", this.width).attr("transform", 'translate(' + svg.attr("width") * 0.1 + ', ' + (svg.attr("height") - this.height) / 2 + ')');
 
-	        var valenceLine = d3.line().x(function (d) {
-	            return x(d.year);
-	        }).y(function (d) {
-	            return y(d.valence);
-	        });
+	      var title = svg.append("text").attr("x", svg.attr("width") / 2).attr("y", this.margin.top * 1.5).attr("margin-bottom", this.margin.bottom).attr("text-anchor", "middle").style("font-size", "30px").text('Average Audio Features by Year');
 
-	        var acousticnessLine = d3.line().x(function (d) {
-	            return x(d.year);
-	        }).y(function (d) {
-	            return y(d.acousticness);
-	        });
+	      var axistext = svg.g.append("text").attr("x", this.width / 2 + this.margin.left).attr("y", this.height + this.margin.bottom).attr("text-anchor", "middle").style("font-size", "16px").text('Years');
 
-	        var energyLine = d3.line().x(function (d) {
-	            return x(d.year);
-	        }).y(function (d) {
-	            return y(d.energy);
-	        });
+	      var danceabilityLine = d3.line().x(function (d) {
+	        return x(d.year);
+	      }).y(function (d) {
+	        return y(d.danceability);
+	      });
 
-	        svg.attr("width", 900).attr("height", 600);
-	        svg.g = svg.append("g").attr("class", "line-chart__container").attr("height", height).attr("width", width).attr("transform", 'translate(' + svg.attr("width") * 0.1 + ', ' + (svg.attr("height") - height) / 2 + ')');
+	      var valenceLine = d3.line().x(function (d) {
+	        return x(d.year);
+	      }).y(function (d) {
+	        return y(d.valence);
+	      });
 
-	        var title = svg.append("text").attr("x", svg.attr("width") / 2).attr("y", margin.top * 1.5).attr("margin-bottom", margin.bottom).attr("text-anchor", "middle").style("font-size", "30px").text('Average Audio Features by Year');
+	      var acousticnessLine = d3.line().x(function (d) {
+	        return x(d.year);
+	      }).y(function (d) {
+	        return y(d.acousticness);
+	      });
 
-	        var axistext = svg.g.append("text").attr("x", width / 2 + margin.left).attr("y", height + margin.bottom).attr("text-anchor", "middle").style("font-size", "16px").text('Years');
+	      var energyLine = d3.line().x(function (d) {
+	        return x(d.year);
+	      }).y(function (d) {
+	        return y(d.energy);
+	      });
 
-	        // Get the data
-	        var data = _config2.default["yearlyAverages"];
-	        console.log(data);
-	        // format the data
-	        data.forEach(function (d) {
-	            d.year = parseTime(d.year);
-	            d.danceability = +d.danceability;
-	            d.valence = +d.valence;
-	            d.acousticness = +d.acousticness;
-	            d.energy = +d.energy;
-	        });
+	      // axis ranges
+	      x.domain(d3.extent(this.data, function (d) {
+	        return d.year;
+	      }));
+	      y.domain([0, 1]);
 
-	        x.domain(d3.extent(data, function (d) {
-	            return d.year;
-	        }));
-	        y.domain([0, 1]);
+	      var features = ["Danceability", "Valence", "Acousticness", "Energy"];
+	      var featureLines = [danceabilityLine, valenceLine, acousticnessLine, energyLine];
+	      var colours = ["#ff6a07", "#27ae60", "#9b59b6", "#3498db"];
+	      var key = svg.append("g").attr("class", "line-chart__key").attr("transform", 'translate(' + svg.attr("width") * 0.85 + ', ' + this.height * 0.4 + ')');
+	      key.append("text").text("Key").attr("text-decoration", "underline");
 
-	        var features = ["Danceability", "Valence", "Acousticness", "Energy"];
-	        var featureLines = [danceabilityLine, valenceLine, acousticnessLine, energyLine];
-	        var colours = ["#ff6a07", "#27ae60", "#9b59b6", "#3498db"];
-	        var key = svg.append("g").attr("class", "line-chart__key").attr("transform", 'translate(' + svg.attr("width") * 0.85 + ', ' + height * 0.4 + ')');
-	        key.append("text").text("Key").attr("text-decoration", "underline");
+	      for (var i = 0; i < features.length; i++) {
+	        svg.g.append("path").data([this.data]).attr("class", 'line-chart__line, line-chart__' + features[i].toLowerCase()).style("stroke", colours[i]).style("fill", "none").style("stroke-width", 2).attr("d", featureLines[i]);
 
-	        for (var i = 0; i < features.length; i++) {
-	            svg.g.append("path").data([data]).attr("class", 'line-chart__line, line-chart__' + features[i].toLowerCase()).style("stroke", colours[i]).style("fill", "none").style("stroke-width", 2).attr("d", featureLines[i]);
+	        key.append("line").attr("x1", 5).attr("y1", i * 20 + 20).attr("x2", 15).attr("y2", i * 20 + 20).attr("stroke-width", 3).attr("stroke", colours[i]).attr("class", 'line-chart__key, line-chart__' + features[i].toLowerCase());
+	        key.append("text").text(features[i]).attr("x", 20).attr("y", i * 20 + 25).attr("class", 'line-chart__' + features[i].toLowerCase());
+	      }
 
-	            key.append("line").attr("x1", 5).attr("y1", i * 20 + 20).attr("x2", 15).attr("y2", i * 20 + 20).attr("stroke-width", 3).attr("stroke", colours[i]).attr("class", 'line-chart__key, line-chart__' + features[i].toLowerCase());
-	            key.append("text").text(features[i]).attr("x", 20).attr("y", i * 20 + 25).attr("class", 'line-chart__' + features[i].toLowerCase());
-	        }
+	      // Add the X Axis
+	      svg.g.append("g").attr("transform", "translate(0," + this.height + ")").call(d3.axisBottom(x));
 
-	        // Add the X Axis
-	        svg.g.append("g").attr("transform", "translate(0," + height + ")").call(d3.axisBottom(x));
+	      // Add the Y Axis
+	      svg.g.append("g").call(d3.axisLeft(y));
 
-	        // Add the Y Axis
-	        svg.g.append("g").call(d3.axisLeft(y));
+	      _config2.default["lineChartBuilt"] = true;
 	    }
+	  }, {
+	    key: 'removeLines',
+	    value: function removeLines(featuresToRemove) {
+	      var lineChartEl = document.getElementById("line-chart");
+	      featuresToRemove.forEach(function (feature) {
+	        var featureElements = lineChartEl.querySelectorAll('.line-chart__' + feature);
+	        featureElements.forEach(function (el) {
+	          el.style.display = 'none';
+	        });
+	      });
+	    }
+	  }, {
+	    key: 'addLines',
+	    value: function addLines(featuresToAdd) {
+	      var lineChartEl = document.getElementById("line-chart");
+	      featuresToAdd.forEach(function (feature) {
+	        var featureElements = lineChartEl.querySelectorAll('.line-chart__' + feature);
+	        featureElements.forEach(function (el) {
+	          el.style.display = 'initial';
+	        });
+	      });
+	    }
+	  }, {
+	    key: 'zoomAndPan',
+	    value: function zoomAndPan(translateX, translateY, scale) {
+	      var svg = d3.select("#line-chart").transition().duration(1750).attr("transform", 'translate(' + translateX + ',' + translateY + ')scale(' + scale + ')');
+	    }
+	  }, {
+	    key: 'annotate',
+	    value: function annotate(label, x, y, dx, dy) {
+	      // add check to see if label already exists
+	      var type = d4.annotationLabel;
 
-	    _createClass(LineChart, [{
-	        key: 'removeLines',
-	        value: function removeLines(featuresToRemove) {
-	            var lineChartEl = document.getElementById("line-chart");
-	            console.log(lineChartEl);
-	            featuresToRemove.forEach(function (feature) {
-	                var featureElements = lineChartEl.querySelectorAll('.line-chart__' + feature);
-	                featureElements.forEach(function (el) {
-	                    el.style.display = 'none';
-	                });
-	            });
-	        }
-	    }, {
-	        key: 'addLines',
-	        value: function addLines(featuresToAdd) {
-	            var lineChartEl = document.getElementById("line-chart");
-	            console.log(lineChartEl);
-	            featuresToAdd.forEach(function (feature) {
-	                var featureElements = lineChartEl.querySelectorAll('.line-chart__' + feature);
-	                featureElements.forEach(function (el) {
-	                    el.style.display = 'initial';
-	                });
-	            });
-	        }
-	    }, {
-	        key: 'zoomAndPan',
-	        value: function zoomAndPan(translateX, translateY, scale) {
-	            var svg = d3.select("#line-chart").transition().duration(1750).attr("transform", 'translate(' + translateX + ',' + translateY + ')scale(' + scale + ')');
-	        }
+	      var annotations = [{
+	        note: {
+	          title: label
+	        },
+	        x: x, y: y,
+	        dx: dx, dy: dy,
+	        connector: { end: "arrow" }
+	      }];
 
-	        // annotate() {
-	        //
-	        // }
+	      var makeAnnotations = d4.annotation().editMode(false).type(d4.annotationLabel).annotations(annotations);
 
-	    }]);
+	      d3.select("#line-chart").append("g").attr("class", "line-chart--annotation-group").attr("id", label + '_label').style('font-size', "10px").call(makeAnnotations);
+	    }
+	  }, {
+	    key: 'removeAllAnnotations',
+	    value: function removeAllAnnotations() {
+	      console.log('called remove annotations');
+	      var labels = document.querySelectorAll('.line-chart--annotation-group');
+	      labels.forEach(function (label) {
+	        label.style.display = "none";
+	      });
+	    }
+	  }]);
 
-	    return LineChart;
+	  return LineChart;
 	}();
 
 	exports.default = LineChart;

@@ -30,3 +30,10 @@ h4 {
 @import 'swarm-chart';
 @import 'track-section';
 @import 'line-chart';
+
+
+.charts-intro,
+.section-artists,
+.section-re-entries {
+  display: none;
+}
