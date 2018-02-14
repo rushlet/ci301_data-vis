@@ -199,104 +199,59 @@
 	if (document.getElementById('project-page') !== null) {
 	  swarm = new _swarmChart2.default();
 	  swarm.swarmChart();
-
-	  // const dispatch = d3.dispatch;
-
-	  // setup the instance, pass callback functions
 	  scroller.setup({
 	    step: '.scroll__text .step', // required
 	    container: '.scroll', // required (for sticky)
 	    graphic: '.scroll__graphic', // required (for sticky)
 	    offset: 0.33, // optional, default = 0.5
 	    debug: false // optional, default = false
-	  }).onStepEnter(handleStepEnter).onStepExit(handleStepExit).onContainerEnter(handleContainerEnter).onContainerExit(handleContainerExit);
+	  }).onStepEnter(handleStepEnter).onStepExit(handleStepExit);
 
 	  artists = document.querySelectorAll('.artist-name');
 	}
 
 	function handleStepEnter(interaction, steps) {
-	  //console.log('handleStepEnter', interaction, steps);
-	  //console.log(interaction.element);
 	  var currentStep = interaction.element;
 	  currentStep.classList.add('is-active');
-	  if (interaction.index === 0) {
-	    // document.querySelector('.scroll__graphic').style.backgroundColor = "#fff";
-	    // dispatch.call("swarm 1");
+	  if (currentStep.dataset.step === "swarm--intro" || currentStep.dataset.step === "swarm--explore") {
 	    swarm.zoomReset();
-	    // resetArtists(['BEATLES', 'ELVIS']);
+	    swarm.removeAllAnnotations();
 	  }
-	  if (interaction.index === 1) {
-	    // document.querySelector('.scroll__graphic').style.backgroundColor = "#f5a62a";
+	  if (currentStep.dataset.step === "swarm--longest") {
 	    swarm.zoomAndPan(-1950, 150, 5.5);
 	    swarm.removeAllAnnotations();
 	    swarm.highlightArtistNode('Beatles', 758, 212, 15, 40);
 	    swarm.highlightArtistNode('Elvis', 850, 210, -15, 42);
-
-	    // highlightArtist('ELVIS', '#37a1cf');
-	    // resetArtists(['WESTLIFE', 'MADONNA', 'CLIFF RICHARD']);
 	  }
-	  if (interaction.index === 2) {
-	    // document.querySelector('.scroll__graphic').style.backgroundColor = "#55b4d8";
+	  if (currentStep.dataset.step === "swarm--successful") {
 	    swarm.zoomAndPan(225, 75, 3);
 	    swarm.removeAllAnnotations();
 	    swarm.highlightArtistNode('Cliff Richard', 500, 218, -15, 33);
 	    swarm.highlightArtistNode('Madonna', 320, 205, 0, 46);
 	    swarm.highlightArtistNode('Westlife', 250, 180, 15, -20);
-
-	    // resetArtists(['BEATLES', 'ELVIS', 'FRANKIE LAINE']);
-	    // highlightArtist('WESTLIFE', '#eeb420');
-	    // highlightArtist('MADONNA', '#439428');
-	    // highlightArtist('CLIFF RICHARD', '#6b2188');
 	  }
-	  if (interaction.index === 3) {
-	    // document.querySelector('.scroll__graphic').style.backgroundColor = "#55b4d8";
+	  if (currentStep.dataset.step === "swarm--frankie-laine") {
 	    swarm.zoomAndPan(650, 350, 8);
 	    swarm.removeAllAnnotations();
 	    swarm.highlightArtistNode('Frankie Laine', 370, 199, 15, 30);
-	    // resetArtists(['WESTLIFE', 'MADONNA', 'CLIFF RICHARD', 'WET WET WET']);
-	    // highlightArtist('FRANKIE LAINE', '#e61c17');
 	  }
-	  if (interaction.index === 4) {
-	    // document.querySelector('.scroll__graphic').style.backgroundColor = "#55b4d8";
+	  if (currentStep.dataset.step === "swarm--wet-wet-wet") {
 	    swarm.zoomAndPan(1200, 300, 7.5);
 	    swarm.removeAllAnnotations();
 	    swarm.highlightArtistNode('Wet Wet Wet', 265, 212, 13, 20);
-	    // highlightArtist('WET WET WET', '#e61c17');
-	    // resetArtists(['MADONNA', 'JUSTIN BIEBER', 'TAKE THAT']);
 	  }
-	  if (interaction.index === 5) {
-	    // document.querySelector('.scroll__graphic').style.backgroundColor = "#55b4d8";
+	  if (currentStep.dataset.step === "swarm--bieber") {
 	    swarm.zoomAndPan(700, 300, 7);
 	    swarm.removeAllAnnotations();
 	    swarm.highlightArtistNode('Justin Bieber', 360, 210, 15, 24);
 	    swarm.highlightArtistNode('Madonna', 320, 205, -5, 20);
 	    swarm.highlightArtistNode('Take That', 360, 180, 20, -3);
-	    // resetArtists(['FRANKIE LAINE', 'WET WET WET']);
-	    // highlightArtist('JUSTIN BIEBER', '#ff6a07');
-	    // highlightArtist('MADONNA', '#439428');
-	    // highlightArtist('TAKE THAT', '#560f85');
-	  }
-	  if (interaction.index === 6) {
-	    // document.querySelector('.scroll__graphic').style.backgroundColor = "#55b4d8";
-	    swarm.zoomReset();
-	    swarm.removeAllAnnotations();
-	    // resetArtists(['MADONNA', 'JUSTIN BIEBER', 'TAKE THAT']);
 	  }
 	}
 
 	function handleStepExit(interaction, steps) {
-	  //console.log('handleStepEnter', interaction, steps);
-	  //console.log(interaction.element);
 	  var currentStep = interaction.element;
 	  currentStep.classList.remove('is-active');
-	}
-
-	function handleContainerEnter(interaction, steps) {
-	  //console.log('handleStepEnter', interaction, steps);
-	}
-
-	function handleContainerExit(interaction, steps) {
-	  //console.log('handleStepEnter', interaction, steps);
 	}
 
 	function resetArtists(artistsToReset) {
