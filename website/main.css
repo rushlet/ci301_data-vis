@@ -176,10 +176,6 @@ p, h2 {
   background: url("./assets/img/sound_on.svg") no-repeat center right;
   background-size: 1em 1em; }
 
-.line-chart__line {
-  fill: none;
-  stroke-width: 2px; }
-
 .line-chart__container {
   display: block;
   margin: auto; }

@@ -84,8 +84,10 @@ class LineChart {
     for (var i = 0; i < features.length; i++) {
       svg.g.append("path")
           .data([data])
-          .attr("class", "line-chart__line")
+          .attr("class", `line-chart__line, line-chart__${features[i].toLowerCase()}`)
           .style("stroke", colours[i])
+          .style("fill", "none")
+          .style("stroke-width", 2)
           .attr("d", featureLines[i]);
 
       key.append("line")
@@ -94,11 +96,13 @@ class LineChart {
             .attr("x2", 15)
             .attr("y2", (i * 20) + 20)
             .attr("stroke-width", 3)
-            .attr("stroke", colours[i]);
+            .attr("stroke", colours[i])
+            .attr("class", `line-chart__key, line-chart__${features[i].toLowerCase()}`);
       key.append("text")
             .text(features[i])
             .attr("x", 20)
-            .attr("y", (i * 20) + 25);
+            .attr("y", (i * 20) + 25)
+            .attr("class", `line-chart__${features[i].toLowerCase()}`);
     }
 
     // Add the X Axis
@@ -109,6 +113,15 @@ class LineChart {
     // Add the Y Axis
     svg.g.append("g")
         .call(d3.axisLeft(y));
+  }
+
+  removeLines(featuresToRemove) {
+    var lineChart = document.getElementById("#line-chart");
+    featuresToRemove.forEach((feature) => {
+      var featureElements = lineChart.querySelectorAll(`.line-chart__${feature}`);
+      featureElements.forEach((el))
+      el.style.display = 'none';
+    })
   }
 }
 
