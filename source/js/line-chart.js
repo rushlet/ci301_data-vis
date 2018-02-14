@@ -126,6 +126,17 @@ class LineChart {
     })
   }
 
+  addLines(featuresToAdd) {
+    var lineChartEl = document.getElementById("line-chart");
+    console.log(lineChartEl);
+    featuresToAdd.forEach((feature) => {
+      var featureElements = lineChartEl.querySelectorAll(`.line-chart__${feature}`);
+      featureElements.forEach((el) => {
+        el.style.display = 'initial';
+      })
+    })
+  }
+
   zoomAndPan(translateX, translateY, scale) {
     var svg = d3.select("#line-chart")
         .transition()

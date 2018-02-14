@@ -69,6 +69,9 @@ class Scroller {
     if (currentStep.dataset.step === "line-chart--intro") {
       // trigger building line chart if direciton down (once building of line chart split from constructor)
     }
+    if (currentStep.dataset.step === "line-chart--reset") {
+      lineChart.zoomAndPan(0, 0, 1);
+    }
     if (currentStep.dataset.step === "line-chart--acousticness-intro") {
       lineChart.removeLines(['danceability', 'valence', 'energy']);
       // lineChart.annotate();
@@ -79,15 +82,41 @@ class Scroller {
     if (currentStep.dataset.step === "line-chart--acousticness-high") {
       lineChart.zoomAndPan(-1400, -800, 7);
     }
+    if (currentStep.dataset.step === "line-chart--danceability-intro") {
+      lineChart.removeLines(['acousticness']);
+      lineChart.addLines(['danceability']);
+      lineChart.zoomAndPan(0, 0, 1);
+    }
+    if (currentStep.dataset.step === "line-chart--danceability-high") {
+      lineChart.zoomAndPan(400, 500, 6);
+    }
+    if (currentStep.dataset.step === "line-chart--danceability-low") {
+      lineChart.zoomAndPan(1400, -100, 6);
+    }
+    if (currentStep.dataset.step === "line-chart--valence-intro") {
+      lineChart.removeLines(['danceability']);
+      lineChart.addLines(['valence']);
+      lineChart.zoomAndPan(0, 0, 1);
+    }
+    if (currentStep.dataset.step === "line-chart--valence-high") {
+      lineChart.zoomAndPan(1400, 600, 6);
+    }
+    if (currentStep.dataset.step === "line-chart--valence-low-1954") {
+      lineChart.zoomAndPan(1800, 0, 6);
+    }
+    if (currentStep.dataset.step === "line-chart--valence-low-1996") {
+      lineChart.zoomAndPan(-400, 250, 6);
+    }
+    if (currentStep.dataset.step === "line-chart--explore") {
+      lineChart.zoomAndPan(0, 0, 1);
+      lineChart.addLines(['danceability', 'acousticness', 'energy']);
+    }
   }
 
   handleStepExit(interaction, steps) {
     const currentStep = interaction.element;
     currentStep.classList.remove('is-active');
     console.log('exiting', currentStep.dataset.step);
-    if (currentStep.dataset.step === "line-chart--acousticness-high") {
-      lineChart.zoomAndPan(0, 0, 1);
-    }
   }
 
   resetArtists(artistsToReset) {
