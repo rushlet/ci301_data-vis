@@ -5,9 +5,7 @@ import config from './config.js';
 
 class LineChart {
   constructor() {
-    // Get the data
     this.data = config["yearlyAverages"];
-    // format the data
     var parseTime = d3.timeParse("%Y");
     this.data.forEach(function(d) {
         d.year = parseTime(d.year);
@@ -37,7 +35,6 @@ class LineChart {
     this.width = 600;
     this.height = 400;
 
-    // set the ranges
     this.x = d3.scaleTime().range([0, this.width]);
     this.y = d3.scaleLinear().range([this.height, 0]);
 
@@ -76,16 +73,13 @@ class LineChart {
          .style("font-size", "16px")
          .text('Years');
 
-    // axis ranges
     x.domain(d3.extent(this.data, function(d) { return d.year; }));
     y.domain([0, 1]);
 
-    // Add the X Axis
     lineChartContainer.append("g")
         .attr("transform", "translate(0," + this.height + ")")
         .call(d3.axisBottom(this.x));
 
-    // Add the Y Axis
     lineChartContainer.append("g")
         .call(d3.axisLeft(this.y));
   }
@@ -158,7 +152,6 @@ class LineChart {
   }
 
   removeLines(featuresToRemove) {
-    console.log('remove lines called');
     var lineChartEl = document.getElementById("line-chart");
     featuresToRemove.forEach((feature) => {
       var featureElements = lineChartEl.querySelectorAll(`.line-chart__${feature}`);
@@ -184,7 +177,6 @@ class LineChart {
       this.checked ? lineChart.addLines([this.value]) : lineChart.removeLines([this.value]);
     });
   }
-
 }
 
 export default LineChart;
