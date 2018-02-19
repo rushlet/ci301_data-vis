@@ -35,7 +35,6 @@ class Scroller {
     currentStep.classList.add('is-active');
     switch(currentStep.dataset.step) {
         case "swarm--intro":
-        case "swarm--explore":
           chartFunctions.zoomReset('swarm-chart');
           chartFunctions.removeAllAnnotations('swarm-chart');
           break;
@@ -68,6 +67,11 @@ class Scroller {
           chartFunctions.annotate('swarm-chart', 'Justin Bieber', 360, 210, 15, 24);
           chartFunctions.annotate('swarm-chart', 'Madonna', 320, 205, -5, 20);
           chartFunctions.annotate('swarm-chart', 'Take That', 360, 180, 20, -3);
+          break;
+        case "swarm--explore":
+          chartFunctions.zoomReset('swarm-chart');
+          chartFunctions.removeAllAnnotations('swarm-chart');
+          chartFunctions.explore('swarm-chart');
           break;
         case "line-chart--intro":
           if (config["lineChartBuilt"] === true) {
@@ -143,7 +147,7 @@ class Scroller {
           chartFunctions.removeAllAnnotations('line-chart');
           lineChart.addLines(['danceability', 'acousticness', 'energy']);
           lineChart.addCheckboxListeners();
-          lineChart.explore();
+          chartFunctions.explore('line-chart');
           break;
     }
 

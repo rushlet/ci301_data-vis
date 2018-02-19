@@ -183,16 +183,6 @@ class LineChart {
     });
   }
 
-  explore() {
-    const svg = d3.select("#line-chart");
-    const chart = this;
-    svg.call(d3.zoom().on("zoom", this.zoomed));
-  }
-
-  zoomed() {
-    d3.select("#line-chart").attr("transform", d3.event.transform);
-  }
-
 }
 
 export default LineChart;
