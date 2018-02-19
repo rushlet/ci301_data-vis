@@ -187,6 +187,8 @@ p, h2 {
 .line-chart--container .step:last-child {
   padding-top: 20vh;
   min-height: 90vh; }
+  .line-chart--container .step:last-child p {
+    font-size: 1em; }
 
 .line-chart--filters {
   margin-left: 1em; }

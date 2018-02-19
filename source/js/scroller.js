@@ -143,6 +143,7 @@ class Scroller {
           chartFunctions.removeAllAnnotations('line-chart');
           lineChart.addLines(['danceability', 'acousticness', 'energy']);
           lineChart.addCheckboxListeners();
+          lineChart.explore();
           break;
     }
 

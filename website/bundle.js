@@ -339,6 +339,7 @@
 	          chartFunctions.removeAllAnnotations('line-chart');
 	          lineChart.addLines(['danceability', 'acousticness', 'energy']);
 	          lineChart.addCheckboxListeners();
+	          lineChart.explore();
 	          break;
 	      }
 	    }
@@ -35438,7 +35439,7 @@
 	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
-	    value: true
+	  value: true
 	});
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -35466,182 +35467,188 @@
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 	var LineChart = function () {
-	    function LineChart() {
-	        _classCallCheck(this, LineChart);
+	  function LineChart() {
+	    _classCallCheck(this, LineChart);
 
-	        // Get the data
-	        this.data = _config2.default["yearlyAverages"];
-	        // format the data
-	        var parseTime = d3.timeParse("%Y");
-	        this.data.forEach(function (d) {
-	            d.year = parseTime(d.year);
-	            d.danceability = +d.danceability;
-	            d.valence = +d.valence;
-	            d.acousticness = +d.acousticness;
-	            d.energy = +d.energy;
-	            d.liveness = +d.liveness;
-	            d.speechiness = +d.speechiness;
-	            d.instrumentalness = +d.instrumentalness;
-	            d.duration_ms = +d.duration_ms;
-	        });
-	        _config2.default["lineChartBuilt"] = false;
+	    // Get the data
+	    this.data = _config2.default["yearlyAverages"];
+	    // format the data
+	    var parseTime = d3.timeParse("%Y");
+	    this.data.forEach(function (d) {
+	      d.year = parseTime(d.year);
+	      d.danceability = +d.danceability;
+	      d.valence = +d.valence;
+	      d.acousticness = +d.acousticness;
+	      d.energy = +d.energy;
+	      d.liveness = +d.liveness;
+	      d.speechiness = +d.speechiness;
+	      d.instrumentalness = +d.instrumentalness;
+	      d.duration_ms = +d.duration_ms;
+	    });
+	    _config2.default["lineChartBuilt"] = false;
+	  }
+
+	  _createClass(LineChart, [{
+	    key: 'buildMainGraph',
+	    value: function buildMainGraph() {
+	      this.buildGraph();
+	      this.addAxis();
+	      this.initialiseLines();
+	      this.addInitialLines();
 	    }
+	  }, {
+	    key: 'buildGraph',
+	    value: function buildGraph() {
+	      var svg = d3.select("#line-chart");
+	      this.margin = { top: 40, right: 40, bottom: 40, left: 40 };
+	      this.width = 600;
+	      this.height = 400;
 
-	    _createClass(LineChart, [{
-	        key: 'buildMainGraph',
-	        value: function buildMainGraph() {
-	            this.buildGraph();
-	            this.addAxis();
-	            this.initialiseLines();
-	            this.addInitialLines();
-	        }
-	    }, {
-	        key: 'buildGraph',
-	        value: function buildGraph() {
-	            var svg = d3.select("#line-chart");
-	            this.margin = { top: 40, right: 40, bottom: 40, left: 40 };
-	            this.width = 600;
-	            this.height = 400;
+	      // set the ranges
+	      this.x = d3.scaleTime().range([0, this.width]);
+	      this.y = d3.scaleLinear().range([this.height, 0]);
 
-	            // set the ranges
-	            this.x = d3.scaleTime().range([0, this.width]);
-	            this.y = d3.scaleLinear().range([this.height, 0]);
+	      svg.attr("width", 900).attr("height", 600);
+	      svg.g = svg.append("g").attr("class", "line-chart__container").attr("height", this.height).attr("width", this.width).attr("transform", 'translate(' + svg.attr("width") * 0.1 + ', ' + (svg.attr("height") - this.height) / 2 + ')');
 
-	            svg.attr("width", 900).attr("height", 600);
-	            svg.g = svg.append("g").attr("class", "line-chart__container").attr("height", this.height).attr("width", this.width).attr("transform", 'translate(' + svg.attr("width") * 0.1 + ', ' + (svg.attr("height") - this.height) / 2 + ')');
+	      var title = svg.append("text").attr("x", svg.attr("width") / 2).attr("y", this.margin.top * 1.5).attr("margin-bottom", this.margin.bottom).attr("text-anchor", "middle").style("font-size", "30px").text('Average Audio Features by Year');
 
-	            var title = svg.append("text").attr("x", svg.attr("width") / 2).attr("y", this.margin.top * 1.5).attr("margin-bottom", this.margin.bottom).attr("text-anchor", "middle").style("font-size", "30px").text('Average Audio Features by Year');
+	      var key = svg.append("g").attr("class", "line-chart__key").attr("transform", 'translate(' + svg.attr("width") * 0.8 + ', ' + this.height * 0.4 + ')');
+	      key.append("text").text("Key").attr("text-decoration", "underline");
+	    }
+	  }, {
+	    key: 'addAxis',
+	    value: function addAxis() {
+	      var x = this.x,
+	          y = this.y;
+	      var lineChartContainer = d3.select(".line-chart__container");
+	      var axistext = lineChartContainer.append("text").attr("x", this.width / 2 + this.margin.left).attr("y", this.height + this.margin.bottom).attr("text-anchor", "middle").style("font-size", "16px").text('Years');
 
-	            var key = svg.append("g").attr("class", "line-chart__key").attr("transform", 'translate(' + svg.attr("width") * 0.8 + ', ' + this.height * 0.4 + ')');
-	            key.append("text").text("Key").attr("text-decoration", "underline");
-	        }
-	    }, {
-	        key: 'addAxis',
-	        value: function addAxis() {
-	            var x = this.x,
-	                y = this.y;
-	            var lineChartContainer = d3.select(".line-chart__container");
-	            var axistext = lineChartContainer.append("text").attr("x", this.width / 2 + this.margin.left).attr("y", this.height + this.margin.bottom).attr("text-anchor", "middle").style("font-size", "16px").text('Years');
+	      // axis ranges
+	      x.domain(d3.extent(this.data, function (d) {
+	        return d.year;
+	      }));
+	      y.domain([0, 1]);
 
-	            // axis ranges
-	            x.domain(d3.extent(this.data, function (d) {
-	                return d.year;
-	            }));
-	            y.domain([0, 1]);
+	      // Add the X Axis
+	      lineChartContainer.append("g").attr("transform", "translate(0," + this.height + ")").call(d3.axisBottom(this.x));
 
-	            // Add the X Axis
-	            lineChartContainer.append("g").attr("transform", "translate(0," + this.height + ")").call(d3.axisBottom(this.x));
+	      // Add the Y Axis
+	      lineChartContainer.append("g").call(d3.axisLeft(this.y));
+	    }
+	  }, {
+	    key: 'initialiseLines',
+	    value: function initialiseLines() {
+	      var chart = this;
+	      chart.danceabilityLine = d3.line().x(function (d) {
+	        return chart.x(d.year);
+	      }).y(function (d) {
+	        return chart.y(d.danceability);
+	      });
 
-	            // Add the Y Axis
-	            lineChartContainer.append("g").call(d3.axisLeft(this.y));
-	        }
-	    }, {
-	        key: 'initialiseLines',
-	        value: function initialiseLines() {
-	            var chart = this;
-	            chart.danceabilityLine = d3.line().x(function (d) {
-	                return chart.x(d.year);
-	            }).y(function (d) {
-	                return chart.y(d.danceability);
-	            });
+	      chart.valenceLine = d3.line().x(function (d) {
+	        return chart.x(d.year);
+	      }).y(function (d) {
+	        return chart.y(d.valence);
+	      });
 
-	            chart.valenceLine = d3.line().x(function (d) {
-	                return chart.x(d.year);
-	            }).y(function (d) {
-	                return chart.y(d.valence);
-	            });
+	      chart.acousticnessLine = d3.line().x(function (d) {
+	        return chart.x(d.year);
+	      }).y(function (d) {
+	        return chart.y(d.acousticness);
+	      });
 
-	            chart.acousticnessLine = d3.line().x(function (d) {
-	                return chart.x(d.year);
-	            }).y(function (d) {
-	                return chart.y(d.acousticness);
-	            });
+	      chart.energyLine = d3.line().x(function (d) {
+	        return chart.x(d.year);
+	      }).y(function (d) {
+	        return chart.y(d.energy);
+	      });
 
-	            chart.energyLine = d3.line().x(function (d) {
-	                return chart.x(d.year);
-	            }).y(function (d) {
-	                return chart.y(d.energy);
-	            });
+	      chart.instrumentalLine = d3.line().x(function (d) {
+	        return chart.x(d.year);
+	      }).y(function (d) {
+	        return chart.y(d.instrumentalness);
+	      });
 
-	            chart.instrumentalLine = d3.line().x(function (d) {
-	                return chart.x(d.year);
-	            }).y(function (d) {
-	                return chart.y(d.instrumentalness);
-	            });
+	      chart.speechyLine = d3.line().x(function (d) {
+	        return chart.x(d.year);
+	      }).y(function (d) {
+	        return chart.y(d.speechiness);
+	      });
 
-	            chart.speechyLine = d3.line().x(function (d) {
-	                return chart.x(d.year);
-	            }).y(function (d) {
-	                return chart.y(d.speechiness);
-	            });
+	      chart.liveLine = d3.line().x(function (d) {
+	        return chart.x(d.year);
+	      }).y(function (d) {
+	        return chart.y(d.liveness);
+	      });
 
-	            chart.liveLine = d3.line().x(function (d) {
-	                return chart.x(d.year);
-	            }).y(function (d) {
-	                return chart.y(d.liveness);
-	            });
+	      chart.durationLine = d3.line().x(function (d) {
+	        return chart.x(d.year);
+	      }).y(function (d) {
+	        return chart.y(d.duration);
+	      });
+	    }
+	  }, {
+	    key: 'addInitialLines',
+	    value: function addInitialLines() {
+	      var features = ["Danceability", "Valence", "Acousticness", "Energy", "Liveness", "Speechiness", "Instrumentalness"];
+	      var featureLines = [this.danceabilityLine, this.valenceLine, this.acousticnessLine, this.energyLine, this.liveLine, this.speechyLine, this.instrumentalLine];
+	      var colours = ["#ff6a07", "#27ae60", "#9b59b6", "#3498db", "#e74c3c", "#f1c40f", "#1abc9c"];
+	      var lineChartContainer = d3.select(".line-chart__container");
+	      var key = d3.select(".line-chart__key");
+	      for (var i = 0; i < features.length; i++) {
+	        lineChartContainer.append("path").data([this.data]).attr("class", 'line-chart__line, line-chart__' + features[i].toLowerCase()).style("stroke", colours[i]).style("fill", "none").style("stroke-width", 2).attr("d", featureLines[i]);
 
-	            chart.durationLine = d3.line().x(function (d) {
-	                return chart.x(d.year);
-	            }).y(function (d) {
-	                return chart.y(d.duration);
-	            });
-	        }
-	    }, {
-	        key: 'addInitialLines',
-	        value: function addInitialLines() {
-	            var features = ["Danceability", "Valence", "Acousticness", "Energy", "Liveness", "Speechiness", "Instrumentalness"];
-	            var featureLines = [this.danceabilityLine, this.valenceLine, this.acousticnessLine, this.energyLine, this.liveLine, this.speechyLine, this.instrumentalLine];
-	            var colours = ["#ff6a07", "#27ae60", "#9b59b6", "#3498db", "#e74c3c", "#2c3e50", "#34495e"];
-	            var lineChartContainer = d3.select(".line-chart__container");
-	            var key = d3.select(".line-chart__key");
-	            for (var i = 0; i < features.length; i++) {
-	                lineChartContainer.append("path").data([this.data]).attr("class", 'line-chart__line, line-chart__' + features[i].toLowerCase()).style("stroke", colours[i]).style("fill", "none").style("stroke-width", 2).attr("d", featureLines[i]);
+	        key.append("line").attr("x1", 5).attr("y1", i * 20 + 20).attr("x2", 15).attr("y2", i * 20 + 20).attr("stroke-width", 3).attr("stroke", colours[i]).attr("class", 'line-chart__key, line-chart__' + features[i].toLowerCase());
+	        key.append("text").text(features[i]).attr("x", 20).attr("y", i * 20 + 25).attr("class", 'line-chart__' + features[i].toLowerCase());
+	      }
+	      _config2.default["lineChartBuilt"] = true;
+	    }
+	  }, {
+	    key: 'removeLines',
+	    value: function removeLines(featuresToRemove) {
+	      var lineChartEl = document.getElementById("line-chart");
+	      featuresToRemove.forEach(function (feature) {
+	        var featureElements = lineChartEl.querySelectorAll('.line-chart__' + feature);
+	        featureElements.forEach(function (el) {
+	          el.style.display = 'none';
+	        });
+	      });
+	    }
+	  }, {
+	    key: 'addLines',
+	    value: function addLines(featuresToAdd) {
+	      var lineChartEl = document.getElementById("line-chart");
+	      featuresToAdd.forEach(function (feature) {
+	        var featureElements = lineChartEl.querySelectorAll('.line-chart__' + feature);
+	        featureElements.forEach(function (el) {
+	          el.style.display = 'initial';
+	        });
+	      });
+	    }
+	  }, {
+	    key: 'addCheckboxListeners',
+	    value: function addCheckboxListeners() {
+	      var lineChart = this;
+	      d3.selectAll("input[type=checkbox]").on("click", function () {
+	        this.checked ? lineChart.addLines([this.value]) : lineChart.removeLines([this.value]);
+	      });
+	    }
+	  }, {
+	    key: 'explore',
+	    value: function explore() {
+	      var svg = d3.select("#line-chart");
+	      var chart = this;
+	      svg.call(d3.zoom().on("zoom", this.zoomed));
+	    }
+	  }, {
+	    key: 'zoomed',
+	    value: function zoomed() {
+	      d3.select("#line-chart").attr("transform", d3.event.transform);
+	    }
+	  }]);
 
-	                key.append("line").attr("x1", 5).attr("y1", i * 20 + 20).attr("x2", 15).attr("y2", i * 20 + 20).attr("stroke-width", 3).attr("stroke", colours[i]).attr("class", 'line-chart__key, line-chart__' + features[i].toLowerCase());
-	                key.append("text").text(features[i]).attr("x", 20).attr("y", i * 20 + 25).attr("class", 'line-chart__' + features[i].toLowerCase());
-	            }
-	            _config2.default["lineChartBuilt"] = true;
-	        }
-	    }, {
-	        key: 'removeLines',
-	        value: function removeLines(featuresToRemove) {
-	            var lineChartEl = document.getElementById("line-chart");
-	            featuresToRemove.forEach(function (feature) {
-	                var featureElements = lineChartEl.querySelectorAll('.line-chart__' + feature);
-	                featureElements.forEach(function (el) {
-	                    el.style.display = 'none';
-	                });
-	            });
-	        }
-	    }, {
-	        key: 'addLines',
-	        value: function addLines(featuresToAdd) {
-	            var lineChartEl = document.getElementById("line-chart");
-	            featuresToAdd.forEach(function (feature) {
-	                var featureElements = lineChartEl.querySelectorAll('.line-chart__' + feature);
-	                featureElements.forEach(function (el) {
-	                    el.style.display = 'initial';
-	                });
-	            });
-	        }
-	    }, {
-	        key: 'addCheckboxListeners',
-	        value: function addCheckboxListeners() {
-	            var lineChart = this;
-	            console.log("update called");
-	            d3.selectAll("input[type=checkbox]").on("click", function () {
-	                lineChart.update(this.value, this.checked);
-	            });
-	        }
-	    }, {
-	        key: 'update',
-	        value: function update(checkbox, checked) {
-	            checked ? this.addLines([checkbox]) : this.removeLines([checkbox]);
-	        }
-	    }]);
-
-	    return LineChart;
+	  return LineChart;
 	}();
 
 	exports.default = LineChart;

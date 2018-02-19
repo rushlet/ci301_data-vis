@@ -6,6 +6,9 @@
 .line-chart--container .step:last-child {
   padding-top: 20vh;
   min-height: 90vh;
+  p {
+    font-size: 1em;
+  }
 }
 
 .line-chart--filters {

@@ -127,7 +127,7 @@ class LineChart {
   addInitialLines() {
     var features = ["Danceability", "Valence", "Acousticness", "Energy", "Liveness", "Speechiness", "Instrumentalness"];
     var featureLines = [this.danceabilityLine, this.valenceLine, this.acousticnessLine, this.energyLine, this.liveLine, this.speechyLine, this.instrumentalLine];
-    var colours = ["#ff6a07", "#27ae60", "#9b59b6", "#3498db", "#e74c3c", "#2c3e50", "#34495e"];
+    var colours = ["#ff6a07", "#27ae60", "#9b59b6", "#3498db", "#e74c3c", "#f1c40f", "#1abc9c"];
     const lineChartContainer = d3.select(".line-chart__container");
     const key = d3.select(".line-chart__key");
     for (var i = 0; i < features.length; i++) {
@@ -178,15 +178,21 @@ class LineChart {
 
   addCheckboxListeners() {
     const lineChart = this;
-    console.log("update called");
     d3.selectAll("input[type=checkbox]").on("click", function() {
-      lineChart.update(this.value, this.checked);
+      this.checked ? lineChart.addLines([this.value]) : lineChart.removeLines([this.value]);
     });
   }
 
-  update(checkbox, checked) {
-    checked ? this.addLines([checkbox]) : this.removeLines([checkbox]);
+  explore() {
+    const svg = d3.select("#line-chart");
+    const chart = this;
+    svg.call(d3.zoom().on("zoom", this.zoomed));
   }
+
+  zoomed() {
+    d3.select("#line-chart").attr("transform", d3.event.transform);
+  }
+
 }
 
 export default LineChart;
