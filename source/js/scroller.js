@@ -75,7 +75,7 @@ class Scroller {
               lineChart.addLines(['danceability', 'valence', 'energy']);
             }
           } else {
-            lineChart.buildGraph();
+            lineChart.buildMainGraph();
           }
           break;
         case "line-chart--reset":
@@ -139,6 +139,7 @@ class Scroller {
           chartFunctions.zoomReset('line-chart');
           chartFunctions.removeAllAnnotations('line-chart');
           lineChart.addLines(['danceability', 'acousticness', 'energy']);
+          lineChart.addCheckboxListeners();
           break;
     }
 

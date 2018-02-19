@@ -272,7 +272,7 @@
 	              lineChart.addLines(['danceability', 'valence', 'energy']);
 	            }
 	          } else {
-	            lineChart.buildGraph();
+	            lineChart.buildMainGraph();
 	          }
 	          break;
 	        case "line-chart--reset":
@@ -336,6 +336,7 @@
 	          chartFunctions.zoomReset('line-chart');
 	          chartFunctions.removeAllAnnotations('line-chart');
 	          lineChart.addLines(['danceability', 'acousticness', 'energy']);
+	          lineChart.addCheckboxListeners();
 	          break;
 	      }
 	    }
@@ -35476,11 +35477,23 @@
 	            d.valence = +d.valence;
 	            d.acousticness = +d.acousticness;
 	            d.energy = +d.energy;
+	            d.liveness = +d.liveness;
+	            d.speechiness = +d.speechiness;
+	            d.instrumentalness = +d.instrumentalness;
+	            d.duration_ms = +d.duration_ms;
 	        });
 	        _config2.default["lineChartBuilt"] = false;
 	    }
 
 	    _createClass(LineChart, [{
+	        key: 'buildMainGraph',
+	        value: function buildMainGraph() {
+	            this.buildGraph();
+	            this.addAxis();
+	            this.initialiseLines();
+	            this.addMainLines();
+	        }
+	    }, {
 	        key: 'buildGraph',
 	        value: function buildGraph() {
 	            var svg = d3.select("#line-chart");
@@ -35489,39 +35502,24 @@
 	            this.height = 400;
 
 	            // set the ranges
-	            var x = d3.scaleTime().range([0, this.width]);
-	            var y = d3.scaleLinear().range([this.height, 0]);
+	            this.x = d3.scaleTime().range([0, this.width]);
+	            this.y = d3.scaleLinear().range([this.height, 0]);
 
 	            svg.attr("width", 900).attr("height", 600);
 	            svg.g = svg.append("g").attr("class", "line-chart__container").attr("height", this.height).attr("width", this.width).attr("transform", 'translate(' + svg.attr("width") * 0.1 + ', ' + (svg.attr("height") - this.height) / 2 + ')');
 
 	            var title = svg.append("text").attr("x", svg.attr("width") / 2).attr("y", this.margin.top * 1.5).attr("margin-bottom", this.margin.bottom).attr("text-anchor", "middle").style("font-size", "30px").text('Average Audio Features by Year');
 
-	            var axistext = svg.g.append("text").attr("x", this.width / 2 + this.margin.left).attr("y", this.height + this.margin.bottom).attr("text-anchor", "middle").style("font-size", "16px").text('Years');
-
-	            var danceabilityLine = d3.line().x(function (d) {
-	                return x(d.year);
-	            }).y(function (d) {
-	                return y(d.danceability);
-	            });
-
-	            var valenceLine = d3.line().x(function (d) {
-	                return x(d.year);
-	            }).y(function (d) {
-	                return y(d.valence);
-	            });
-
-	            var acousticnessLine = d3.line().x(function (d) {
-	                return x(d.year);
-	            }).y(function (d) {
-	                return y(d.acousticness);
-	            });
-
-	            var energyLine = d3.line().x(function (d) {
-	                return x(d.year);
-	            }).y(function (d) {
-	                return y(d.energy);
-	            });
+	            var key = svg.append("g").attr("class", "line-chart__key").attr("transform", 'translate(' + svg.attr("width") * 0.85 + ', ' + this.height * 0.4 + ')');
+	            key.append("text").text("Key").attr("text-decoration", "underline");
+	        }
+	    }, {
+	        key: 'addAxis',
+	        value: function addAxis() {
+	            var x = this.x,
+	                y = this.y;
+	            var lineChartContainer = d3.select(".line-chart__container");
+	            var axistext = lineChartContainer.append("text").attr("x", this.width / 2 + this.margin.left).attr("y", this.height + this.margin.bottom).attr("text-anchor", "middle").style("font-size", "16px").text('Years');
 
 	            // axis ranges
 	            x.domain(d3.extent(this.data, function (d) {
@@ -35529,24 +35527,81 @@
 	            }));
 	            y.domain([0, 1]);
 
+	            // Add the X Axis
+	            lineChartContainer.append("g").attr("transform", "translate(0," + this.height + ")").call(d3.axisBottom(this.x));
+
+	            // Add the Y Axis
+	            lineChartContainer.append("g").call(d3.axisLeft(this.y));
+	        }
+	    }, {
+	        key: 'initialiseLines',
+	        value: function initialiseLines() {
+	            var chart = this;
+	            chart.danceabilityLine = d3.line().x(function (d) {
+	                return chart.x(d.year);
+	            }).y(function (d) {
+	                return chart.y(d.danceability);
+	            });
+
+	            chart.valenceLine = d3.line().x(function (d) {
+	                return chart.x(d.year);
+	            }).y(function (d) {
+	                return chart.y(d.valence);
+	            });
+
+	            chart.acousticnessLine = d3.line().x(function (d) {
+	                return chart.x(d.year);
+	            }).y(function (d) {
+	                return chart.y(d.acousticness);
+	            });
+
+	            chart.energyLine = d3.line().x(function (d) {
+	                return chart.x(d.year);
+	            }).y(function (d) {
+	                return chart.y(d.energy);
+	            });
+
+	            chart.instrumentalLine = d3.line().x(function (d) {
+	                return chart.x(d.year);
+	            }).y(function (d) {
+	                return chart.y(d.instrumentalness);
+	            });
+
+	            chart.speechyLine = d3.line().x(function (d) {
+	                return chart.x(d.year);
+	            }).y(function (d) {
+	                return chart.y(d.speechiness);
+	            });
+
+	            chart.liveLine = d3.line().x(function (d) {
+	                return chart.x(d.year);
+	            }).y(function (d) {
+	                return chart.y(d.liveness);
+	            });
+
+	            chart.durationLine = d3.line().x(function (d) {
+	                return chart.x(d.year);
+	            }).y(function (d) {
+	                return chart.y(d.duration);
+	            });
+	        }
+	    }, {
+	        key: 'addMainLines',
+	        value: function addMainLines() {
+	            var svg = d3.select("#line-chart");
+	            var lineChartContainer = d3.select(".line-chart__container");
+	            var chart = this;
+	            var key = d3.select(".line-chart__key");
 	            var features = ["Danceability", "Valence", "Acousticness", "Energy"];
-	            var featureLines = [danceabilityLine, valenceLine, acousticnessLine, energyLine];
+	            var featureLines = [this.danceabilityLine, this.valenceLine, this.acousticnessLine, this.energyLine];
 	            var colours = ["#ff6a07", "#27ae60", "#9b59b6", "#3498db"];
-	            var key = svg.append("g").attr("class", "line-chart__key").attr("transform", 'translate(' + svg.attr("width") * 0.85 + ', ' + this.height * 0.4 + ')');
-	            key.append("text").text("Key").attr("text-decoration", "underline");
 
 	            for (var i = 0; i < features.length; i++) {
-	                svg.g.append("path").data([this.data]).attr("class", 'line-chart__line, line-chart__' + features[i].toLowerCase()).style("stroke", colours[i]).style("fill", "none").style("stroke-width", 2).attr("d", featureLines[i]);
+	                lineChartContainer.append("path").data([this.data]).attr("class", 'line-chart__line, line-chart__' + features[i].toLowerCase()).style("stroke", colours[i]).style("fill", "none").style("stroke-width", 2).attr("d", featureLines[i]);
 
 	                key.append("line").attr("x1", 5).attr("y1", i * 20 + 20).attr("x2", 15).attr("y2", i * 20 + 20).attr("stroke-width", 3).attr("stroke", colours[i]).attr("class", 'line-chart__key, line-chart__' + features[i].toLowerCase());
 	                key.append("text").text(features[i]).attr("x", 20).attr("y", i * 20 + 25).attr("class", 'line-chart__' + features[i].toLowerCase());
 	            }
-
-	            // Add the X Axis
-	            svg.g.append("g").attr("transform", "translate(0," + this.height + ")").call(d3.axisBottom(x));
-
-	            // Add the Y Axis
-	            svg.g.append("g").call(d3.axisLeft(y));
 
 	            _config2.default["lineChartBuilt"] = true;
 	        }
@@ -35571,6 +35626,22 @@
 	                    el.style.display = 'initial';
 	                });
 	            });
+	        }
+	    }, {
+	        key: 'addCheckboxListeners',
+	        value: function addCheckboxListeners() {
+	            var lineChart = this;
+	            console.log("update called");
+	            d3.selectAll("input[type=checkbox]").on("click", function () {
+	                lineChart.update(this.value, this.checked);
+	            });
+	        }
+	    }, {
+	        key: 'update',
+	        value: function update(checkbox, checked) {
+	            console.log(checkbox);
+	            console.log('checked?', checked);
+	            checked ? this.addLines([checkbox]) : this.removeLines([checkbox]);
 	        }
 	    }]);
 

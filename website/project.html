@@ -252,12 +252,24 @@
       <div class="section-tracks__slide">
         <h3>Now we've seen the examples of the extremes for some of the audio attributes, let's look at how they might have changed over time</h3>
       </div>
-      <div class='scroll'>
+      <div class='scroll line-chart--container'>
         <div class='scroll__graphic'>
           <svg id="line-chart" width="900" height="650"></svg>
         </div>
         <div class='scroll__text'>
           <div class='step' data-step='line-chart--intro'>
+            <p>
+              This graph shows the mean average of a few of the audio features by year, allowing us to see
+              see which years had the most changes musically.
+            </p>
+          </div>
+          <div class='step' data-step='line-chart--duration-intro'>
+            <p>
+              This graph shows the mean average of a few of the audio features by year, allowing us to see
+              see which years had the most changes musically.
+            </p>
+          </div>
+          <div class='step' data-step='line-chart--duration-longest'>
             <p>
               This graph shows the mean average of a few of the audio features by year, allowing us to see
               see which years had the most changes musically.
@@ -359,6 +371,15 @@
             <p>
               Explore the graph for yourself
             </p>
+            <div class="line-chart--filters">
+              <label><input type="checkbox" name="audio-attribute" checked="checked" value="danceability">Danceability</label>
+              <label><input type="checkbox" name="audio-attribute" checked="checked" value="valence">Valence</label>
+              <label><input type="checkbox" name="audio-attribute" checked="checked" value="energy">Energy</label>
+              <label><input type="checkbox" name="audio-attribute" checked="checked" value="acousticness">Acousticness</label>
+              <label><input type="checkbox" name="audio-attribute" value="liveness">Liveness</label>
+              <label><input type="checkbox" name="audio-attribute" value="instrumentalness">Instrumentalness</label>
+              <label><input type="checkbox" name="audio-attribute" value="speechiness">Speechiness</label>
+            </div>
           </div>
         </div>
       </div>
