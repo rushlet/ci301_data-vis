@@ -73,9 +73,12 @@ class Scroller {
           if (config["lineChartBuilt"] === true) {
             if (interaction.direction === "up") {
               lineChart.addLines(['danceability', 'valence', 'energy']);
+              lineChart.removeLines(["liveness", "instrumentalness", "speechiness"]);
+
             }
           } else {
             lineChart.buildMainGraph();
+            lineChart.removeLines(["liveness", "instrumentalness", "speechiness"]);
           }
           break;
         case "line-chart--reset":

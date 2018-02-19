@@ -270,9 +270,11 @@
 	          if (_config2.default["lineChartBuilt"] === true) {
 	            if (interaction.direction === "up") {
 	              lineChart.addLines(['danceability', 'valence', 'energy']);
+	              lineChart.removeLines(["liveness", "instrumentalness", "speechiness"]);
 	            }
 	          } else {
 	            lineChart.buildMainGraph();
+	            lineChart.removeLines(["liveness", "instrumentalness", "speechiness"]);
 	          }
 	          break;
 	        case "line-chart--reset":
@@ -35491,7 +35493,7 @@
 	            this.buildGraph();
 	            this.addAxis();
 	            this.initialiseLines();
-	            this.addMainLines();
+	            this.addInitialLines();
 	        }
 	    }, {
 	        key: 'buildGraph',
@@ -35510,7 +35512,7 @@
 
 	            var title = svg.append("text").attr("x", svg.attr("width") / 2).attr("y", this.margin.top * 1.5).attr("margin-bottom", this.margin.bottom).attr("text-anchor", "middle").style("font-size", "30px").text('Average Audio Features by Year');
 
-	            var key = svg.append("g").attr("class", "line-chart__key").attr("transform", 'translate(' + svg.attr("width") * 0.85 + ', ' + this.height * 0.4 + ')');
+	            var key = svg.append("g").attr("class", "line-chart__key").attr("transform", 'translate(' + svg.attr("width") * 0.8 + ', ' + this.height * 0.4 + ')');
 	            key.append("text").text("Key").attr("text-decoration", "underline");
 	        }
 	    }, {
@@ -35586,23 +35588,19 @@
 	            });
 	        }
 	    }, {
-	        key: 'addMainLines',
-	        value: function addMainLines() {
-	            var svg = d3.select("#line-chart");
+	        key: 'addInitialLines',
+	        value: function addInitialLines() {
+	            var features = ["Danceability", "Valence", "Acousticness", "Energy", "Liveness", "Speechiness", "Instrumentalness"];
+	            var featureLines = [this.danceabilityLine, this.valenceLine, this.acousticnessLine, this.energyLine, this.liveLine, this.speechyLine, this.instrumentalLine];
+	            var colours = ["#ff6a07", "#27ae60", "#9b59b6", "#3498db", "#e74c3c", "#2c3e50", "#34495e"];
 	            var lineChartContainer = d3.select(".line-chart__container");
-	            var chart = this;
 	            var key = d3.select(".line-chart__key");
-	            var features = ["Danceability", "Valence", "Acousticness", "Energy"];
-	            var featureLines = [this.danceabilityLine, this.valenceLine, this.acousticnessLine, this.energyLine];
-	            var colours = ["#ff6a07", "#27ae60", "#9b59b6", "#3498db"];
-
 	            for (var i = 0; i < features.length; i++) {
 	                lineChartContainer.append("path").data([this.data]).attr("class", 'line-chart__line, line-chart__' + features[i].toLowerCase()).style("stroke", colours[i]).style("fill", "none").style("stroke-width", 2).attr("d", featureLines[i]);
 
 	                key.append("line").attr("x1", 5).attr("y1", i * 20 + 20).attr("x2", 15).attr("y2", i * 20 + 20).attr("stroke-width", 3).attr("stroke", colours[i]).attr("class", 'line-chart__key, line-chart__' + features[i].toLowerCase());
 	                key.append("text").text(features[i]).attr("x", 20).attr("y", i * 20 + 25).attr("class", 'line-chart__' + features[i].toLowerCase());
 	            }
-
 	            _config2.default["lineChartBuilt"] = true;
 	        }
 	    }, {
@@ -35639,8 +35637,6 @@
 	    }, {
 	        key: 'update',
 	        value: function update(checkbox, checked) {
-	            console.log(checkbox);
-	            console.log('checked?', checked);
 	            checked ? this.addLines([checkbox]) : this.removeLines([checkbox]);
 	        }
 	    }]);
@@ -37598,7 +37594,7 @@
 	  var averages = {};
 	  var years = new Set();
 	  var count = 0;
-	  var audioFeatures = ['danceability', 'energy', 'valence', 'acousticness'];
+	  var audioFeatures = ['danceability', 'energy', 'valence', 'acousticness', 'speechiness', 'liveness', 'instrumentalness', 'duration_ms'];
 	  var yearlyAverages = [];
 	  data.forEach(function (d) {
 	    years.add(d.year);

@@ -27,7 +27,7 @@ class LineChart {
     this.buildGraph();
     this.addAxis();
     this.initialiseLines();
-    this.addMainLines();
+    this.addInitialLines();
   }
 
   buildGraph() {
@@ -58,7 +58,7 @@ class LineChart {
 
     var key = svg.append("g")
         .attr("class", "line-chart__key")
-        .attr("transform", `translate(${svg.attr("width") * 0.85}, ${this.height * 0.4})`);
+        .attr("transform", `translate(${svg.attr("width") * 0.8}, ${this.height * 0.4})`);
     key.append("text")
           .text("Key")
           .attr("text-decoration", "underline");
@@ -124,15 +124,12 @@ class LineChart {
       .y(function(d) { return chart.y(d.duration); });
   }
 
-  addMainLines() {
-    const svg = d3.select("#line-chart");
+  addInitialLines() {
+    var features = ["Danceability", "Valence", "Acousticness", "Energy", "Liveness", "Speechiness", "Instrumentalness"];
+    var featureLines = [this.danceabilityLine, this.valenceLine, this.acousticnessLine, this.energyLine, this.liveLine, this.speechyLine, this.instrumentalLine];
+    var colours = ["#ff6a07", "#27ae60", "#9b59b6", "#3498db", "#e74c3c", "#2c3e50", "#34495e"];
     const lineChartContainer = d3.select(".line-chart__container");
-    const chart = this;
     const key = d3.select(".line-chart__key");
-    var features = ["Danceability", "Valence", "Acousticness", "Energy"];
-    var featureLines = [this.danceabilityLine, this.valenceLine, this.acousticnessLine, this.energyLine];
-    var colours = ["#ff6a07", "#27ae60", "#9b59b6", "#3498db"];
-
     for (var i = 0; i < features.length; i++) {
       lineChartContainer.append("path")
           .data([this.data])
@@ -156,7 +153,6 @@ class LineChart {
             .attr("y", (i * 20) + 25)
             .attr("class", `line-chart__${features[i].toLowerCase()}`);
     }
-
     config["lineChartBuilt"] = true;
   }
 
@@ -189,8 +185,6 @@ class LineChart {
   }
 
   update(checkbox, checked) {
-    console.log(checkbox);
-    console.log('checked?', checked);
     checked ? this.addLines([checkbox]) : this.removeLines([checkbox]);
   }
 }

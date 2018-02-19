@@ -5,7 +5,7 @@ export default function meanData() {
   let averages = {};
   let years = new Set();
   let count = 0;
-  let audioFeatures = ['danceability', 'energy', 'valence', 'acousticness'];
+  let audioFeatures = ['danceability', 'energy', 'valence', 'acousticness', 'speechiness', 'liveness', 'instrumentalness', 'duration_ms'];
   let yearlyAverages = [];
   data.forEach((d) => {
     years.add(d.year);
