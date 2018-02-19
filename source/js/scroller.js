@@ -78,12 +78,17 @@ class Scroller {
             if (interaction.direction === "up") {
               lineChart.addLines(['danceability', 'valence', 'energy']);
               lineChart.removeLines(["liveness", "instrumentalness", "speechiness"]);
-
             }
           } else {
             lineChart.buildMainGraph();
-            lineChart.removeLines(["liveness", "instrumentalness", "speechiness"]);
           }
+          lineChart.buildMainGraph();
+          break;
+        case "line-chart--duration-intro":
+          lineChart.buildDurationGraph();
+          break;
+        case "line-chart--duration-longest":
+          chartFunctions.zoomReset('line-chart');
           break;
         case "line-chart--reset":
           chartFunctions.zoomReset('line-chart');

@@ -278,8 +278,14 @@
 	            }
 	          } else {
 	            lineChart.buildMainGraph();
-	            lineChart.removeLines(["liveness", "instrumentalness", "speechiness"]);
 	          }
+	          lineChart.buildMainGraph();
+	          break;
+	        case "line-chart--duration-intro":
+	          lineChart.buildDurationGraph();
+	          break;
+	        case "line-chart--duration-longest":
+	          chartFunctions.zoomReset('line-chart');
 	          break;
 	        case "line-chart--reset":
 	          chartFunctions.zoomReset('line-chart');
@@ -35530,6 +35536,7 @@
 	            this.addAxis();
 	            this.initialiseLines();
 	            this.addInitialLines();
+	            this.removeLines(["liveness", "instrumentalness", "speechiness"]);
 	        }
 	    }, {
 	        key: 'buildGraph',
@@ -35642,6 +35649,7 @@
 	    }, {
 	        key: 'removeLines',
 	        value: function removeLines(featuresToRemove) {
+	            console.log('remove lines called');
 	            var lineChartEl = document.getElementById("line-chart");
 	            featuresToRemove.forEach(function (feature) {
 	                var featureElements = lineChartEl.querySelectorAll('.line-chart__' + feature);

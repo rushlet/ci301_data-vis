@@ -28,6 +28,7 @@ class LineChart {
     this.addAxis();
     this.initialiseLines();
     this.addInitialLines();
+    this.removeLines(["liveness", "instrumentalness", "speechiness"]);
   }
 
   buildGraph() {
@@ -157,6 +158,7 @@ class LineChart {
   }
 
   removeLines(featuresToRemove) {
+    console.log('remove lines called');
     var lineChartEl = document.getElementById("line-chart");
     featuresToRemove.forEach((feature) => {
       var featureElements = lineChartEl.querySelectorAll(`.line-chart__${feature}`);
