@@ -58,3 +58,9 @@ export function explore(graph) {
     d3.select(`#${graph}`).attr("transform", d3.event.transform);
   }));
 }
+
+export function disableExplore(graph) {
+  console.log('explore called');
+  d3.select(`#${graph}`).call(d3.zoom()
+  .scaleExtent([0.8, 10]));
+}

@@ -67,6 +67,7 @@ class Scroller {
           chartFunctions.annotate('swarm-chart', 'Justin Bieber', 360, 210, 15, 24);
           chartFunctions.annotate('swarm-chart', 'Madonna', 320, 205, -5, 20);
           chartFunctions.annotate('swarm-chart', 'Take That', 360, 180, 20, -3);
+          chartFunctions.disableExplore('line-chart');
           break;
         case "swarm--explore":
           chartFunctions.zoomReset('swarm-chart');
@@ -146,6 +147,7 @@ class Scroller {
           lineChart.removeLines(['danceability', 'acousticness', 'energy']);
           chartFunctions.zoomAndPan('line-chart', -400, -50, 6);
           chartFunctions.annotate('line-chart', '1996', 495, 310, 0, 20);
+          chartFunctions.disableExplore('line-chart');
           break;
         case "line-chart--explore":
           chartFunctions.zoomReset('line-chart');
