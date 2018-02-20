@@ -70,6 +70,10 @@
 
 	var _dataCleaner2 = _interopRequireDefault(_dataCleaner);
 
+	var _barChart = __webpack_require__(48);
+
+	var _barChart2 = _interopRequireDefault(_barChart);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var loggedIn = false;
@@ -110,7 +114,6 @@
 	  var userTopTracks = {};
 	  spotifyApi.setAccessToken(localStorage.getItem('access_token'));
 	  spotifyApi.getMe().then(function (data) {
-	    console.log(data);
 	    _config2.default['user_id'] = data.id;
 	  }, function (err) {
 	    if (err.status === 401) {
@@ -128,7 +131,7 @@
 	      }, function (err) {});
 	      spotifyApi.getAudioFeaturesForTrack(track.id).then(function (data) {
 	        for (var feature in data) {
-	          userTopTracks[track.name].feature = data[feature];
+	          userTopTracks[track.name][feature] = data[feature];
 	        }
 	      }, function (err) {
 	        if (err.status === 401) {
@@ -160,6 +163,7 @@
 	  (0, _previewTracks2.default)();
 	  (0, _dataCleaner2.default)();
 	  new _scroller2.default();
+	  new _barChart2.default();
 	});
 
 /***/ }),
@@ -264,6 +268,7 @@
 	          chartFunctions.annotate('swarm-chart', 'Justin Bieber', 360, 210, 15, 24);
 	          chartFunctions.annotate('swarm-chart', 'Madonna', 320, 205, -5, 20);
 	          chartFunctions.annotate('swarm-chart', 'Take That', 360, 180, 20, -3);
+	          chartFunctions.disableExplore('line-chart');
 	          break;
 	        case "swarm--explore":
 	          chartFunctions.zoomReset('swarm-chart');
@@ -343,6 +348,7 @@
 	          lineChart.removeLines(['danceability', 'acousticness', 'energy']);
 	          chartFunctions.zoomAndPan('line-chart', -400, -50, 6);
 	          chartFunctions.annotate('line-chart', '1996', 495, 310, 0, 20);
+	          chartFunctions.disableExplore('line-chart');
 	          break;
 	        case "line-chart--explore":
 	          chartFunctions.zoomReset('line-chart');
@@ -35705,6 +35711,7 @@
 	exports.removeAllAnnotations = removeAllAnnotations;
 	exports.zoomReset = zoomReset;
 	exports.explore = explore;
+	exports.disableExplore = disableExplore;
 
 	var _jquery = __webpack_require__(4);
 
@@ -35764,6 +35771,11 @@
 	  d3.select('#' + graph).call(d3.zoom().scaleExtent([0.8, 10]).on("zoom", function () {
 	    d3.select('#' + graph).attr("transform", d3.event.transform);
 	  }));
+	}
+
+	function disableExplore(graph) {
+	  console.log('explore called');
+	  d3.select('#' + graph).call(d3.zoom().scaleExtent([0.8, 10]));
 	}
 
 /***/ }),
@@ -37562,7 +37574,6 @@
 	  playableTracks.forEach(function (track) {
 	    var trackID = track.dataset.id;
 	    var trackURL = "";
-	    console.log(track.dataset.id);
 	    allTracks.forEach(function (entry) {
 	      if (entry['spotify_id'] === trackID) {
 	        track.setAttribute("data-url", entry['preview_url']);
@@ -37678,6 +37689,52 @@
 	  _config2.default["yearlyAverages"] = yearlyAverages;
 	  _config2.default["overallAverages"] = averages;
 	}
+
+/***/ }),
+/* 48 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _d = __webpack_require__(5);
+
+	var d3 = _interopRequireWildcard(_d);
+
+	var _config = __webpack_require__(43);
+
+	var _config2 = _interopRequireDefault(_config);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	var BarChart = function BarChart() {
+	  _classCallCheck(this, BarChart);
+
+	  console.log(_config2.default["user_top_tracks"]);
+	  if (Object.keys(_config2.default["user_top_tracks"]).length > 0) {
+	    console.log("yay");
+	    var tracks = Object.keys(_config2.default["user_top_tracks"]);
+	    var songOneInput = document.getElementById('personalisation-input--song1');
+	    tracks.forEach(function (track) {
+	      var currentTrack = _config2.default["user_top_tracks"][track];
+	      var opt = document.createElement("option");
+	      opt.textContent = currentTrack.name + " - " + currentTrack.artist;
+	      opt.value = currentTrack.name;
+	      songOneInput.appendChild(opt);
+	    });
+	  } else {
+	    console.log("nay");
+	  }
+	};
+
+	exports.default = BarChart;
 
 /***/ })
 /******/ ]);

@@ -4,6 +4,7 @@ import addTrackPreviewListeners from './preview-tracks.js'
 import config from './config.js';
 import $ from 'jquery';
 import meanData from './data-cleaner.js';
+import BarChart from './bar-chart.js'
 
 
 let loggedIn = false;
@@ -45,7 +46,6 @@ if (localStorage.getItem('access_token') !== null) {
   spotifyApi.setAccessToken(localStorage.getItem('access_token'));
   spotifyApi.getMe()
     .then(function(data) {
-      console.log(data);
       config['user_id'] = data.id;
     },
     function(err) {
@@ -69,7 +69,7 @@ if (localStorage.getItem('access_token') !== null) {
       spotifyApi.getAudioFeaturesForTrack(track.id)
         .then(function(data) {
           for (var feature in data) {
-            userTopTracks[track.name].feature = data[feature];
+            userTopTracks[track.name][feature] = data[feature];
           }
         },
         function(err) {
@@ -104,4 +104,5 @@ $.getJSON( "./assets/data/fixed_data_for_analysis.json", function( data ) {
   addTrackPreviewListeners();
   meanData();
   new Scroller;
+  new BarChart();
 });
