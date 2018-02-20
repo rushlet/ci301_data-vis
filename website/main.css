@@ -183,3 +183,21 @@ p, h2 {
 .line-chart__container {
   display: block;
   margin: auto; }
+
+.line-chart--filters {
+  margin-left: 1em; }
+  .line-chart--filters label {
+    display: block;
+    font-size: 1.125em;
+    line-height: 1.75em; }
+
+.explore {
+  padding-top: 20vh;
+  min-height: 90vh; }
+  .explore p {
+    font-size: 1em; }
+
+.charts-intro,
+.section-artists,
+.section-re-entries {
+  display: none; }

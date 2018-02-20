@@ -4,7 +4,7 @@ import * as d4 from 'd3-svg-annotation';
 import config from './config.js';
 
 export function zoomAndPan(graph, translateX, translateY, scale) {
-  var svg = d3.select(`#${graph}`)
+  const svg = d3.select(`#${graph}`)
       .transition()
         .duration(1750)
         .attr("transform", `translate(${translateX},${translateY})scale(${scale})`);
@@ -37,7 +37,6 @@ export function annotate(graph, label, x, y, dx, dy) {
 }
 
 export function removeAllAnnotations(graph) {
-  console.log('called remove annotations');
   var labels = document.querySelectorAll(`.${graph}--annotation-group`);
     labels.forEach((label) => {
       label.style.display = "none";
@@ -45,9 +44,23 @@ export function removeAllAnnotations(graph) {
 }
 
 export function zoomReset(graph) {
-  console.log('zoom reset called');
-  var svg = d3.select(`#${graph}`)
+  const svg = d3.select(`#${graph}`)
     .transition()
       .duration(1750)
       .attr("transform", `translate(0,0)scale(1)`);
+}
+
+export function explore(graph) {
+  console.log('explore called');
+  d3.select(`#${graph}`).call(d3.zoom()
+  .scaleExtent([0.8, 10])
+  .on("zoom", () => {
+    d3.select(`#${graph}`).attr("transform", d3.event.transform);
+  }));
+}
+
+export function disableExplore(graph) {
+  console.log('explore called');
+  d3.select(`#${graph}`).call(d3.zoom()
+  .scaleExtent([0.8, 10]));
 }

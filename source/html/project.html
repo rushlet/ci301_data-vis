@@ -109,9 +109,12 @@
               They have each held the position for 29 weeks, with 6, 13 and 12 songs respectively.
             </p>
           </div>
-          <div class='step' data-step='swarm--explore'>
-            <p>
+          <div class='step explore' data-step='swarm--explore'>
+            <h4>
               Explore the graph for yourself
+            </h4>
+            <p>
+              Scroll over the graph to zoom, click and drag to pan. Use the filters below to hide/show audio attributes.
             </p>
           </div>
         </div>
@@ -250,9 +253,25 @@
         </p>
       </div>
       <div class="section-tracks__slide">
+        <h3>Duration</h3>
+        <p>
+          On average, a song reaching number 1 lasted 3 minutes, 36 seconds.
+        </p>
+        <p>
+          The longest song to reach
+          number 1 was <span class="playable-track" data-id="0auKlivXpm76wR63mMJ3pR">Voodoo Chile</span>
+          by Jimi Hendrix, which is
+          almost 15 minutes long.
+        </p>
+        <p>
+          The shortest song is <span class="playable-track" data-id="2bsFikK8yWUGC6MADDv0vz">What
+          Do You Want</span> by Adam Faith - which lasts approximately 1 minute 37 seconds.
+        </p>
+      </div>
+      <div class="section-tracks__slide">
         <h3>Now we've seen the examples of the extremes for some of the audio attributes, let's look at how they might have changed over time</h3>
       </div>
-      <div class='scroll'>
+      <div class='scroll line-chart--container'>
         <div class='scroll__graphic'>
           <svg id="line-chart" width="900" height="650"></svg>
         </div>
@@ -356,9 +375,21 @@
             </p>
           </div>
           <div class='step' data-step='line-chart--explore'>
-            <p>
+            <h4>
               Explore the graph for yourself
+            </h4>
+            <p>
+              Scroll over the graph to zoom, click and drag to pan. Use the filters below to hide/show audio attributes.
             </p>
+            <div class="line-chart--filters">
+              <label><input type="checkbox" name="audio-attribute" checked="checked" value="danceability">Danceability</label>
+              <label><input type="checkbox" name="audio-attribute" checked="checked" value="valence">Valence</label>
+              <label><input type="checkbox" name="audio-attribute" checked="checked" value="energy">Energy</label>
+              <label><input type="checkbox" name="audio-attribute" checked="checked" value="acousticness">Acousticness</label>
+              <label><input type="checkbox" name="audio-attribute" value="liveness">Liveness</label>
+              <label><input type="checkbox" name="audio-attribute" value="instrumentalness">Instrumentalness</label>
+              <label><input type="checkbox" name="audio-attribute" value="speechiness">Speechiness</label>
+            </div>
           </div>
         </div>
       </div>
