@@ -264,6 +264,7 @@
 	          chartFunctions.annotate('swarm-chart', 'Justin Bieber', 360, 210, 15, 24);
 	          chartFunctions.annotate('swarm-chart', 'Madonna', 320, 205, -5, 20);
 	          chartFunctions.annotate('swarm-chart', 'Take That', 360, 180, 20, -3);
+	          chartFunctions.disableExplore('line-chart');
 	          break;
 	        case "swarm--explore":
 	          chartFunctions.zoomReset('swarm-chart');
@@ -343,6 +344,7 @@
 	          lineChart.removeLines(['danceability', 'acousticness', 'energy']);
 	          chartFunctions.zoomAndPan('line-chart', -400, -50, 6);
 	          chartFunctions.annotate('line-chart', '1996', 495, 310, 0, 20);
+	          chartFunctions.disableExplore('line-chart');
 	          break;
 	        case "line-chart--explore":
 	          chartFunctions.zoomReset('line-chart');
@@ -35705,6 +35707,7 @@
 	exports.removeAllAnnotations = removeAllAnnotations;
 	exports.zoomReset = zoomReset;
 	exports.explore = explore;
+	exports.disableExplore = disableExplore;
 
 	var _jquery = __webpack_require__(4);
 
@@ -35764,6 +35767,11 @@
 	  d3.select('#' + graph).call(d3.zoom().scaleExtent([0.8, 10]).on("zoom", function () {
 	    d3.select('#' + graph).attr("transform", d3.event.transform);
 	  }));
+	}
+
+	function disableExplore(graph) {
+	  console.log('explore called');
+	  d3.select('#' + graph).call(d3.zoom().scaleExtent([0.8, 10]));
 	}
 
 /***/ }),
