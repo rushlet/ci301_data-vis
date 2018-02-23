@@ -124,7 +124,7 @@
 	  spotifyApi.getMyTopTracks('limit:10').then(function (data) {
 	    data.items.forEach(function (track) {
 	      userTopTracks[track.name] = {};
-	      userTopTracks[track.name].name = track.name;
+	      userTopTracks[track.name].title = track.name;
 	      userTopTracks[track.name].id = track.id;
 	      spotifyApi.getArtist(track.artists[0].id).then(function (data) {
 	        userTopTracks[track.name].artist = data.name;
@@ -37694,11 +37694,13 @@
 /* 48 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 	var _d = __webpack_require__(5);
 
@@ -37714,25 +37716,37 @@
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-	var BarChart = function BarChart() {
-	  _classCallCheck(this, BarChart);
+	var BarChart = function () {
+	  function BarChart() {
+	    _classCallCheck(this, BarChart);
 
-	  console.log(_config2.default["user_top_tracks"]);
-	  if (Object.keys(_config2.default["user_top_tracks"]).length > 0) {
-	    console.log("yay");
-	    var tracks = Object.keys(_config2.default["user_top_tracks"]);
 	    var songOneInput = document.getElementById('personalisation-input--song1');
-	    tracks.forEach(function (track) {
-	      var currentTrack = _config2.default["user_top_tracks"][track];
-	      var opt = document.createElement("option");
-	      opt.textContent = currentTrack.name + " - " + currentTrack.artist;
-	      opt.value = currentTrack.name;
-	      songOneInput.appendChild(opt);
-	    });
-	  } else {
-	    console.log("nay");
+	    var songTwoInput = document.getElementById('personalisation-input--song2');
+	    var tracks = void 0;
+	    if (Object.keys(_config2.default["user_top_tracks"]).length > 0) {
+	      tracks = Object.keys(_config2.default["user_top_tracks"]);
+	    } else {
+	      tracks = Object.keys(_config2.default["dataset"]);
+	    }
+	    this.populateDropdown(tracks, songOneInput, "user_top_tracks");
+	    this.populateDropdown(Object.keys(_config2.default["dataset"]), songTwoInput, "dataset");
 	  }
-	};
+
+	  _createClass(BarChart, [{
+	    key: 'populateDropdown',
+	    value: function populateDropdown(tracks, dropdown, dataset) {
+	      tracks.forEach(function (track) {
+	        var currentTrack = _config2.default[dataset][track];
+	        var opt = document.createElement("option");
+	        opt.textContent = currentTrack.title + ' - ' + currentTrack.artist;
+	        opt.value = currentTrack.name;
+	        dropdown.appendChild(opt);
+	      });
+	    }
+	  }]);
+
+	  return BarChart;
+	}();
 
 	exports.default = BarChart;
 

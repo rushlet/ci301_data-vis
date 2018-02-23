@@ -58,7 +58,7 @@ if (localStorage.getItem('access_token') !== null) {
     .then(function(data) {
     data.items.forEach((track) => {
       userTopTracks[track.name] = {};
-      userTopTracks[track.name].name = track.name;
+      userTopTracks[track.name].title = track.name;
       userTopTracks[track.name].id = track.id;
       spotifyApi.getArtist(track.artists[0].id)
         .then(function(data) {

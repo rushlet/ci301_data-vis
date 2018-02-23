@@ -3,21 +3,26 @@ import config from './config.js';
 
 class BarChart {
   constructor() {
-    console.log(config["user_top_tracks"]);
+    const songOneInput = document.getElementById('personalisation-input--song1');
+    const songTwoInput = document.getElementById('personalisation-input--song2');
+    let tracks;
     if (Object.keys(config["user_top_tracks"]).length > 0) {
-      console.log("yay");
-      const tracks = Object.keys(config["user_top_tracks"]);
-      const songOneInput = document.getElementById('personalisation-input--song1');
-      tracks.forEach((track)=> {
-        const currentTrack = config["user_top_tracks"][track];
-        let opt = document.createElement("option");
-        opt.textContent = `${currentTrack.name} - ${currentTrack.artist}`;
-        opt.value = currentTrack.name;
-        songOneInput.appendChild(opt);
-      })
+      tracks = Object.keys(config["user_top_tracks"]);
     } else {
-      console.log("nay");
+      tracks = Object.keys(config["dataset"]);
     }
+    this.populateDropdown(tracks, songOneInput, "user_top_tracks");
+    this.populateDropdown(Object.keys(config["dataset"]), songTwoInput, "dataset");
+  }
+
+  populateDropdown(tracks, dropdown, dataset) {
+    tracks.forEach((track)=> {
+      const currentTrack = config[dataset][track];
+      let opt = document.createElement("option");
+      opt.textContent = `${currentTrack.title} - ${currentTrack.artist}`;
+      opt.value = currentTrack.name;
+      dropdown.appendChild(opt);
+    })
   }
 }
 
