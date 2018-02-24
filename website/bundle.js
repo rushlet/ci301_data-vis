@@ -37766,8 +37766,6 @@
 	  }, {
 	    key: 'songSelected',
 	    value: function songSelected(dataset, dropdown) {
-	      console.log('song selected', dropdown.id);
-	      console.log(dropdown.value);
 	      var selectedTrack = void 0;
 	      var tracks = Object.keys(dataset);
 	      tracks.forEach(function (track) {
@@ -37776,11 +37774,10 @@
 	          selectedTrack = currentTrack;
 	        }
 	      });
-	      console.log(selectedTrack);
-
-	      var currentInput = dropdown.id.substr(dropdown.id.length - 1);
-	      var currentTextSpan = document.querySelector('.personalisation-subtitle--song' + currentInput);
+	      var currentInputId = dropdown.id.substr(dropdown.id.length - 1);
+	      var currentTextSpan = document.querySelector('.personalisation-subtitle--song' + currentInputId);
 	      currentTextSpan.innerHTML = dataCleaner.capitalize(selectedTrack.title.toString());
+	      _config2.default['personalisation-song' + currentInputId] = selectedTrack;
 	    }
 	  }]);
 

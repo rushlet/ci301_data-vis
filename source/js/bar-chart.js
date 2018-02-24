@@ -34,8 +34,6 @@ class BarChart {
   }
 
   songSelected(dataset, dropdown) {
-    console.log('song selected', dropdown.id);
-    console.log(dropdown.value);
     let selectedTrack;
     let tracks = Object.keys(dataset);
     tracks.forEach((track)=> {
@@ -44,11 +42,10 @@ class BarChart {
         selectedTrack = currentTrack;
       }
     });
-    console.log(selectedTrack);
-
-    let currentInput = dropdown.id.substr(dropdown.id.length - 1);
-    let currentTextSpan = document.querySelector(`.personalisation-subtitle--song${currentInput}`);
+    let currentInputId = dropdown.id.substr(dropdown.id.length - 1);
+    let currentTextSpan = document.querySelector(`.personalisation-subtitle--song${currentInputId}`);
     currentTextSpan.innerHTML = dataCleaner.capitalize((selectedTrack.title).toString());
+    config[`personalisation-song${currentInputId}`] = selectedTrack;
   }
 }
 
