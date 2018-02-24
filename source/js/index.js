@@ -4,7 +4,7 @@ import addTrackPreviewListeners from './preview-tracks.js'
 import config from './config.js';
 import $ from 'jquery';
 import * as dataCleaner from './data-cleaner.js';
-import BarChart from './bar-chart.js'
+import Personalisation from './personalisation.js'
 
 
 let loggedIn = false;
@@ -104,5 +104,5 @@ $.getJSON( "./assets/data/fixed_data_for_analysis.json", function( data ) {
   addTrackPreviewListeners();
   dataCleaner.meanData();
   new Scroller;
-  new BarChart();
+  new Personalisation();
 });
