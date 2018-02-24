@@ -68,11 +68,13 @@
 
 	var _dataCleaner = __webpack_require__(47);
 
-	var _dataCleaner2 = _interopRequireDefault(_dataCleaner);
+	var dataCleaner = _interopRequireWildcard(_dataCleaner);
 
 	var _barChart = __webpack_require__(48);
 
 	var _barChart2 = _interopRequireDefault(_barChart);
+
+	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -125,7 +127,7 @@
 	    data.items.forEach(function (track) {
 	      userTopTracks[track.name] = {};
 	      userTopTracks[track.name].title = track.name;
-	      userTopTracks[track.name].id = track.id;
+	      userTopTracks[track.name].spotify_id = track.id;
 	      spotifyApi.getArtist(track.artists[0].id).then(function (data) {
 	        userTopTracks[track.name].artist = data.name;
 	      }, function (err) {});
@@ -161,7 +163,7 @@
 	_jquery2.default.getJSON("./assets/data/fixed_data_for_analysis.json", function (data) {
 	  _config2.default['dataset'] = data;
 	  (0, _previewTracks2.default)();
-	  (0, _dataCleaner2.default)();
+	  dataCleaner.meanData();
 	  new _scroller2.default();
 	  new _barChart2.default();
 	});
@@ -37629,7 +37631,8 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	exports.default = meanData;
+	exports.meanData = meanData;
+	exports.capitalize = capitalize;
 
 	var _config = __webpack_require__(43);
 
@@ -37690,6 +37693,12 @@
 	  _config2.default["overallAverages"] = averages;
 	}
 
+	function capitalize(string) {
+	  return string.toLowerCase().replace(/(?:^|\s)\S/g, function (a) {
+	    return a.toUpperCase();
+	  });
+	};
+
 /***/ }),
 /* 48 */
 /***/ (function(module, exports, __webpack_require__) {
@@ -37710,6 +37719,10 @@
 
 	var _config2 = _interopRequireDefault(_config);
 
+	var _dataCleaner = __webpack_require__(47);
+
+	var dataCleaner = _interopRequireWildcard(_dataCleaner);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
@@ -37722,26 +37735,52 @@
 
 	    var songOneInput = document.getElementById('personalisation-input--song1');
 	    var songTwoInput = document.getElementById('personalisation-input--song2');
-	    var tracks = void 0;
+	    var songOneTracks = _config2.default["dataset"];
+	    var songTwoTracks = _config2.default["dataset"];
 	    if (Object.keys(_config2.default["user_top_tracks"]).length > 0) {
-	      tracks = Object.keys(_config2.default["user_top_tracks"]);
-	    } else {
-	      tracks = Object.keys(_config2.default["dataset"]);
+	      songOneTracks = _config2.default["user_top_tracks"];
 	    }
-	    this.populateDropdown(tracks, songOneInput, "user_top_tracks");
-	    this.populateDropdown(Object.keys(_config2.default["dataset"]), songTwoInput, "dataset");
+	    this.populateDropdown(songOneTracks, songOneInput);
+	    this.populateDropdown(songTwoTracks, songTwoInput);
+	    var barChart = this;
+	    songOneInput.addEventListener("change", function () {
+	      barChart.songSelected(songOneTracks, songOneInput);
+	    });
+	    songTwoInput.addEventListener("change", function () {
+	      barChart.songSelected(songTwoTracks, songTwoInput);
+	    });
 	  }
 
 	  _createClass(BarChart, [{
 	    key: 'populateDropdown',
-	    value: function populateDropdown(tracks, dropdown, dataset) {
+	    value: function populateDropdown(dataset, dropdown) {
+	      var tracks = Object.keys(dataset);
 	      tracks.forEach(function (track) {
-	        var currentTrack = _config2.default[dataset][track];
+	        var currentTrack = dataset[track];
 	        var opt = document.createElement("option");
-	        opt.textContent = currentTrack.title + ' - ' + currentTrack.artist;
-	        opt.value = currentTrack.name;
+	        opt.textContent = dataCleaner.capitalize(currentTrack.title.toString()) + ' - ' + dataCleaner.capitalize(currentTrack.artist.toString());
+	        opt.value = currentTrack.spotify_id;
 	        dropdown.appendChild(opt);
 	      });
+	    }
+	  }, {
+	    key: 'songSelected',
+	    value: function songSelected(dataset, dropdown) {
+	      console.log('song selected', dropdown.id);
+	      console.log(dropdown.value);
+	      var selectedTrack = void 0;
+	      var tracks = Object.keys(dataset);
+	      tracks.forEach(function (track) {
+	        var currentTrack = dataset[track];
+	        if (currentTrack.spotify_id === dropdown.value) {
+	          selectedTrack = currentTrack;
+	        }
+	      });
+	      console.log(selectedTrack);
+
+	      var currentInput = dropdown.id.substr(dropdown.id.length - 1);
+	      var currentTextSpan = document.querySelector('.personalisation-subtitle--song' + currentInput);
+	      currentTextSpan.innerHTML = dataCleaner.capitalize(selectedTrack.title.toString());
 	    }
 	  }]);
 

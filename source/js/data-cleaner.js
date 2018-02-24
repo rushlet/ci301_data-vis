@@ -1,6 +1,6 @@
 import config from './config.js';
 
-export default function meanData() {
+export function meanData() {
   let data = config['dataset'];
   let averages = {};
   let years = new Set();
@@ -52,3 +52,7 @@ export default function meanData() {
   config["yearlyAverages"] = yearlyAverages;
   config["overallAverages"] = averages;
 }
+
+export function capitalize(string) {
+    return string.toLowerCase().replace(/(?:^|\s)\S/g, function(a) { return a.toUpperCase(); });
+};

@@ -3,7 +3,7 @@ import Spotify from 'spotify-web-api-js';
 import addTrackPreviewListeners from './preview-tracks.js'
 import config from './config.js';
 import $ from 'jquery';
-import meanData from './data-cleaner.js';
+import * as dataCleaner from './data-cleaner.js';
 import BarChart from './bar-chart.js'
 
 
@@ -59,7 +59,7 @@ if (localStorage.getItem('access_token') !== null) {
     data.items.forEach((track) => {
       userTopTracks[track.name] = {};
       userTopTracks[track.name].title = track.name;
-      userTopTracks[track.name].id = track.id;
+      userTopTracks[track.name].spotify_id = track.id;
       spotifyApi.getArtist(track.artists[0].id)
         .then(function(data) {
           userTopTracks[track.name].artist = data.name;
@@ -102,7 +102,7 @@ function followPlaylist() {
 $.getJSON( "./assets/data/fixed_data_for_analysis.json", function( data ) {
   config['dataset'] = data;
   addTrackPreviewListeners();
-  meanData();
+  dataCleaner.meanData();
   new Scroller;
   new BarChart();
 });
