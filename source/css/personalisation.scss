@@ -2,16 +2,17 @@
 .personalisation-controls form {
   margin: auto;
   display: block;
-  max-width: 650px;
+  max-width: 700px;
 }
 
 .selectize-control.single,
 .selectize-input {
-  max-width: 48%;
   display: inline;
+  max-width: 300px;
 }
 
 #personalisation-input--song1-selectized,
 #personalisation-input--song2-selectized {
   min-width: 300px;
+  max-width: 315px;
 }

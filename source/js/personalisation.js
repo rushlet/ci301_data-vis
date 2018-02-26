@@ -8,6 +8,7 @@ class Personalisation {
   constructor() {
     const songOneInput = document.getElementById('personalisation-input--song1');
     const songTwoInput = document.getElementById('personalisation-input--song2');
+    const featureInput = document.getElementById('personalisation-input--feature');
     let songOneTracks = config["dataset"];
     const songTwoTracks = config["dataset"];
     if (Object.keys(config["user_top_tracks"]).length > 0) {
@@ -15,6 +16,7 @@ class Personalisation {
     }
     this.populateDropdown(songOneTracks, songOneInput);
     this.populateDropdown(songTwoTracks, songTwoInput);
+    this.populateFeatureDropdown(config["features"], featureInput);
     let personalisation = this;
     $(songOneInput).selectize({
       create: false,
@@ -30,6 +32,14 @@ class Personalisation {
         personalisation.songSelected(songTwoTracks, songTwoInput);
       }
     });
+    $(featureInput).selectize({
+      create: false,
+      sortField: 'text',
+      onChange: ()=>{
+        personalisation.selectFeature(featureInput);
+      }
+    });
+    this.barChart = new BarChart();
   }
 
   populateDropdown(dataset, dropdown) {
@@ -69,6 +79,22 @@ class Personalisation {
     let currentTextSpan = document.querySelector(`.personalisation-subtitle--song${currentInputId}`);
     currentTextSpan.innerHTML = dataCleaner.capitalize((selectedTrack.title).toString());
     config[`personalisation-song${currentInputId}`] = selectedTrack;
+  }
+
+  selectFeature(dropdown) {
+    config['personalisation-feature'] = dropdown.value.toLowerCase();
+    this.barChart.removeBars();
+    this.barChart.drawBars();
+  }
+
+  populateFeatureDropdown(dataset, dropdown) {
+    let features = config["features"];
+    features.forEach((feature)=>{
+      let opt = document.createElement("option");
+      opt.textContent = feature;
+      opt.value = feature;
+      dropdown.appendChild(opt);
+    });
   }
 }
 

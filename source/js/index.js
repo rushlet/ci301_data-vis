@@ -4,7 +4,8 @@ import addTrackPreviewListeners from './preview-tracks.js'
 import config from './config.js';
 import $ from 'jquery';
 import * as dataCleaner from './data-cleaner.js';
-import Personalisation from './personalisation.js'
+import Personalisation from './personalisation.js';
+import BarChart from './bar-chart.js';
 
 
 let loggedIn = false;

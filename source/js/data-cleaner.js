@@ -56,3 +56,34 @@ export function meanData() {
 export function capitalize(string) {
     return string.toLowerCase().replace(/(?:^|\s)\S/g, function(a) { return a.toUpperCase(); });
 };
+
+export function cleanDataForBarChart() {
+  let song1 = config['personalisation-song1'];
+  let song2 = config['personalisation-song2'];
+  return [{
+          'title': song1.title,
+          'artist': song1.artist,
+          'features': {
+            'danceability': song1.danceability,
+            'valence': song1.valence,
+            'acousticness': song1.acousticness,
+            'energy': song1.energy,
+            'instrumentalness': song1.valence,
+            'liveness': song1.acousticness,
+            'speechiness': song1.energy,
+          }
+        },
+        {
+          'title': song2.title,
+          'artist': song2.artist,
+          'features': {
+            'danceability': song2.danceability,
+            'valence': song2.valence,
+            'acousticness': song2.acousticness,
+            'energy': song2.energy,
+            'instrumentalness': song2.valence,
+            'liveness': song2.acousticness,
+            'speechiness': song2.energy,
+          }
+        }];
+}
