@@ -37217,9 +37217,9 @@
 
 	        barChart.g.append("g").attr("class", "axis axis--x").attr("transform", "translate(0," + barChart.height + ")").call(d3.axisBottom(x));
 
-	        barChart.g.append("g").attr("class", "axis axis--y").call(d3.axisLeft(y).ticks(10, "%")).append("text").attr("transform", "rotate(-90)").attr("y", 6).attr("dy", "0.71em").attr("text-anchor", "end").text("Frequency");
+	        barChart.g.append("g").attr("class", "axis axis--y").call(d3.axisLeft(y).ticks(10, "%")).append("text").attr("transform", "rotate(-90)").attr("y", 6).attr("dy", "0.71em").attr("text-anchor", "end");
 
-	        barChart.g.selectAll(".bar").data(data).enter().append("rect").attr("class", "bar").attr("x", function (d) {
+	        barChart.g.selectAll(".bar").data(data).enter().append("rect").attr("class", "bar").attr("fill", '#ff6a07').attr("x", function (d) {
 	          return x(d.title);
 	        }).attr("y", function (d) {
 	          return y(d.features['' + _config2.default['personalisation-feature']]);
@@ -37232,11 +37232,10 @@
 	    key: 'removeBars',
 	    value: function removeBars() {
 	      var chart = d3.select("#bar-chart");
-	      chart.selectAll(".bar").remove().exit().data(dataCleaner.cleanDataForBarChart());
-
-	      chart.selectAll("text").remove().exit().data(dataCleaner.cleanDataForBarChart());
-
-	      chart.selectAll(".tick").remove().exit().data(dataCleaner.cleanDataForBarChart());
+	      var components = [".bar", "text", ".tick"];
+	      components.forEach(function (component) {
+	        chart.selectAll(component).remove().exit().data(dataCleaner.cleanDataForBarChart());
+	      });
 	    }
 	  }]);
 
