@@ -1,5 +1,8 @@
 import config from './config.js';
 import * as dataCleaner from './data-cleaner.js';
+import BarChart from './bar-chart.js';
+import selectize from './libs/selectize.js';
+import $ from 'jquery';
 
 class Personalisation {
   constructor() {
@@ -12,12 +15,20 @@ class Personalisation {
     }
     this.populateDropdown(songOneTracks, songOneInput);
     this.populateDropdown(songTwoTracks, songTwoInput);
-    let barChart = this;
-    songOneInput.addEventListener("change", () => {
-      barChart.songSelected(songOneTracks, songOneInput);
+    let personalisation = this;
+    $(songOneInput).selectize({
+      create: false,
+      sortField: 'text',
+      onChange: ()=>{
+        personalisation.songSelected(songOneTracks, songOneInput);
+      }
     });
-    songTwoInput.addEventListener("change", () => {
-      barChart.songSelected(songTwoTracks, songTwoInput);
+    $(songTwoInput).selectize({
+      create: false,
+      sortField: 'text',
+      onChange: ()=>{
+        personalisation.songSelected(songTwoTracks, songTwoInput);
+      }
     });
   }
 
@@ -30,6 +41,19 @@ class Personalisation {
       opt.value = currentTrack.spotify_id;
       dropdown.appendChild(opt);
     })
+  }
+
+  searchForSong(idNumber) {
+    var input=document.getElementById(`personalisation-search--song${idNumber}`).value.toLowerCase();
+    var output=document.getElementById(`personalisation-input--song${idNumber}`).options;
+    for(var i=0; i<output.length; i++) {
+      if(output[i].value.indexOf(input)==0){
+        output[i].selected=true;
+      }
+      if(document.getElementById(`personalisation-input--song${idNumber}`).value==''){
+        output[0].selected=true;
+      }
+    }
   }
 
   songSelected(dataset, dropdown) {
