@@ -39,12 +39,12 @@ class BarChart {
           .attr("y", 6)
           .attr("dy", "0.71em")
           .attr("text-anchor", "end")
-          .text("Frequency");
 
       barChart.g.selectAll(".bar")
         .data(data)
         .enter().append("rect")
           .attr("class", "bar")
+          .attr("fill", '#ff6a07')
           .attr("x", function(d) { return x(d.title); })
           .attr("y", function(d) { return y(d.features[`${config['personalisation-feature']}`]); })
           .attr("width", x.bandwidth())
@@ -54,20 +54,13 @@ class BarChart {
 
   removeBars() {
     let chart = d3.select("#bar-chart");
-    chart.selectAll(".bar")
-  					.remove()
-  					.exit()
-            .data(dataCleaner.cleanDataForBarChart());
-
-    chart.selectAll("text")
-  					.remove()
-  					.exit()
-            .data(dataCleaner.cleanDataForBarChart());
-
-    chart.selectAll(".tick")
-  					.remove()
-  					.exit()
-            .data(dataCleaner.cleanDataForBarChart());
+    let components = [".bar", "text", ".tick"];
+    components.forEach((component) => {
+      chart.selectAll(component)
+              .remove()
+              .exit()
+              .data(dataCleaner.cleanDataForBarChart());
+    });
   }
 }
 
