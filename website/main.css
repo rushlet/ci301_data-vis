@@ -536,9 +536,3 @@ p, h2 {
   min-height: 90vh; }
   .explore p {
     font-size: 1em; }
-
-.charts-intro,
-.section-artists,
-.section-re-entries,
-.section-tracks {
-  display: none; }
