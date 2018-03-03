@@ -89,7 +89,10 @@
 	  document.getElementById('spotify-log-in').addEventListener("click", spotifyAuth, false);
 	  document.getElementById('skip-log-in').addEventListener("click", skipLogIn, false);
 	} else {
-	  document.getElementById('spotify-playlist').addEventListener("click", followPlaylist, false);
+	  var playlistButtons = document.querySelectorAll('.spotify-playlist');
+	  playlistButtons.forEach(function (button) {
+	    button.addEventListener("click", followPlaylist, false);
+	  });
 	}
 
 	function skipLogIn() {
@@ -36976,9 +36979,15 @@
 	}
 
 	function capitalize(string) {
-	  return string.toLowerCase().replace(/(?:^|\s)\S/g, function (a) {
-	    return a.toUpperCase();
-	  });
+	  var splitStr = string.toLowerCase().split(' ');
+	  for (var i = 0; i < splitStr.length; i++) {
+	    if (!splitStr[i].charAt(0).match(/[a-z]/i) && splitStr[i].charAt(1).match(/[a-z]/i)) {
+	      splitStr[i] = splitStr[i].charAt(0) + splitStr[i].charAt(1).toUpperCase() + splitStr[i].substring(2);
+	    } else {
+	      splitStr[i] = splitStr[i].charAt(0).toUpperCase() + splitStr[i].substring(1);
+	    }
+	  }
+	  return splitStr.join(' ');
 	};
 
 	function cleanDataForBarChart() {
@@ -37051,8 +37060,11 @@
 
 	var Personalisation = function () {
 	  function Personalisation() {
+	    var _this = this;
+
 	    _classCallCheck(this, Personalisation);
 
+	    this.barChart = new _barChart2.default();
 	    var songOneInput = document.getElementById('personalisation-input--song1');
 	    var songTwoInput = document.getElementById('personalisation-input--song2');
 	    var featureInput = document.getElementById('personalisation-input--feature');
@@ -37086,7 +37098,15 @@
 	        personalisation.selectFeature(featureInput);
 	      }
 	    });
-	    this.barChart = new _barChart2.default();
+	    (0, _jquery2.default)("#personalisation-input").submit(function (e) {
+	      e.preventDefault();
+	    });
+	    document.getElementById('personalisation-input--submit').addEventListener('click', function () {
+	      console.log("click");
+	      _this.barChart.removeBars();
+	      _this.barChart.drawBars();
+	      document.getElementsByClassName('personalisation-subtitle')[0].innerHTML = 'The graph below shows a comparison of\n      <span>' + dataCleaner.capitalize(_config2.default['personalisation-song1'].title.toString()) + '</span>\n      with <span>' + dataCleaner.capitalize(_config2.default['personalisation-song2'].title.toString()) + '</span>\n      by <span>' + _config2.default['personalisation-feature'] + '</span>';
+	    });
 	  }
 
 	  _createClass(Personalisation, [{
@@ -37128,15 +37148,12 @@
 	      });
 	      var currentInputId = dropdown.id.substr(dropdown.id.length - 1);
 	      var currentTextSpan = document.querySelector('.personalisation-subtitle--song' + currentInputId);
-	      currentTextSpan.innerHTML = dataCleaner.capitalize(selectedTrack.title.toString());
 	      _config2.default['personalisation-song' + currentInputId] = selectedTrack;
 	    }
 	  }, {
 	    key: 'selectFeature',
 	    value: function selectFeature(dropdown) {
 	      _config2.default['personalisation-feature'] = dropdown.value.toLowerCase();
-	      this.barChart.removeBars();
-	      this.barChart.drawBars();
 	    }
 	  }, {
 	    key: 'populateFeatureDropdown',
@@ -37148,6 +37165,13 @@
 	        opt.value = feature;
 	        dropdown.appendChild(opt);
 	      });
+	    }
+	  }, {
+	    key: 'addTextNextToSelectize',
+	    value: function addTextNextToSelectize() {
+	      var inputs = document.querySelectorAll('.selectize-input');
+	      // add labels to inputs
+	      // if using spotify data label might be different for 1st input
 	    }
 	  }]);
 
@@ -37205,6 +37229,9 @@
 	    key: 'drawBars',
 	    value: function drawBars() {
 	      var data = dataCleaner.cleanDataForBarChart();
+	      data.forEach(function (d) {
+	        d.title = dataCleaner.capitalize(d.title);
+	      });
 	      var barChart = this,
 	          y = barChart.y,
 	          x = barChart.x;
@@ -37217,7 +37244,7 @@
 
 	        barChart.g.append("g").attr("class", "axis axis--x").attr("transform", "translate(0," + barChart.height + ")").call(d3.axisBottom(x));
 
-	        barChart.g.append("g").attr("class", "axis axis--y").call(d3.axisLeft(y).ticks(10, "%")).append("text").attr("transform", "rotate(-90)").attr("y", 6).attr("dy", "0.71em").attr("text-anchor", "end");
+	        barChart.g.append("g").attr("class", "axis axis--y").call(d3.axisLeft(y).ticks(10, "%")).append("text").attr("transform", "rotate(-90)").attr("y", 6).attr("dy", "0.71em").attr("text-anchor", "end").text(dataCleaner.capitalize(_config2.default['personalisation-feature'])).style('fill', '#000');
 
 	        barChart.g.selectAll(".bar").data(data).enter().append("rect").attr("class", "bar").attr("fill", '#ff6a07').attr("x", function (d) {
 	          return x(d.title);
