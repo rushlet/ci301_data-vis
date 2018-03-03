@@ -23,7 +23,7 @@ class BarChart {
           x = barChart.x;
     console.log(config['personalisation-feature']);
     data.forEach((d) => {
-      x.domain(data.map(function(d) { return d.title; }));
+      x.domain(data.map(function(d) { return dataCleaner.capitalize(d.title); }));
       y.domain([0, 1]);
 
       barChart.g.append("g")
