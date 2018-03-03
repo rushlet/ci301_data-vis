@@ -48,7 +48,10 @@ class Personalisation {
       this.barChart.removeBars();
       this.barChart.drawBars();
       document.getElementsByClassName('personalisation-subtitle')[0].innerHTML =
-      `The graph below shows a comparison of ${dataCleaner.capitalize((config['personalisation-song1'].title).toString())} with ${dataCleaner.capitalize((config['personalisation-song2'].title).toString())} by ${config['personalisation-feature']}`;
+      `The graph below shows a comparison of
+      <span>${dataCleaner.capitalize((config['personalisation-song1'].title).toString())}</span>
+      with <span>${dataCleaner.capitalize((config['personalisation-song2'].title).toString())}</span>
+      by <span>${config['personalisation-feature']}</span>`;
     });
   }
 
