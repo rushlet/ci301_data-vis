@@ -47,6 +47,8 @@ class Personalisation {
       console.log("click");
       this.barChart.removeBars();
       this.barChart.drawBars();
+      document.getElementsByClassName('personalisation-subtitle')[0].innerHTML =
+      `The graph below shows a comparison of ${dataCleaner.capitalize((config['personalisation-song1'].title).toString())} with ${dataCleaner.capitalize((config['personalisation-song2'].title).toString())} by ${config['personalisation-feature']}`;
     });
   }
 
@@ -85,7 +87,6 @@ class Personalisation {
     });
     let currentInputId = dropdown.id.substr(dropdown.id.length - 1);
     let currentTextSpan = document.querySelector(`.personalisation-subtitle--song${currentInputId}`);
-    currentTextSpan.innerHTML = dataCleaner.capitalize((selectedTrack.title).toString());
     config[`personalisation-song${currentInputId}`] = selectedTrack;
   }
 

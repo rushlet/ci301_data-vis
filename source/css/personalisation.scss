@@ -7,17 +7,15 @@
   }
 }
 
-.personalisation-graph {
-  p {
-    font-size: 1.5em;
-    line-height: 1.2em;
-    padding-top: 1em;
-    max-width: 750px;
-    display: block;
-    margin: auto;
-    color: #5a5b5e;
-    text-align: center;
-  }
+.personalisation-graph p {
+  font-size: 1.5em;
+  line-height: 1.2em;
+  padding-top: 1em;
+  max-width: 750px;
+  display: block;
+  margin: auto;
+  color: #5a5b5e;
+  text-align: center;
 }
 
 .personalisation-controls form {
@@ -42,4 +40,13 @@
 #personalisation-input--song2-selectized {
   min-width: 300px;
   max-width: 400px;
+}
+
+.personalisation-subtitle {
+  font-size: 2em;
+  padding-top: 1.5em;
+  max-width: 750px;
+  display: block;
+  margin: auto;
+  text-align: center;
 }
