@@ -15,7 +15,10 @@ if (document.getElementById('spotify-log-in') !== null) {
   document.getElementById('spotify-log-in').addEventListener("click", spotifyAuth, false);
   document.getElementById('skip-log-in').addEventListener("click", skipLogIn, false);
 } else {
-  document.getElementById('spotify-playlist').addEventListener("click", followPlaylist, false);
+  let playlistButtons = document.querySelectorAll('.spotify-playlist');
+  playlistButtons.forEach((button) => {
+    button.addEventListener("click", followPlaylist, false);
+  });
 }
 
 function skipLogIn() {
