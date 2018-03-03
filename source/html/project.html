@@ -27,7 +27,7 @@
           It considers how certain attributes of songs have changed over time and showcases some of
           the most surprising songs to have made music history.
         </p>
-        <button class="btn" id="spotify-playlist">Follow the Playlist on Spotify</button>
+        <button class="spotify-playlist">Follow the Playlist on Spotify</button>
       </div>
     </section>
     <section class="charts-intro">
@@ -213,8 +213,7 @@
         <p>
           The song with the lowest valence score is
           <span class="playable-track" data-id="39KVdXz6ZlBhv9pv1fGuun">Amazing Grace</span>,
-           as performed by the Pipes
-          drums dragon band… followed by Celine
+           as performed by The Pipes & Drums & Military Band Of The Royal Scots Dragoon Guards followed by Celine
           Dion’s <span class="playable-track" data-id="3oEHQmhvFLiE7ZYES0ulzv">My Heart Will Go On</span>.
         </p>
       </div>
@@ -297,7 +296,7 @@
           </div>
           <div class='step' data-step='line-chart--acousticness-high'>
             <p>
-              It then spiked in 2015 thanks to more acoustic tracks taking the scene, thanks to artists such as
+              It then spiked in 2015 with more acoustic tracks taking the scene, thanks to artists such as
               Sam Smith and Justin Bieber.
             </p>
           </div>
@@ -320,7 +319,7 @@
           <div class='step' data-step='line-chart--danceability-low'>
             <p>
               Danceability plummeted in 1967, the year when songs including Nancy and Frank Sinatra's
-              <span class="playable-track" data-id="3cVWNLd0uEHkc2tnBoE3Ay">Something' Stupid</span>
+              <span class="playable-track" data-id="3cVWNLd0uEHkc2tnBoE3Ay">Somethin' Stupid</span>
               and The Beatles' <span class="playable-track" data-id="3xMSaDC9TU6AQJIsxQB7MK">All You Need Is Love</span> made it big.
             </p>
           </div>
@@ -338,18 +337,14 @@
               in 1963, with songs such as <span class="playable-track" data-id="2Q2Gu7Bv8iLenuygtBgDUw">From Me To You</span>, by The Beatles.
             </p>
             <p>
-              Most number 1s had high valence scores this year,
-              even the lowest scoring
-              ones were pretty feel
-              good - such as Cliff
-              Richard’s <span class="playable-track" data-id="054qLeg034PXr1wM3DMstk">Summer Holiday</span>
+              Most number 1s had high valence scores this year, even the lowest scoring ones were pretty feel
+              good - such as Cliff Richard’s <span class="playable-track" data-id="054qLeg034PXr1wM3DMstk">Summer Holiday</span>
               (the 3rd lowest in 1963).
             </p>
           </div>
           <div class='step' data-step='line-chart--valence-low-1954'>
             <p>
-            On average, the least feel
-            good year was 1954, featuring songs such as
+            On average, the least feel good year was 1954, featuring songs such as
             <span class="playable-track" data-id="2YqfGrsn017nC17cx84Onq">Secret Love</span> by Doris Day.
           </p>
           </div>
@@ -360,18 +355,11 @@
               (Churchill by Conservative candidate Eden in 1955 and Major by Labour's Tony Blair)
           </p>
           <p>
-            Furthermore, a few major events happened
-            in 1996, including the
-            Dunblance Massacre, IRA
-            bombing in Manchester,
-            Charles and Diana divorcing
-            and Take That splitting up.
+            Furthermore, a few major events happened in 1996, including the Dunblane Massacre, IRA
+            bombing in Manchester, Charles and Diana divorcing and Take That splitting up.
             </p>
             <p>
-              Could it be that these events
-              had an impact on the
-              happiness of music
-              produced that year?
+              Could it be that these events had an impact on the happiness of music produced that year?
             </p>
           </div>
           <div class='step explore' data-step='line-chart--explore'>
@@ -400,37 +388,37 @@
           How do your favourite tracks compare?
         </h2>
         <p>
-          Use the graph below to see how your most listened to tracks compare to the number 1s.
+          Use the form below to see how your most listened to tracks compare to the number 1s.
         </p>
       </div>
-      <div class='scroll'>
-        <div class='scroll__graphic'>
-          <svg id="bar-chart" width="900" height="500"></svg>
+      <div class='personalisation-graph'>
+        <p>
+          If you logged in with Spotify, then you can compare one of your top 20 most listened to tracks to any of the songs which have reached number 1 by one of the audio features discussed.
+          <br />
+          If you didn't log in, you can choose any two number 1 songs to compare.
+        </p>
+        <div class="personalisation-controls">
+          <form id="personalisation-input">
+            <select id="personalisation-input--song1" name="song1">
+              <option value="" disabled selected>Choose a song</option>
+            </select>
+            <select id="personalisation-input--song2" name="song2">
+              <option value="" disabled selected>Choose a song</option>
+            </select>
+            <select id="personalisation-input--feature" name="features">
+              <option value="" disabled selected>Select a feature</option>
+            </select>
+            <button id="personalisation-input--submit">Compare</button>
+          </form>
+          <h4 class="personalisation-subtitle"></h4>
         </div>
-        <div class='scroll__text'>
-          <div class='step' data-step='gantt-chart--1'>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
-            </p>
-          </div>
-          <div class='step' data-step='gantt-chart--2'>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
-            </p>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
-            </p>
-          </div>
-          <div class='step' data-step='gantt-chart--3'>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum            </p>
-          </div>
-          <div class='step' data-step='f'>
-            <p>
-              Explore the graph for yourself
-            </p>
-          </div>
-        </div>
+        <svg id="bar-chart" width="900" height="500"></svg>
+      </div>
+      <div class="section-personalisation__slide">
+        <button class="spotify-playlist">Follow the Playlist on Spotify</button>
+        <p>
+          Methodology - create a methodology page to link to...
+        </p>
       </div>
     </section>
   </div>

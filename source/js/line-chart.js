@@ -120,7 +120,7 @@ class LineChart {
   }
 
   addInitialLines() {
-    var features = ["Danceability", "Valence", "Acousticness", "Energy", "Liveness", "Speechiness", "Instrumentalness"];
+    var features = config["features"];
     var featureLines = [this.danceabilityLine, this.valenceLine, this.acousticnessLine, this.energyLine, this.liveLine, this.speechyLine, this.instrumentalLine];
     var colours = ["#ff6a07", "#27ae60", "#9b59b6", "#3498db", "#e74c3c", "#f1c40f", "#1abc9c"];
     const lineChartContainer = d3.select(".line-chart__container");

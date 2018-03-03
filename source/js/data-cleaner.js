@@ -1,6 +1,6 @@
 import config from './config.js';
 
-export default function meanData() {
+export function meanData() {
   let data = config['dataset'];
   let averages = {};
   let years = new Set();
@@ -51,4 +51,47 @@ export default function meanData() {
 
   config["yearlyAverages"] = yearlyAverages;
   config["overallAverages"] = averages;
+}
+
+export function capitalize(string) {
+  var splitStr = string.toLowerCase().split(' ');
+  for (var i = 0; i < splitStr.length; i++) {
+    if (!splitStr[i].charAt(0).match(/[a-z]/i) && splitStr[i].charAt(1).match(/[a-z]/i)) {
+      splitStr[i] = splitStr[i].charAt(0) + splitStr[i].charAt(1).toUpperCase() + splitStr[i].substring(2);
+    } else {
+      splitStr[i] = splitStr[i].charAt(0).toUpperCase() + splitStr[i].substring(1);
+    }
+  }
+  return splitStr.join(' ');
+};
+
+export function cleanDataForBarChart() {
+  let song1 = config['personalisation-song1'];
+  let song2 = config['personalisation-song2'];
+  return [{
+          'title': song1.title,
+          'artist': song1.artist,
+          'features': {
+            'danceability': song1.danceability,
+            'valence': song1.valence,
+            'acousticness': song1.acousticness,
+            'energy': song1.energy,
+            'instrumentalness': song1.valence,
+            'liveness': song1.acousticness,
+            'speechiness': song1.energy,
+          }
+        },
+        {
+          'title': song2.title,
+          'artist': song2.artist,
+          'features': {
+            'danceability': song2.danceability,
+            'valence': song2.valence,
+            'acousticness': song2.acousticness,
+            'energy': song2.energy,
+            'instrumentalness': song2.valence,
+            'liveness': song2.acousticness,
+            'speechiness': song2.energy,
+          }
+        }];
 }

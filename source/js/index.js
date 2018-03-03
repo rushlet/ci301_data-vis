@@ -3,7 +3,9 @@ import Spotify from 'spotify-web-api-js';
 import addTrackPreviewListeners from './preview-tracks.js'
 import config from './config.js';
 import $ from 'jquery';
-import meanData from './data-cleaner.js';
+import * as dataCleaner from './data-cleaner.js';
+import Personalisation from './personalisation.js';
+import BarChart from './bar-chart.js';
 
 
 let loggedIn = false;
@@ -13,7 +15,10 @@ if (document.getElementById('spotify-log-in') !== null) {
   document.getElementById('spotify-log-in').addEventListener("click", spotifyAuth, false);
   document.getElementById('skip-log-in').addEventListener("click", skipLogIn, false);
 } else {
-  document.getElementById('spotify-playlist').addEventListener("click", followPlaylist, false);
+  let playlistButtons = document.querySelectorAll('.spotify-playlist');
+  playlistButtons.forEach((button) => {
+    button.addEventListener("click", followPlaylist, false);
+  });
 }
 
 function skipLogIn() {
@@ -45,7 +50,6 @@ if (localStorage.getItem('access_token') !== null) {
   spotifyApi.setAccessToken(localStorage.getItem('access_token'));
   spotifyApi.getMe()
     .then(function(data) {
-      console.log(data);
       config['user_id'] = data.id;
     },
     function(err) {
@@ -58,8 +62,8 @@ if (localStorage.getItem('access_token') !== null) {
     .then(function(data) {
     data.items.forEach((track) => {
       userTopTracks[track.name] = {};
-      userTopTracks[track.name].name = track.name;
-      userTopTracks[track.name].id = track.id;
+      userTopTracks[track.name].title = track.name;
+      userTopTracks[track.name].spotify_id = track.id;
       spotifyApi.getArtist(track.artists[0].id)
         .then(function(data) {
           userTopTracks[track.name].artist = data.name;
@@ -69,7 +73,7 @@ if (localStorage.getItem('access_token') !== null) {
       spotifyApi.getAudioFeaturesForTrack(track.id)
         .then(function(data) {
           for (var feature in data) {
-            userTopTracks[track.name].feature = data[feature];
+            userTopTracks[track.name][feature] = data[feature];
           }
         },
         function(err) {
@@ -102,6 +106,7 @@ function followPlaylist() {
 $.getJSON( "./assets/data/fixed_data_for_analysis.json", function( data ) {
   config['dataset'] = data;
   addTrackPreviewListeners();
-  meanData();
+  dataCleaner.meanData();
   new Scroller;
+  new Personalisation();
 });

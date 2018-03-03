@@ -8,7 +8,6 @@ export default function addTrackPreviewListeners() {
   playableTracks.forEach((track) => {
     let trackID = track.dataset.id;
     let trackURL = "";
-    console.log(track.dataset.id);
     allTracks.forEach((entry) => {
       if (entry['spotify_id'] === trackID) {
         track.setAttribute("data-url", entry['preview_url']);

@@ -30,6 +30,8 @@ h4 {
 @import 'swarm-chart';
 @import 'track-section';
 @import 'line-chart';
+@import 'personalisation';
+@import 'bar-chart';
 
 .explore {
   padding-top: 20vh;
@@ -37,9 +39,4 @@ h4 {
   p {
     font-size: 1em;
   }
-}
-
-.section-personalisation,
-.section-re-entries {
-  display: none;
 }
