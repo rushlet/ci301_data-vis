@@ -27,7 +27,7 @@
           It considers how certain attributes of songs have changed over time and showcases some of
           the most surprising songs to have made music history.
         </p>
-        <button class="btn" id="spotify-playlist">Follow the Playlist on Spotify</button>
+        <button class="spotify-playlist">Follow the Playlist on Spotify</button>
       </div>
     </section>
     <section class="charts-intro">
@@ -388,10 +388,15 @@
           How do your favourite tracks compare?
         </h2>
         <p>
-          Use the graph below to see how your most listened to tracks compare to the number 1s.
+          Use the form below to see how your most listened to tracks compare to the number 1s.
         </p>
       </div>
       <div class='personalisation-graph'>
+        <p>
+          If you logged in with Spotify, then you can compare one of your top 20 most listened to tracks to any of the songs which have reached number 1 by one of the audio features discussed.
+          <br />
+          If you didn't log in, you can choose any two number 1 songs to compare.
+        </p>
         <div class="personalisation-controls">
           <form id="personalisation-input">
             <select id="personalisation-input--song1" name="song1">
@@ -403,13 +408,14 @@
             <select id="personalisation-input--feature" name="features">
               <option value="" disabled selected>Select a feature</option>
             </select>
+            <button id="personalisation-input--submit">Compare</button>
           </form>
           <h4 class="personalisation-subtitle">Compare <span class="personalisation-subtitle--song1"></span> to <span class="personalisation-subtitle--song2"></span></h4>
         </div>
         <svg id="bar-chart" width="900" height="500"></svg>
       </div>
-      <div class="personalisation-slide">
-        <button class="btn" id="spotify-playlist">Follow the Playlist on Spotify</button>
+      <div class="section-personalisation__slide">
+        <button class="spotify-playlist">Follow the Playlist on Spotify</button>
         <p>
           Methodology - create a methodology page to link to...
         </p>

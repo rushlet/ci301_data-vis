@@ -6,6 +6,7 @@ import $ from 'jquery';
 
 class Personalisation {
   constructor() {
+    this.barChart = new BarChart();
     const songOneInput = document.getElementById('personalisation-input--song1');
     const songTwoInput = document.getElementById('personalisation-input--song2');
     const featureInput = document.getElementById('personalisation-input--feature');
@@ -39,7 +40,14 @@ class Personalisation {
         personalisation.selectFeature(featureInput);
       }
     });
-    this.barChart = new BarChart();
+    $("#personalisation-input").submit(function(e) {
+      e.preventDefault();
+    });
+    document.getElementById('personalisation-input--submit').addEventListener('click', () => {
+      console.log("click");
+      this.barChart.removeBars();
+      this.barChart.drawBars();
+    });
   }
 
   populateDropdown(dataset, dropdown) {
@@ -83,8 +91,6 @@ class Personalisation {
 
   selectFeature(dropdown) {
     config['personalisation-feature'] = dropdown.value.toLowerCase();
-    this.barChart.removeBars();
-    this.barChart.drawBars();
   }
 
   populateFeatureDropdown(dataset, dropdown) {
@@ -95,6 +101,12 @@ class Personalisation {
       opt.value = feature;
       dropdown.appendChild(opt);
     });
+  }
+
+  addTextNextToSelectize() {
+    let inputs = document.querySelectorAll('.selectize-input');
+    // add labels to inputs
+    // if using spotify data label might be different for 1st input
   }
 }
 
