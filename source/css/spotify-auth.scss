@@ -37,7 +37,7 @@ button {
   }
 }
 
-.btn {
+button {
   text-decoration: none;
   -moz-border-radius: 30px;
   -webkit-border-radius: 30px;
@@ -55,7 +55,7 @@ button {
   margin: 1em;
 }
 
-.btn:hover {
-  background-color: #12913f;
+button:hover {
+  background-color: #16ac4b;
   cursor: pointer;
 }
