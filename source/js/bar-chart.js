@@ -42,6 +42,8 @@ class BarChart {
           .attr("y", 6)
           .attr("dy", "0.71em")
           .attr("text-anchor", "end")
+          .text(dataCleaner.capitalize(config['personalisation-feature']))
+          .style('fill', '#000');
 
       barChart.g.selectAll(".bar")
         .data(data)
