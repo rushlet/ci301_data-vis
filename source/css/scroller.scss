@@ -1,5 +1,6 @@
 .scroll {
 	position: relative;
+  margin-top: 10vh;
 }
 
 .scroll__graphic {
@@ -33,8 +34,8 @@
 }
 
 .step:first-of-type p {
-  margin-top: 50vh;
-  margin-bottom: 20vh;
+    padding-top: 50vh;
+    padding-bottom: 40vh;
 }
 
 .step:last-child {

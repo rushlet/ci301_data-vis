@@ -1,8 +1,11 @@
 @import 'libs/selectize';
 
 .section-personalisation__slide {
+  margin-top: 20vh;
+  min-height: 20vh;
+
   p {
-    font-size: 2em;
+    font-size: 1.5em;
     padding-top: 0;
   }
 }
@@ -14,7 +17,6 @@
   max-width: 750px;
   display: block;
   margin: auto;
-  color: #5a5b5e;
   text-align: center;
 }
 

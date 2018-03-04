@@ -1,34 +1,27 @@
-
-// .intro-slide {
-//   min-height: 75vh;
-//   p {
-//     font-size: initial;
-//     padding: initial;
-//   }
-// }
-
-.intro-slide,
-.text-slide,
-.section-re-entries__slide,
-.section-re-entries__slide,
-.section-tracks__slide,
-.section-personalisation__slide  {
-  min-height: 75vh;
-  text-align: center;
-  vertical-align: middle;
-  display: block;
-  margin: 2em auto;
-  max-width: 750px;
-}
-
-p, h2 {
-  padding-top: 50vh;
-  font-size: 3.5em;
-}
-
 .project-intro__title {
   font-size: 5em;
   margin-top: 2em;
+}
+
+.charts-intro__slide {
+  h2 {
+    padding-top: 30vh;
+    font-size: 3.5em;
+    font-weight: 400;
+  }
+
+  p {
+    font-size: 2.8em;
+    padding-top: 50vh;
+  }
+}
+
+.charts-intro__slide:last-child {
+  padding-bottom: 20vh;
+}
+
+.charts-intro__slide h2:last-of-type {
+  padding-top: 75vh;
 }
 
 .intro-slide {
@@ -39,6 +32,5 @@ p, h2 {
 }
 
 .charts-intro {
-  background-color: #e8e8e8;
   padding-bottom: 30vh;
 }
