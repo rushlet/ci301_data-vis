@@ -3,10 +3,20 @@
 body {
   font-family: 'Quicksand', sans-serif;
   font-size: 16px;
-  margin: 0; }
+  margin: 0;
+  background-color: #f7f7f7;
+  color: #202020; }
 
 section {
   padding: 1em 3em; }
+
+h2 {
+  font-size: 3.5em;
+  text-align: center;
+  font-weight: 400;
+  max-width: 750px;
+  display: block;
+  margin: auto; }
 
 h3 {
   font-size: 2.5em;
@@ -16,8 +26,18 @@ h4 {
   font-size: 2em;
   margin-bottom: 0; }
 
-.section-1 {
-  background-color: #e8e8e8; }
+.intro-slide,
+.charts-intro__slide,
+.section-re-entries__slide,
+.section-re-entries__slide,
+.section-tracks__slide,
+.section-personalisation__slide {
+  min-height: 75vh;
+  text-align: center;
+  vertical-align: middle;
+  display: block;
+  margin: 2em auto;
+  max-width: 750px; }
 
 /* Reset `button` and button-style `input` default styles */
 button {
@@ -73,36 +93,35 @@ button:hover {
   background-color: #16ac4b;
   cursor: pointer; }
 
-.intro-slide,
-.text-slide,
-.section-re-entries__slide,
-.section-tracks__slide,
-.section-personalisation__slide {
-  min-height: 75vh;
-  text-align: center;
-  vertical-align: middle;
-  display: block;
-  margin: 2em auto;
-  max-width: 750px; }
-
-p, h2 {
-  padding-top: 50vh;
-  font-size: 3.5em; }
-
 .project-intro__title {
   font-size: 5em;
   margin-top: 2em; }
+
+.charts-intro__slide h2 {
+  padding-top: 30vh;
+  font-size: 3.5em;
+  font-weight: 400; }
+
+.charts-intro__slide p {
+  font-size: 2.8em;
+  padding-top: 50vh; }
+
+.charts-intro__slide:last-child {
+  padding-bottom: 20vh; }
+
+.charts-intro__slide h2:last-of-type {
+  padding-top: 75vh; }
 
 .intro-slide p {
   font-size: 2.2em;
   padding: initial; }
 
 .charts-intro {
-  background-color: #e8e8e8;
   padding-bottom: 30vh; }
 
 .scroll {
-  position: relative; }
+  position: relative;
+  margin-top: 10vh; }
 
 .scroll__graphic {
   position: -webkit-sticky;
@@ -132,8 +151,8 @@ p, h2 {
   min-height: 70vh; }
 
 .step:first-of-type p {
-  margin-top: 50vh;
-  margin-bottom: 20vh; }
+  padding-top: 50vh;
+  padding-bottom: 40vh; }
 
 .step:last-child {
   border-bottom: 1px solid #333; }
@@ -152,28 +171,21 @@ p, h2 {
   fill: none;
   pointer-events: all; }
 
-.section-re-entries__slide,
-.section-tracks__intro {
-  min-height: 70vh;
-  text-align: center; }
-  .section-re-entries__slide p,
-  .section-tracks__intro p {
-    font-size: 2em;
-    padding-top: 1em; }
-  .section-re-entries__slide h2,
-  .section-tracks__intro h2 {
-    padding-top: 25vh; }
-
-.section-tracks__slide {
+.section-tracks__slide,
+.section-re-entries__slide {
   min-height: 0;
   margin: 5em auto; }
-  .section-tracks__slide p {
+  .section-tracks__slide p,
+  .section-re-entries__slide p {
     font-size: 1.5em;
     padding-top: 1em;
     text-align: justify;
     max-width: 650px;
     display: block;
     margin: auto; }
+  .section-tracks__slide h2,
+  .section-re-entries__slide h2 {
+    padding-top: 25vh; }
 
 .playable-track {
   text-decoration: underline;
@@ -181,6 +193,41 @@ p, h2 {
   padding-right: 1.25em;
   background: url("./assets/img/sound_on.svg") no-repeat center right;
   background-size: 1em 1em; }
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+  text-decoration: underline;
+  text-decoration-style: dotted; }
+  .tooltip:hover {
+    cursor: help; }
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  background-color: rgba(0, 0, 0, 0.85);
+  color: #fff;
+  text-align: center;
+  border-radius: 0.5em;
+  padding: 0.5em;
+  position: absolute;
+  z-index: 1;
+  top: 150%;
+  left: 15%;
+  width: 400px;
+  font-size: 1.15rem; }
+
+.tooltip .tooltiptext::after {
+  content: "";
+  position: absolute;
+  bottom: 100%;
+  left: 15%;
+  margin-left: -0.5em;
+  border-width: 0.5em;
+  border-style: solid;
+  border-color: transparent transparent rgba(0, 0, 0, 0.85) transparent; }
+
+.tooltip:hover .tooltiptext {
+  visibility: visible; }
 
 .line-chart__container {
   display: block;
@@ -516,9 +563,12 @@ p, h2 {
   opacity: 0.5;
   background-color: #fafafa; }
 
-.section-personalisation__slide p {
-  font-size: 2em;
-  padding-top: 0; }
+.section-personalisation__slide {
+  margin-top: 20vh;
+  min-height: 20vh; }
+  .section-personalisation__slide p {
+    font-size: 1.5em;
+    padding-top: 0; }
 
 .personalisation-graph p {
   font-size: 1.5em;
@@ -527,7 +577,6 @@ p, h2 {
   max-width: 750px;
   display: block;
   margin: auto;
-  color: #5a5b5e;
   text-align: center; }
 
 .personalisation-controls form {
