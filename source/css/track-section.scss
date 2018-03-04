@@ -13,7 +13,8 @@
   }
 }
 
-.section-tracks__slide {
+.section-tracks__slide,
+.section-re-entries__slide {
   min-height: 0;
   margin: 5em auto;
 
@@ -42,4 +43,46 @@
   //   height: 0.75em;
   //   padding-left: 0.25em;
   // }
+}
+
+// tooltip adapted from https://www.w3schools.com/css/css_tooltip.asp
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+    text-decoration: underline;
+    text-decoration-style: dotted;
+
+    &:hover {
+      cursor: help;
+    }
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    background-color: rgba(0,0,0,0.85);
+    color: #fff;
+    text-align: center;
+    border-radius: 0.5em;
+    padding: 0.5em;
+    position: absolute;
+    z-index: 1;
+    top: 150%;
+    left: 15%;
+    width: 400px;
+}
+
+.tooltip .tooltiptext::after {
+    content: "";
+    position: absolute;
+    bottom: 100%;
+    left: 15%;
+    margin-left: -0.5em;
+    border-width: 0.5em;
+    border-style: solid;
+    border-color: transparent transparent rgba(0,0,0,0.85) transparent;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
 }
