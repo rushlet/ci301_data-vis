@@ -4,7 +4,8 @@
   "description": "final year project - a visual analysis of number 1 songs",
   "main": "index.js",
   "scripts": {
-    "cucumber": "./node_modules/.bin/cucumber-js test/features/uk_number_1s.feature",
+    "cucumber": "cucumber features/",
+    "cucumber-report": "cucumber features/ --format html > features/reports/report.html",
     "mocha": "./node_modules/.bin/mocha",
     "mocha-report": "./node_modules/.bin/mocha ./test/unit-tests/unit-tests.js --reporter mocha-simple-html-reporter --reporter-options output=./test/unit-tests/report.html"
   },
@@ -36,6 +37,7 @@
     "webpack": "^2.4.1"
   },
   "dependencies": {
+    "cucumber-html-reporter": "^4.0.2",
     "d3": "^4.11.0",
     "d3-dispatch": "^1.0.3",
     "d3-fetch": "^0.0.2",
