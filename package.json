@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "cucumber": "./node_modules/.bin/cucumber-js test/features/uk_number_1s.feature",
-    "mocha": "./node_modules/.bin/mocha"
+    "mocha": "./node_modules/.bin/mocha",
+    "mocha-report": "./node_modules/.bin/mocha ./test/unit-tests/unit-tests.js --reporter mocha-simple-html-reporter --reporter-options output=./test/unit-tests/report.html"
   },
   "repository": {
     "type": "git",
@@ -31,6 +32,7 @@
     "gulp-sass": "^3.1.0",
     "gulp-webpack": "^1.5.0",
     "mocha": "^5.0.3",
+    "mocha-simple-html-reporter": "^1.1.0",
     "webpack": "^2.4.1"
   },
   "dependencies": {
