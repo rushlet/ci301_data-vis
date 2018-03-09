@@ -8,7 +8,7 @@ require 'fileutils'
 
 World(Test::Unit::Assertions)
 
-Capybara.app_host   = "https://www.local.bbc.co.uk:1031"
+Capybara.app_host   = "https://rushlet.github.io/"
 Capybara.app        = "this must be defined for mechanize to not throw a wobbly"
 Capybara.run_server = false
 
@@ -19,5 +19,22 @@ Capybara.register_driver :mechanize do |app|
 end
 
 Capybara.default_driver = :mechanize
+
+Capybara.register_driver :selenium do |app|
+  Capybara::Selenium::Driver.new(app, :browser => :firefox)
+end
+Capybara.javascript_driver = :selenium
+
+# module JavascriptDriver
+#   # other code that prepares capybara to work with selenium
+#
+#   def scroll_to(element)
+#     script = <<-JS
+#       arguments[0].scrollIntoView(true);
+#     JS
+#
+#     Capybara.current_session.driver.browser.execute_script(script, element.native)
+#   end
+# end
 
 World(Capybara)
