@@ -6,9 +6,9 @@ Given I am on the project page
 When I scroll down to the artist section
 Then I should see a swarm chart
 
+@javascript
 Scenario: First scroll in swarm chart
-Given I am on the scroll chart
+Given I am on the swarm chart
 When I scroll to the 'longest' section
-Then I should see the chart zoom in
-And pan to the right
-And add annotations to 'The Beatles' and 'Elvis'
+Then I should see the chart zoom in and pan to the right
+And add annotations should be added to 'The Beatles' and 'Elvis'
