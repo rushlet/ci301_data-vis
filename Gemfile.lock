@@ -92,6 +92,7 @@ GEM
     selenium-webdriver (3.10.0)
       childprocess (~> 0.5)
       rubyzip (~> 1.2)
+    syntax (1.2.2)
     test-unit (3.2.7)
       power_assert
     test-unit-capybara (1.0.5)
@@ -120,6 +121,7 @@ DEPENDENCIES
   launchy
   poltergeist
   rspec
+  syntax
   test-unit-capybara
 
 BUNDLED WITH

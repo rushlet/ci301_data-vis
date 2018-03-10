@@ -8,3 +8,4 @@ gem 'test-unit-capybara'
 gem 'capybara-selenium'
 gem 'geckodriver-helper'
 gem 'launchy' #opens screenshots
+gem 'syntax' #syntax highlighting
