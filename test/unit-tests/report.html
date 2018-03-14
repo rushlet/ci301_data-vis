@@ -426,8 +426,8 @@ body {
                 <ul class="mocha-stats">
                     <li class="passes">passes: <em>3</em></li>
                     <li class="pending">pending: <em>0</em></li>
-                    <li class="failures">failures: <em>0</em></li>
-                    <li class="duration">duration: <em>7ms</em></li>
+                    <li class="failures">failures: <em>1</em></li>
+                    <li class="duration">duration: <em>12ms</em></li>
                 </ul>
             </div>
             <ul id="report"><li class="suite"><h1>Capitalize</h1><ul><li class="test pass fast"><h2>should capitalize the first letter of each word in a string<span class="duration">1ms</span></h2><pre><code>var testString = &#x22;hello, my name is becky&#x22;;
@@ -439,7 +439,34 @@ var expectString = &#x22;(Hello) My (Name) Is Becky&#x22;;
 assert.equal(capitalisedString, expectString);</code></pre></li><li class="test pass fast"><h2>should capitalize the first letter of each word in a string, and the other letters should be lowercase<span class="duration">0ms</span></h2><pre><code>var testString = &#x22;hELLo, my NAme Is bECKy&#x22;;
 var capitalisedString = functions.capitalize(testString);
 var expectString = &#x22;Hello, My Name Is Becky&#x22;;
-assert.equal(capitalisedString, expectString);</code></pre></li></ul></li></ul>
+assert.equal(capitalisedString, expectString);</code></pre></li></ul></li><li class="suite"><h1>cleanDataForBarChart</h1><ul><li class="test fail"><h2>should format data from the charts dataset into an object to be consumed by the bar chart</h2><pre><code>var output = [{
+        &#x27;title&#x27;: &#x22;HELP!&#x22;,
+        &#x27;artist&#x27;: &#x22;THE BEATLES&#x22;,
+        &#x27;features&#x27;: {
+          &#x27;danceability&#x27;: 0.602,
+          &#x27;valence&#x27;: 0.819,
+          &#x27;acousticness&#x27;: 0.149,
+          &#x27;energy&#x27;: 0.736,
+          &#x27;instrumentalness&#x27;: 0,
+          &#x27;liveness&#x27;: 0.163,
+          &#x27;speechiness&#x27;: 0.0332,
+        }
+      },
+      {
+        &#x27;title&#x27;: &#x22;LET&#x27;S DANCE&#x22;,
+        &#x27;artist&#x27;: &#x22;DAVID BOWIE&#x22;,
+        &#x27;features&#x27;: {
+          &#x27;danceability&#x27;: 0.619,
+          &#x27;valence&#x27;: 0.709,
+          &#x27;acousticness&#x27;: 0.00388,
+          &#x27;energy&#x27;: 0.703,
+          &#x27;instrumentalness&#x27;: 0.205,
+          &#x27;liveness&#x27;: 0.163,
+          &#x27;speechiness&#x27;: 0.0525,
+        }
+}];
+assert.equal(functions.cleanDataForBarChart(song1, song2), output);</code></pre><pre class="error">AssertionError: expected [ Array(2) ] to equal [ Array(2) ]
+    at Context.&#x3C;anonymous&#x3E; (test/unit-tests/unit-tests.js:103:14)</pre></li></ul></li></ul>
         </div>
         <script>
         function hideSuitesWithout(className) {
