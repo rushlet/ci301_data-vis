@@ -83,7 +83,7 @@ describe('cleanDataForBarChart', function() {
                 'acousticness': 0.149,
                 'energy': 0.736,
                 'instrumentalness': 0,
-                'liveness': 0.163,
+                'liveness': 0.0776,
                 'speechiness': 0.0332,
               }
             },
@@ -100,6 +100,6 @@ describe('cleanDataForBarChart', function() {
                 'speechiness': 0.0525,
               }
       }];
-      assert.equal(functions.cleanDataForBarChart(song1, song2), output);
+      assert.deepEqual(functions.cleanDataForBarChart(song1, song2), output);
   });
 });

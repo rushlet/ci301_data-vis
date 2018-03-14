@@ -76,9 +76,9 @@ export function cleanDataForBarChart() {
             'valence': song1.valence,
             'acousticness': song1.acousticness,
             'energy': song1.energy,
-            'instrumentalness': song1.valence,
-            'liveness': song1.acousticness,
-            'speechiness': song1.energy,
+            'instrumentalness': song1.instrumentalness,
+            'liveness': song1.liveness,
+            'speechiness': song1.speechiness,
           }
         },
         {
@@ -89,9 +89,9 @@ export function cleanDataForBarChart() {
             'valence': song2.valence,
             'acousticness': song2.acousticness,
             'energy': song2.energy,
-            'instrumentalness': song2.valence,
-            'liveness': song2.acousticness,
-            'speechiness': song2.energy,
+            'instrumentalness': song2.instrumentalness,
+            'liveness': song2.liveness,
+            'speechiness': song2.speechiness,
           }
         }];
 }
