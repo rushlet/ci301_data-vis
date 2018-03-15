@@ -118,6 +118,7 @@ DEPENDENCIES
   capybara-selenium
   cucumber
   geckodriver-helper
+  json
   launchy
   poltergeist
   rspec
