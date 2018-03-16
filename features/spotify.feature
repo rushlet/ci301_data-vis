@@ -21,14 +21,22 @@ And there should be an access token appended onto the url
 
 Scenario: Skip log in
 Given I am on the index page
-When I click 'I don`'t have Spotify'
+When I click 'I don\'t have Spotify'
 Then I should be redirected to the project page
 
+@javascript
 Scenario: Playlist button (logged in)
 Given I am on the project page
 And I am logged in
 When I scroll to the 'intro slide'
 Then I should see a 'Follow the Playlist on Spotify' button
+
+@javascript
+Scenario: Click playlist button (logged in)
+Given I am on the intro-slide
+And I am logged in
+When I click the 'Follow the Playlist on Spotify' button
+Then I should get a success alert
 
 Scenario: Playlist button (not logged in)
 Given I am on the project page

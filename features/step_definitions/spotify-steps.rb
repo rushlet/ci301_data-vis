@@ -55,15 +55,18 @@ When(/^I click 'I don`'t have Spotify'$/) do
 end
 
 Given(/^I am logged in$/) do
-  pending # Write code here that turns the phrase above into concrete actions
+  current_url.include?("rushlet.github.io/ci301_data-vis/website/project.html#access_token=")
 end
 
 When(/^I scroll to the 'intro slide'$/) do
-  pending # Write code here that turns the phrase above into concrete actions
+  scroll_to(page.find(".intro-slide:nth-child(2)", visible: true))
 end
 
 Then(/^I should see a 'Follow the Playlist on Spotify' button$/) do
-  pending # Write code here that turns the phrase above into concrete actions
+  within(".intro-slide:nth-child(2)") do
+    find("button", :text => "Follow the Playlist on Spotify")
+    page.save_screenshot 'features/reports/screenshots/spotify-playlist-button.png'
+  end
 end
 
 Given(/^I am not logged in$/) do
