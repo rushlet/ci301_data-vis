@@ -1,7 +1,8 @@
 Before('@spotify-auth') do
   puts 'running hook'
-  page.save_screenshot 'features/reports/screenshots/hook-start.png'
   visit 'https://rushlet.github.io/ci301_data-vis/website/index.html'
+  sleep(2)
+  page.save_screenshot 'features/reports/screenshots/hook-start.png'
   find("#spotify-log-in").click
   url = current_url
   url.include?("accounts.spotify.com/en/authorize?")
