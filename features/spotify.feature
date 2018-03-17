@@ -1,44 +1,39 @@
 Feature: Check Spotify Integrations
 
 @javascript
-Scenario: Open Spotify login page
+Scenario: The one where the user clicks to log in with Spotify
 Given I am on the index page
 When I click 'Log in with Spotify'
 Then I should see the spotify log in page
 
 @javascript @spotify-auth
-Scenario: Invalid log in
+Scenario: The one with the invalid login
 Given I am on the Spotify login page
 When I sign in with an invalid Spotify log in
 Then I should see an error on the screen
 
 @javascript @spotify-auth
-Scenario: Valid log in
+Scenario: The one with the valid login
 Given I am on the Spotify login page
 When I sign in with a valid Spotify log in
 Then I should be redirected to the project page
 And there should be an access token appended onto the url
 
-Scenario: Skip log in
+Scenario: The one where the user skips logging in
 Given I am on the index page
 When I click 'I don\'t have Spotify'
 Then I should be redirected to the project page
 
 @javascript
-Scenario: Playlist button (logged in)
+Scenario: The one with the playlist button when the user is logged in
 Given I am on the project page
 And I am logged in
 When I scroll to the 'intro slide'
 Then I should see a 'Follow the Playlist on Spotify' button
-
-@javascript
-Scenario: Click playlist button (logged in)
-Given I am on the intro-slide
-And I am logged in
 When I click the 'Follow the Playlist on Spotify' button
 Then I should get a success alert
 
-Scenario: Playlist button (not logged in)
+Scenario: The one with the playlist button when the user is not logged in
 Given I am on the project page
 And I am not logged in
 When I scroll to the 'intro slide'
