@@ -77,4 +77,20 @@ Then(/^I should not see a 'Follow the Playlist on Spotify' button$/) do
   pending # Write code here that turns the phrase above into concrete actions
 end
 
+When(/^I click 'I don\\'t have Spotify'$/) do
+  pending # Write code here that turns the phrase above into concrete actions
+end
+
+Given(/^I am on the intro\-slide$/) do
+  pending # Write code here that turns the phrase above into concrete actions
+end
+
+When(/^I click the 'Follow the Playlist on Spotify' button$/) do
+  pending # Write code here that turns the phrase above into concrete actions
+end
+
+Then(/^I should get a success alert$/) do
+  pending # Write code here that turns the phrase above into concrete actions
+end
+
 driver.quit(); # closes window after tests run
