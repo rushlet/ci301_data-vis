@@ -26,15 +26,16 @@ Given I am in the Personalisation section
 When I search for a song
 Then it should be displayed in the dropdown box
 
-# Scenario: The one with the complete form and the compare button
-# Given I am in the Personalisation section
-# And I fill out each dropdown
-# When I press the 'compare' button
-# Then I should see a bar chart
-# And each of my selections should be labelled
-#
-# Scenario: The one with the incomplete form
-# Given I am in the Personalisation section
-# And I do not fill out each dropdown
-# When I press the 'compare' button
-# Then I should not see a bar chart
+@javascript @personalisation-section
+Scenario: The one with the complete form and the compare button
+Given I am in the Personalisation section
+And I fill out each dropdown
+When I press the 'compare' button
+Then I should see a bar chart
+
+@javascript @personalisation-section
+Scenario: The one with the incomplete form
+Given I am in the Personalisation section
+And I do not fill out each dropdown
+When I press the 'compare' button
+Then I should not see a bar chart

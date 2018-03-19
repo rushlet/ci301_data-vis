@@ -28,6 +28,15 @@ def log_in
   end
 end
 
+def select_option (option)
+  find('.selectize-input').click
+  dropdown = find('.selectize-dropdown-content', visible: false)
+  within dropdown do
+    options = all('.option', visible: false)
+    options[option].click
+  end
+end
+
 Given(/^I am logged in$/) do
   log_in
   puts current_url

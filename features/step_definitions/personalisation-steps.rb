@@ -62,27 +62,48 @@ When(/^I search for a song$/) do
 end
 
 Given(/^I fill out each dropdown$/) do
-  pending # Write code here that turns the phrase above into concrete actions
+  expect(page).to have_css('.selectize-control', visible: false)
+  inputs = page.all('.selectize-control', visible: false)
+  scroll_to(inputs[0])
+  within inputs[0] do
+    select_option(5)
+  end
+  within inputs[1] do
+    select_option(80)
+  end
+  within inputs[2] do
+    select_option(3)
+  end
+  page.save_screenshot 'features/reports/screenshots/personalisation--all-dropdowns.png'
 end
 
 When(/^I press the 'compare' button$/) do
-  pending # Write code here that turns the phrase above into concrete actions
+  find('#personalisation-input--submit').click
 end
 
 Then(/^I should see a bar chart$/) do
-  pending # Write code here that turns the phrase above into concrete actions
-end
-
-Then(/^each of my selections should be labelled$/) do
-  pending # Write code here that turns the phrase above into concrete actions
+  bar_chart = find('#bar-chart')
+  scroll_to(bar_chart)
+  bars = bar_chart.all('.bar')
+  expect(bars.length).to eq(2)
+  page.save_screenshot 'features/reports/screenshots/personalisation--bar-chart.png'
 end
 
 Given(/^I do not fill out each dropdown$/) do
-  pending # Write code here that turns the phrase above into concrete actions
+  expect(page).to have_css('.selectize-control', visible: false)
+  inputs = page.all('.selectize-control', visible: false)
+  within inputs[0] do
+    select_option(120)
+  end
 end
 
 Then(/^I should not see a bar chart$/) do
-  pending # Write code here that turns the phrase above into concrete actions
+  bar_chart = find('#bar-chart')
+  scroll_to(find('#personalisation-input--submit'))
+  within bar_chart do
+    expect(bar_chart).not_to have_selector(".bar")
+  end
+  page.save_screenshot 'features/reports/screenshots/personalisation--no-bar-chart.png'
 end
 
 driver.quit(); # closes window after tests run
