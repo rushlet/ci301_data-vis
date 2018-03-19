@@ -25,7 +25,7 @@ When I click 'I don\'t have Spotify'
 Then I should be redirected to the project page
 
 @javascript @spotify-auth
-Scenario: The one with the playlist button when is logged in
+Scenario: The one with the playlist button when logged in
 Given I am logged in
 And on the project page
 When I scroll to the 'intro slide'
