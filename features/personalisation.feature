@@ -20,11 +20,11 @@ Given I am in the Personalisation section
 When I select a song from the dropdown menu
 Then it should be displayed in the dropdown box
 
-# @javascript @personalisation-section
-# Scenario: The one with the dropdown search
-# Given I am in the Personalisation section
-# When I search for a song
-# Then it should be displayed in the dropdown box
+@javascript @personalisation-section
+Scenario: The one with the dropdown search
+Given I am in the Personalisation section
+When I search for a song
+Then it should be displayed in the dropdown box
 
 # Scenario: The one with the complete form and the compare button
 # Given I am in the Personalisation section

@@ -48,7 +48,17 @@ Then(/^it should be displayed in the dropdown box$/) do
 end
 
 When(/^I search for a song$/) do
-  pending # Write code here that turns the phrase above into concrete actions
+  # assume not logged in
+  scroll_to(first('.selectize-input'))
+  within(first('.selectize-input')) do
+    fill_in 'Choose a song', :with => 'ashes to ashes'
+  end
+  dropdown = first('.selectize-dropdown', visible: false).find(:css, '.selectize-dropdown-content', visible: false)
+  within dropdown do
+    first('.option', visible: false).click
+    sleep(2)
+  end
+  page.save_screenshot 'features/reports/screenshots/personalisation-dropdown1--search.png'
 end
 
 Given(/^I fill out each dropdown$/) do
