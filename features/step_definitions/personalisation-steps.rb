@@ -1,63 +1,78 @@
-Given(/^the user is logged in$/) do
-  pending # Write code here that turns the phrase above into concrete actions
+require 'selenium-webdriver'
+driver = Selenium::WebDriver.for :firefox
+
+Given(/^I am in the Personalisation section$/) do
+  sleep(3)
+  page.save_screenshot 'features/reports/screenshots/personalisation-section.png'
+  scroll_to(page.find(".section-personalisation"))
 end
 
-Given(/^the user is in the Personalisation section$/) do
-  pending # Write code here that turns the phrase above into concrete actions
+When(/^I click the first dropdown$/) do
+  within(".section-personalisation") do
+    trigger = first('.selectize-input').click
+    sleep(2)
+    page.save_screenshot 'features/reports/screenshots/personalisation-dropdown1.png'
+  end
 end
 
-When(/^they click the first dropdown$/) do
-  pending # Write code here that turns the phrase above into concrete actions
+Then(/^I should see my top 20 Spotify tracks$/) do
+  dropdown = first('.selectize-dropdown', visible: false).find(:css, '.selectize-dropdown-content', visible: false)
+  expect(dropdown).to have_selector('.option', visible: false, count: 20)
+  page.save_screenshot 'features/reports/screenshots/personalisation-dropdown1--logged-in.png'
 end
 
-Then(/^they should see their top (\d+) Spotify tracks$/) do |arg1|
-  pending # Write code here that turns the phrase above into concrete actions
+Then(/^I should see the list of number 1s$/) do
+  dropdown = first('.selectize-dropdown', visible: false).find(:css, '.selectize-dropdown-content', visible: false)
+  expect(dropdown).to have_selector('.option', visible: false, count: 1325)
+  page.save_screenshot 'features/reports/screenshots/personalisation-dropdown1--not-logged-in.png'
 end
 
-Given(/^the user is not logged in$/) do
-  pending # Write code here that turns the phrase above into concrete actions
-end
-
-Then(/^they should see the list of number (\d+)s$/) do |arg1|
-  pending # Write code here that turns the phrase above into concrete actions
-end
-
-When(/^they select a song from the dropdown menu$/) do
-  pending # Write code here that turns the phrase above into concrete actions
+When(/^I select a song from the dropdown menu$/) do
+  within(".section-personalisation") do
+    page.save_screenshot 'features/reports/screenshots/personalisation-section.png'
+    first('.selectize-input').click
+    sleep(2)
+    dropdown = first('.selectize-dropdown', visible: false).find(:css, '.selectize-dropdown-content', visible: false)
+    within dropdown do
+      first('.option', visible: false).click
+      sleep(2)
+      page.save_screenshot 'features/reports/screenshots/personalisation-dropdown1--selection.png'
+    end
+  end
 end
 
 Then(/^it should be displayed in the dropdown box$/) do
+  within(first('.selectize-input')) do
+    find('.item').text
+  end
+end
+
+When(/^I search for a song$/) do
   pending # Write code here that turns the phrase above into concrete actions
 end
 
-When(/^they searches for a song$/) do
+Given(/^I fill out each dropdown$/) do
   pending # Write code here that turns the phrase above into concrete actions
 end
 
-Given(/^the user is in the Personalisation selection$/) do
+When(/^I press the 'compare' button$/) do
   pending # Write code here that turns the phrase above into concrete actions
 end
 
-Given(/^they fill out each dropdown$/) do
+Then(/^I should see a bar chart$/) do
   pending # Write code here that turns the phrase above into concrete actions
 end
 
-When(/^they press the 'compare' button$/) do
+Then(/^each of my selections should be labelled$/) do
   pending # Write code here that turns the phrase above into concrete actions
 end
 
-Then(/^they should see a bar chart$/) do
+Given(/^I do not fill out each dropdown$/) do
   pending # Write code here that turns the phrase above into concrete actions
 end
 
-Then(/^each of their selections should be labelled$/) do
+Then(/^I should not see a bar chart$/) do
   pending # Write code here that turns the phrase above into concrete actions
 end
 
-Given(/^they do not fill out each dropdown$/) do
-  pending # Write code here that turns the phrase above into concrete actions
-end
-
-Then(/^they should not see a bar chart$/) do
-  pending # Write code here that turns the phrase above into concrete actions
-end
+driver.quit(); # closes window after tests run

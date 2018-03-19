@@ -1,36 +1,40 @@
 Feature: Personalisation Section
 
-Scenario: The one where the user is logged in
-Given the user is logged in
-And the user is in the Personalisation section
-When they click the first dropdown
-Then they should see their top 20 Spotify tracks
+@javascript
+Scenario: The one with the personalisation (not logged in)
+Given I am not logged in
+And I am in the Personalisation section
+When I click the first dropdown
+Then I should see the list of number 1s
 
-Scenario: The one where the user is not logged in
-Given the user is not logged in
-And the user is in the Personalisation section
-When they click the first dropdown
-Then they should see the list of number 1s
+@javascript @spotify-auth
+Scenario: The one with the logged in personalisation
+Given I am logged in
+And I am in the Personalisation section
+When I click the first dropdown
+Then I should see my top 20 Spotify tracks
 
-Scenario: The one where the user selects an item from the dropdown
-Given the user is in the Personalisation section
-When they select a song from the dropdown menu
+@javascript @personalisation-section
+Scenario: The one with the dropdown selection
+Given I am in the Personalisation section
+When I select a song from the dropdown menu
 Then it should be displayed in the dropdown box
 
-Scenario: The one where the user selects an item from the dropdown
-Given the user is in the Personalisation section
-When they searches for a song
-Then it should be displayed in the dropdown box
+# @javascript @personalisation-section
+# Scenario: The one with the dropdown search
+# Given I am in the Personalisation section
+# When I search for a song
+# Then it should be displayed in the dropdown box
 
-Scenario: The one where the user fills in the dropdowns and clicks the compare button
-Given the user is in the Personalisation selection
-And they fill out each dropdown
-When they press the 'compare' button
-Then they should see a bar chart
-And each of their selections should be labelled
-
-Scenario: The one where the user does not fill in the dropdowns and clicks the compare button
-Given the user is in the Personalisation selection
-And they do not fill out each dropdown
-When they press the 'compare' button
-Then they should not see a bar chart
+# Scenario: The one with the complete form and the compare button
+# Given I am in the Personalisation section
+# And I fill out each dropdown
+# When I press the 'compare' button
+# Then I should see a bar chart
+# And each of my selections should be labelled
+#
+# Scenario: The one with the incomplete form
+# Given I am in the Personalisation section
+# And I do not fill out each dropdown
+# When I press the 'compare' button
+# Then I should not see a bar chart
