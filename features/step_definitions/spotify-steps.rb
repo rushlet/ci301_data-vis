@@ -54,8 +54,8 @@ When(/^I click 'I don`'t have Spotify'$/) do
   find("#skip-log-in").click
 end
 
-Given(/^I am logged in$/) do
-  current_url.include?("rushlet.github.io/ci301_data-vis/website/project.html#access_token=")
+Given(/^on the project page$/) do
+  raise 'error - not logged in' unless current_url.include?("rushlet.github.io/ci301_data-vis/website/project.html")
 end
 
 When(/^I scroll to the 'intro slide'$/) do
@@ -67,10 +67,6 @@ Then(/^I should see a 'Follow the Playlist on Spotify' button$/) do
     find("button", :text => "Follow the Playlist on Spotify")
     page.save_screenshot 'features/reports/screenshots/spotify-playlist-button.png'
   end
-end
-
-Given(/^I am not logged in$/) do
-  pending # Write code here that turns the phrase above into concrete actions
 end
 
 Then(/^I should not see a 'Follow the Playlist on Spotify' button$/) do

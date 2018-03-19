@@ -1,7 +1,7 @@
 Feature: Check Spotify Integrations
 
 @javascript
-Scenario: The one where the user clicks to log in with Spotify
+Scenario: The one with the logging in with Spotify
 Given I am on the index page
 When I click 'Log in with Spotify'
 Then I should see the spotify log in page
@@ -24,16 +24,17 @@ Given I am on the index page
 When I click 'I don\'t have Spotify'
 Then I should be redirected to the project page
 
-@javascript
-Scenario: The one with the playlist button when the user is logged in
-Given I am on the project page
-And I am logged in
+@javascript @spotify-auth
+Scenario: The one with the playlist button when is logged in
+Given I am logged in
+And on the project page
 When I scroll to the 'intro slide'
 Then I should see a 'Follow the Playlist on Spotify' button
 When I click the 'Follow the Playlist on Spotify' button
 Then I should get a success alert
 
-Scenario: The one with the playlist button when the user is not logged in
+@javascript
+Scenario: The one with the playlist button when not logged in
 Given I am on the project page
 And I am not logged in
 When I scroll to the 'intro slide'
