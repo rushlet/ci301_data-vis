@@ -3,7 +3,7 @@ require "json"
 
 def scroll_to(element)
   script = <<-JS
-    arguments[0].scrollIntoView(true);
+    arguments[0].scrollIntoView({behavior: "smooth", block: "end", inline: "nearest"});
   JS
   Capybara.current_session.driver.browser.execute_script(script, element.native)
 end
