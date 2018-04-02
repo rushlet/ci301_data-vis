@@ -31,7 +31,7 @@ export function annotate(graph, label, x, y, dx, dy) {
   d3.select(`#${graph}`)
     .append("g")
     .attr("class", `${graph}--annotation-group`)
-    .attr("id", `${label}_label`)
+    .attr("id", `label_${label}`)
     .style('font-size', "10px")
     .call(makeAnnotations)
 }

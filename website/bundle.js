@@ -35038,7 +35038,7 @@
 
 	  var makeAnnotations = d4.annotation().editMode(false).type(d4.annotationLabel).annotations(annotations);
 
-	  d3.select('#' + graph).append("g").attr("class", graph + '--annotation-group').attr("id", label + '_label').style('font-size', "10px").call(makeAnnotations);
+	  d3.select('#' + graph).append("g").attr("class", graph + '--annotation-group').attr("id", 'label_' + label).style('font-size', "10px").call(makeAnnotations);
 	}
 
 	function removeAllAnnotations(graph) {
