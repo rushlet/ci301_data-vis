@@ -37114,6 +37114,7 @@
 	    (0, _jquery2.default)(songOneInput).selectize({
 	      create: false,
 	      sortField: 'text',
+	      maxOptions: 1500,
 	      onChange: function onChange() {
 	        personalisation.songSelected(songOneTracks, songOneInput);
 	      }
@@ -37121,6 +37122,7 @@
 	    (0, _jquery2.default)(songTwoInput).selectize({
 	      create: false,
 	      sortField: 'text',
+	      maxOptions: 1500,
 	      onChange: function onChange() {
 	        personalisation.songSelected(songTwoTracks, songTwoInput);
 	      }
