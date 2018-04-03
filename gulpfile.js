@@ -3,8 +3,8 @@ const sass = require('gulp-sass');
 const babel = require('gulp-babel');
 const webpack = require('gulp-webpack');
 const del = require('del');
-const minifyjs = require('gulp-js-minify');
 const cleanCSS = require('gulp-clean-css');
+let uglify = require('gulp-uglify-es').default;
 
 gulp.task('watch', function () {
     gulp.watch('source/**/*.*', ['default']);
@@ -45,7 +45,7 @@ gulp.task('minify-css', () => {
 
 gulp.task('minify-js', function(){
   gulp.src('website/bundle.js')
-    .pipe(minifyjs())
+    .pipe(uglify())
     .pipe(gulp.dest('website/'));
 });
 
