@@ -54,9 +54,10 @@ Then(/^I should see annotations added to (.*?)$/) do | label |
     page.assert_selector("#label_#{label} tspan", text: label)
 end
 
-Then(/^I should see the chart zoom in and pan to (.*?)$/) do | transform |
+Then(/^I should see the chart zoom in and pan to (.*?)$/) do | transformation |
   transform = page.find("##{$current_chart}-chart")[:transform]
-  expect(transform).to eq "#{transform}"
+  puts transform
+  expect(transform).to eq "#{transformation}"
 end
 
 driver.quit(); # closes window after tests run
