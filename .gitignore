@@ -3,3 +3,4 @@
 .RData
 .Rhistory
 spotify_keys.json
+/features/support/login-details.json

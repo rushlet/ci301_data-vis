@@ -11,4 +11,7 @@ Run `gulp` to build. (If you get '`gulp: command not found`' then you may need t
 
 Use `npm install -g live-server` and run `live-server` for real time JS update
 
-To run tests, run `npm run cucumber` in the terminal (currently not set up)
+To run unit tests, run `npm run mocha` in the terminal. To generate a new report run `npm run mocha-report` (tests do not need to be run separately first).
+To run cucumber tests, run `npm run cucumber` in the terminal (currently not set up)
+You may first need to run `gem install bundler` the `bundle install`
+To create a cucumber report run `cucumber features --format html > ./features/reports/report.html`

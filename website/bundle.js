@@ -50,11 +50,11 @@
 
 	var _scroller2 = _interopRequireDefault(_scroller);
 
-	var _spotifyWebApiJs = __webpack_require__(45);
+	var _spotifyWebApiJs = __webpack_require__(46);
 
 	var _spotifyWebApiJs2 = _interopRequireDefault(_spotifyWebApiJs);
 
-	var _previewTracks = __webpack_require__(46);
+	var _previewTracks = __webpack_require__(47);
 
 	var _previewTracks2 = _interopRequireDefault(_previewTracks);
 
@@ -66,7 +66,7 @@
 
 	var _jquery2 = _interopRequireDefault(_jquery);
 
-	var _dataCleaner = __webpack_require__(47);
+	var _dataCleaner = __webpack_require__(45);
 
 	var dataCleaner = _interopRequireWildcard(_dataCleaner);
 
@@ -35015,6 +35015,10 @@
 
 	var _config2 = _interopRequireDefault(_config);
 
+	var _dataCleaner = __webpack_require__(45);
+
+	var dataCleaner = _interopRequireWildcard(_dataCleaner);
+
 	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -35024,9 +35028,26 @@
 	}
 
 	function annotate(graph, label, x, y, dx, dy) {
-	  // add check to see if label already exists
-	  var type = d4.annotationLabel;
+	  var id = dataCleaner.underscoreString(label);
+	  // check to see if label already exists
+	  if (document.getElementById('label_' + id)) {
+	    var existingPosition = getTranslation(d3.select('#label_' + id + ' .annotation-note').attr("transform")),
+	        label_x = existingPosition[0],
+	        label_y = existingPosition[1];
+	    // if label does exist, check its position - if in a different location, remove existing from DOM and add a new one
+	    if (label_x != dx || label_y != dy) {
+	      document.getElementById('label_' + id).remove();
+	      makeNewLabel(graph, label, x, y, dx, dy, id);
+	    } else {
+	      d3.select('#label_' + id).style('display', 'block');
+	    }
+	  } else {
+	    makeNewLabel(graph, label, x, y, dx, dy, id);
+	  }
+	}
 
+	function makeNewLabel(graph, label, x, y, dx, dy, id) {
+	  var type = d4.annotationLabel;
 	  var annotations = [{
 	    note: {
 	      title: label
@@ -35038,7 +35059,15 @@
 
 	  var makeAnnotations = d4.annotation().editMode(false).type(d4.annotationLabel).annotations(annotations);
 
-	  d3.select('#' + graph).append("g").attr("class", graph + '--annotation-group').attr("id", 'label_' + label).style('font-size', "10px").call(makeAnnotations);
+	  d3.select('#' + graph).append("g").attr("class", graph + '--annotation-group').attr("id", 'label_' + id).style('font-size', "10px").call(makeAnnotations);
+	}
+
+	// https://stackoverflow.com/questions/38224875/replacing-d3-transform-in-d3-v4
+	function getTranslation(transform) {
+	  var g = document.createElementNS("http://www.w3.org/2000/svg", "g");
+	  g.setAttributeNS(null, "transform", transform);
+	  var matrix = g.transform.baseVal.consolidate().matrix;
+	  return [matrix.e, matrix.f];
 	}
 
 	function removeAllAnnotations(graph) {
@@ -35066,6 +35095,125 @@
 
 /***/ }),
 /* 45 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.meanData = meanData;
+	exports.capitalize = capitalize;
+	exports.underscoreString = underscoreString;
+	exports.cleanDataForBarChart = cleanDataForBarChart;
+
+	var _config = __webpack_require__(43);
+
+	var _config2 = _interopRequireDefault(_config);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function meanData() {
+	  var data = _config2.default['dataset'];
+	  var averages = {};
+	  var years = new Set();
+	  var count = 0;
+	  var audioFeatures = ['danceability', 'energy', 'valence', 'acousticness', 'speechiness', 'liveness', 'instrumentalness', 'duration_ms'];
+	  var yearlyAverages = [];
+	  data.forEach(function (d) {
+	    years.add(d.year);
+	    if (d.danceability) {
+	      count++;
+	      audioFeatures.forEach(function (feature) {
+	        if (averages[feature]) {
+	          averages[feature] += d[feature];
+	        } else {
+	          averages[feature] = d[feature];
+	        }
+	      });
+	    }
+	  });
+	  for (var feature in averages) {
+	    averages[feature] = averages[feature] / count;
+	  }
+
+	  years.forEach(function (year) {
+	    var counter = 0;
+	    var output = {};
+	    data.forEach(function (d) {
+	      if (d.year === year) {
+	        output['year'] = year;
+	        counter++;
+	        if (d.danceability) {
+	          output['count'] = counter;
+	          audioFeatures.forEach(function (feature) {
+	            if (output[feature]) {
+	              output[feature] += d[feature];
+	            } else {
+	              output[feature] = d[feature];
+	            }
+	          });
+	        }
+	      }
+	    });
+	    audioFeatures.forEach(function (feature) {
+	      output[feature] = (output[feature] / output['count']).toFixed(3);
+	    });
+	    yearlyAverages.push(output);
+	  });
+
+	  _config2.default["yearlyAverages"] = yearlyAverages;
+	  _config2.default["overallAverages"] = averages;
+	}
+
+	function capitalize(string) {
+	  var splitStr = string.toLowerCase().split(' ');
+	  for (var i = 0; i < splitStr.length; i++) {
+	    if (!splitStr[i].charAt(0).match(/[a-z]/i) && splitStr[i].charAt(1).match(/[a-z]/i)) {
+	      splitStr[i] = splitStr[i].charAt(0) + splitStr[i].charAt(1).toUpperCase() + splitStr[i].substring(2);
+	    } else {
+	      splitStr[i] = splitStr[i].charAt(0).toUpperCase() + splitStr[i].substring(1);
+	    }
+	  }
+	  return splitStr.join(' ');
+	};
+
+	function underscoreString(string) {
+	  return string.replace(/ /g, "_");
+	};
+
+	function cleanDataForBarChart() {
+	  var song1 = _config2.default['personalisation-song1'];
+	  var song2 = _config2.default['personalisation-song2'];
+	  return [{
+	    'title': song1.title,
+	    'artist': song1.artist,
+	    'features': {
+	      'danceability': song1.danceability,
+	      'valence': song1.valence,
+	      'acousticness': song1.acousticness,
+	      'energy': song1.energy,
+	      'instrumentalness': song1.instrumentalness,
+	      'liveness': song1.liveness,
+	      'speechiness': song1.speechiness
+	    }
+	  }, {
+	    'title': song2.title,
+	    'artist': song2.artist,
+	    'features': {
+	      'danceability': song2.danceability,
+	      'valence': song2.valence,
+	      'acousticness': song2.acousticness,
+	      'energy': song2.energy,
+	      'instrumentalness': song2.instrumentalness,
+	      'liveness': song2.liveness,
+	      'speechiness': song2.speechiness
+	    }
+	  }];
+	}
+
+/***/ }),
+/* 46 */
 /***/ (function(module, exports) {
 
 	/* global module */
@@ -36836,7 +36984,7 @@
 
 
 /***/ }),
-/* 46 */
+/* 47 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -36907,120 +37055,6 @@
 	}
 
 /***/ }),
-/* 47 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	exports.meanData = meanData;
-	exports.capitalize = capitalize;
-	exports.cleanDataForBarChart = cleanDataForBarChart;
-
-	var _config = __webpack_require__(43);
-
-	var _config2 = _interopRequireDefault(_config);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function meanData() {
-	  var data = _config2.default['dataset'];
-	  var averages = {};
-	  var years = new Set();
-	  var count = 0;
-	  var audioFeatures = ['danceability', 'energy', 'valence', 'acousticness', 'speechiness', 'liveness', 'instrumentalness', 'duration_ms'];
-	  var yearlyAverages = [];
-	  data.forEach(function (d) {
-	    years.add(d.year);
-	    if (d.danceability) {
-	      count++;
-	      audioFeatures.forEach(function (feature) {
-	        if (averages[feature]) {
-	          averages[feature] += d[feature];
-	        } else {
-	          averages[feature] = d[feature];
-	        }
-	      });
-	    }
-	  });
-	  for (var feature in averages) {
-	    averages[feature] = averages[feature] / count;
-	  }
-
-	  years.forEach(function (year) {
-	    var counter = 0;
-	    var output = {};
-	    data.forEach(function (d) {
-	      if (d.year === year) {
-	        output['year'] = year;
-	        counter++;
-	        if (d.danceability) {
-	          output['count'] = counter;
-	          audioFeatures.forEach(function (feature) {
-	            if (output[feature]) {
-	              output[feature] += d[feature];
-	            } else {
-	              output[feature] = d[feature];
-	            }
-	          });
-	        }
-	      }
-	    });
-	    audioFeatures.forEach(function (feature) {
-	      output[feature] = (output[feature] / output['count']).toFixed(3);
-	    });
-	    yearlyAverages.push(output);
-	  });
-
-	  _config2.default["yearlyAverages"] = yearlyAverages;
-	  _config2.default["overallAverages"] = averages;
-	}
-
-	function capitalize(string) {
-	  var splitStr = string.toLowerCase().split(' ');
-	  for (var i = 0; i < splitStr.length; i++) {
-	    if (!splitStr[i].charAt(0).match(/[a-z]/i) && splitStr[i].charAt(1).match(/[a-z]/i)) {
-	      splitStr[i] = splitStr[i].charAt(0) + splitStr[i].charAt(1).toUpperCase() + splitStr[i].substring(2);
-	    } else {
-	      splitStr[i] = splitStr[i].charAt(0).toUpperCase() + splitStr[i].substring(1);
-	    }
-	  }
-	  return splitStr.join(' ');
-	};
-
-	function cleanDataForBarChart() {
-	  var song1 = _config2.default['personalisation-song1'];
-	  var song2 = _config2.default['personalisation-song2'];
-	  return [{
-	    'title': song1.title,
-	    'artist': song1.artist,
-	    'features': {
-	      'danceability': song1.danceability,
-	      'valence': song1.valence,
-	      'acousticness': song1.acousticness,
-	      'energy': song1.energy,
-	      'instrumentalness': song1.valence,
-	      'liveness': song1.acousticness,
-	      'speechiness': song1.energy
-	    }
-	  }, {
-	    'title': song2.title,
-	    'artist': song2.artist,
-	    'features': {
-	      'danceability': song2.danceability,
-	      'valence': song2.valence,
-	      'acousticness': song2.acousticness,
-	      'energy': song2.energy,
-	      'instrumentalness': song2.valence,
-	      'liveness': song2.acousticness,
-	      'speechiness': song2.energy
-	    }
-	  }];
-	}
-
-/***/ }),
 /* 48 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -37036,7 +37070,7 @@
 
 	var _config2 = _interopRequireDefault(_config);
 
-	var _dataCleaner = __webpack_require__(47);
+	var _dataCleaner = __webpack_require__(45);
 
 	var dataCleaner = _interopRequireWildcard(_dataCleaner);
 
@@ -37200,7 +37234,7 @@
 
 	var _config2 = _interopRequireDefault(_config);
 
-	var _dataCleaner = __webpack_require__(47);
+	var _dataCleaner = __webpack_require__(45);
 
 	var dataCleaner = _interopRequireWildcard(_dataCleaner);
 

@@ -2,6 +2,7 @@ import $ from 'jquery';
 import * as d3 from "d3";
 import * as d4 from 'd3-svg-annotation';
 import config from './config.js';
+import * as dataCleaner from './data-cleaner.js';
 
 export function zoomAndPan(graph, translateX, translateY, scale) {
   const svg = d3.select(`#${graph}`)
@@ -11,9 +12,27 @@ export function zoomAndPan(graph, translateX, translateY, scale) {
 }
 
 export function annotate(graph, label, x, y, dx, dy) {
-  // add check to see if label already exists
-  const type = d4.annotationLabel
+  var id = dataCleaner.underscoreString(label);
+  // check to see if label already exists
+  if (document.getElementById(`label_${id}`)) {
+    var existingPosition = getTranslation(d3.select(`#label_${id} .annotation-note`).attr("transform")),
+    label_x = existingPosition[0],
+    label_y = existingPosition[1];
+    // if label does exist, check its position - if in a different location, remove existing from DOM and add a new one
+    if (label_x != dx || label_y != dy) {
+      document.getElementById(`label_${id}`).remove();
+      makeNewLabel(graph, label, x, y, dx, dy, id);
+    } else {
+      d3.select(`#label_${id}`)
+        .style('display', 'block');
+    }
+  } else {
+    makeNewLabel(graph, label, x, y, dx, dy, id);
+  }
+}
 
+function makeNewLabel(graph, label, x, y, dx, dy, id) {
+  const type = d4.annotationLabel
   const annotations = [{
     note: {
       title: label
@@ -31,9 +50,17 @@ export function annotate(graph, label, x, y, dx, dy) {
   d3.select(`#${graph}`)
     .append("g")
     .attr("class", `${graph}--annotation-group`)
-    .attr("id", `label_${label}`)
+    .attr("id", `label_${id}`)
     .style('font-size', "10px")
     .call(makeAnnotations)
+}
+
+// https://stackoverflow.com/questions/38224875/replacing-d3-transform-in-d3-v4
+function getTranslation(transform) {
+  var g = document.createElementNS("http://www.w3.org/2000/svg", "g");
+  g.setAttributeNS(null, "transform", transform);
+  var matrix = g.transform.baseVal.consolidate().matrix;
+  return [matrix.e, matrix.f];
 }
 
 export function removeAllAnnotations(graph) {
