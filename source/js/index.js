@@ -3,6 +3,7 @@ import Spotify from 'spotify-web-api-js';
 import addTrackPreviewListeners from './preview-tracks.js'
 import config from './config.js';
 import $ from 'jquery';
+import 'jquery-ui/ui/widgets/dialog.js';
 import * as dataCleaner from './data-cleaner.js';
 import Personalisation from './personalisation.js';
 import BarChart from './bar-chart.js';
@@ -110,8 +111,22 @@ function followPlaylist() {
   let spotifyApi = new Spotify();
   spotifyApi.followPlaylist(config['user_id'], '6DNZV1L405XpElhIAUHaKZ')
     .then(function(data) {
-      console.log('playlist followed!');
+      customAlert('Success', 'Playlist followed!');
     }, function(err) {
-      console.log('playlist follow error');
+      customAlert('Error', `Oops, we couldn\'t follow the playlist at this time. Error: ${err}`);
+  });
+}
+
+function customAlert(title, message) {
+  $('<div></div>').html( message ).dialog({
+      title: title,
+      resizable: false,
+      modal: true,
+      dialogClass: 'alert',
+      buttons: {
+          'Okay': function()  {
+              $( this ).dialog( 'close' );
+          }
+      }
   });
 }

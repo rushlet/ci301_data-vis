@@ -53,6 +53,9 @@ h4 {
 @import 'line-chart';
 @import 'personalisation';
 @import 'bar-chart';
+@import 'node_modules/jquery-ui/themes/base/core';
+@import 'node_modules/jquery-ui/themes/base/theme';
+@import 'node_modules/jquery-ui/themes/base/dialog';
 
 .explore {
   padding-top: 20vh;
@@ -60,4 +63,49 @@ h4 {
   p {
     font-size: 1em;
   }
+}
+
+.alert {
+  .ui-dialog-content {
+    padding: 1em 0.5em;
+  }
+
+  .ui-button {
+    text-decoration: none;
+    -moz-border-radius: 30px;
+    -webkit-border-radius: 30px;
+    border-radius: 30px;
+    padding: 0.5em 1em;
+    color: #fff;
+    position: relative;
+    -moz-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+    display: block;
+    background-color: #1ed760;
+    margin: auto;
+  }
+
+  .ui-dialog-titlebar-close {
+    display: none;
+  }
+
+  .ui-dialog-titlebar {
+    background-color: #1ed760;
+    color: #fff;
+    padding: 0.5em 1em;
+  }
+
+  .ui-dialog-buttonpane {
+    border: none;
+  }
+
+  .ui-dialog-buttonset {
+    width: 100%;
+  }
+}
+
+.ui-dialog .ui-dialog-buttonpane button {
+  margin: auto;
 }
