@@ -35028,19 +35028,18 @@
 	}
 
 	function annotate(graph, label, x, y, dx, dy) {
-	  // check to see if label already exists
 	  var id = dataCleaner.underscoreString(label);
+	  // check to see if label already exists
 	  if (document.getElementById(id + '_label')) {
 	    var existingPosition = getTranslation(d3.select('#' + id + '_label .annotation-note').attr("transform")),
 	        label_x = existingPosition[0],
 	        label_y = existingPosition[1];
+	    // if label does exist, check its position - if in a different location, remove existing from DOM and add a new one
 	    if (label_x != dx || label_y != dy) {
 	      document.getElementById(id + '_label').remove();
 	      makeNewLabel(graph, label, x, y, dx, dy, id);
 	    } else {
-	      d3.select('#' + id + '_label').attr("x", x).attr("y", y).style('display', 'block');
-
-	      d3.select('#' + id + '_label .annotation-note').attr("transform", 'translate(' + dx + ', ' + dy + ')');
+	      d3.select('#' + id + '_label').style('display', 'block');
 	    }
 	  } else {
 	    makeNewLabel(graph, label, x, y, dx, dy, id);
