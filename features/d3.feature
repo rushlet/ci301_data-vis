@@ -20,17 +20,3 @@ Examples:
   |    swarm    |       bieber      |    Madonna   |     translate(700, 300) scale(7,7)    |
   |     line    | acousticness-low  |     2009     |    translate(-950, -1000) scale(7,7)  |
   |     line    | danceability-high |     1983     |     translate(400, 500) scale(6,6)    |
-
-#Scenario: The one with the deleted labels
-# Given I am on the <type> chart
-# And I am on the <section> section
-# When I scroll to the next section
-# Then the <artist> labels should be removed from the DOM
-
-# Examples:
-#   |     type    |       section     |     label    |
-#   |    swarm    |       longest     |    Beatles   |
-#   |    swarm    |     successful    |    Westlife  |
-#   |    swarm    |       bieber      |    Madonna   |
-#   |     line    | acousticness-low  |     2009     |
-#   |     line    | danceability-high |     1983     |
