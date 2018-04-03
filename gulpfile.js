@@ -3,6 +3,8 @@ const sass = require('gulp-sass');
 const babel = require('gulp-babel');
 const webpack = require('gulp-webpack');
 const del = require('del');
+const minifyjs = require('gulp-js-minify');
+const cleanCSS = require('gulp-clean-css');
 
 gulp.task('watch', function () {
     gulp.watch('source/**/*.*', ['default']);
@@ -35,4 +37,17 @@ gulp.task('clean-up', ['sass', 'html', 'js'], function(){
     del(['website/*', '!website/main.css', '!website/bundle.js', '!website/index.html', '!website/project.html', '!website/assets']);
 });
 
+gulp.task('minify-css', () => {
+  return gulp.src('website/main.css')
+    .pipe(cleanCSS())
+    .pipe(gulp.dest('website/'));
+});
+
+gulp.task('minify-js', function(){
+  gulp.src('website/bundle.js')
+    .pipe(minifyjs())
+    .pipe(gulp.dest('website/'));
+});
+
 gulp.task('default', ['html', 'sass', 'js', 'assets', 'clean-up']);
+gulp.task('minify', ['minify-css', 'minify-js']);

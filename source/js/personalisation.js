@@ -22,6 +22,7 @@ class Personalisation {
     $(songOneInput).selectize({
       create: false,
       sortField: 'text',
+      maxOptions: 1500,
       onChange: ()=>{
         personalisation.songSelected(songOneTracks, songOneInput);
       }
@@ -29,6 +30,7 @@ class Personalisation {
     $(songTwoInput).selectize({
       create: false,
       sortField: 'text',
+      maxOptions: 1500,
       onChange: ()=>{
         personalisation.songSelected(songTwoTracks, songTwoInput);
       }

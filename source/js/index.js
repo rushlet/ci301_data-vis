@@ -3,8 +3,8 @@ import Spotify from 'spotify-web-api-js';
 import addTrackPreviewListeners from './preview-tracks.js'
 import config from './config.js';
 import $ from 'jquery';
+import 'jquery-ui/ui/widgets/dialog.js';
 import * as dataCleaner from './data-cleaner.js';
-import Personalisation from './personalisation.js';
 import BarChart from './bar-chart.js';
 
 
@@ -15,36 +15,32 @@ if (document.getElementById('spotify-log-in') !== null) {
   document.getElementById('spotify-log-in').addEventListener("click", spotifyAuth, false);
   document.getElementById('skip-log-in').addEventListener("click", skipLogIn, false);
 } else {
-  let playlistButtons = document.querySelectorAll('.spotify-playlist');
-  playlistButtons.forEach((button) => {
-    button.addEventListener("click", followPlaylist, false);
-  });
-}
-
-function skipLogIn() {
-  window.location.href = './project.html';
-}
-
-function spotifyAuth() {
-  var clientID = 'ddba468408e2427090e0d79450f3d535';
-  var path = 'website/project.html';
-  if (window.location.host === 'rushlet.github.io') {
-    var path = 'ci301_data-vis/website/project.html'
+  if (window.location.href.includes('access_token')) {
+    var url = window.location.href;
+    var access_token = url.match(/\#(?:access_token)\=([\S\s]*?)\&/)[1];
+    localStorage.setItem('access_token', access_token);
+    loggedIn = true;
+    let playlistButtons = document.querySelectorAll('.spotify-playlist');
+    playlistButtons.forEach((button) => {
+      button.addEventListener("click", followPlaylist, false);
+    });
+    getUserTopTracks();
+  } else {
+    let playlistButtons = document.querySelectorAll('.spotify-playlist');
+    playlistButtons.forEach((button) => {
+      button.style.display = 'none';
+    });
   }
-  var url = `${window.location.protocol}//${window.location.host}/${path}`;
-  var scopes = 'user-read-private%20user-top-read%20playlist-modify-public';
-  var spotifyRequest = `https://accounts.spotify.com/authorize/?client_id=${clientID}&response_type=token&redirect_uri=${url}&scope=${scopes}`;
-  window.location.href = spotifyRequest;
 }
 
-if (window.location.href.includes('access_token')) {
-  var url = window.location.href;
-  var access_token = url.match(/\#(?:access_token)\=([\S\s]*?)\&/)[1];
-  localStorage.setItem('access_token', access_token);
-  loggedIn = true;
-}
+$.getJSON( "./assets/data/fixed_data_for_analysis.json", function( data ) {
+  config['dataset'] = data;
+  addTrackPreviewListeners();
+  dataCleaner.meanData();
+  new Scroller;
+});
 
-if (localStorage.getItem('access_token') !== null) {
+function getUserTopTracks() {
   let spotifyApi = new Spotify();
   let userTopTracks = {};
   spotifyApi.setAccessToken(localStorage.getItem('access_token'));
@@ -93,20 +89,42 @@ if (localStorage.getItem('access_token') !== null) {
   });
 }
 
+function skipLogIn() {
+  window.location.href = './project.html';
+}
+
+function spotifyAuth() {
+  var clientID = 'ddba468408e2427090e0d79450f3d535';
+  var path = 'website/project.html';
+  if (window.location.host === 'rushlet.github.io') {
+    var path = 'ci301_data-vis/website/project.html'
+  }
+  var url = `${window.location.protocol}//${window.location.host}/${path}`;
+  var scopes = 'user-read-private%20user-top-read%20playlist-modify-public';
+  var spotifyRequest = `https://accounts.spotify.com/authorize/?client_id=${clientID}&response_type=token&redirect_uri=${url}&scope=${scopes}`;
+  window.location.href = spotifyRequest;
+}
+
 function followPlaylist() {
   let spotifyApi = new Spotify();
   spotifyApi.followPlaylist(config['user_id'], '6DNZV1L405XpElhIAUHaKZ')
     .then(function(data) {
-      console.log('playlist followed!');
+      customAlert('Success', 'Playlist followed!');
     }, function(err) {
-      console.log('playlist follow error');
+      customAlert('Error', `Oops, we couldn\'t follow the playlist at this time. Error: ${err}`);
   });
 }
 
-$.getJSON( "./assets/data/fixed_data_for_analysis.json", function( data ) {
-  config['dataset'] = data;
-  addTrackPreviewListeners();
-  dataCleaner.meanData();
-  new Scroller;
-  new Personalisation();
-});
+function customAlert(title, message) {
+  $('<div></div>').html( message ).dialog({
+      title: title,
+      resizable: false,
+      modal: true,
+      dialogClass: 'alert',
+      buttons: {
+          'Okay': function()  {
+              $( this ).dialog( 'close' );
+          }
+      }
+  });
+}
