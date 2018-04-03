@@ -14,16 +14,16 @@ export function zoomAndPan(graph, translateX, translateY, scale) {
 export function annotate(graph, label, x, y, dx, dy) {
   var id = dataCleaner.underscoreString(label);
   // check to see if label already exists
-  if (document.getElementById(`${id}_label`)) {
-    var existingPosition = getTranslation(d3.select(`#${id}_label .annotation-note`).attr("transform")),
+  if (document.getElementById(`label_${id}`)) {
+    var existingPosition = getTranslation(d3.select(`#label_${id} .annotation-note`).attr("transform")),
     label_x = existingPosition[0],
     label_y = existingPosition[1];
     // if label does exist, check its position - if in a different location, remove existing from DOM and add a new one
     if (label_x != dx || label_y != dy) {
-      document.getElementById(`${id}_label`).remove();
+      document.getElementById(`label_${id}`).remove();
       makeNewLabel(graph, label, x, y, dx, dy, id);
     } else {
-      d3.select(`#${id}_label`)
+      d3.select(`#label_${id}`)
         .style('display', 'block');
     }
   } else {
@@ -50,7 +50,7 @@ function makeNewLabel(graph, label, x, y, dx, dy, id) {
   d3.select(`#${graph}`)
     .append("g")
     .attr("class", `${graph}--annotation-group`)
-    .attr("id", `${id}_label`)
+    .attr("id", `label_${id}`)
     .style('font-size', "10px")
     .call(makeAnnotations)
 }
