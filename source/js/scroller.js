@@ -1,6 +1,7 @@
 import scrollama from 'scrollama';
 import SwarmChart from './swarm-chart.js';
 import LineChart from './line-chart.js'
+import Personalisation from './personalisation.js';
 import config from './config.js';
 import * as chartFunctions from './chart-utils.js'
 
@@ -15,6 +16,7 @@ class Scroller {
       swarm = new SwarmChart();
       swarm.swarmChart();
       lineChart = new LineChart();
+      new Personalisation();
       scroller
         .setup({
           step: '.scroll__text .step',

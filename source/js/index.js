@@ -5,7 +5,6 @@ import config from './config.js';
 import $ from 'jquery';
 import 'jquery-ui/ui/widgets/dialog.js';
 import * as dataCleaner from './data-cleaner.js';
-import Personalisation from './personalisation.js';
 import BarChart from './bar-chart.js';
 
 
@@ -39,7 +38,6 @@ $.getJSON( "./assets/data/fixed_data_for_analysis.json", function( data ) {
   addTrackPreviewListeners();
   dataCleaner.meanData();
   new Scroller;
-  new Personalisation();
 });
 
 function getUserTopTracks() {
