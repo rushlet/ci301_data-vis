@@ -89,36 +89,33 @@
 	  document.getElementById('spotify-log-in').addEventListener("click", spotifyAuth, false);
 	  document.getElementById('skip-log-in').addEventListener("click", skipLogIn, false);
 	} else {
-	  var playlistButtons = document.querySelectorAll('.spotify-playlist');
-	  playlistButtons.forEach(function (button) {
-	    button.addEventListener("click", followPlaylist, false);
-	  });
-	}
-
-	function skipLogIn() {
-	  window.location.href = './project.html';
-	}
-
-	function spotifyAuth() {
-	  var clientID = 'ddba468408e2427090e0d79450f3d535';
-	  var path = 'website/project.html';
-	  if (window.location.host === 'rushlet.github.io') {
-	    var path = 'ci301_data-vis/website/project.html';
+	  if (window.location.href.includes('access_token')) {
+	    var url = window.location.href;
+	    var access_token = url.match(/\#(?:access_token)\=([\S\s]*?)\&/)[1];
+	    localStorage.setItem('access_token', access_token);
+	    loggedIn = true;
+	    var playlistButtons = document.querySelectorAll('.spotify-playlist');
+	    playlistButtons.forEach(function (button) {
+	      button.addEventListener("click", followPlaylist, false);
+	    });
+	    getUserTopTracks();
+	  } else {
+	    var _playlistButtons = document.querySelectorAll('.spotify-playlist');
+	    _playlistButtons.forEach(function (button) {
+	      button.style.display = 'none';
+	    });
 	  }
-	  var url = window.location.protocol + '//' + window.location.host + '/' + path;
-	  var scopes = 'user-read-private%20user-top-read%20playlist-modify-public';
-	  var spotifyRequest = 'https://accounts.spotify.com/authorize/?client_id=' + clientID + '&response_type=token&redirect_uri=' + url + '&scope=' + scopes;
-	  window.location.href = spotifyRequest;
 	}
 
-	if (window.location.href.includes('access_token')) {
-	  var url = window.location.href;
-	  var access_token = url.match(/\#(?:access_token)\=([\S\s]*?)\&/)[1];
-	  localStorage.setItem('access_token', access_token);
-	  loggedIn = true;
-	}
+	_jquery2.default.getJSON("./assets/data/fixed_data_for_analysis.json", function (data) {
+	  _config2.default['dataset'] = data;
+	  (0, _previewTracks2.default)();
+	  dataCleaner.meanData();
+	  new _scroller2.default();
+	  new _personalisation2.default();
+	});
 
-	if (localStorage.getItem('access_token') !== null) {
+	function getUserTopTracks() {
 	  var spotifyApi = new _spotifyWebApiJs2.default();
 	  var userTopTracks = {};
 	  spotifyApi.setAccessToken(localStorage.getItem('access_token'));
@@ -158,6 +155,22 @@
 	  });
 	}
 
+	function skipLogIn() {
+	  window.location.href = './project.html';
+	}
+
+	function spotifyAuth() {
+	  var clientID = 'ddba468408e2427090e0d79450f3d535';
+	  var path = 'website/project.html';
+	  if (window.location.host === 'rushlet.github.io') {
+	    var path = 'ci301_data-vis/website/project.html';
+	  }
+	  var url = window.location.protocol + '//' + window.location.host + '/' + path;
+	  var scopes = 'user-read-private%20user-top-read%20playlist-modify-public';
+	  var spotifyRequest = 'https://accounts.spotify.com/authorize/?client_id=' + clientID + '&response_type=token&redirect_uri=' + url + '&scope=' + scopes;
+	  window.location.href = spotifyRequest;
+	}
+
 	function followPlaylist() {
 	  var spotifyApi = new _spotifyWebApiJs2.default();
 	  spotifyApi.followPlaylist(_config2.default['user_id'], '6DNZV1L405XpElhIAUHaKZ').then(function (data) {
@@ -166,14 +179,6 @@
 	    console.log('playlist follow error');
 	  });
 	}
-
-	_jquery2.default.getJSON("./assets/data/fixed_data_for_analysis.json", function (data) {
-	  _config2.default['dataset'] = data;
-	  (0, _previewTracks2.default)();
-	  dataCleaner.meanData();
-	  new _scroller2.default();
-	  new _personalisation2.default();
-	});
 
 /***/ }),
 /* 1 */
