@@ -2,6 +2,7 @@ import $ from 'jquery';
 import * as d3 from "d3";
 import * as d4 from 'd3-svg-annotation';
 import config from './config.js';
+import * as dataCleaner from './data-cleaner.js';
 
 export function zoomAndPan(graph, translateX, translateY, scale) {
   const svg = d3.select(`#${graph}`)
@@ -11,9 +12,31 @@ export function zoomAndPan(graph, translateX, translateY, scale) {
 }
 
 export function annotate(graph, label, x, y, dx, dy) {
-  // add check to see if label already exists
-  const type = d4.annotationLabel
+  // check to see if label already exists
+  var id = dataCleaner.underscoreString(label);
+  if (document.getElementById(`${id}_label`)) {
+    var existingPosition = getTranslation(d3.select(`#${id}_label .annotation-note`).attr("transform")),
+    label_x = existingPosition[0],
+    label_y = existingPosition[1];
+    if (label_x != dx || label_y != dy) {
+      document.getElementById(`${id}_label`).remove();
+      makeNewLabel(graph, label, x, y, dx, dy, id);
+    } else {
+      d3.select(`#${id}_label`)
+        .attr("x", x)
+        .attr("y", y)
+        .style('display', 'block');
 
+      d3.select(`#${id}_label .annotation-note`)
+        .attr("transform", `translate(${dx}, ${dy})`);
+    }
+  } else {
+    makeNewLabel(graph, label, x, y, dx, dy, id);
+  }
+}
+
+function makeNewLabel(graph, label, x, y, dx, dy, id) {
+  const type = d4.annotationLabel
   const annotations = [{
     note: {
       title: label
@@ -31,9 +54,17 @@ export function annotate(graph, label, x, y, dx, dy) {
   d3.select(`#${graph}`)
     .append("g")
     .attr("class", `${graph}--annotation-group`)
-    .attr("id", `${label}_label`)
+    .attr("id", `${id}_label`)
     .style('font-size', "10px")
     .call(makeAnnotations)
+}
+
+// https://stackoverflow.com/questions/38224875/replacing-d3-transform-in-d3-v4
+function getTranslation(transform) {
+  var g = document.createElementNS("http://www.w3.org/2000/svg", "g");
+    g.setAttributeNS(null, "transform", transform);
+  var matrix = g.transform.baseVal.consolidate().matrix;
+  return [matrix.e, matrix.f];
 }
 
 export function removeAllAnnotations(graph) {

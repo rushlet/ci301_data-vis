@@ -65,6 +65,10 @@ export function capitalize(string) {
   return splitStr.join(' ');
 };
 
+export function underscoreString(string) {
+  return string.replace(/ /g,"_");
+};
+
 export function cleanDataForBarChart() {
   let song1 = config['personalisation-song1'];
   let song2 = config['personalisation-song2'];
