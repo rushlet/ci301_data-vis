@@ -7,10 +7,12 @@ And I am in the Personalisation section
 When I click the first dropdown
 Then I should see the list of number 1s
 
-@javascript @spotify-auth
+ # @spotify-auth - needed when running personalisation feature in isolation
+@javascript
 Scenario: The one with the logged in personalisation
-Given I am logged in
-And I am in the Personalisation section
+# Given I am logged in
+# And I am in the Personalisation section
+Given I am logged in, on the personalisation section
 When I click the first dropdown
 Then I should see my top 20 Spotify tracks
 

@@ -50,12 +50,17 @@ Then(/^there should be an access token appended onto the url$/) do
   current_url.include?("rushlet.github.io/ci301_data-vis/website/project.html#access_token=")
 end
 
-When(/^I click 'I don`'t have Spotify'$/) do
+When(/^I click 'I don't have Spotify'$/) do
   find("#skip-log-in").click
 end
 
-Given(/^on the project page$/) do
-  raise 'error - not logged in' unless current_url.include?("rushlet.github.io/ci301_data-vis/website/project.html")
+Given(/^I'm on the project page$/) do
+  step 'I am on the index page'
+  puts current_url
+  step 'I click \'Log in with Spotify\''
+  sleep(4)
+  puts current_url
+  raise 'error - not logged in' unless current_url.include?("rushlet.github.io/ci301_data-vis/website/project.html#access_token")
 end
 
 When(/^I scroll to the 'intro slide'$/) do
@@ -70,23 +75,19 @@ Then(/^I should see a 'Follow the Playlist on Spotify' button$/) do
 end
 
 Then(/^I should not see a 'Follow the Playlist on Spotify' button$/) do
-  pending # Write code here that turns the phrase above into concrete actions
+  expect(page).not_to have_selector(".spotify-playlist")
 end
 
-When(/^I click 'I don\\'t have Spotify'$/) do
-  pending # Write code here that turns the phrase above into concrete actions
-end
-
-Given(/^I am on the intro\-slide$/) do
-  pending # Write code here that turns the phrase above into concrete actions
+When(/^I scroll down$/) do
+  scroll_to(page.find(".intro-slide:nth-child(2)", visible: true))
 end
 
 When(/^I click the 'Follow the Playlist on Spotify' button$/) do
-  pending # Write code here that turns the phrase above into concrete actions
+  first("button", :text => "Follow the Playlist on Spotify").click
 end
 
-Then(/^I should get a success alert$/) do
-  pending # Write code here that turns the phrase above into concrete actions
+Then(/^I should get a success or error alert$/) do
+  expect(page).to have_css('.ui-dialog')
 end
 
 driver.quit(); # closes window after tests run

@@ -424,16 +424,22 @@ body {
                     <li><span id="toggle-passes" class="toggle-passes">show failures only</span></li>
                 </ul>
                 <ul class="mocha-stats">
-                    <li class="passes">passes: <em>5</em></li>
+                    <li class="passes">passes: <em>7</em></li>
                     <li class="pending">pending: <em>0</em></li>
                     <li class="failures">failures: <em>0</em></li>
-                    <li class="duration">duration: <em>8ms</em></li>
+                    <li class="duration">duration: <em>9ms</em></li>
                 </ul>
             </div>
-            <ul id="report"><li class="suite"><h1>Capitalize</h1><ul><li class="test pass fast"><h2>should capitalize the first letter of each word in a string<span class="duration">1ms</span></h2><pre><code>var testString = &#x22;hello, my name is becky&#x22;;
+            <ul id="report"><li class="suite"><h1>underscoreString</h1><ul><li class="test pass fast"><h2>should replace the spaces in a string with underscores<span class="duration">0ms</span></h2><pre><code>var testString = &#x22;hello, my name is becky&#x22;;
+var underscoredString = functions.underscoreString(testString);
+var expectString = &#x22;hello,_my_name_is_becky&#x22;;
+assert.equal(underscoredString, expectString);</code></pre></li><li class="test pass fast"><h2>should replace the spaces in a string with underscores, even at the start<span class="duration">0ms</span></h2><pre><code>var testString = &#x22; hello &#x22;;
+var underscoredString = functions.underscoreString(testString);
+var expectString = &#x22;_hello_&#x22;;
+assert.equal(underscoredString, expectString);</code></pre></li></ul></li><li class="suite"><h1>Capitalize</h1><ul><li class="test pass fast"><h2>should capitalize the first letter of each word in a string<span class="duration">0ms</span></h2><pre><code>var testString = &#x22;hello, my name is becky&#x22;;
 var capitalisedString = functions.capitalize(testString);
 var expectString = &#x22;Hello, My Name Is Becky&#x22;;
-assert.equal(capitalisedString, expectString);</code></pre></li><li class="test pass fast"><h2>should capitalize the first letter of each word in a string, even if it starts with a bracket<span class="duration">0ms</span></h2><pre><code>var testString = &#x22;(hello) my (name) is becky&#x22;;
+assert.equal(capitalisedString, expectString);</code></pre></li><li class="test pass fast"><h2>should capitalize the first letter of each word in a string, even if it starts with a bracket<span class="duration">1ms</span></h2><pre><code>var testString = &#x22;(hello) my (name) is becky&#x22;;
 var capitalisedString = functions.capitalize(testString);
 var expectString = &#x22;(Hello) My (Name) Is Becky&#x22;;
 assert.equal(capitalisedString, expectString);</code></pre></li><li class="test pass fast"><h2>should capitalize the first letter of each word in a string, and the other letters should be lowercase<span class="duration">0ms</span></h2><pre><code>var testString = &#x22;hELLo, my NAme Is bECKy&#x22;;

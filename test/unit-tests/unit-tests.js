@@ -3,7 +3,20 @@ var functions = require('./functions-to-test.js');
 var variables = require('./variables.js');
 var assert = chai.assert;
 
-
+describe('underscoreString', function() {
+  it('should replace the spaces in a string with underscores', function() {
+    var testString = "hello, my name is becky";
+    var underscoredString = functions.underscoreString(testString);
+    var expectString = "hello,_my_name_is_becky";
+    assert.equal(underscoredString, expectString);
+  });
+  it('should replace the spaces in a string with underscores, even at the start', function() {
+    var testString = " hello ";
+    var underscoredString = functions.underscoreString(testString);
+    var expectString = "_hello_";
+    assert.equal(underscoredString, expectString);
+  });
+});
 
 describe('Capitalize', function() {
   it('should capitalize the first letter of each word in a string', function() {
