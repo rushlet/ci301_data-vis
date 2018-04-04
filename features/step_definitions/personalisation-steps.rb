@@ -7,6 +7,18 @@ Given(/^I am in the Personalisation section$/) do
   scroll_to(page.find(".section-personalisation"))
 end
 
+Given(/^I am logged in, on the personalisation section$/) do
+  step 'I am on the index page'
+  puts current_url
+  step 'I click \'Log in with Spotify\''
+  sleep(4)
+  puts current_url
+  raise 'error - not logged in' unless current_url.include?("rushlet.github.io/ci301_data-vis/website/project.html#access_token")
+  sleep(3)
+  scroll_to(page.find(".section-personalisation"))
+  page.save_screenshot 'features/reports/screenshots/personalisation-section.png'
+end
+
 When(/^I click the first dropdown$/) do
   within(".section-personalisation") do
     trigger = first('.selectize-input').click
@@ -23,7 +35,7 @@ end
 
 Then(/^I should see the list of number 1s$/) do
   dropdown = first('.selectize-dropdown', visible: false).find(:css, '.selectize-dropdown-content', visible: false)
-  expect(dropdown).to have_selector('.option', visible: false, count: 1325)
+  expect(dropdown).to have_selector('.option', visible: false, count: 1321)
   page.save_screenshot 'features/reports/screenshots/personalisation-dropdown1--not-logged-in.png'
 end
 
@@ -69,24 +81,26 @@ Given(/^I fill out each dropdown$/) do
     select_option(5)
   end
   within inputs[1] do
-    select_option(80)
+    select_option(8)
   end
   within inputs[2] do
-    select_option(3)
+    select_option(1)
   end
   page.save_screenshot 'features/reports/screenshots/personalisation--all-dropdowns.png'
 end
 
 When(/^I press the 'compare' button$/) do
   find('#personalisation-input--submit').click
+  sleep(2)
 end
 
 Then(/^I should see a bar chart$/) do
   bar_chart = find('#bar-chart')
   scroll_to(bar_chart)
+  sleep(5)
   bars = bar_chart.all('.bar')
-  expect(bars.length).to eq(2)
   page.save_screenshot 'features/reports/screenshots/personalisation--bar-chart.png'
+  expect(bars.length).to eq(2)
 end
 
 Given(/^I do not fill out each dropdown$/) do
