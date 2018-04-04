@@ -8,6 +8,10 @@ body {
   color: #202020;
 }
 
+.wrapper {
+  display: block;
+}
+
 section {
   padding: 1em 3em;
 }
@@ -108,4 +112,23 @@ h4 {
 
 .ui-dialog .ui-dialog-buttonpane button {
   margin: auto;
+}
+
+.mobile {
+  display: none;
+}
+
+@media (max-width: 1050px) {
+  .mobile {
+    display: block;
+    padding: 1em;
+    font-size: 1.5em;
+    max-width: 500px;
+    margin: 25vh auto;
+    text-align: center;
+  }
+
+  .wrapper {
+    display: none;
+  }
 }
