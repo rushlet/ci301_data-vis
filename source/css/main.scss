@@ -49,6 +49,14 @@ h4 {
   max-width: 750px;
 }
 
+.project-intro__description a:visited {
+  color: #202020;
+}
+
+.project-intro__description a:hover {
+  color: #5a5b5e;
+}
+
 @import 'spotify-auth';
 @import 'intro';
 @import 'scroller';
