@@ -50,11 +50,13 @@ h4 {
   max-width: 750px;
 }
 
+.credit a:visited,
 .intro-slide a:visited,
 .project-intro__description a:visited {
   color: #202020;
 }
 
+.credit a:hover,
 .intro-slide a:hover {
   color: #1ed760
 }
