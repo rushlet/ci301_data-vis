@@ -35,6 +35,7 @@ h4 {
   margin-bottom: 0;
 }
 
+
 .intro-slide,
 .charts-intro__slide,
 .section-re-entries__slide,
@@ -49,8 +50,13 @@ h4 {
   max-width: 750px;
 }
 
+.intro-slide a:visited,
 .project-intro__description a:visited {
   color: #202020;
+}
+
+.intro-slide a:hover {
+  color: #1ed760
 }
 
 .project-intro__description a:hover {
